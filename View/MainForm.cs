@@ -33,7 +33,6 @@ namespace Programming
             EnumListBox.SelectedIndex = 0;
 
             SeasonComboBox.Items.AddRange(Enum.GetNames(typeof(Season)));
-            SeasonComboBox.SelectedIndex = 0;
         }
 
         private void EnumListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -90,7 +89,7 @@ namespace Programming
                     MessageBox.Show("Br-r-r! Coldly!", "Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     break;
                 case Season.Spring:
-                    BackColor = Color.Green;
+                    BackColor = Color.LightGreen;
                     break;
                 case Season.Summer:
                     MessageBox.Show("Hooray! Sun!", "Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
@@ -99,7 +98,8 @@ namespace Programming
                     BackColor = Color.Orange;
                     break;
                 default:
-                    throw new NotImplementedException();
+                    MessageBox.Show("Not selected season!", "Warning!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    break;
             }
         }
     }

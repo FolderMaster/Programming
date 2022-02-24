@@ -61,21 +61,21 @@ namespace Programming
             this.EnumsTabControl.Location = new System.Drawing.Point(0, 0);
             this.EnumsTabControl.Name = "EnumsTabControl";
             this.EnumsTabControl.SelectedIndex = 0;
-            this.EnumsTabControl.Size = new System.Drawing.Size(511, 450);
+            this.EnumsTabControl.Size = new System.Drawing.Size(509, 313);
             this.EnumsTabControl.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
             this.tabPage1.Controls.Add(this.SeasonGroupBox);
             this.tabPage1.Controls.Add(this.WeekGroupBox);
             this.tabPage1.Controls.Add(this.EnumGroupBox);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(503, 424);
+            this.tabPage1.Size = new System.Drawing.Size(501, 287);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Enums";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // EnumListBox
             // 
@@ -236,7 +236,7 @@ namespace Programming
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(511, 450);
+            this.ClientSize = new System.Drawing.Size(509, 313);
             this.Controls.Add(this.EnumsTabControl);
             this.MaximizeBox = false;
             this.Name = "MainForm";
