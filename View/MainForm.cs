@@ -17,7 +17,7 @@ namespace Programming
             Weekday,
             Genre,
             Colour,
-            Studyform,
+            StudyForm,
             SmartphoneManufacturers,
             Season
         }
@@ -49,8 +49,8 @@ namespace Programming
                 case Enums.Colour:
                     ValueListBox.Items.AddRange(Enum.GetNames(typeof(Colour)));
                     break;
-                case Enums.Studyform:
-                    ValueListBox.Items.AddRange(Enum.GetNames(typeof(Studyform)));
+                case Enums.StudyForm:
+                    ValueListBox.Items.AddRange(Enum.GetNames(typeof(StudyForm)));
                     break;
                 case Enums.SmartphoneManufacturers:
                     ValueListBox.Items.AddRange(Enum.GetNames(typeof(SmartphoneManufacturers)));
