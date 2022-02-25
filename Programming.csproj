@@ -52,6 +52,7 @@
     <Compile Include="Model\Enums\SmartphoneManufacturers.cs" />
     <Compile Include="Model\Enums\StudyForm.cs" />
     <Compile Include="Model\Enums\Weekday.cs" />
+    <Compile Include="View\Enums.cs" />
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

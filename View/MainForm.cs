@@ -1,27 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Programming.Model.Enums;
 
-namespace Programming
+namespace Programming.View
 {
     public partial class MainForm : Form
     {
-        public enum Enums
-        {
-            Weekday,
-            Genre,
-            Colour,
-            StudyForm,
-            SmartphoneManufacturers,
-            Season
-        }
-
         public MainForm()
         {
             InitializeComponent();
@@ -29,34 +14,33 @@ namespace Programming
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            EnumListBox.Items.AddRange(Enum.GetNames(typeof(Enums)));
+            EnumListBox.DataSource = Enum.GetValues(typeof(Enums));
             EnumListBox.SelectedIndex = 0;
 
-            SeasonComboBox.Items.AddRange(Enum.GetNames(typeof(Season)));
+            SeasonComboBox.DataSource = Enum.GetValues(typeof(Season));
         }
 
         private void EnumListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ValueListBox.Items.Clear();
-            switch((Enums)EnumListBox.SelectedIndex)
+            switch((Enums)EnumListBox.SelectedItem)
             {
                 case Enums.Weekday:
-                    ValueListBox.Items.AddRange(Enum.GetNames(typeof(Weekday)));
+                    ValueListBox.DataSource = Enum.GetValues(typeof(Weekday));
                     break;
                 case Enums.Genre:
-                    ValueListBox.Items.AddRange(Enum.GetNames(typeof(Genre)));
+                    ValueListBox.DataSource = Enum.GetValues(typeof(Genre));
                     break;
                 case Enums.Colour:
-                    ValueListBox.Items.AddRange(Enum.GetNames(typeof(Colour)));
+                    ValueListBox.DataSource = Enum.GetValues(typeof(Colour));
                     break;
                 case Enums.StudyForm:
-                    ValueListBox.Items.AddRange(Enum.GetNames(typeof(StudyForm)));
+                    ValueListBox.DataSource = Enum.GetValues(typeof(StudyForm));
                     break;
                 case Enums.SmartphoneManufacturers:
-                    ValueListBox.Items.AddRange(Enum.GetNames(typeof(SmartphoneManufacturers)));
+                    ValueListBox.DataSource = Enum.GetValues(typeof(SmartphoneManufacturers));
                     break;
                 case Enums.Season:
-                    ValueListBox.Items.AddRange(Enum.GetNames(typeof(Season)));
+                    ValueListBox.DataSource = Enum.GetValues(typeof(Season));
                     break;
                 default:
                     throw new NotImplementedException();
@@ -65,7 +49,7 @@ namespace Programming
 
         private void ValueListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            IntTextBox.Text = ValueListBox.SelectedIndex.ToString();
+            IntTextBox.Text = ValueListBox.SelectedItem.ToString();
         }
 
         private void WeekParseButton_Click(object sender, EventArgs e)
@@ -83,7 +67,7 @@ namespace Programming
 
         private void SeasonButton_Click(object sender, EventArgs e)
         {
-            switch ((Season)SeasonComboBox.SelectedIndex)
+            switch ((Season)SeasonComboBox.SelectedItem)
             {
                 case Season.Winter:
                     MessageBox.Show("Br-r-r! Coldly!", "Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
