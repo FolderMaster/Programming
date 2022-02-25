@@ -73,7 +73,7 @@ namespace Programming
             Weekday day;
             if (Enum.TryParse(WeekParseTextBox.Text, out day))
             {
-                WeekParseLabel.Text = $"This day of week ({(int)day + 1} = {day.ToString()}).";
+                WeekParseLabel.Text = $"This day of week ({day.ToString()} = {(int)day}).";
             }
             else
             {
