@@ -1,4 +1,4 @@
-﻿namespace Programming
+﻿namespace Programming.Model
 {
     public enum Season
     {
