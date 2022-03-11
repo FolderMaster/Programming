@@ -44,14 +44,8 @@ namespace Programming.Model.Classes
         string color;
         public string Color
         {
-            get
-            {
-                return color;
-            }
-            set
-            {
-                color = value;
-            }
+            get;
+            set;
         }
     }
 }

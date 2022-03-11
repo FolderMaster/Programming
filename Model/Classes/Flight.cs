@@ -5,38 +5,20 @@
         string departure;
         public string Departure
         {
-            get
-            {
-                return departure;
-            }
-            set
-            {
-                departure = value;
-            }
+            get;
+            set;
         }
         string destination;
         public string Destination
         {
-            get
-            {
-                return destination;
-            }
-            set
-            {
-                destination = value;
-            }
+            get;
+            set;
         }
         uint minutes;
         public uint Minutes
         {
-            get
-            {
-                return minutes;
-            }
-            set
-            {
-                minutes = value;
-            }
+            get;
+            set;
         }
     }
 }

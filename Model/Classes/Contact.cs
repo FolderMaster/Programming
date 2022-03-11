@@ -5,50 +5,26 @@
         string phonenumber;
         public string PhoneNumber
         {
-            get
-            {
-                return phonenumber;
-            }
-            set
-            {
-                phonenumber = value;
-            }
+            get;
+            set;
         }
         string name;
         public string Name
         {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = value;
-            }
+            get;
+            set;
         }
         string surname;
         public string Surname
         {
-            get
-            {
-                return surname;
-            }
-            set
-            {
-                surname = value;
-            }
+            get;
+            set;
         }
         string patronymic;
         public string Patronymic
         {
-            get
-            {
-                return patronymic;
-            }
-            set
-            {
-                patronymic = value;
-            }
+            get;
+            set;
         }
     }
 }

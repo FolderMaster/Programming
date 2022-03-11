@@ -5,50 +5,26 @@
         string name;
         public string Name
         {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = value;
-            }
+            get;
+            set;
         }
         uint hours;
         public uint Hours
         {
-            get
-            {
-                return hours;
-            }
-            set
-            {
-                hours = value;
-            }
+            get;
+            set;
         }
         string grade;
         public string Grade
         {
-            get
-            {
-                return grade;
-            }
-            set
-            {
-                grade = value;
-            }
+            get;
+            set;
         }
         string examdate;
         public string ExamDate
         {
-            get
-            {
-                return examdate;
-            }
-            set
-            {
-                examdate = value;
-            }
+            get;
+            set;
         }
     }
 }

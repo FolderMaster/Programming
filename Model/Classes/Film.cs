@@ -6,26 +6,14 @@ namespace Programming.Model.Classes
         string name;
         public string Name
         {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = value;
-            }
+            get;
+            set;
         }
         uint minutes;
         public uint Minutes
         {
-            get
-            {
-                return minutes;
-            }
-            set
-            {
-                minutes = value;
-            }
+            get;
+            set;
         }
         uint issueyear;
         public uint IssueYear
@@ -49,14 +37,8 @@ namespace Programming.Model.Classes
         string genre;
         public string Genre
         {
-            get
-            {
-                return genre;
-            }
-            set
-            {
-                genre = value;
-            }
+            get;
+            set;
         }
         float rating;
         public float Rating
