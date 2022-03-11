@@ -26,8 +26,8 @@
                 hours = value;
             }
         }
-        uint grade;
-        public uint Grade
+        string grade;
+        public string Grade
         {
             get
             {
@@ -38,12 +38,12 @@
                 grade = value;
             }
         }
-        string exandate;
+        string examdate;
         public string ExamDate
         {
             get
             {
-                return exandate;
+                return examdate;
             }
             set
             {

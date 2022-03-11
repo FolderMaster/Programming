@@ -1,4 +1,5 @@
-﻿namespace Programming.Model.Classes
+﻿using System;
+namespace Programming.Model.Classes
 {
     class Film
     {
@@ -39,6 +40,10 @@
                 {
                     issueyear = value;
                 }
+                else
+                {
+                    throw new ArgumentException();
+                }
             }
         }
         string genre;
@@ -65,6 +70,10 @@
                 if(value >= 0 && value <= 10)
                 {
                     rating = value;
+                }
+                else
+                {
+                    throw new ArgumentException();
                 }
             }
         }

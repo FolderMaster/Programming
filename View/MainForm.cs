@@ -49,7 +49,7 @@ namespace Programming.View
 
         private void ValueListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            IntTextBox.Text = ValueListBox.SelectedItem.ToString();
+            IntTextBox.Text = ((int)ValueListBox.SelectedItem).ToString();
         }
 
         private void WeekParseButton_Click(object sender, EventArgs e)

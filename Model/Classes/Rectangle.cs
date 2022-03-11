@@ -1,4 +1,5 @@
-﻿namespace Programming.Model.Classes
+﻿using System;
+namespace Programming.Model.Classes
 {
     class Rectangle
     {
@@ -11,7 +12,14 @@
             }
             set
             {
-                length = value;
+                if (value > 0)
+                {
+                    length = value;
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
             }
         }
         float width;
@@ -23,7 +31,14 @@
             }
             set
             {
-                width = value;
+                if(value > 0)
+                {
+                    width = value;
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
             }
         }
         string color;

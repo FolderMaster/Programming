@@ -1,4 +1,5 @@
-﻿namespace Programming.Model.Classes
+﻿using System;
+namespace Programming.Model.Classes
 {
     class Time
     {
@@ -15,6 +16,10 @@
                 {
                     hours = value;
                 }
+                else
+                {
+                    throw new ArgumentException();
+                }
             }
         }
         uint minutes;
@@ -30,6 +35,10 @@
                 {
                     minutes = value;
                 }
+                else
+                {
+                    throw new ArgumentException();
+                }
             }
         }
         uint seconds;
@@ -44,6 +53,10 @@
                 if(value < 60)
                 {
                     seconds = value;
+                }
+                else
+                {
+                    throw new ArgumentException();
                 }
             }
         }
