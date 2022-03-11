@@ -3,8 +3,20 @@ namespace Programming.Model.Classes
 {
     class Rectangle
     {
+        public Rectangle()
+        {
+            this.Length = 1;
+            this.Width = 1;
+            this.Color = "White";
+        }
+        public Rectangle(float Length, float Width, string Color)
+        {
+            this.Length = Length;
+            this.Width = Width;
+            this.Color = Color;
+        }
         float length;
-        public float Lenght
+        public float Length
         {
             get
             {
@@ -41,7 +53,6 @@ namespace Programming.Model.Classes
                 }
             }
         }
-        string color;
         public string Color
         {
             get;

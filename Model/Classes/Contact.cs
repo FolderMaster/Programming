@@ -2,25 +2,35 @@
 {
     class Contact
     {
-        string phonenumber;
+        public Contact()
+        {
+            this.PhoneNumber = "";
+            this.Name = "";
+            this.Surname = "";
+            this.Patronymic = "";
+        }
+        public Contact(string PhoneNumber, string Name, string Surname, string Patronymic)
+        {
+            this.PhoneNumber = PhoneNumber;
+            this.Name = Name;
+            this.Surname = Surname;
+            this.Patronymic = Patronymic;
+        }
         public string PhoneNumber
         {
             get;
             set;
         }
-        string name;
         public string Name
         {
             get;
             set;
         }
-        string surname;
         public string Surname
         {
             get;
             set;
         }
-        string patronymic;
         public string Patronymic
         {
             get;

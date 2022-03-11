@@ -3,13 +3,27 @@ namespace Programming.Model.Classes
 {
     class Film
     {
-        string name;
+        public Film()
+        {
+            this.Name = "";
+            this.Minutes = 0;
+            this.IssueYear = 1900;
+            this.Genre = "";
+            this.Rating = 0;
+        }
+        public Film(string Name, uint Minutes, uint IssueYear, string Genre, float Rating)
+        {
+            this.Name = Name;
+            this.Minutes = Minutes;
+            this.IssueYear = IssueYear;
+            this.Genre = Genre;
+            this.Rating = Rating;
+        }
         public string Name
         {
             get;
             set;
         }
-        uint minutes;
         public uint Minutes
         {
             get;
@@ -34,7 +48,6 @@ namespace Programming.Model.Classes
                 }
             }
         }
-        string genre;
         public string Genre
         {
             get;

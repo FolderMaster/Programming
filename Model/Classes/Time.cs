@@ -3,6 +3,18 @@ namespace Programming.Model.Classes
 {
     class Time
     {
+        public Time()
+        {
+            this.Hours = 0;
+            this.Minutes = 0;
+            this.Seconds = 0;
+        }
+        public Time(uint Hours, uint Minutes, uint Seconds)
+        {
+            this.Hours = Hours;
+            this.Minutes = Minutes;
+            this.Seconds = Seconds;
+        }
         uint hours;
         public uint Hours
         {

@@ -2,25 +2,35 @@
 {
     class Song
     {
-        string name;
+        public Song()
+        {
+            this.Name = "";
+            this.Author = "";
+            this.Album = "";
+            this.Lenght = new Time();
+        }
+        public Song(string Name, string Author, string Album, Time Lenght)
+        {
+            this.Name = Name;
+            this.Author = Author;
+            this.Album = Album;
+            this.Lenght = Lenght;
+        }
         public string Name
         {
             get;
             set;
         }
-        string author;
         public string Author
         {
             get;
             set;
         }
-        string album;
         public string Album
         {
             get;
             set;
         }
-        Time lenght;
         public Time Lenght
         {
             get;
