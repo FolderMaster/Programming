@@ -29,8 +29,8 @@ namespace Programming.View
         /// </summary>
         private void InitializeComponent()
         {
-            this.EnumsTabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.TabControl = new System.Windows.Forms.TabControl();
+            this.EnumsTabPage = new System.Windows.Forms.TabPage();
             this.SeasonGroupBox = new System.Windows.Forms.GroupBox();
             this.SeasonComboBox = new System.Windows.Forms.ComboBox();
             this.SeasonButton = new System.Windows.Forms.Button();
@@ -47,35 +47,62 @@ namespace Programming.View
             this.IntTextBox = new System.Windows.Forms.TextBox();
             this.ValueListBox = new System.Windows.Forms.ListBox();
             this.ValueLabel = new System.Windows.Forms.Label();
-            this.EnumsTabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.ClassesTabPage = new System.Windows.Forms.TabPage();
+            this.RectanglesGroupBox = new System.Windows.Forms.GroupBox();
+            this.RectanglesButton = new System.Windows.Forms.Button();
+            this.ColorRectanglesLabel = new System.Windows.Forms.Label();
+            this.ColorRectanglesTextBox = new System.Windows.Forms.TextBox();
+            this.WidthRectanglesLabel = new System.Windows.Forms.Label();
+            this.WidthRectanglesTextBox = new System.Windows.Forms.TextBox();
+            this.LengthRectanglesLabel = new System.Windows.Forms.Label();
+            this.LengthRectanglesTextBox = new System.Windows.Forms.TextBox();
+            this.RectanglesListBox = new System.Windows.Forms.ListBox();
+            this.FilmsGroupBox = new System.Windows.Forms.GroupBox();
+            this.FilmsButton = new System.Windows.Forms.Button();
+            this.IssueYearFilmsLabel = new System.Windows.Forms.Label();
+            this.IssueYearFilmsTextBox = new System.Windows.Forms.TextBox();
+            this.MinutesFilmsLabel = new System.Windows.Forms.Label();
+            this.MinutesFilmsTextBox = new System.Windows.Forms.TextBox();
+            this.NameFilmsLabel = new System.Windows.Forms.Label();
+            this.NameFilmsTextBox = new System.Windows.Forms.TextBox();
+            this.FilmsListBox = new System.Windows.Forms.ListBox();
+            this.GenreFilmsLabel = new System.Windows.Forms.Label();
+            this.GenreFilmsTextBox = new System.Windows.Forms.TextBox();
+            this.RatingFilmsLabel = new System.Windows.Forms.Label();
+            this.RatingFilmsTextBox = new System.Windows.Forms.TextBox();
+            this.TabControl.SuspendLayout();
+            this.EnumsTabPage.SuspendLayout();
             this.SeasonGroupBox.SuspendLayout();
             this.WeekGroupBox.SuspendLayout();
             this.EnumGroupBox.SuspendLayout();
+            this.ClassesTabPage.SuspendLayout();
+            this.RectanglesGroupBox.SuspendLayout();
+            this.FilmsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // EnumsTabControl
+            // TabControl
             // 
-            this.EnumsTabControl.Controls.Add(this.tabPage1);
-            this.EnumsTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EnumsTabControl.Location = new System.Drawing.Point(0, 0);
-            this.EnumsTabControl.Name = "EnumsTabControl";
-            this.EnumsTabControl.SelectedIndex = 0;
-            this.EnumsTabControl.Size = new System.Drawing.Size(509, 313);
-            this.EnumsTabControl.TabIndex = 0;
+            this.TabControl.Controls.Add(this.EnumsTabPage);
+            this.TabControl.Controls.Add(this.ClassesTabPage);
+            this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TabControl.Location = new System.Drawing.Point(0, 0);
+            this.TabControl.Name = "TabControl";
+            this.TabControl.SelectedIndex = 0;
+            this.TabControl.Size = new System.Drawing.Size(509, 313);
+            this.TabControl.TabIndex = 0;
             // 
-            // tabPage1
+            // EnumsTabPage
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage1.Controls.Add(this.SeasonGroupBox);
-            this.tabPage1.Controls.Add(this.WeekGroupBox);
-            this.tabPage1.Controls.Add(this.EnumGroupBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(501, 287);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Enums";
+            this.EnumsTabPage.BackColor = System.Drawing.Color.Transparent;
+            this.EnumsTabPage.Controls.Add(this.SeasonGroupBox);
+            this.EnumsTabPage.Controls.Add(this.WeekGroupBox);
+            this.EnumsTabPage.Controls.Add(this.EnumGroupBox);
+            this.EnumsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.EnumsTabPage.Name = "EnumsTabPage";
+            this.EnumsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.EnumsTabPage.Size = new System.Drawing.Size(501, 287);
+            this.EnumsTabPage.TabIndex = 0;
+            this.EnumsTabPage.Text = "Enums";
             // 
             // SeasonGroupBox
             // 
@@ -232,32 +259,261 @@ namespace Programming.View
             this.ValueLabel.TabIndex = 3;
             this.ValueLabel.Text = "Choose value:";
             // 
+            // ClassesTabPage
+            // 
+            this.ClassesTabPage.Controls.Add(this.FilmsGroupBox);
+            this.ClassesTabPage.Controls.Add(this.RectanglesGroupBox);
+            this.ClassesTabPage.Location = new System.Drawing.Point(4, 22);
+            this.ClassesTabPage.Name = "ClassesTabPage";
+            this.ClassesTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ClassesTabPage.Size = new System.Drawing.Size(501, 287);
+            this.ClassesTabPage.TabIndex = 1;
+            this.ClassesTabPage.Text = "Classes";
+            this.ClassesTabPage.UseVisualStyleBackColor = true;
+            // 
+            // RectanglesGroupBox
+            // 
+            this.RectanglesGroupBox.Controls.Add(this.RectanglesButton);
+            this.RectanglesGroupBox.Controls.Add(this.ColorRectanglesLabel);
+            this.RectanglesGroupBox.Controls.Add(this.ColorRectanglesTextBox);
+            this.RectanglesGroupBox.Controls.Add(this.WidthRectanglesLabel);
+            this.RectanglesGroupBox.Controls.Add(this.WidthRectanglesTextBox);
+            this.RectanglesGroupBox.Controls.Add(this.LengthRectanglesLabel);
+            this.RectanglesGroupBox.Controls.Add(this.LengthRectanglesTextBox);
+            this.RectanglesGroupBox.Controls.Add(this.RectanglesListBox);
+            this.RectanglesGroupBox.Location = new System.Drawing.Point(6, 6);
+            this.RectanglesGroupBox.Name = "RectanglesGroupBox";
+            this.RectanglesGroupBox.Size = new System.Drawing.Size(235, 273);
+            this.RectanglesGroupBox.TabIndex = 7;
+            this.RectanglesGroupBox.TabStop = false;
+            this.RectanglesGroupBox.Text = "Rectangles";
+            // 
+            // RectanglesButton
+            // 
+            this.RectanglesButton.Location = new System.Drawing.Point(111, 234);
+            this.RectanglesButton.Name = "RectanglesButton";
+            this.RectanglesButton.Size = new System.Drawing.Size(100, 23);
+            this.RectanglesButton.TabIndex = 12;
+            this.RectanglesButton.Text = "Find";
+            this.RectanglesButton.UseVisualStyleBackColor = true;
+            this.RectanglesButton.Click += new System.EventHandler(this.RectanglesButton_Click);
+            // 
+            // ColorRectanglesLabel
+            // 
+            this.ColorRectanglesLabel.AutoSize = true;
+            this.ColorRectanglesLabel.Location = new System.Drawing.Point(111, 94);
+            this.ColorRectanglesLabel.Name = "ColorRectanglesLabel";
+            this.ColorRectanglesLabel.Size = new System.Drawing.Size(34, 13);
+            this.ColorRectanglesLabel.TabIndex = 11;
+            this.ColorRectanglesLabel.Text = "Color:";
+            // 
+            // ColorRectanglesTextBox
+            // 
+            this.ColorRectanglesTextBox.Location = new System.Drawing.Point(111, 110);
+            this.ColorRectanglesTextBox.Name = "ColorRectanglesTextBox";
+            this.ColorRectanglesTextBox.Size = new System.Drawing.Size(100, 20);
+            this.ColorRectanglesTextBox.TabIndex = 10;
+            this.ColorRectanglesTextBox.TextChanged += new System.EventHandler(this.ColorRectanglesTextBox_TextChanged);
+            // 
+            // WidthRectanglesLabel
+            // 
+            this.WidthRectanglesLabel.AutoSize = true;
+            this.WidthRectanglesLabel.Location = new System.Drawing.Point(111, 55);
+            this.WidthRectanglesLabel.Name = "WidthRectanglesLabel";
+            this.WidthRectanglesLabel.Size = new System.Drawing.Size(38, 13);
+            this.WidthRectanglesLabel.TabIndex = 9;
+            this.WidthRectanglesLabel.Text = "Width:";
+            // 
+            // WidthRectanglesTextBox
+            // 
+            this.WidthRectanglesTextBox.Location = new System.Drawing.Point(111, 71);
+            this.WidthRectanglesTextBox.Name = "WidthRectanglesTextBox";
+            this.WidthRectanglesTextBox.Size = new System.Drawing.Size(100, 20);
+            this.WidthRectanglesTextBox.TabIndex = 8;
+            this.WidthRectanglesTextBox.TextChanged += new System.EventHandler(this.WidthRectanglesTextBox_TextChanged);
+            // 
+            // LengthRectanglesLabel
+            // 
+            this.LengthRectanglesLabel.AutoSize = true;
+            this.LengthRectanglesLabel.Location = new System.Drawing.Point(111, 16);
+            this.LengthRectanglesLabel.Name = "LengthRectanglesLabel";
+            this.LengthRectanglesLabel.Size = new System.Drawing.Size(43, 13);
+            this.LengthRectanglesLabel.TabIndex = 7;
+            this.LengthRectanglesLabel.Text = "Length:";
+            // 
+            // LengthRectanglesTextBox
+            // 
+            this.LengthRectanglesTextBox.Location = new System.Drawing.Point(111, 32);
+            this.LengthRectanglesTextBox.Name = "LengthRectanglesTextBox";
+            this.LengthRectanglesTextBox.Size = new System.Drawing.Size(100, 20);
+            this.LengthRectanglesTextBox.TabIndex = 6;
+            this.LengthRectanglesTextBox.TextChanged += new System.EventHandler(this.LengthRectanglesTextBox_TextChanged);
+            // 
+            // RectanglesListBox
+            // 
+            this.RectanglesListBox.FormattingEnabled = true;
+            this.RectanglesListBox.Location = new System.Drawing.Point(6, 19);
+            this.RectanglesListBox.Name = "RectanglesListBox";
+            this.RectanglesListBox.Size = new System.Drawing.Size(99, 238);
+            this.RectanglesListBox.TabIndex = 0;
+            this.RectanglesListBox.SelectedIndexChanged += new System.EventHandler(this.RectanglesListBox_SelectedIndexChanged);
+            // 
+            // FilmsGroupBox
+            // 
+            this.FilmsGroupBox.Controls.Add(this.RatingFilmsTextBox);
+            this.FilmsGroupBox.Controls.Add(this.RatingFilmsLabel);
+            this.FilmsGroupBox.Controls.Add(this.GenreFilmsTextBox);
+            this.FilmsGroupBox.Controls.Add(this.GenreFilmsLabel);
+            this.FilmsGroupBox.Controls.Add(this.FilmsButton);
+            this.FilmsGroupBox.Controls.Add(this.IssueYearFilmsLabel);
+            this.FilmsGroupBox.Controls.Add(this.IssueYearFilmsTextBox);
+            this.FilmsGroupBox.Controls.Add(this.MinutesFilmsLabel);
+            this.FilmsGroupBox.Controls.Add(this.MinutesFilmsTextBox);
+            this.FilmsGroupBox.Controls.Add(this.NameFilmsLabel);
+            this.FilmsGroupBox.Controls.Add(this.NameFilmsTextBox);
+            this.FilmsGroupBox.Controls.Add(this.FilmsListBox);
+            this.FilmsGroupBox.Location = new System.Drawing.Point(258, 6);
+            this.FilmsGroupBox.Name = "FilmsGroupBox";
+            this.FilmsGroupBox.Size = new System.Drawing.Size(235, 273);
+            this.FilmsGroupBox.TabIndex = 8;
+            this.FilmsGroupBox.TabStop = false;
+            this.FilmsGroupBox.Text = "Films";
+            // 
+            // FilmsButton
+            // 
+            this.FilmsButton.Location = new System.Drawing.Point(111, 234);
+            this.FilmsButton.Name = "FilmsButton";
+            this.FilmsButton.Size = new System.Drawing.Size(100, 23);
+            this.FilmsButton.TabIndex = 12;
+            this.FilmsButton.Text = "Find";
+            this.FilmsButton.UseVisualStyleBackColor = true;
+            this.FilmsButton.Click += new System.EventHandler(this.FilmsButton_Click);
+            // 
+            // IssueYearFilmsLabel
+            // 
+            this.IssueYearFilmsLabel.AutoSize = true;
+            this.IssueYearFilmsLabel.Location = new System.Drawing.Point(111, 97);
+            this.IssueYearFilmsLabel.Name = "IssueYearFilmsLabel";
+            this.IssueYearFilmsLabel.Size = new System.Drawing.Size(71, 13);
+            this.IssueYearFilmsLabel.TabIndex = 11;
+            this.IssueYearFilmsLabel.Text = "Year of issue:";
+            // 
+            // IssueYearFilmsTextBox
+            // 
+            this.IssueYearFilmsTextBox.Location = new System.Drawing.Point(111, 113);
+            this.IssueYearFilmsTextBox.Name = "IssueYearFilmsTextBox";
+            this.IssueYearFilmsTextBox.Size = new System.Drawing.Size(100, 20);
+            this.IssueYearFilmsTextBox.TabIndex = 10;
+            this.IssueYearFilmsTextBox.TextChanged += new System.EventHandler(this.IssueYearFilmsTextBox_TextChanged);
+            // 
+            // MinutesFilmsLabel
+            // 
+            this.MinutesFilmsLabel.AutoSize = true;
+            this.MinutesFilmsLabel.Location = new System.Drawing.Point(111, 58);
+            this.MinutesFilmsLabel.Name = "MinutesFilmsLabel";
+            this.MinutesFilmsLabel.Size = new System.Drawing.Size(47, 13);
+            this.MinutesFilmsLabel.TabIndex = 9;
+            this.MinutesFilmsLabel.Text = "Minutes:";
+            // 
+            // MinutesFilmsTextBox
+            // 
+            this.MinutesFilmsTextBox.Location = new System.Drawing.Point(111, 74);
+            this.MinutesFilmsTextBox.Name = "MinutesFilmsTextBox";
+            this.MinutesFilmsTextBox.Size = new System.Drawing.Size(100, 20);
+            this.MinutesFilmsTextBox.TabIndex = 8;
+            this.MinutesFilmsTextBox.TextChanged += new System.EventHandler(this.MinutesFilmsTextBox_TextChanged);
+            // 
+            // NameFilmsLabel
+            // 
+            this.NameFilmsLabel.AutoSize = true;
+            this.NameFilmsLabel.Location = new System.Drawing.Point(111, 19);
+            this.NameFilmsLabel.Name = "NameFilmsLabel";
+            this.NameFilmsLabel.Size = new System.Drawing.Size(38, 13);
+            this.NameFilmsLabel.TabIndex = 7;
+            this.NameFilmsLabel.Text = "Name:";
+            // 
+            // NameFilmsTextBox
+            // 
+            this.NameFilmsTextBox.Location = new System.Drawing.Point(111, 35);
+            this.NameFilmsTextBox.Name = "NameFilmsTextBox";
+            this.NameFilmsTextBox.Size = new System.Drawing.Size(100, 20);
+            this.NameFilmsTextBox.TabIndex = 6;
+            this.NameFilmsTextBox.TextChanged += new System.EventHandler(this.NameFilmsTextBox_TextChanged);
+            // 
+            // FilmsListBox
+            // 
+            this.FilmsListBox.FormattingEnabled = true;
+            this.FilmsListBox.Location = new System.Drawing.Point(6, 19);
+            this.FilmsListBox.Name = "FilmsListBox";
+            this.FilmsListBox.Size = new System.Drawing.Size(99, 238);
+            this.FilmsListBox.TabIndex = 0;
+            this.FilmsListBox.SelectedIndexChanged += new System.EventHandler(this.FilmsListBox_SelectedIndexChanged);
+            // 
+            // GenreFilmsLabel
+            // 
+            this.GenreFilmsLabel.AutoSize = true;
+            this.GenreFilmsLabel.Location = new System.Drawing.Point(111, 136);
+            this.GenreFilmsLabel.Name = "GenreFilmsLabel";
+            this.GenreFilmsLabel.Size = new System.Drawing.Size(39, 13);
+            this.GenreFilmsLabel.TabIndex = 13;
+            this.GenreFilmsLabel.Text = "Genre:";
+            // 
+            // GenreFilmsTextBox
+            // 
+            this.GenreFilmsTextBox.Location = new System.Drawing.Point(111, 152);
+            this.GenreFilmsTextBox.Name = "GenreFilmsTextBox";
+            this.GenreFilmsTextBox.Size = new System.Drawing.Size(100, 20);
+            this.GenreFilmsTextBox.TabIndex = 14;
+            this.GenreFilmsTextBox.TextChanged += new System.EventHandler(this.GenreFilmsTextBox_TextChanged);
+            // 
+            // RatingFilmsLabel
+            // 
+            this.RatingFilmsLabel.AutoSize = true;
+            this.RatingFilmsLabel.Location = new System.Drawing.Point(111, 175);
+            this.RatingFilmsLabel.Name = "RatingFilmsLabel";
+            this.RatingFilmsLabel.Size = new System.Drawing.Size(41, 13);
+            this.RatingFilmsLabel.TabIndex = 15;
+            this.RatingFilmsLabel.Text = "Rating:";
+            // 
+            // RatingFilmsTextBox
+            // 
+            this.RatingFilmsTextBox.Location = new System.Drawing.Point(111, 191);
+            this.RatingFilmsTextBox.Name = "RatingFilmsTextBox";
+            this.RatingFilmsTextBox.Size = new System.Drawing.Size(100, 20);
+            this.RatingFilmsTextBox.TabIndex = 16;
+            this.RatingFilmsTextBox.TextChanged += new System.EventHandler(this.RatingFilmsTextBox_TextChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(509, 313);
-            this.Controls.Add(this.EnumsTabControl);
+            this.Controls.Add(this.TabControl);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.EnumsTabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.TabControl.ResumeLayout(false);
+            this.EnumsTabPage.ResumeLayout(false);
             this.SeasonGroupBox.ResumeLayout(false);
             this.SeasonGroupBox.PerformLayout();
             this.WeekGroupBox.ResumeLayout(false);
             this.WeekGroupBox.PerformLayout();
             this.EnumGroupBox.ResumeLayout(false);
             this.EnumGroupBox.PerformLayout();
+            this.ClassesTabPage.ResumeLayout(false);
+            this.RectanglesGroupBox.ResumeLayout(false);
+            this.RectanglesGroupBox.PerformLayout();
+            this.FilmsGroupBox.ResumeLayout(false);
+            this.FilmsGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl EnumsTabControl;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl TabControl;
+        private System.Windows.Forms.TabPage EnumsTabPage;
         private System.Windows.Forms.ListBox ValueListBox;
         private System.Windows.Forms.ListBox EnumListBox;
         private System.Windows.Forms.Label ValueLabel;
@@ -274,6 +530,29 @@ namespace Programming.View
         private System.Windows.Forms.Button SeasonButton;
         private System.Windows.Forms.Label SeasonLabel;
         private System.Windows.Forms.ComboBox SeasonComboBox;
+        private System.Windows.Forms.TabPage ClassesTabPage;
+        private System.Windows.Forms.GroupBox RectanglesGroupBox;
+        private System.Windows.Forms.Button RectanglesButton;
+        private System.Windows.Forms.Label ColorRectanglesLabel;
+        private System.Windows.Forms.TextBox ColorRectanglesTextBox;
+        private System.Windows.Forms.Label WidthRectanglesLabel;
+        private System.Windows.Forms.TextBox WidthRectanglesTextBox;
+        private System.Windows.Forms.Label LengthRectanglesLabel;
+        private System.Windows.Forms.TextBox LengthRectanglesTextBox;
+        private System.Windows.Forms.ListBox RectanglesListBox;
+        private System.Windows.Forms.GroupBox FilmsGroupBox;
+        private System.Windows.Forms.Button FilmsButton;
+        private System.Windows.Forms.Label IssueYearFilmsLabel;
+        private System.Windows.Forms.TextBox IssueYearFilmsTextBox;
+        private System.Windows.Forms.Label MinutesFilmsLabel;
+        private System.Windows.Forms.TextBox MinutesFilmsTextBox;
+        private System.Windows.Forms.Label NameFilmsLabel;
+        private System.Windows.Forms.TextBox NameFilmsTextBox;
+        private System.Windows.Forms.ListBox FilmsListBox;
+        private System.Windows.Forms.TextBox RatingFilmsTextBox;
+        private System.Windows.Forms.Label RatingFilmsLabel;
+        private System.Windows.Forms.TextBox GenreFilmsTextBox;
+        private System.Windows.Forms.Label GenreFilmsLabel;
     }
 }
 
