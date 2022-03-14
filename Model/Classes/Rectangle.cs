@@ -9,24 +9,27 @@ namespace Programming.Model.Classes
             this.Width = 1;
             this.Color = "White";
         }
+
         public Rectangle(float Length, float Width, string Color)
         {
             this.Length = Length;
             this.Width = Width;
             this.Color = Color;
         }
-        float length;
+
+        float _length;
+
         public float Length
         {
             get
             {
-                return length;
+                return _length;
             }
             set
             {
                 if (value > 0)
                 {
-                    length = value;
+                    _length = value;
                 }
                 else
                 {
@@ -34,18 +37,20 @@ namespace Programming.Model.Classes
                 }
             }
         }
-        float width;
+
+        float _width;
+
         public float Width
         {
             get
             {
-                return width;
+                return _width;
             }
             set
             {
                 if(value > 0)
                 {
-                    width = value;
+                    _width = value;
                 }
                 else
                 {
@@ -53,6 +58,7 @@ namespace Programming.Model.Classes
                 }
             }
         }
+
         public string Color
         {
             get;

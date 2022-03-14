@@ -9,6 +9,7 @@
             this.Album = "";
             this.Lenght = new Time();
         }
+
         public Song(string Name, string Author, string Album, Time Lenght)
         {
             this.Name = Name;
@@ -21,16 +22,19 @@
             get;
             set;
         }
+
         public string Author
         {
             get;
             set;
         }
+
         public string Album
         {
             get;
             set;
         }
+
         public Time Lenght
         {
             get;

@@ -257,12 +257,12 @@ namespace Programming.View
 
         private string RandomString(int size, Random random)
         {
-            string result = "";
+            string Result = "";
             for(int n = 0; n < size; ++n)
             {
-                result += (char)random.Next(65, 91);
+                Result += (char)random.Next(65, 91);
             }
-            return result;
+            return Result;
         }
     }
 }

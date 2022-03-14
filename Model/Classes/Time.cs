@@ -9,24 +9,27 @@ namespace Programming.Model.Classes
             this.Minutes = 0;
             this.Seconds = 0;
         }
+
         public Time(uint Hours, uint Minutes, uint Seconds)
         {
             this.Hours = Hours;
             this.Minutes = Minutes;
             this.Seconds = Seconds;
         }
-        uint hours;
+
+        uint _hours;
+
         public uint Hours
         {
             get
             {
-                return hours;
+                return _hours;
             }
             set
             {
                 if(value < 24)
                 {
-                    hours = value;
+                    _hours = value;
                 }
                 else
                 {
@@ -34,18 +37,20 @@ namespace Programming.Model.Classes
                 }
             }
         }
-        uint minutes;
+
+        uint _minutes;
+
         public uint Minutes
         {
             get
             {
-                return minutes;
+                return _minutes;
             }
             set
             {
                 if(value < 60)
                 {
-                    minutes = value;
+                    _minutes = value;
                 }
                 else
                 {
@@ -53,18 +58,20 @@ namespace Programming.Model.Classes
                 }
             }
         }
-        uint seconds;
+
+        uint _seconds;
+
         public uint Seconds
         {
             get
             {
-                return seconds;
+                return _seconds;
             }
             set
             {
                 if(value < 60)
                 {
-                    seconds = value;
+                    _seconds = value;
                 }
                 else
                 {

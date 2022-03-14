@@ -16,21 +16,25 @@
             this.Grade = Grade;
             this.ExamDate = ExamDate;
         }
+
         public string Name
         {
             get;
             set;
         }
+
         public uint Hours
         {
             get;
             set;
         }
+
         public string Grade
         {
             get;
             set;
         }
+
         public string ExamDate
         {
             get;

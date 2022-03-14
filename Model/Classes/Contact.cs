@@ -16,21 +16,25 @@
             this.Surname = Surname;
             this.Patronymic = Patronymic;
         }
+
         public string PhoneNumber
         {
             get;
             set;
         }
+
         public string Name
         {
             get;
             set;
         }
+
         public string Surname
         {
             get;
             set;
         }
+
         public string Patronymic
         {
             get;

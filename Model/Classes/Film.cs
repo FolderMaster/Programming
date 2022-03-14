@@ -11,6 +11,7 @@ namespace Programming.Model.Classes
             this.Genre = "";
             this.Rating = 0;
         }
+
         public Film(string Name, uint Minutes, uint IssueYear, string Genre, float Rating)
         {
             this.Name = Name;
@@ -19,28 +20,32 @@ namespace Programming.Model.Classes
             this.Genre = Genre;
             this.Rating = Rating;
         }
+
         public string Name
         {
             get;
             set;
         }
+
         public uint Minutes
         {
             get;
             set;
         }
-        uint issueyear;
+
+        uint _issueyear;
+
         public uint IssueYear
         {
             get
             {
-                return issueyear;
+                return _issueyear;
             }
             set
             {
                 if(value >= 1900)
                 {
-                    issueyear = value;
+                    _issueyear = value;
                 }
                 else
                 {
@@ -48,23 +53,26 @@ namespace Programming.Model.Classes
                 }
             }
         }
+
         public string Genre
         {
             get;
             set;
         }
-        float rating;
+
+        float _rating;
+
         public float Rating
         {
             get
             {
-                return rating;
+                return _rating;
             }
             set
             {
                 if(value >= 0 && value <= 10)
                 {
-                    rating = value;
+                    _rating = value;
                 }
                 else
                 {
