@@ -4,18 +4,18 @@
     {
         public Song()
         {
-            this.Name = "";
-            this.Author = "";
-            this.Album = "";
-            this.Lenght = new Time();
+            Name = "";
+            Author = "";
+            Album = "";
+            Lenght = new Time();
         }
 
-        public Song(string Name, string Author, string Album, Time Lenght)
+        public Song(string name, string author, string album, Time lenght)
         {
-            this.Name = Name;
-            this.Author = Author;
-            this.Album = Album;
-            this.Lenght = Lenght;
+            Name = name;
+            Author = author;
+            Album = album;
+            Lenght = lenght;
         }
         public string Name
         {

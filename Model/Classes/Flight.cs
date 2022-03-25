@@ -4,16 +4,16 @@
     {
         public Flight()
         {
-            this.Departure = "";
-            this.Destination = "";
-            this.Minutes = 0;
+            Departure = "";
+            Destination = "";
+            Minutes = 0;
         }
 
-        public Flight(string Departure, string Destination, uint Minutes)
+        public Flight(string departure, string destination, uint minutes)
         {
-            this.Departure = Departure;
-            this.Destination = Destination;
-            this.Minutes = Minutes;
+            Departure = departure;
+            Destination = destination;
+            Minutes = minutes;
         }
 
         public string Departure

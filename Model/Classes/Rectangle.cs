@@ -5,16 +5,16 @@ namespace Programming.Model.Classes
     {
         public Rectangle()
         {
-            this.Length = 1;
-            this.Width = 1;
-            this.Color = "White";
+            Length = 1;
+            Width = 1;
+            Color = "White";
         }
 
-        public Rectangle(float Length, float Width, string Color)
+        public Rectangle(float length, float width, string color)
         {
-            this.Length = Length;
-            this.Width = Width;
-            this.Color = Color;
+            Length = length;
+            Width = width;
+            Color = color;
         }
 
         float _length;

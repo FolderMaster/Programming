@@ -5,20 +5,20 @@ namespace Programming.Model.Classes
     {
         public Film()
         {
-            this.Name = "";
-            this.Minutes = 0;
-            this.IssueYear = 1900;
-            this.Genre = "";
-            this.Rating = 0;
+            Name = "";
+            Minutes = 0;
+            IssueYear = 1900;
+            Genre = "";
+            Rating = 0;
         }
 
-        public Film(string Name, uint Minutes, uint IssueYear, string Genre, float Rating)
+        public Film(string name, uint minutes, uint issueYear, string genre, float rating)
         {
-            this.Name = Name;
-            this.Minutes = Minutes;
-            this.IssueYear = IssueYear;
-            this.Genre = Genre;
-            this.Rating = Rating;
+            this.Name = name;
+            this.Minutes = minutes;
+            this.IssueYear = issueYear;
+            this.Genre = genre;
+            this.Rating = rating;
         }
 
         public string Name

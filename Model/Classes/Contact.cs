@@ -4,17 +4,18 @@
     {
         public Contact()
         {
-            this.PhoneNumber = "";
-            this.Name = "";
-            this.Surname = "";
-            this.Patronymic = "";
+            PhoneNumber = "";
+            Name = "";
+            Surname = "";
+            Patronymic = "";
         }
-        public Contact(string PhoneNumber, string Name, string Surname, string Patronymic)
+
+        public Contact(string phonenumber, string name, string surname, string patronymic)
         {
-            this.PhoneNumber = PhoneNumber;
-            this.Name = Name;
-            this.Surname = Surname;
-            this.Patronymic = Patronymic;
+            PhoneNumber = phonenumber;
+            Name = name;
+            Surname = surname;
+            Patronymic = patronymic;
         }
 
         public string PhoneNumber

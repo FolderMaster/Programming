@@ -5,16 +5,16 @@ namespace Programming.Model.Classes
     {
         public Time()
         {
-            this.Hours = 0;
-            this.Minutes = 0;
-            this.Seconds = 0;
+            Hours = 0;
+            Minutes = 0;
+            Seconds = 0;
         }
 
-        public Time(uint Hours, uint Minutes, uint Seconds)
+        public Time(uint hours, uint minutes, uint seconds)
         {
-            this.Hours = Hours;
-            this.Minutes = Minutes;
-            this.Seconds = Seconds;
+            Hours = hours;
+            Minutes = minutes;
+            Seconds = seconds;
         }
 
         uint _hours;

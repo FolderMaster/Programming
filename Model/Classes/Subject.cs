@@ -4,17 +4,17 @@
     {
         Subject()
         {
-            this.Name = "";
-            this.Hours = 0;
-            this.Grade = "";
-            this.ExamDate = "";
+            Name = "";
+            Hours = 0;
+            Grade = "";
+            ExamDate = "";
         }
-        Subject(string Name, uint Hours, string Grade, string ExamDate)
+        Subject(string name, uint hours, string grade, string examdate)
         {
-            this.Name = Name;
-            this.Hours = Hours;
-            this.Grade = Grade;
-            this.ExamDate = ExamDate;
+            Name = name;
+            Hours = hours;
+            Grade = grade;
+            ExamDate = examdate;
         }
 
         public string Name
