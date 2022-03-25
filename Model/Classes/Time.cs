@@ -3,6 +3,10 @@ namespace Programming.Model.Classes
 {
     class Time
     {
+        uint _hours;
+        uint _minutes;
+        uint _seconds;
+
         public Time()
         {
             Hours = 0;
@@ -16,8 +20,6 @@ namespace Programming.Model.Classes
             Minutes = minutes;
             Seconds = seconds;
         }
-
-        uint _hours;
 
         public uint Hours
         {
@@ -38,8 +40,6 @@ namespace Programming.Model.Classes
             }
         }
 
-        uint _minutes;
-
         public uint Minutes
         {
             get
@@ -48,7 +48,7 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if(value < 60)
+                if (value < 60)
                 {
                     _minutes = value;
                 }
@@ -58,8 +58,6 @@ namespace Programming.Model.Classes
                 }
             }
         }
-
-        uint _seconds;
 
         public uint Seconds
         {

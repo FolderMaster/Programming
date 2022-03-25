@@ -17,28 +17,13 @@
             Album = album;
             Lenght = lenght;
         }
-        public string Name
-        {
-            get;
-            set;
-        }
 
-        public string Author
-        {
-            get;
-            set;
-        }
+        public string Name { get; set; }
 
-        public string Album
-        {
-            get;
-            set;
-        }
+        public string Author { get; set; }
 
-        public Time Lenght
-        {
-            get;
-            set;
-        }
+        public string Album { get; set; }
+
+        public Time Lenght { get; set; }
     }
 }

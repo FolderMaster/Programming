@@ -16,22 +16,10 @@
             Minutes = minutes;
         }
 
-        public string Departure
-        {
-            get;
-            set;
-        }
+        public string Departure { get; set; }
 
-        public string Destination
-        {
-            get;
-            set;
-        }
+        public string Destination { get; set; }
 
-        public uint Minutes
-        {
-            get;
-            set;
-        }
+        public uint Minutes { get; set; }
     }
 }

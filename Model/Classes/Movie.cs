@@ -1,51 +1,44 @@
 ﻿using System;
 namespace Programming.Model.Classes
 {
-    class Film
+    class Movie
     {
-        public Film()
+        uint _releaseYear;
+        double _rating;
+
+        public Movie()
         {
             Name = "";
             Minutes = 0;
-            IssueYear = 1900;
+            ReleaseYear = 1900;
             Genre = "";
             Rating = 0;
         }
 
-        public Film(string name, uint minutes, uint issueyear, string genre, float rating)
+        public Movie(string name, uint minutes, uint releaseYear, string genre, double rating)
         {
-            this.Name = name;
-            this.Minutes = minutes;
-            this.IssueYear = issueyear;
-            this.Genre = genre;
-            this.Rating = rating;
+            Name = name;
+            Minutes = minutes;
+            ReleaseYear = releaseYear;
+            Genre = genre;
+            Rating = rating;
         }
 
-        public string Name
-        {
-            get;
-            set;
-        }
+        public string Name { get; set; }
 
-        public uint Minutes
-        {
-            get;
-            set;
-        }
+        public uint Minutes { get; set; }
 
-        uint _issueyear;
-
-        public uint IssueYear
+        public uint ReleaseYear
         {
             get
             {
-                return _issueyear;
+                return _releaseYear;
             }
             set
             {
                 if(value >= 1900)
                 {
-                    _issueyear = value;
+                    _releaseYear = value;
                 }
                 else
                 {
@@ -54,15 +47,9 @@ namespace Programming.Model.Classes
             }
         }
 
-        public string Genre
-        {
-            get;
-            set;
-        }
+        public string Genre { get; set; }
 
-        float _rating;
-
-        public float Rating
+        public double Rating
         {
             get
             {

@@ -3,6 +3,9 @@ namespace Programming.Model.Classes
 {
     class Rectangle
     {
+        double _length;
+        double _width;
+
         public Rectangle()
         {
             Length = 1;
@@ -10,16 +13,14 @@ namespace Programming.Model.Classes
             Color = "White";
         }
 
-        public Rectangle(float length, float width, string color)
+        public Rectangle(double length, double width, string color)
         {
             Length = length;
             Width = width;
             Color = color;
         }
 
-        float _length;
-
-        public float Length
+        public double Length
         {
             get
             {
@@ -38,9 +39,7 @@ namespace Programming.Model.Classes
             }
         }
 
-        float _width;
-
-        public float Width
+        public double Width
         {
             get
             {
@@ -59,10 +58,6 @@ namespace Programming.Model.Classes
             }
         }
 
-        public string Color
-        {
-            get;
-            set;
-        }
+        public string Color { get; set; }
     }
 }
