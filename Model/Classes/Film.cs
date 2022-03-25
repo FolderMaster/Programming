@@ -12,11 +12,11 @@ namespace Programming.Model.Classes
             Rating = 0;
         }
 
-        public Film(string name, uint minutes, uint issueYear, string genre, float rating)
+        public Film(string name, uint minutes, uint issueyear, string genre, float rating)
         {
             this.Name = name;
             this.Minutes = minutes;
-            this.IssueYear = issueYear;
+            this.IssueYear = issueyear;
             this.Genre = genre;
             this.Rating = rating;
         }
