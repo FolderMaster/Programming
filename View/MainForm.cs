@@ -25,7 +25,7 @@ namespace Programming.View
             _films = new Film[size];
             for (int n = 0; n < _films.Length; ++n)
             {
-                _films[n] = new Film(RandomString(random.Next(1, 15), random), (uint)random.Next(0, 500), 1900 + (uint)random.Next(0, 200), ((Genre)random.Next(0, 6)).ToString(), (float)random.NextDouble() * random.Next(0, 10));
+                _films[n] = new Film(RandomString(random.Next(1, 10), random), (uint)random.Next(0, 500), 1900 + (uint)random.Next(0, 200), ((Genre)random.Next(0, 6)).ToString(), (float)random.NextDouble() * random.Next(0, 10));
                 FilmsListBox.Items.Add("Film " + (n + 1));
             }
         }
@@ -257,10 +257,10 @@ namespace Programming.View
 
         private string RandomString(int size, Random random)
         {
-            string Result = "";
-            for(int n = 0; n < size; ++n)
+            string Result = ((char)random.Next(65, 91)).ToString();
+            for(int n = 0; n < size - 1; ++n)
             {
-                Result += (char)random.Next(65, 91);
+                Result += (char)random.Next(97, 123);
             }
             return Result;
         }
