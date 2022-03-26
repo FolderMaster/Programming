@@ -393,7 +393,7 @@ namespace Programming.View
             this.FilmsListBox.FormattingEnabled = true;
             this.FilmsListBox.Location = new System.Drawing.Point(6, 19);
             this.FilmsListBox.Name = "FilmsListBox";
-            this.FilmsListBox.Size = new System.Drawing.Size(99, 238);
+            this.FilmsListBox.Size = new System.Drawing.Size(72, 238);
             this.FilmsListBox.TabIndex = 0;
             this.FilmsListBox.SelectedIndexChanged += new System.EventHandler(this.FilmsListBox_SelectedIndexChanged);
             // 
@@ -480,7 +480,7 @@ namespace Programming.View
             this.RectanglesListBox.FormattingEnabled = true;
             this.RectanglesListBox.Location = new System.Drawing.Point(6, 19);
             this.RectanglesListBox.Name = "RectanglesListBox";
-            this.RectanglesListBox.Size = new System.Drawing.Size(99, 238);
+            this.RectanglesListBox.Size = new System.Drawing.Size(72, 238);
             this.RectanglesListBox.TabIndex = 0;
             this.RectanglesListBox.SelectedIndexChanged += new System.EventHandler(this.RectanglesListBox_SelectedIndexChanged);
             // 
@@ -494,6 +494,7 @@ namespace Programming.View
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.ShowIcon = false;
             this.Text = "Programming";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.TabControl.ResumeLayout(false);

@@ -12,10 +12,10 @@ namespace Programming.View
         Color ErrorColor = Color.IndianRed;
 
         Model.Classes.Rectangle[] _rectangles;
-        Model.Classes.Rectangle _currentRectangle;
+        Model.Classes.Rectangle _currentRectangle  = new Model.Classes.Rectangle();
 
         Movie[] _movies;
-        Movie _currentMovie;
+        Movie _currentMovie = new Movie();
 
         public MainForm()
         {
