@@ -2,6 +2,14 @@
 {
     class Subject
     {
+        public string Name { get; set; }
+
+        public uint Hours { get; set; }
+
+        public string Grade { get; set; }
+
+        public string ExamDate { get; set; }
+
         Subject()
         {
             Name = "";
@@ -16,13 +24,5 @@
             Grade = grade;
             ExamDate = examdate;
         }
-
-        public string Name { get; set; }
-
-        public uint Hours { get; set; }
-
-        public string Grade { get; set; }
-
-        public string ExamDate { get; set; }
     }
 }

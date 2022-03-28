@@ -4,25 +4,8 @@ namespace Programming.Model.Classes
     class Movie
     {
         uint _releaseYear;
+
         double _rating;
-
-        public Movie()
-        {
-            Name = "";
-            Minutes = 0;
-            ReleaseYear = 1900;
-            Genre = "";
-            Rating = 0;
-        }
-
-        public Movie(string name, uint minutes, uint releaseYear, string genre, double rating)
-        {
-            Name = name;
-            Minutes = minutes;
-            ReleaseYear = releaseYear;
-            Genre = genre;
-            Rating = rating;
-        }
 
         public string Name { get; set; }
 
@@ -66,6 +49,24 @@ namespace Programming.Model.Classes
                     throw new ArgumentException();
                 }
             }
+        }
+
+        public Movie()
+        {
+            Name = "";
+            Minutes = 0;
+            ReleaseYear = 1900;
+            Genre = "";
+            Rating = 0;
+        }
+
+        public Movie(string name, uint minutes, uint releaseYear, string genre, double rating)
+        {
+            Name = name;
+            Minutes = minutes;
+            ReleaseYear = releaseYear;
+            Genre = genre;
+            Rating = rating;
         }
     }
 }

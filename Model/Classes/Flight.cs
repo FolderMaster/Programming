@@ -2,6 +2,12 @@
 {
     class Flight
     {
+        public string Departure { get; set; }
+
+        public string Destination { get; set; }
+
+        public uint Minutes { get; set; }
+
         public Flight()
         {
             Departure = "";
@@ -15,11 +21,5 @@
             Destination = destination;
             Minutes = minutes;
         }
-
-        public string Departure { get; set; }
-
-        public string Destination { get; set; }
-
-        public uint Minutes { get; set; }
     }
 }

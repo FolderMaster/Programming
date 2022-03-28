@@ -2,6 +2,14 @@
 {
     class Song
     {
+        public string Name { get; set; }
+
+        public string Author { get; set; }
+
+        public string Album { get; set; }
+
+        public Time Lenght { get; set; }
+
         public Song()
         {
             Name = "";
@@ -17,13 +25,5 @@
             Album = album;
             Lenght = lenght;
         }
-
-        public string Name { get; set; }
-
-        public string Author { get; set; }
-
-        public string Album { get; set; }
-
-        public Time Lenght { get; set; }
     }
 }

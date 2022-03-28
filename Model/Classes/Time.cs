@@ -4,22 +4,10 @@ namespace Programming.Model.Classes
     class Time
     {
         uint _hours;
+
         uint _minutes;
+
         uint _seconds;
-
-        public Time()
-        {
-            Hours = 0;
-            Minutes = 0;
-            Seconds = 0;
-        }
-
-        public Time(uint hours, uint minutes, uint seconds)
-        {
-            Hours = hours;
-            Minutes = minutes;
-            Seconds = seconds;
-        }
 
         public uint Hours
         {
@@ -76,6 +64,20 @@ namespace Programming.Model.Classes
                     throw new ArgumentException();
                 }
             }
+        }
+
+        public Time()
+        {
+            Hours = 0;
+            Minutes = 0;
+            Seconds = 0;
+        }
+
+        public Time(uint hours, uint minutes, uint seconds)
+        {
+            Hours = hours;
+            Minutes = minutes;
+            Seconds = seconds;
         }
     }
 }

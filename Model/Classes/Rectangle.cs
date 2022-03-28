@@ -4,22 +4,9 @@ namespace Programming.Model.Classes
     class Rectangle
     {
         double _length;
+
         double _width;
-
-        public Rectangle()
-        {
-            Length = 1;
-            Width = 1;
-            Color = "White";
-        }
-
-        public Rectangle(double length, double width, string color)
-        {
-            Length = length;
-            Width = width;
-            Color = color;
-        }
-
+        
         public double Length
         {
             get
@@ -59,5 +46,19 @@ namespace Programming.Model.Classes
         }
 
         public string Color { get; set; }
+
+        public Rectangle()
+        {
+            Length = 1;
+            Width = 1;
+            Color = "White";
+        }
+
+        public Rectangle(double length, double width, string color)
+        {
+            Length = length;
+            Width = width;
+            Color = color;
+        }
     }
 }
