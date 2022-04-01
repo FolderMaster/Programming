@@ -26,10 +26,10 @@ namespace Programming.View
 
             SeasonComboBox.DataSource = Enum.GetValues(typeof(Season));
 
-            int CountElements = 18;
+            int Amount = 18;
             Random random = new Random();
 
-            _rectangles = new Model.Classes.Rectangle[CountElements];
+            _rectangles = new Model.Classes.Rectangle[Amount];
             for (int n = 0; n < _rectangles.Length; ++n)
             {
                 _rectangles[n] = new Model.Classes.Rectangle(
@@ -39,7 +39,7 @@ namespace Programming.View
                 RectanglesListBox.Items.Add("Rectangle " + (n + 1));
             }
 
-            _movies = new Movie[CountElements];
+            _movies = new Movie[Amount];
             for (int n = 0; n < _movies.Length; ++n)
             {
                 _movies[n] = new Movie(
