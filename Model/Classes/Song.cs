@@ -8,22 +8,22 @@
 
         public string Album { get; set; }
 
-        public Time Lenght { get; set; }
+        public Time Duration { get; set; }
 
         public Song()
         {
             Name = "";
             Author = "";
             Album = "";
-            Lenght = new Time();
+            Duration = new Time();
         }
 
-        public Song(string name, string author, string album, Time lenght)
+        public Song(string name, string author, string album, Time duration)
         {
             Name = name;
             Author = author;
             Album = album;
-            Lenght = lenght;
+            Duration = duration;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if(value >= 1900)
+                if(value >= 1900 && value <= DateTime.Now.Year)
                 {
                     _releaseYear = value;
                 }
@@ -55,7 +55,7 @@ namespace Programming.Model.Classes
         {
             Name = "";
             Minutes = 0;
-            ReleaseYear = 1900;
+            ReleaseYear = (uint)DateTime.Now.Year;
             Genre = "";
             Rating = 0;
         }

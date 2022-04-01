@@ -36,18 +36,18 @@ namespace Programming.View
             this.SeasonComboBox = new System.Windows.Forms.ComboBox();
             this.SeasonButton = new System.Windows.Forms.Button();
             this.SeasonLabel = new System.Windows.Forms.Label();
-            this.WeekGroupBox = new System.Windows.Forms.GroupBox();
-            this.WeekParseLabel = new System.Windows.Forms.Label();
-            this.WeekParseButton = new System.Windows.Forms.Button();
+            this.WeekdayGroupBox = new System.Windows.Forms.GroupBox();
+            this.ParseWeekdayLabel = new System.Windows.Forms.Label();
+            this.ParseWeekdayButton = new System.Windows.Forms.Button();
             this.WeekParseTextBox = new System.Windows.Forms.TextBox();
             this.WeekLabel = new System.Windows.Forms.Label();
             this.EnumGroupBox = new System.Windows.Forms.GroupBox();
-            this.EnumListBox = new System.Windows.Forms.ListBox();
-            this.IntLabel = new System.Windows.Forms.Label();
-            this.EnumLabel = new System.Windows.Forms.Label();
-            this.IntTextBox = new System.Windows.Forms.TextBox();
-            this.ValueListBox = new System.Windows.Forms.ListBox();
-            this.ValueLabel = new System.Windows.Forms.Label();
+            this.EnumsEnumListBox = new System.Windows.Forms.ListBox();
+            this.IntEnumLabel = new System.Windows.Forms.Label();
+            this.EnumsEnumLabel = new System.Windows.Forms.Label();
+            this.IntEnumTextBox = new System.Windows.Forms.TextBox();
+            this.ValueEnumListBox = new System.Windows.Forms.ListBox();
+            this.ValueEnumLabel = new System.Windows.Forms.Label();
             this.ClassesTabPage = new System.Windows.Forms.TabPage();
             this.MoviesGroupBox = new System.Windows.Forms.GroupBox();
             this.RatingMoviesTextBox = new System.Windows.Forms.TextBox();
@@ -74,7 +74,7 @@ namespace Programming.View
             this.TabControl.SuspendLayout();
             this.EnumsTabPage.SuspendLayout();
             this.SeasonGroupBox.SuspendLayout();
-            this.WeekGroupBox.SuspendLayout();
+            this.WeekdayGroupBox.SuspendLayout();
             this.EnumGroupBox.SuspendLayout();
             this.ClassesTabPage.SuspendLayout();
             this.MoviesGroupBox.SuspendLayout();
@@ -96,7 +96,7 @@ namespace Programming.View
             // 
             this.EnumsTabPage.BackColor = System.Drawing.Color.Transparent;
             this.EnumsTabPage.Controls.Add(this.SeasonGroupBox);
-            this.EnumsTabPage.Controls.Add(this.WeekGroupBox);
+            this.EnumsTabPage.Controls.Add(this.WeekdayGroupBox);
             this.EnumsTabPage.Controls.Add(this.EnumGroupBox);
             this.EnumsTabPage.Location = new System.Drawing.Point(4, 22);
             this.EnumsTabPage.Name = "EnumsTabPage";
@@ -104,6 +104,7 @@ namespace Programming.View
             this.EnumsTabPage.Size = new System.Drawing.Size(501, 287);
             this.EnumsTabPage.TabIndex = 0;
             this.EnumsTabPage.Text = "Enums";
+            this.EnumsTabPage.UseVisualStyleBackColor = true;
             // 
             // SeasonGroupBox
             // 
@@ -112,7 +113,7 @@ namespace Programming.View
             this.SeasonGroupBox.Controls.Add(this.SeasonLabel);
             this.SeasonGroupBox.Location = new System.Drawing.Point(247, 202);
             this.SeasonGroupBox.Name = "SeasonGroupBox";
-            this.SeasonGroupBox.Size = new System.Drawing.Size(248, 79);
+            this.SeasonGroupBox.Size = new System.Drawing.Size(246, 77);
             this.SeasonGroupBox.TabIndex = 8;
             this.SeasonGroupBox.TabStop = false;
             this.SeasonGroupBox.Text = "Season Handle";
@@ -144,37 +145,37 @@ namespace Programming.View
             this.SeasonLabel.TabIndex = 3;
             this.SeasonLabel.Text = "Choose season:";
             // 
-            // WeekGroupBox
+            // WeekdayGroupBox
             // 
-            this.WeekGroupBox.Controls.Add(this.WeekParseLabel);
-            this.WeekGroupBox.Controls.Add(this.WeekParseButton);
-            this.WeekGroupBox.Controls.Add(this.WeekParseTextBox);
-            this.WeekGroupBox.Controls.Add(this.WeekLabel);
-            this.WeekGroupBox.Location = new System.Drawing.Point(8, 202);
-            this.WeekGroupBox.Name = "WeekGroupBox";
-            this.WeekGroupBox.Size = new System.Drawing.Size(233, 79);
-            this.WeekGroupBox.TabIndex = 7;
-            this.WeekGroupBox.TabStop = false;
-            this.WeekGroupBox.Text = "Weekday Parsing";
+            this.WeekdayGroupBox.Controls.Add(this.ParseWeekdayLabel);
+            this.WeekdayGroupBox.Controls.Add(this.ParseWeekdayButton);
+            this.WeekdayGroupBox.Controls.Add(this.WeekParseTextBox);
+            this.WeekdayGroupBox.Controls.Add(this.WeekLabel);
+            this.WeekdayGroupBox.Location = new System.Drawing.Point(8, 202);
+            this.WeekdayGroupBox.Name = "WeekdayGroupBox";
+            this.WeekdayGroupBox.Size = new System.Drawing.Size(233, 77);
+            this.WeekdayGroupBox.TabIndex = 7;
+            this.WeekdayGroupBox.TabStop = false;
+            this.WeekdayGroupBox.Text = "Weekday Parsing";
             // 
-            // WeekParseLabel
+            // ParseWeekdayLabel
             // 
-            this.WeekParseLabel.AutoSize = true;
-            this.WeekParseLabel.Location = new System.Drawing.Point(6, 63);
-            this.WeekParseLabel.Name = "WeekParseLabel";
-            this.WeekParseLabel.Size = new System.Drawing.Size(130, 13);
-            this.WeekParseLabel.TabIndex = 7;
-            this.WeekParseLabel.Text = "This day of week (... = ...).";
+            this.ParseWeekdayLabel.AutoSize = true;
+            this.ParseWeekdayLabel.Location = new System.Drawing.Point(6, 56);
+            this.ParseWeekdayLabel.Name = "ParseWeekdayLabel";
+            this.ParseWeekdayLabel.Size = new System.Drawing.Size(130, 13);
+            this.ParseWeekdayLabel.TabIndex = 7;
+            this.ParseWeekdayLabel.Text = "This day of week (... = ...).";
             // 
-            // WeekParseButton
+            // ParseWeekdayButton
             // 
-            this.WeekParseButton.Location = new System.Drawing.Point(119, 30);
-            this.WeekParseButton.Name = "WeekParseButton";
-            this.WeekParseButton.Size = new System.Drawing.Size(75, 23);
-            this.WeekParseButton.TabIndex = 6;
-            this.WeekParseButton.Text = "Parse";
-            this.WeekParseButton.UseVisualStyleBackColor = true;
-            this.WeekParseButton.Click += new System.EventHandler(this.WeekParseButton_Click);
+            this.ParseWeekdayButton.Location = new System.Drawing.Point(119, 30);
+            this.ParseWeekdayButton.Name = "ParseWeekdayButton";
+            this.ParseWeekdayButton.Size = new System.Drawing.Size(75, 23);
+            this.ParseWeekdayButton.TabIndex = 6;
+            this.ParseWeekdayButton.Text = "Parse";
+            this.ParseWeekdayButton.UseVisualStyleBackColor = true;
+            this.ParseWeekdayButton.Click += new System.EventHandler(this.WeekParseButton_Click);
             // 
             // WeekParseTextBox
             // 
@@ -194,71 +195,71 @@ namespace Programming.View
             // 
             // EnumGroupBox
             // 
-            this.EnumGroupBox.Controls.Add(this.EnumListBox);
-            this.EnumGroupBox.Controls.Add(this.IntLabel);
-            this.EnumGroupBox.Controls.Add(this.EnumLabel);
-            this.EnumGroupBox.Controls.Add(this.IntTextBox);
-            this.EnumGroupBox.Controls.Add(this.ValueListBox);
-            this.EnumGroupBox.Controls.Add(this.ValueLabel);
+            this.EnumGroupBox.Controls.Add(this.EnumsEnumListBox);
+            this.EnumGroupBox.Controls.Add(this.IntEnumLabel);
+            this.EnumGroupBox.Controls.Add(this.EnumsEnumLabel);
+            this.EnumGroupBox.Controls.Add(this.IntEnumTextBox);
+            this.EnumGroupBox.Controls.Add(this.ValueEnumListBox);
+            this.EnumGroupBox.Controls.Add(this.ValueEnumLabel);
             this.EnumGroupBox.Location = new System.Drawing.Point(8, 6);
             this.EnumGroupBox.Name = "EnumGroupBox";
-            this.EnumGroupBox.Size = new System.Drawing.Size(487, 190);
+            this.EnumGroupBox.Size = new System.Drawing.Size(485, 190);
             this.EnumGroupBox.TabIndex = 6;
             this.EnumGroupBox.TabStop = false;
             this.EnumGroupBox.Text = "Enumerations";
             // 
-            // EnumListBox
+            // EnumsEnumListBox
             // 
-            this.EnumListBox.FormattingEnabled = true;
-            this.EnumListBox.Location = new System.Drawing.Point(6, 32);
-            this.EnumListBox.Name = "EnumListBox";
-            this.EnumListBox.Size = new System.Drawing.Size(130, 147);
-            this.EnumListBox.TabIndex = 0;
-            this.EnumListBox.SelectedIndexChanged += new System.EventHandler(this.EnumListBox_SelectedIndexChanged);
+            this.EnumsEnumListBox.FormattingEnabled = true;
+            this.EnumsEnumListBox.Location = new System.Drawing.Point(6, 32);
+            this.EnumsEnumListBox.Name = "EnumsEnumListBox";
+            this.EnumsEnumListBox.Size = new System.Drawing.Size(130, 147);
+            this.EnumsEnumListBox.TabIndex = 0;
+            this.EnumsEnumListBox.SelectedIndexChanged += new System.EventHandler(this.EnumListBox_SelectedIndexChanged);
             // 
-            // IntLabel
+            // IntEnumLabel
             // 
-            this.IntLabel.AutoSize = true;
-            this.IntLabel.Location = new System.Drawing.Point(255, 16);
-            this.IntLabel.Name = "IntLabel";
-            this.IntLabel.Size = new System.Drawing.Size(58, 13);
-            this.IntLabel.TabIndex = 5;
-            this.IntLabel.Text = "Value\'s int:";
+            this.IntEnumLabel.AutoSize = true;
+            this.IntEnumLabel.Location = new System.Drawing.Point(255, 16);
+            this.IntEnumLabel.Name = "IntEnumLabel";
+            this.IntEnumLabel.Size = new System.Drawing.Size(58, 13);
+            this.IntEnumLabel.TabIndex = 5;
+            this.IntEnumLabel.Text = "Value\'s int:";
             // 
-            // EnumLabel
+            // EnumsEnumLabel
             // 
-            this.EnumLabel.AutoSize = true;
-            this.EnumLabel.Location = new System.Drawing.Point(6, 16);
-            this.EnumLabel.Name = "EnumLabel";
-            this.EnumLabel.Size = new System.Drawing.Size(107, 13);
-            this.EnumLabel.TabIndex = 2;
-            this.EnumLabel.Text = "Choose enumeration:";
+            this.EnumsEnumLabel.AutoSize = true;
+            this.EnumsEnumLabel.Location = new System.Drawing.Point(6, 16);
+            this.EnumsEnumLabel.Name = "EnumsEnumLabel";
+            this.EnumsEnumLabel.Size = new System.Drawing.Size(107, 13);
+            this.EnumsEnumLabel.TabIndex = 2;
+            this.EnumsEnumLabel.Text = "Choose enumeration:";
             // 
-            // IntTextBox
+            // IntEnumTextBox
             // 
-            this.IntTextBox.Location = new System.Drawing.Point(258, 32);
-            this.IntTextBox.Name = "IntTextBox";
-            this.IntTextBox.ReadOnly = true;
-            this.IntTextBox.Size = new System.Drawing.Size(55, 20);
-            this.IntTextBox.TabIndex = 4;
+            this.IntEnumTextBox.Location = new System.Drawing.Point(258, 32);
+            this.IntEnumTextBox.Name = "IntEnumTextBox";
+            this.IntEnumTextBox.ReadOnly = true;
+            this.IntEnumTextBox.Size = new System.Drawing.Size(55, 20);
+            this.IntEnumTextBox.TabIndex = 4;
             // 
-            // ValueListBox
+            // ValueEnumListBox
             // 
-            this.ValueListBox.FormattingEnabled = true;
-            this.ValueListBox.Location = new System.Drawing.Point(161, 32);
-            this.ValueListBox.Name = "ValueListBox";
-            this.ValueListBox.Size = new System.Drawing.Size(72, 147);
-            this.ValueListBox.TabIndex = 1;
-            this.ValueListBox.SelectedIndexChanged += new System.EventHandler(this.ValueListBox_SelectedIndexChanged);
+            this.ValueEnumListBox.FormattingEnabled = true;
+            this.ValueEnumListBox.Location = new System.Drawing.Point(161, 32);
+            this.ValueEnumListBox.Name = "ValueEnumListBox";
+            this.ValueEnumListBox.Size = new System.Drawing.Size(72, 147);
+            this.ValueEnumListBox.TabIndex = 1;
+            this.ValueEnumListBox.SelectedIndexChanged += new System.EventHandler(this.ValueListBox_SelectedIndexChanged);
             // 
-            // ValueLabel
+            // ValueEnumLabel
             // 
-            this.ValueLabel.AutoSize = true;
-            this.ValueLabel.Location = new System.Drawing.Point(158, 16);
-            this.ValueLabel.Name = "ValueLabel";
-            this.ValueLabel.Size = new System.Drawing.Size(75, 13);
-            this.ValueLabel.TabIndex = 3;
-            this.ValueLabel.Text = "Choose value:";
+            this.ValueEnumLabel.AutoSize = true;
+            this.ValueEnumLabel.Location = new System.Drawing.Point(158, 16);
+            this.ValueEnumLabel.Name = "ValueEnumLabel";
+            this.ValueEnumLabel.Size = new System.Drawing.Size(75, 13);
+            this.ValueEnumLabel.TabIndex = 3;
+            this.ValueEnumLabel.Text = "Choose value:";
             // 
             // ClassesTabPage
             // 
@@ -286,9 +287,9 @@ namespace Programming.View
             this.MoviesGroupBox.Controls.Add(this.NameMoviesLabel);
             this.MoviesGroupBox.Controls.Add(this.NameMoviesTextBox);
             this.MoviesGroupBox.Controls.Add(this.MoviesListBox);
-            this.MoviesGroupBox.Location = new System.Drawing.Point(254, 6);
+            this.MoviesGroupBox.Location = new System.Drawing.Point(256, 6);
             this.MoviesGroupBox.Name = "MoviesGroupBox";
-            this.MoviesGroupBox.Size = new System.Drawing.Size(240, 273);
+            this.MoviesGroupBox.Size = new System.Drawing.Size(237, 273);
             this.MoviesGroupBox.TabIndex = 8;
             this.MoviesGroupBox.TabStop = false;
             this.MoviesGroupBox.Text = "Movies";
@@ -352,7 +353,7 @@ namespace Programming.View
             this.ReleaseYearMoviesTextBox.Name = "ReleaseYearMoviesTextBox";
             this.ReleaseYearMoviesTextBox.Size = new System.Drawing.Size(100, 20);
             this.ReleaseYearMoviesTextBox.TabIndex = 10;
-            this.ReleaseYearMoviesTextBox.TextChanged += new System.EventHandler(this.RealiseYearMoviesTextBox_TextChanged);
+            this.ReleaseYearMoviesTextBox.TextChanged += new System.EventHandler(this.ReleaseYearMoviesTextBox_TextChanged);
             // 
             // MinutesMoviesLabel
             // 
@@ -409,7 +410,7 @@ namespace Programming.View
             this.RectanglesGroupBox.Controls.Add(this.RectanglesListBox);
             this.RectanglesGroupBox.Location = new System.Drawing.Point(8, 6);
             this.RectanglesGroupBox.Name = "RectanglesGroupBox";
-            this.RectanglesGroupBox.Size = new System.Drawing.Size(240, 273);
+            this.RectanglesGroupBox.Size = new System.Drawing.Size(239, 273);
             this.RectanglesGroupBox.TabIndex = 7;
             this.RectanglesGroupBox.TabStop = false;
             this.RectanglesGroupBox.Text = "Rectangles";
@@ -452,7 +453,7 @@ namespace Programming.View
             // 
             // WidthRectanglesTextBox
             // 
-            this.WidthRectanglesTextBox.Location = new System.Drawing.Point(111, 71);
+            this.WidthRectanglesTextBox.Location = new System.Drawing.Point(111, 74);
             this.WidthRectanglesTextBox.Name = "WidthRectanglesTextBox";
             this.WidthRectanglesTextBox.Size = new System.Drawing.Size(100, 20);
             this.WidthRectanglesTextBox.TabIndex = 8;
@@ -496,13 +497,12 @@ namespace Programming.View
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.Text = "Programming";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.TabControl.ResumeLayout(false);
             this.EnumsTabPage.ResumeLayout(false);
             this.SeasonGroupBox.ResumeLayout(false);
             this.SeasonGroupBox.PerformLayout();
-            this.WeekGroupBox.ResumeLayout(false);
-            this.WeekGroupBox.PerformLayout();
+            this.WeekdayGroupBox.ResumeLayout(false);
+            this.WeekdayGroupBox.PerformLayout();
             this.EnumGroupBox.ResumeLayout(false);
             this.EnumGroupBox.PerformLayout();
             this.ClassesTabPage.ResumeLayout(false);
@@ -518,18 +518,18 @@ namespace Programming.View
 
         private System.Windows.Forms.TabControl TabControl;
         private System.Windows.Forms.TabPage EnumsTabPage;
-        private System.Windows.Forms.ListBox ValueListBox;
-        private System.Windows.Forms.ListBox EnumListBox;
-        private System.Windows.Forms.Label ValueLabel;
-        private System.Windows.Forms.Label EnumLabel;
-        private System.Windows.Forms.Label IntLabel;
-        private System.Windows.Forms.TextBox IntTextBox;
+        private System.Windows.Forms.ListBox ValueEnumListBox;
+        private System.Windows.Forms.ListBox EnumsEnumListBox;
+        private System.Windows.Forms.Label ValueEnumLabel;
+        private System.Windows.Forms.Label EnumsEnumLabel;
+        private System.Windows.Forms.Label IntEnumLabel;
+        private System.Windows.Forms.TextBox IntEnumTextBox;
         private System.Windows.Forms.GroupBox EnumGroupBox;
-        private System.Windows.Forms.GroupBox WeekGroupBox;
+        private System.Windows.Forms.GroupBox WeekdayGroupBox;
         private System.Windows.Forms.TextBox WeekParseTextBox;
         private System.Windows.Forms.Label WeekLabel;
-        private System.Windows.Forms.Label WeekParseLabel;
-        private System.Windows.Forms.Button WeekParseButton;
+        private System.Windows.Forms.Label ParseWeekdayLabel;
+        private System.Windows.Forms.Button ParseWeekdayButton;
         private System.Windows.Forms.GroupBox SeasonGroupBox;
         private System.Windows.Forms.Button SeasonButton;
         private System.Windows.Forms.Label SeasonLabel;

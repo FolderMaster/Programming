@@ -4,15 +4,17 @@ using System.Windows.Forms;
 using Programming.Model.Enums;
 using Programming.Model.Classes;
 
+using Rectangle = Programming.Model.Classes.Rectangle;
+
 namespace Programming.View
 {
     public partial class MainForm : Form
     {
-        private Color CorrectColor = Color.White;
-        private Color ErrorColor = Color.IndianRed;
+        private Color correctColor = Color.White;
+        private Color errorColor = Color.Yellow;
 
-        private Model.Classes.Rectangle[] _rectangles;
-        private Model.Classes.Rectangle _currentRectangle  = new Model.Classes.Rectangle();
+        private Rectangle[] _rectangles;
+        private Rectangle _currentRectangle  = new Rectangle();
 
         private Movie[] _movies;
         private Movie _currentMovie = new Movie();
@@ -21,38 +23,38 @@ namespace Programming.View
         {
             InitializeComponent();
 
-            EnumListBox.DataSource = Enum.GetValues(typeof(Enums));
-            EnumListBox.SelectedIndex = 0;
+            EnumsEnumListBox.DataSource = Enum.GetValues(typeof(Enums));
+            EnumsEnumListBox.SelectedIndex = 0;
 
             SeasonComboBox.DataSource = Enum.GetValues(typeof(Season));
 
-            int Amount = 18;
+            int Count = 18;
             Random random = new Random();
 
-            _rectangles = new Model.Classes.Rectangle[Amount];
+            _rectangles = new Rectangle[Count];
             for (int n = 0; n < _rectangles.Length; ++n)
             {
-                _rectangles[n] = new Model.Classes.Rectangle(
-                    (random.NextDouble() + 0.0001) * random.Next(1, 100), 
-                    (random.NextDouble() + 0.0001) * random.Next(1, 100), 
+                _rectangles[n] = new Rectangle(
+                    Math.Round((random.NextDouble() + 0.0001) * random.Next(1, 100), 10),
+                    Math.Round((random.NextDouble() + 0.0001) * random.Next(1, 100), 10), 
                     ((Colour)random.Next(0, 9)).ToString());
                 RectanglesListBox.Items.Add("Rectangle " + (n + 1));
             }
 
-            _movies = new Movie[Amount];
+            _movies = new Movie[Count];
             for (int n = 0; n < _movies.Length; ++n)
             {
                 _movies[n] = new Movie(
                     CreateRandomString(random.Next(1, 10), random),
                     (uint)random.Next(0, 500),
-                    1900 + (uint)random.Next(0, 200),
+                    1900 + (uint)random.Next(0, DateTime.Now.Year - 1900),
                     ((Genre)random.Next(0, 6)).ToString(),
-                    random.NextDouble() * random.Next(0, 10));
-                MoviesListBox.Items.Add("Film " + (n + 1));
+                    Math.Round(random.NextDouble() * random.Next(0, 10), 10));
+                MoviesListBox.Items.Add("Movie " + (n + 1));
             }
         }
 
-        private int FindRectangleWithMaxWidth(Model.Classes.Rectangle[] rectangles)
+        private int FindRectangleWithMaxWidth(Rectangle[] rectangles)
         {
             int IndexMaxWidth = -1;
             if (rectangles.Length > 0)
@@ -98,31 +100,27 @@ namespace Programming.View
             return Result;
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-        }
-
         private void EnumListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch((Enums)EnumListBox.SelectedItem)
+            switch((Enums)EnumsEnumListBox.SelectedItem)
             {
                 case Enums.Weekday:
-                    ValueListBox.DataSource = Enum.GetValues(typeof(Weekday));
+                    ValueEnumListBox.DataSource = Enum.GetValues(typeof(Weekday));
                     break;
                 case Enums.Genre:
-                    ValueListBox.DataSource = Enum.GetValues(typeof(Genre));
+                    ValueEnumListBox.DataSource = Enum.GetValues(typeof(Genre));
                     break;
                 case Enums.Colour:
-                    ValueListBox.DataSource = Enum.GetValues(typeof(Colour));
+                    ValueEnumListBox.DataSource = Enum.GetValues(typeof(Colour));
                     break;
                 case Enums.StudyForm:
-                    ValueListBox.DataSource = Enum.GetValues(typeof(StudyForm));
+                    ValueEnumListBox.DataSource = Enum.GetValues(typeof(StudyForm));
                     break;
                 case Enums.SmartphoneManufacturers:
-                    ValueListBox.DataSource = Enum.GetValues(typeof(SmartphoneManufacturers));
+                    ValueEnumListBox.DataSource = Enum.GetValues(typeof(SmartphoneManufacturers));
                     break;
                 case Enums.Season:
-                    ValueListBox.DataSource = Enum.GetValues(typeof(Season));
+                    ValueEnumListBox.DataSource = Enum.GetValues(typeof(Season));
                     break;
                 default:
                     throw new NotImplementedException();
@@ -131,7 +129,7 @@ namespace Programming.View
 
         private void ValueListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            IntTextBox.Text = ((int)ValueListBox.SelectedItem).ToString();
+            IntEnumTextBox.Text = ((int)ValueEnumListBox.SelectedItem).ToString();
         }
 
         private void WeekParseButton_Click(object sender, EventArgs e)
@@ -139,11 +137,11 @@ namespace Programming.View
             Weekday day;
             if (Enum.TryParse(WeekParseTextBox.Text, out day))
             {
-                WeekParseLabel.Text = $"This day of week ({day.ToString()} = {(int)day}).";
+                ParseWeekdayLabel.Text = $"This day of week ({day.ToString()} = {(int)day}).";
             }
             else
             {
-                WeekParseLabel.Text = "There isn't such day in week!";
+                ParseWeekdayLabel.Text = "There isn't such day in week!";
             }
         }
 
@@ -182,11 +180,11 @@ namespace Programming.View
             try
             {
                 _currentRectangle.Length = double.Parse(LengthRectanglesTextBox.Text);
-                LengthRectanglesTextBox.BackColor = CorrectColor;
+                LengthRectanglesTextBox.BackColor = correctColor;
             }
             catch
             {
-                LengthRectanglesTextBox.BackColor = ErrorColor;
+                LengthRectanglesTextBox.BackColor = errorColor;
             }
         }
 
@@ -195,11 +193,11 @@ namespace Programming.View
             try
             {
                 _currentRectangle.Width = double.Parse(WidthRectanglesTextBox.Text);
-                WidthRectanglesTextBox.BackColor = CorrectColor;
+                WidthRectanglesTextBox.BackColor = correctColor;
             }
             catch
             {
-                WidthRectanglesTextBox.BackColor = ErrorColor;
+                WidthRectanglesTextBox.BackColor = errorColor;
             }
         }
 
@@ -233,24 +231,24 @@ namespace Programming.View
             try
             {
                 _currentMovie.Minutes = uint.Parse(MinutesMoviesTextBox.Text);
-                MinutesMoviesTextBox.BackColor = CorrectColor;
+                MinutesMoviesTextBox.BackColor = correctColor;
             }
             catch
             {
-                MinutesMoviesTextBox.BackColor = ErrorColor;
+                MinutesMoviesTextBox.BackColor = errorColor;
             }
         }
 
-        private void RealiseYearMoviesTextBox_TextChanged(object sender, EventArgs e)
+        private void ReleaseYearMoviesTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 _currentMovie.ReleaseYear = uint.Parse(ReleaseYearMoviesTextBox.Text);
-                ReleaseYearMoviesTextBox.BackColor = CorrectColor;
+                ReleaseYearMoviesTextBox.BackColor = correctColor;
             }
             catch
             {
-                ReleaseYearMoviesTextBox.BackColor = ErrorColor;
+                ReleaseYearMoviesTextBox.BackColor = errorColor;
             }
         }
 
@@ -264,11 +262,11 @@ namespace Programming.View
             try
             {
                 _currentMovie.Rating = double.Parse(RatingMoviesTextBox.Text);
-                RatingMoviesTextBox.BackColor = CorrectColor;
+                RatingMoviesTextBox.BackColor = correctColor;
             }
             catch
             {
-                RatingMoviesTextBox.BackColor = ErrorColor;
+                RatingMoviesTextBox.BackColor = errorColor;
             }
         }
 

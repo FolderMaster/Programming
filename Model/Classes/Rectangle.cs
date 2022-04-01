@@ -51,7 +51,7 @@ namespace Programming.Model.Classes
         {
             Length = 1;
             Width = 1;
-            Color = "White";
+            Color = "";
         }
 
         public Rectangle(double length, double width, string color)

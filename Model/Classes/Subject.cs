@@ -1,4 +1,5 @@
 ﻿using System;
+using Programming.Model.Enums;
 namespace Programming.Model.Classes
 {
     class Subject
@@ -7,7 +8,7 @@ namespace Programming.Model.Classes
 
         public uint Hours { get; set; }
 
-        public string Mark { get; set; }
+        public Mark Mark { get; set; }
 
         public DateTime ExamDate { get; set; }
 
@@ -15,10 +16,10 @@ namespace Programming.Model.Classes
         {
             Name = "";
             Hours = 0;
-            Mark = "";
+            Mark = Mark.None;
             ExamDate = new DateTime();
         }
-        public Subject(string name, uint hours, string mark, DateTime examDate)
+        public Subject(string name, uint hours, Mark mark, DateTime examDate)
         {
             Name = name;
             Hours = hours;
