@@ -7,7 +7,7 @@ namespace Programming.Model.Classes
 
         public uint Hours { get; set; }
 
-        public string Grade { get; set; }
+        public string Mark { get; set; }
 
         public DateTime ExamDate { get; set; }
 
@@ -15,14 +15,14 @@ namespace Programming.Model.Classes
         {
             Name = "";
             Hours = 0;
-            Grade = "";
+            Mark = "";
             ExamDate = new DateTime();
         }
         public Subject(string name, uint hours, string grade, DateTime examDate)
         {
             Name = name;
             Hours = hours;
-            Grade = grade;
+            Mark = grade;
             ExamDate = examDate;
         }
     }
