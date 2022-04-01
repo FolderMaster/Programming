@@ -18,9 +18,9 @@
             Patronymic = "";
         }
 
-        public Contact(string phonenumber, string name, string surname, string patronymic)
+        public Contact(string phoneNumber, string name, string surname, string patronymic)
         {
-            PhoneNumber = phonenumber;
+            PhoneNumber = phoneNumber;
             Name = name;
             Surname = surname;
             Patronymic = patronymic;

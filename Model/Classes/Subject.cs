@@ -1,4 +1,5 @@
-﻿namespace Programming.Model.Classes
+﻿using System;
+namespace Programming.Model.Classes
 {
     class Subject
     {
@@ -8,21 +9,21 @@
 
         public string Grade { get; set; }
 
-        public string ExamDate { get; set; }
+        public DateTime ExamDate { get; set; }
 
         public Subject()
         {
             Name = "";
             Hours = 0;
             Grade = "";
-            ExamDate = "";
+            ExamDate = new DateTime();
         }
-        public Subject(string name, uint hours, string grade, string examdate)
+        public Subject(string name, uint hours, string grade, DateTime examDate)
         {
             Name = name;
             Hours = hours;
             Grade = grade;
-            ExamDate = examdate;
+            ExamDate = examDate;
         }
     }
 }
