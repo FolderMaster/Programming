@@ -10,14 +10,14 @@
 
         public string ExamDate { get; set; }
 
-        Subject()
+        public Subject()
         {
             Name = "";
             Hours = 0;
             Grade = "";
             ExamDate = "";
         }
-        Subject(string name, uint hours, string grade, string examdate)
+        public Subject(string name, uint hours, string grade, string examdate)
         {
             Name = name;
             Hours = hours;

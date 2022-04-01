@@ -3,9 +3,9 @@ namespace Programming.Model.Classes
 {
     class Movie
     {
-        uint _releaseYear;
+        private uint _releaseYear;
 
-        double _rating;
+        private double _rating;
 
         public string Name { get; set; }
 

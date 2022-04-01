@@ -8,14 +8,14 @@ namespace Programming.View
 {
     public partial class MainForm : Form
     {
-        Color CorrectColor = Color.White;
-        Color ErrorColor = Color.IndianRed;
+        private Color CorrectColor = Color.White;
+        private Color ErrorColor = Color.IndianRed;
 
-        Model.Classes.Rectangle[] _rectangles;
-        Model.Classes.Rectangle _currentRectangle  = new Model.Classes.Rectangle();
+        private Model.Classes.Rectangle[] _rectangles;
+        private Model.Classes.Rectangle _currentRectangle  = new Model.Classes.Rectangle();
 
-        Movie[] _movies;
-        Movie _currentMovie = new Movie();
+        private Movie[] _movies;
+        private Movie _currentMovie = new Movie();
 
         public MainForm()
         {

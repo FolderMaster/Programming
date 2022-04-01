@@ -3,9 +3,9 @@ namespace Programming.Model.Classes
 {
     class Rectangle
     {
-        double _length;
+        private double _length;
 
-        double _width;
+        private double _width;
         
         public double Length
         {

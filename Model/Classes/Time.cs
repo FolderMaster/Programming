@@ -3,11 +3,11 @@ namespace Programming.Model.Classes
 {
     class Time
     {
-        uint _hours;
+        private uint _hours;
 
-        uint _minutes;
+        private uint _minutes;
 
-        uint _seconds;
+        private uint _seconds;
 
         public uint Hours
         {
