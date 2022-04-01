@@ -120,14 +120,14 @@ namespace Programming.View
             // SeasonComboBox
             // 
             this.SeasonComboBox.FormattingEnabled = true;
-            this.SeasonComboBox.Location = new System.Drawing.Point(9, 34);
+            this.SeasonComboBox.Location = new System.Drawing.Point(9, 31);
             this.SeasonComboBox.Name = "SeasonComboBox";
             this.SeasonComboBox.Size = new System.Drawing.Size(80, 21);
             this.SeasonComboBox.TabIndex = 7;
             // 
             // SeasonButton
             // 
-            this.SeasonButton.Location = new System.Drawing.Point(95, 32);
+            this.SeasonButton.Location = new System.Drawing.Point(95, 30);
             this.SeasonButton.Name = "SeasonButton";
             this.SeasonButton.Size = new System.Drawing.Size(75, 23);
             this.SeasonButton.TabIndex = 6;
