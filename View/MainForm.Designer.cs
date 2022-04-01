@@ -127,7 +127,7 @@ namespace Programming.View
             // 
             // SeasonButton
             // 
-            this.SeasonButton.Location = new System.Drawing.Point(145, 32);
+            this.SeasonButton.Location = new System.Drawing.Point(167, 32);
             this.SeasonButton.Name = "SeasonButton";
             this.SeasonButton.Size = new System.Drawing.Size(75, 23);
             this.SeasonButton.TabIndex = 6;
@@ -168,7 +168,7 @@ namespace Programming.View
             // 
             // WeekParseButton
             // 
-            this.WeekParseButton.Location = new System.Drawing.Point(143, 30);
+            this.WeekParseButton.Location = new System.Drawing.Point(152, 32);
             this.WeekParseButton.Name = "WeekParseButton";
             this.WeekParseButton.Size = new System.Drawing.Size(75, 23);
             this.WeekParseButton.TabIndex = 6;
