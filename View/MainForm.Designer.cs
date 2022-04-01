@@ -291,7 +291,7 @@ namespace Programming.View
             this.MoviesGroupBox.Size = new System.Drawing.Size(240, 273);
             this.MoviesGroupBox.TabIndex = 8;
             this.MoviesGroupBox.TabStop = false;
-            this.MoviesGroupBox.Text = "Films";
+            this.MoviesGroupBox.Text = "Movies";
             // 
             // RatingMoviesTextBox
             // 
