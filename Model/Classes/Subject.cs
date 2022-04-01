@@ -18,11 +18,11 @@ namespace Programming.Model.Classes
             Mark = "";
             ExamDate = new DateTime();
         }
-        public Subject(string name, uint hours, string grade, DateTime examDate)
+        public Subject(string name, uint hours, string mark, DateTime examDate)
         {
             Name = name;
             Hours = hours;
-            Mark = grade;
+            Mark = mark;
             ExamDate = examDate;
         }
     }
