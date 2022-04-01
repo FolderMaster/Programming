@@ -212,14 +212,14 @@ namespace Programming.View
             this.EnumListBox.FormattingEnabled = true;
             this.EnumListBox.Location = new System.Drawing.Point(6, 32);
             this.EnumListBox.Name = "EnumListBox";
-            this.EnumListBox.Size = new System.Drawing.Size(153, 147);
+            this.EnumListBox.Size = new System.Drawing.Size(130, 147);
             this.EnumListBox.TabIndex = 0;
             this.EnumListBox.SelectedIndexChanged += new System.EventHandler(this.EnumListBox_SelectedIndexChanged);
             // 
             // IntLabel
             // 
             this.IntLabel.AutoSize = true;
-            this.IntLabel.Location = new System.Drawing.Point(325, 16);
+            this.IntLabel.Location = new System.Drawing.Point(255, 16);
             this.IntLabel.Name = "IntLabel";
             this.IntLabel.Size = new System.Drawing.Size(58, 13);
             this.IntLabel.TabIndex = 5;
@@ -236,25 +236,25 @@ namespace Programming.View
             // 
             // IntTextBox
             // 
-            this.IntTextBox.Location = new System.Drawing.Point(328, 32);
+            this.IntTextBox.Location = new System.Drawing.Point(258, 32);
             this.IntTextBox.Name = "IntTextBox";
             this.IntTextBox.ReadOnly = true;
-            this.IntTextBox.Size = new System.Drawing.Size(100, 20);
+            this.IntTextBox.Size = new System.Drawing.Size(55, 20);
             this.IntTextBox.TabIndex = 4;
             // 
             // ValueListBox
             // 
             this.ValueListBox.FormattingEnabled = true;
-            this.ValueListBox.Location = new System.Drawing.Point(179, 32);
+            this.ValueListBox.Location = new System.Drawing.Point(161, 32);
             this.ValueListBox.Name = "ValueListBox";
-            this.ValueListBox.Size = new System.Drawing.Size(120, 147);
+            this.ValueListBox.Size = new System.Drawing.Size(72, 147);
             this.ValueListBox.TabIndex = 1;
             this.ValueListBox.SelectedIndexChanged += new System.EventHandler(this.ValueListBox_SelectedIndexChanged);
             // 
             // ValueLabel
             // 
             this.ValueLabel.AutoSize = true;
-            this.ValueLabel.Location = new System.Drawing.Point(176, 16);
+            this.ValueLabel.Location = new System.Drawing.Point(158, 16);
             this.ValueLabel.Name = "ValueLabel";
             this.ValueLabel.Size = new System.Drawing.Size(75, 13);
             this.ValueLabel.TabIndex = 3;
