@@ -48,7 +48,7 @@ namespace Programming.View
                     1900 + (uint)random.Next(0, 200),
                     ((Genre)random.Next(0, 6)).ToString(),
                     random.NextDouble() * random.Next(0, 10));
-                FilmsListBox.Items.Add("Film " + (n + 1));
+                MoviesListBox.Items.Add("Film " + (n + 1));
             }
         }
 
@@ -70,7 +70,7 @@ namespace Programming.View
             return IndexMaxWidth;
         }
 
-        private int FindFilmWithMaxRating(Movie[] movies)
+        private int FindMovieWithMaxRating(Movie[] movies)
         {
             int IndexMaxRating = -1;
             if (movies.Length > 0)
@@ -213,68 +213,68 @@ namespace Programming.View
             RectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth(_rectangles);
         }
 
-        private void FilmsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void MoviesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _currentMovie = _movies[FilmsListBox.SelectedIndex];
-            NameFilmsTextBox.Text = _currentMovie.Name;
-            MinutesFilmsTextBox.Text = _currentMovie.Minutes.ToString();
-            IssueYearFilmsTextBox.Text = _currentMovie.ReleaseYear.ToString();
-            GenreFilmsTextBox.Text = _currentMovie.Genre;
-            RatingFilmsTextBox.Text = _currentMovie.Rating.ToString();
+            _currentMovie = _movies[MoviesListBox.SelectedIndex];
+            NameMoviesTextBox.Text = _currentMovie.Name;
+            MinutesMoviesTextBox.Text = _currentMovie.Minutes.ToString();
+            IssueYearMoviesTextBox.Text = _currentMovie.ReleaseYear.ToString();
+            GenreMoviesTextBox.Text = _currentMovie.Genre;
+            RatingMoviesTextBox.Text = _currentMovie.Rating.ToString();
         }
 
-        private void NameFilmsTextBox_TextChanged(object sender, EventArgs e)
+        private void NameMoviesTextBox_TextChanged(object sender, EventArgs e)
         {
-            _currentMovie.Name = NameFilmsTextBox.Text;
+            _currentMovie.Name = NameMoviesTextBox.Text;
         }
 
-        private void MinutesFilmsTextBox_TextChanged(object sender, EventArgs e)
+        private void MinutesMoviesTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                _currentMovie.Minutes = uint.Parse(MinutesFilmsTextBox.Text);
-                MinutesFilmsTextBox.BackColor = CorrectColor;
+                _currentMovie.Minutes = uint.Parse(MinutesMoviesTextBox.Text);
+                MinutesMoviesTextBox.BackColor = CorrectColor;
             }
             catch
             {
-                MinutesFilmsTextBox.BackColor = ErrorColor;
+                MinutesMoviesTextBox.BackColor = ErrorColor;
             }
         }
 
-        private void IssueYearFilmsTextBox_TextChanged(object sender, EventArgs e)
+        private void RealiseYearMoviesTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                _currentMovie.ReleaseYear = uint.Parse(IssueYearFilmsTextBox.Text);
-                IssueYearFilmsTextBox.BackColor = CorrectColor;
+                _currentMovie.ReleaseYear = uint.Parse(IssueYearMoviesTextBox.Text);
+                IssueYearMoviesTextBox.BackColor = CorrectColor;
             }
             catch
             {
-                IssueYearFilmsTextBox.BackColor = ErrorColor;
+                IssueYearMoviesTextBox.BackColor = ErrorColor;
             }
         }
 
-        private void GenreFilmsTextBox_TextChanged(object sender, EventArgs e)
+        private void GenreMoviesTextBox_TextChanged(object sender, EventArgs e)
         {
-            _currentMovie.Genre = GenreFilmsTextBox.Text;
+            _currentMovie.Genre = GenreMoviesTextBox.Text;
         }
 
-        private void RatingFilmsTextBox_TextChanged(object sender, EventArgs e)
+        private void RatingMoviesTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                _currentMovie.Rating = double.Parse(RatingFilmsTextBox.Text);
-                RatingFilmsTextBox.BackColor = CorrectColor;
+                _currentMovie.Rating = double.Parse(RatingMoviesTextBox.Text);
+                RatingMoviesTextBox.BackColor = CorrectColor;
             }
             catch
             {
-                RatingFilmsTextBox.BackColor = ErrorColor;
+                RatingMoviesTextBox.BackColor = ErrorColor;
             }
         }
 
-        private void FilmsButton_Click(object sender, EventArgs e)
+        private void MoviesButton_Click(object sender, EventArgs e)
         {
-            FilmsListBox.SelectedIndex = FindFilmWithMaxRating(_movies);
+            MoviesListBox.SelectedIndex = FindMovieWithMaxRating(_movies);
         }
     }
 }
