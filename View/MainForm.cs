@@ -218,7 +218,7 @@ namespace Programming.View
             _currentMovie = _movies[MoviesListBox.SelectedIndex];
             NameMoviesTextBox.Text = _currentMovie.Name;
             MinutesMoviesTextBox.Text = _currentMovie.Minutes.ToString();
-            IssueYearMoviesTextBox.Text = _currentMovie.ReleaseYear.ToString();
+            ReleaseYearMoviesTextBox.Text = _currentMovie.ReleaseYear.ToString();
             GenreMoviesTextBox.Text = _currentMovie.Genre;
             RatingMoviesTextBox.Text = _currentMovie.Rating.ToString();
         }
@@ -245,12 +245,12 @@ namespace Programming.View
         {
             try
             {
-                _currentMovie.ReleaseYear = uint.Parse(IssueYearMoviesTextBox.Text);
-                IssueYearMoviesTextBox.BackColor = CorrectColor;
+                _currentMovie.ReleaseYear = uint.Parse(ReleaseYearMoviesTextBox.Text);
+                ReleaseYearMoviesTextBox.BackColor = CorrectColor;
             }
             catch
             {
-                IssueYearMoviesTextBox.BackColor = ErrorColor;
+                ReleaseYearMoviesTextBox.BackColor = ErrorColor;
             }
         }
 

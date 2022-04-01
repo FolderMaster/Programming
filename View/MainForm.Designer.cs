@@ -55,8 +55,8 @@ namespace Programming.View
             this.GenreMoviesTextBox = new System.Windows.Forms.TextBox();
             this.GenreMoviesLabel = new System.Windows.Forms.Label();
             this.MoviesButton = new System.Windows.Forms.Button();
-            this.RealiseYearMoviesLabel = new System.Windows.Forms.Label();
-            this.IssueYearMoviesTextBox = new System.Windows.Forms.TextBox();
+            this.ReleaseYearMoviesLabel = new System.Windows.Forms.Label();
+            this.ReleaseYearMoviesTextBox = new System.Windows.Forms.TextBox();
             this.MinutesMoviesLabel = new System.Windows.Forms.Label();
             this.MinutesMoviesTextBox = new System.Windows.Forms.TextBox();
             this.NameMoviesLabel = new System.Windows.Forms.Label();
@@ -122,12 +122,12 @@ namespace Programming.View
             this.SeasonComboBox.FormattingEnabled = true;
             this.SeasonComboBox.Location = new System.Drawing.Point(9, 34);
             this.SeasonComboBox.Name = "SeasonComboBox";
-            this.SeasonComboBox.Size = new System.Drawing.Size(112, 21);
+            this.SeasonComboBox.Size = new System.Drawing.Size(80, 21);
             this.SeasonComboBox.TabIndex = 7;
             // 
             // SeasonButton
             // 
-            this.SeasonButton.Location = new System.Drawing.Point(167, 32);
+            this.SeasonButton.Location = new System.Drawing.Point(95, 32);
             this.SeasonButton.Name = "SeasonButton";
             this.SeasonButton.Size = new System.Drawing.Size(75, 23);
             this.SeasonButton.TabIndex = 6;
@@ -168,7 +168,7 @@ namespace Programming.View
             // 
             // WeekParseButton
             // 
-            this.WeekParseButton.Location = new System.Drawing.Point(152, 32);
+            this.WeekParseButton.Location = new System.Drawing.Point(119, 30);
             this.WeekParseButton.Name = "WeekParseButton";
             this.WeekParseButton.Size = new System.Drawing.Size(75, 23);
             this.WeekParseButton.TabIndex = 6;
@@ -180,7 +180,7 @@ namespace Programming.View
             // 
             this.WeekParseTextBox.Location = new System.Drawing.Point(9, 32);
             this.WeekParseTextBox.Name = "WeekParseTextBox";
-            this.WeekParseTextBox.Size = new System.Drawing.Size(115, 20);
+            this.WeekParseTextBox.Size = new System.Drawing.Size(104, 20);
             this.WeekParseTextBox.TabIndex = 5;
             // 
             // WeekLabel
@@ -279,8 +279,8 @@ namespace Programming.View
             this.MoviesGroupBox.Controls.Add(this.GenreMoviesTextBox);
             this.MoviesGroupBox.Controls.Add(this.GenreMoviesLabel);
             this.MoviesGroupBox.Controls.Add(this.MoviesButton);
-            this.MoviesGroupBox.Controls.Add(this.RealiseYearMoviesLabel);
-            this.MoviesGroupBox.Controls.Add(this.IssueYearMoviesTextBox);
+            this.MoviesGroupBox.Controls.Add(this.ReleaseYearMoviesLabel);
+            this.MoviesGroupBox.Controls.Add(this.ReleaseYearMoviesTextBox);
             this.MoviesGroupBox.Controls.Add(this.MinutesMoviesLabel);
             this.MoviesGroupBox.Controls.Add(this.MinutesMoviesTextBox);
             this.MoviesGroupBox.Controls.Add(this.NameMoviesLabel);
@@ -337,22 +337,22 @@ namespace Programming.View
             this.MoviesButton.UseVisualStyleBackColor = true;
             this.MoviesButton.Click += new System.EventHandler(this.MoviesButton_Click);
             // 
-            // RealiseYearMoviesLabel
+            // ReleaseYearMoviesLabel
             // 
-            this.RealiseYearMoviesLabel.AutoSize = true;
-            this.RealiseYearMoviesLabel.Location = new System.Drawing.Point(111, 97);
-            this.RealiseYearMoviesLabel.Name = "RealiseYearMoviesLabel";
-            this.RealiseYearMoviesLabel.Size = new System.Drawing.Size(68, 13);
-            this.RealiseYearMoviesLabel.TabIndex = 11;
-            this.RealiseYearMoviesLabel.Text = "Realise year:";
+            this.ReleaseYearMoviesLabel.AutoSize = true;
+            this.ReleaseYearMoviesLabel.Location = new System.Drawing.Point(111, 97);
+            this.ReleaseYearMoviesLabel.Name = "ReleaseYearMoviesLabel";
+            this.ReleaseYearMoviesLabel.Size = new System.Drawing.Size(72, 13);
+            this.ReleaseYearMoviesLabel.TabIndex = 11;
+            this.ReleaseYearMoviesLabel.Text = "Release year:";
             // 
-            // IssueYearMoviesTextBox
+            // ReleaseYearMoviesTextBox
             // 
-            this.IssueYearMoviesTextBox.Location = new System.Drawing.Point(111, 113);
-            this.IssueYearMoviesTextBox.Name = "IssueYearMoviesTextBox";
-            this.IssueYearMoviesTextBox.Size = new System.Drawing.Size(100, 20);
-            this.IssueYearMoviesTextBox.TabIndex = 10;
-            this.IssueYearMoviesTextBox.TextChanged += new System.EventHandler(this.RealiseYearMoviesTextBox_TextChanged);
+            this.ReleaseYearMoviesTextBox.Location = new System.Drawing.Point(111, 113);
+            this.ReleaseYearMoviesTextBox.Name = "ReleaseYearMoviesTextBox";
+            this.ReleaseYearMoviesTextBox.Size = new System.Drawing.Size(100, 20);
+            this.ReleaseYearMoviesTextBox.TabIndex = 10;
+            this.ReleaseYearMoviesTextBox.TextChanged += new System.EventHandler(this.RealiseYearMoviesTextBox_TextChanged);
             // 
             // MinutesMoviesLabel
             // 
@@ -546,8 +546,8 @@ namespace Programming.View
         private System.Windows.Forms.ListBox RectanglesListBox;
         private System.Windows.Forms.GroupBox MoviesGroupBox;
         private System.Windows.Forms.Button MoviesButton;
-        private System.Windows.Forms.Label RealiseYearMoviesLabel;
-        private System.Windows.Forms.TextBox IssueYearMoviesTextBox;
+        private System.Windows.Forms.Label ReleaseYearMoviesLabel;
+        private System.Windows.Forms.TextBox ReleaseYearMoviesTextBox;
         private System.Windows.Forms.Label MinutesMoviesLabel;
         private System.Windows.Forms.TextBox MinutesMoviesTextBox;
         private System.Windows.Forms.Label NameMoviesLabel;
