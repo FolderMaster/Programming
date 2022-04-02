@@ -14,7 +14,9 @@ namespace Programming.Model.Classes
             }
             set
             {
-                Match match = new Regex(@"(\d{1})\s+(\d{3})\s+(\d{3})\s+(\d{2})\s+(\d{2})").Match(value);
+                // Contact.PhoneNumber must be pattern as "+0-(000)-000-00-00"
+                Match match = 
+                    new Regex(@"(\d{1})\s+(\d{3})\s+(\d{3})\s+(\d{2})\s+(\d{2})").Match(value);
                 if(match != null)
                 {
                     _phoneNumber = "+" + match.Groups[1].Value
@@ -25,7 +27,7 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException("Programming.Model.Classes.Contact.PhoneNumber is regular expression like \"\\d{1})\\s+(\\d{3})\\s+(\\d{3})\\s+(\\d{2})\\s+(\\d{2}\")");
+                    throw new ArgumentException("Contact.PhoneNumber must be pattern as \"+0-(000)-000-00-00\"");
                 }
             }
         }
@@ -38,7 +40,7 @@ namespace Programming.Model.Classes
 
         public Contact()
         {
-            PhoneNumber = "00000000000";
+            PhoneNumber = "+0-(000)-000-00-00";
             Name = "";
             Surname = "";
             Patronymic = "";

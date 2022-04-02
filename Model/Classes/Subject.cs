@@ -22,7 +22,7 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException("Programming.Model.Classes.Subject.Hours <= 0");
+                    throw new ArgumentException("Subject.Hours <= 0");
                 }
             }
         }

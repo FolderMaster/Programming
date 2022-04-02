@@ -23,7 +23,7 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException("Programming.Model.Classes.Time.Hours < 0 or Programming.Model.Classes.Time.Hours >= 24");
+                    throw new ArgumentException("Time.Hours < 0 or Time.Hours >= 24");
                 }
             }
         }
@@ -42,7 +42,7 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException("Programming.Model.Classes.Time.Minutes < 0 or Programming.Model.Classes.Time.Minutes >= 60");
+                    throw new ArgumentException("Time.Minutes < 0 or Time.Minutes >= 60");
                 }
             }
         }
@@ -61,7 +61,7 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException("Programming.Model.Classes.Time.Hours < 0 or Programming.Model.Classes.Time.Hours >= 60");
+                    throw new ArgumentException("Time.Hours < 0 or Time.Hours >= 60");
                 }
             }
         }

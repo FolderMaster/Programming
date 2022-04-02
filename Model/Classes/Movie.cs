@@ -26,7 +26,7 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException("Programming.Model.Classes.Movie.Minutes <= 0");
+                    throw new ArgumentException("Movie.Minutes <= 0");
                 }
             }
         }
@@ -46,7 +46,8 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException("Programming.Model.Classes.Movie.ReleaseYear < 1900 or Programming.Model.Classes.Movie.ReleaseYear > DateTime.Now.Year");
+                    throw new ArgumentException("Movie.ReleaseYear < 1900" +
+                        " or Movie.ReleaseYear > DateTime.Now.Year");
                 }
             }
         }
@@ -67,7 +68,8 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException("Programming.Model.Classes.Movie.Rating < 0 or Programming.Model.Classes.Movie.Rating > 10");
+                    throw new ArgumentException("Movie.Rating < 0" +
+                        " or Movie.Rating > 10");
                 }
             }
         }

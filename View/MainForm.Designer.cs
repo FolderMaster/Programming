@@ -39,8 +39,8 @@ namespace Programming.View
             this.WeekdayGroupBox = new System.Windows.Forms.GroupBox();
             this.ParseWeekdayLabel = new System.Windows.Forms.Label();
             this.ParseWeekdayButton = new System.Windows.Forms.Button();
-            this.WeekParseTextBox = new System.Windows.Forms.TextBox();
-            this.WeekLabel = new System.Windows.Forms.Label();
+            this.WeekParseWeekdayTextBox = new System.Windows.Forms.TextBox();
+            this.WeekWeekdayLabel = new System.Windows.Forms.Label();
             this.EnumGroupBox = new System.Windows.Forms.GroupBox();
             this.EnumsEnumListBox = new System.Windows.Forms.ListBox();
             this.IntEnumLabel = new System.Windows.Forms.Label();
@@ -128,7 +128,7 @@ namespace Programming.View
             // 
             // SeasonButton
             // 
-            this.SeasonButton.Location = new System.Drawing.Point(95, 30);
+            this.SeasonButton.Location = new System.Drawing.Point(94, 30);
             this.SeasonButton.Name = "SeasonButton";
             this.SeasonButton.Size = new System.Drawing.Size(75, 23);
             this.SeasonButton.TabIndex = 6;
@@ -149,8 +149,8 @@ namespace Programming.View
             // 
             this.WeekdayGroupBox.Controls.Add(this.ParseWeekdayLabel);
             this.WeekdayGroupBox.Controls.Add(this.ParseWeekdayButton);
-            this.WeekdayGroupBox.Controls.Add(this.WeekParseTextBox);
-            this.WeekdayGroupBox.Controls.Add(this.WeekLabel);
+            this.WeekdayGroupBox.Controls.Add(this.WeekParseWeekdayTextBox);
+            this.WeekdayGroupBox.Controls.Add(this.WeekWeekdayLabel);
             this.WeekdayGroupBox.Location = new System.Drawing.Point(8, 202);
             this.WeekdayGroupBox.Name = "WeekdayGroupBox";
             this.WeekdayGroupBox.Size = new System.Drawing.Size(233, 77);
@@ -177,21 +177,21 @@ namespace Programming.View
             this.ParseWeekdayButton.UseVisualStyleBackColor = true;
             this.ParseWeekdayButton.Click += new System.EventHandler(this.WeekParseButton_Click);
             // 
-            // WeekParseTextBox
+            // WeekParseWeekdayTextBox
             // 
-            this.WeekParseTextBox.Location = new System.Drawing.Point(9, 32);
-            this.WeekParseTextBox.Name = "WeekParseTextBox";
-            this.WeekParseTextBox.Size = new System.Drawing.Size(104, 20);
-            this.WeekParseTextBox.TabIndex = 5;
+            this.WeekParseWeekdayTextBox.Location = new System.Drawing.Point(9, 32);
+            this.WeekParseWeekdayTextBox.Name = "WeekParseWeekdayTextBox";
+            this.WeekParseWeekdayTextBox.Size = new System.Drawing.Size(104, 20);
+            this.WeekParseWeekdayTextBox.TabIndex = 5;
             // 
-            // WeekLabel
+            // WeekWeekdayLabel
             // 
-            this.WeekLabel.AutoSize = true;
-            this.WeekLabel.Location = new System.Drawing.Point(6, 16);
-            this.WeekLabel.Name = "WeekLabel";
-            this.WeekLabel.Size = new System.Drawing.Size(115, 13);
-            this.WeekLabel.TabIndex = 3;
-            this.WeekLabel.Text = "Type value for parsing:";
+            this.WeekWeekdayLabel.AutoSize = true;
+            this.WeekWeekdayLabel.Location = new System.Drawing.Point(6, 16);
+            this.WeekWeekdayLabel.Name = "WeekWeekdayLabel";
+            this.WeekWeekdayLabel.Size = new System.Drawing.Size(115, 13);
+            this.WeekWeekdayLabel.TabIndex = 3;
+            this.WeekWeekdayLabel.Text = "Type value for parsing:";
             // 
             // EnumGroupBox
             // 
@@ -287,9 +287,9 @@ namespace Programming.View
             this.MoviesGroupBox.Controls.Add(this.NameMoviesLabel);
             this.MoviesGroupBox.Controls.Add(this.NameMoviesTextBox);
             this.MoviesGroupBox.Controls.Add(this.MoviesListBox);
-            this.MoviesGroupBox.Location = new System.Drawing.Point(256, 6);
+            this.MoviesGroupBox.Location = new System.Drawing.Point(254, 6);
             this.MoviesGroupBox.Name = "MoviesGroupBox";
-            this.MoviesGroupBox.Size = new System.Drawing.Size(237, 273);
+            this.MoviesGroupBox.Size = new System.Drawing.Size(239, 273);
             this.MoviesGroupBox.TabIndex = 8;
             this.MoviesGroupBox.TabStop = false;
             this.MoviesGroupBox.Text = "Movies";
@@ -526,8 +526,8 @@ namespace Programming.View
         private System.Windows.Forms.TextBox IntEnumTextBox;
         private System.Windows.Forms.GroupBox EnumGroupBox;
         private System.Windows.Forms.GroupBox WeekdayGroupBox;
-        private System.Windows.Forms.TextBox WeekParseTextBox;
-        private System.Windows.Forms.Label WeekLabel;
+        private System.Windows.Forms.TextBox WeekParseWeekdayTextBox;
+        private System.Windows.Forms.Label WeekWeekdayLabel;
         private System.Windows.Forms.Label ParseWeekdayLabel;
         private System.Windows.Forms.Button ParseWeekdayButton;
         private System.Windows.Forms.GroupBox SeasonGroupBox;

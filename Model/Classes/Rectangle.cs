@@ -22,7 +22,7 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException("Programming.Model.Classes.Rectangle.Length <= 0");
+                    throw new ArgumentException("Rectangle.Length <= 0");
                 }
             }
         }
@@ -41,7 +41,7 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException("Programming.Model.Classes.Rectangle.Width <= 0");
+                    throw new ArgumentException("Rectangle.Width <= 0");
                 }
             }
         }

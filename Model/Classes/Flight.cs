@@ -23,7 +23,7 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException("Programming.Model.Classes.Flight.Minutes <= 0");
+                    throw new ArgumentException("Flight.Minutes <= 0");
                 }
             }
         }

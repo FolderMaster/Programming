@@ -11,12 +11,15 @@ namespace Programming.View
     public partial class MainForm : Form
     {
         private Color correctColor = Color.White;
+
         private Color errorColor = Color.Yellow;
 
         private Rectangle[] _rectangles;
+        
         private Rectangle _currentRectangle  = new Rectangle();
 
         private Movie[] _movies;
+
         private Movie _currentMovie = new Movie();
 
         public MainForm()
@@ -28,20 +31,29 @@ namespace Programming.View
 
             SeasonComboBox.DataSource = Enum.GetValues(typeof(Season));
 
-            int Count = 18;
-            Random random = new Random();
+            int count = 18;
+            CreateRectangles(count);
+            CreateMovies(count);
+        }
 
-            _rectangles = new Rectangle[Count];
+        private void CreateRectangles(int count)
+        {
+            Random random = new Random();
+            _rectangles = new Rectangle[count];
             for (int n = 0; n < _rectangles.Length; ++n)
             {
                 _rectangles[n] = new Rectangle(
                     Math.Round((random.NextDouble() + 0.0001) * random.Next(1, 100), 10),
-                    Math.Round((random.NextDouble() + 0.0001) * random.Next(1, 100), 10), 
+                    Math.Round((random.NextDouble() + 0.0001) * random.Next(1, 100), 10),
                     (Colour)random.Next(0, 9));
                 RectanglesListBox.Items.Add("Rectangle " + (n + 1));
             }
+        }
 
-            _movies = new Movie[Count];
+        private void CreateMovies(int count)
+        {
+            Random random = new Random();
+            _movies = new Movie[count];
             for (int n = 0; n < _movies.Length; ++n)
             {
                 _movies[n] = new Movie(
@@ -56,48 +68,46 @@ namespace Programming.View
 
         private int FindRectangleWithMaxWidth(Rectangle[] rectangles)
         {
-            int IndexMaxWidth = -1;
+            int indexMaxWidth = -1;
             if (rectangles.Length > 0)
             {
-                IndexMaxWidth = 0;
-                double Max = rectangles[IndexMaxWidth].Width;
+                indexMaxWidth = 0;
                 for (int n = 1; n < rectangles.Length; ++n)
                 {
-                    if (rectangles[n].Width > rectangles[IndexMaxWidth].Width)
+                    if (rectangles[n].Width > rectangles[indexMaxWidth].Width)
                     {
-                        IndexMaxWidth = n;
+                        indexMaxWidth = n;
                     }
                 }
             }
-            return IndexMaxWidth;
+            return indexMaxWidth;
         }
 
         private int FindMovieWithMaxRating(Movie[] movies)
         {
-            int IndexMaxRating = -1;
+            int indexMaxRating = -1;
             if (movies.Length > 0)
             {
-                IndexMaxRating = 0;
-                double Max = movies[IndexMaxRating].Rating;
+                indexMaxRating = 0;
                 for (int n = 1; n < movies.Length; ++n)
                 {
-                    if (movies[n].Rating > movies[IndexMaxRating].Rating)
+                    if (movies[n].Rating > movies[indexMaxRating].Rating)
                     {
-                        IndexMaxRating = n;
+                        indexMaxRating = n;
                     }
                 }
             }
-            return IndexMaxRating;
+            return indexMaxRating;
         }
 
         private string CreateRandomString(int size, Random random)
         {
-            string Result = ((char)random.Next(65, 91)).ToString();
+            string result = ((char)random.Next(65, 91)).ToString();
             for (int n = 0; n < size - 1; ++n)
             {
-                Result += (char)random.Next(97, 123);
+                result += (char)random.Next(97, 123);
             }
-            return Result;
+            return result;
         }
 
         private void EnumListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -135,7 +145,7 @@ namespace Programming.View
         private void WeekParseButton_Click(object sender, EventArgs e)
         {
             Weekday day;
-            if (Enum.TryParse(WeekParseTextBox.Text, out day))
+            if (Enum.TryParse(WeekParseWeekdayTextBox.Text, out day))
             {
                 ParseWeekdayLabel.Text = $"This day of week ({day.ToString()} = {(int)day}).";
             }
@@ -222,6 +232,7 @@ namespace Programming.View
         private void MoviesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentMovie = _movies[MoviesListBox.SelectedIndex];
+
             NameMoviesTextBox.Text = _currentMovie.Name;
             MinutesMoviesTextBox.Text = _currentMovie.Minutes.ToString();
             ReleaseYearMoviesTextBox.Text = _currentMovie.ReleaseYear.ToString();
