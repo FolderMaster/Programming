@@ -10,9 +10,9 @@ namespace Programming.View
 {
     public partial class MainForm : Form
     {
-        private Color correctColor = Color.White;
+        private readonly Color _correctColor = Color.White;
 
-        private Color errorColor = Color.Yellow;
+        private readonly Color _errorColor = Color.Yellow;
 
         private Rectangle[] _rectangles;
         
@@ -190,11 +190,11 @@ namespace Programming.View
             try
             {
                 _currentRectangle.Length = double.Parse(LengthRectanglesTextBox.Text);
-                LengthRectanglesTextBox.BackColor = correctColor;
+                LengthRectanglesTextBox.BackColor = _correctColor;
             }
             catch
             {
-                LengthRectanglesTextBox.BackColor = errorColor;
+                LengthRectanglesTextBox.BackColor = _errorColor;
             }
         }
 
@@ -203,11 +203,11 @@ namespace Programming.View
             try
             {
                 _currentRectangle.Width = double.Parse(WidthRectanglesTextBox.Text);
-                WidthRectanglesTextBox.BackColor = correctColor;
+                WidthRectanglesTextBox.BackColor = _correctColor;
             }
             catch
             {
-                WidthRectanglesTextBox.BackColor = errorColor;
+                WidthRectanglesTextBox.BackColor = _errorColor;
             }
         }
 
@@ -216,11 +216,11 @@ namespace Programming.View
             try
             {
                 _currentRectangle.Color = (Colour)Enum.Parse(typeof(Colour), ColorRectanglesTextBox.Text);
-                ColorRectanglesTextBox.BackColor = correctColor;
+                ColorRectanglesTextBox.BackColor = _correctColor;
             }
             catch
             {
-                ColorRectanglesTextBox.BackColor = errorColor;
+                ColorRectanglesTextBox.BackColor = _errorColor;
             }
         }
 
@@ -250,11 +250,11 @@ namespace Programming.View
             try
             {
                 _currentMovie.Minutes = int.Parse(MinutesMoviesTextBox.Text);
-                MinutesMoviesTextBox.BackColor = correctColor;
+                MinutesMoviesTextBox.BackColor = _correctColor;
             }
             catch
             {
-                MinutesMoviesTextBox.BackColor = errorColor;
+                MinutesMoviesTextBox.BackColor = _errorColor;
             }
         }
 
@@ -263,11 +263,11 @@ namespace Programming.View
             try
             {
                 _currentMovie.ReleaseYear = int.Parse(ReleaseYearMoviesTextBox.Text);
-                ReleaseYearMoviesTextBox.BackColor = correctColor;
+                ReleaseYearMoviesTextBox.BackColor = _correctColor;
             }
             catch
             {
-                ReleaseYearMoviesTextBox.BackColor = errorColor;
+                ReleaseYearMoviesTextBox.BackColor = _errorColor;
             }
         }
 
@@ -276,11 +276,11 @@ namespace Programming.View
             try
             {
                 _currentMovie.Genre = (Genre)Enum.Parse(typeof(Genre), GenreMoviesTextBox.Text);
-                GenreMoviesTextBox.BackColor = correctColor;
+                GenreMoviesTextBox.BackColor = _correctColor;
             }
             catch
             {
-                GenreMoviesTextBox.BackColor = errorColor;
+                GenreMoviesTextBox.BackColor = _errorColor;
             }
         }
 
@@ -289,11 +289,11 @@ namespace Programming.View
             try
             {
                 _currentMovie.Rating = double.Parse(RatingMoviesTextBox.Text);
-                RatingMoviesTextBox.BackColor = correctColor;
+                RatingMoviesTextBox.BackColor = _correctColor;
             }
             catch
             {
-                RatingMoviesTextBox.BackColor = errorColor;
+                RatingMoviesTextBox.BackColor = _errorColor;
             }
         }
 
