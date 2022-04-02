@@ -1,7 +1,8 @@
 ﻿using System;
+using Programming.Model.Enums;
 namespace Programming.Model.Classes
 {
-    class Rectangle
+    public class Rectangle
     {
         private double _length;
 
@@ -21,7 +22,7 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Programming.Model.Classes.Rectangle.Length <= 0");
                 }
             }
         }
@@ -40,21 +41,21 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Programming.Model.Classes.Rectangle.Width <= 0");
                 }
             }
         }
 
-        public string Color { get; set; }
+        public Colour Color { get; set; }
 
         public Rectangle()
         {
             Length = 1;
             Width = 1;
-            Color = "";
+            Color = Colour.None;
         }
 
-        public Rectangle(double length, double width, string color)
+        public Rectangle(double length, double width, Colour color)
         {
             Length = length;
             Width = width;

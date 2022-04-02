@@ -1,6 +1,6 @@
 ﻿namespace Programming.Model.Classes
 {
-    class Song
+    public class Song
     {
         public string Name { get; set; }
 

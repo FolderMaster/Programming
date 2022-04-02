@@ -2,6 +2,7 @@
 {
     public enum Genre
     {
+        None,
         Comedy,
         Drama,
         Thriller,

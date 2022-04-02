@@ -37,7 +37,7 @@ namespace Programming.View
                 _rectangles[n] = new Rectangle(
                     Math.Round((random.NextDouble() + 0.0001) * random.Next(1, 100), 10),
                     Math.Round((random.NextDouble() + 0.0001) * random.Next(1, 100), 10), 
-                    ((Colour)random.Next(0, 9)).ToString());
+                    (Colour)random.Next(0, 9));
                 RectanglesListBox.Items.Add("Rectangle " + (n + 1));
             }
 
@@ -46,9 +46,9 @@ namespace Programming.View
             {
                 _movies[n] = new Movie(
                     CreateRandomString(random.Next(1, 10), random),
-                    (uint)random.Next(0, 500),
-                    1900 + (uint)random.Next(0, DateTime.Now.Year - 1900),
-                    ((Genre)random.Next(0, 6)).ToString(),
+                    random.Next(0, 500),
+                    1900 + random.Next(0, DateTime.Now.Year - 1900),
+                    (Genre)random.Next(0, 7),
                     Math.Round(random.NextDouble() * random.Next(0, 10), 10));
                 MoviesListBox.Items.Add("Movie " + (n + 1));
             }
@@ -172,7 +172,7 @@ namespace Programming.View
             _currentRectangle = _rectangles[RectanglesListBox.SelectedIndex];
             LengthRectanglesTextBox.Text = _currentRectangle.Length.ToString();
             WidthRectanglesTextBox.Text = _currentRectangle.Width.ToString();
-            ColorRectanglesTextBox.Text = _currentRectangle.Color;
+            ColorRectanglesTextBox.Text = _currentRectangle.Color.ToString();
         }
 
         private void LengthRectanglesTextBox_TextChanged(object sender, EventArgs e)
@@ -203,7 +203,15 @@ namespace Programming.View
 
         private void ColorRectanglesTextBox_TextChanged(object sender, EventArgs e)
         {
-            _currentRectangle.Color = ColorRectanglesTextBox.Text;
+            try
+            {
+                _currentRectangle.Color = (Colour)Enum.Parse(typeof(Colour), ColorRectanglesTextBox.Text);
+                ColorRectanglesTextBox.BackColor = correctColor;
+            }
+            catch
+            {
+                ColorRectanglesTextBox.BackColor = errorColor;
+            }
         }
 
         private void RectanglesButton_Click(object sender, EventArgs e)
@@ -217,7 +225,7 @@ namespace Programming.View
             NameMoviesTextBox.Text = _currentMovie.Name;
             MinutesMoviesTextBox.Text = _currentMovie.Minutes.ToString();
             ReleaseYearMoviesTextBox.Text = _currentMovie.ReleaseYear.ToString();
-            GenreMoviesTextBox.Text = _currentMovie.Genre;
+            GenreMoviesTextBox.Text = _currentMovie.Genre.ToString();
             RatingMoviesTextBox.Text = _currentMovie.Rating.ToString();
         }
 
@@ -230,7 +238,7 @@ namespace Programming.View
         {
             try
             {
-                _currentMovie.Minutes = uint.Parse(MinutesMoviesTextBox.Text);
+                _currentMovie.Minutes = int.Parse(MinutesMoviesTextBox.Text);
                 MinutesMoviesTextBox.BackColor = correctColor;
             }
             catch
@@ -243,7 +251,7 @@ namespace Programming.View
         {
             try
             {
-                _currentMovie.ReleaseYear = uint.Parse(ReleaseYearMoviesTextBox.Text);
+                _currentMovie.ReleaseYear = int.Parse(ReleaseYearMoviesTextBox.Text);
                 ReleaseYearMoviesTextBox.BackColor = correctColor;
             }
             catch
@@ -254,7 +262,15 @@ namespace Programming.View
 
         private void GenreMoviesTextBox_TextChanged(object sender, EventArgs e)
         {
-            _currentMovie.Genre = GenreMoviesTextBox.Text;
+            try
+            {
+                _currentMovie.Genre = (Genre)Enum.Parse(typeof(Genre), GenreMoviesTextBox.Text);
+                GenreMoviesTextBox.BackColor = correctColor;
+            }
+            catch
+            {
+                GenreMoviesTextBox.BackColor = errorColor;
+            }
         }
 
         private void RatingMoviesTextBox_TextChanged(object sender, EventArgs e)

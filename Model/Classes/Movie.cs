@@ -1,17 +1,38 @@
 ﻿using System;
+using Programming.Model.Enums;
 namespace Programming.Model.Classes
 {
-    class Movie
+    public class Movie
     {
-        private uint _releaseYear;
+        private uint _minutes;
+
+        private int _releaseYear;
 
         private double _rating;
 
         public string Name { get; set; }
 
-        public uint Minutes { get; set; }
+        public int Minutes
+        {
+            get
+            {
+                return (int)_minutes;
+            }
+            set
+            {
+                if(value > 0)
+                {
+                    _minutes = (uint)value;
+                }
+                else
+                {
+                    throw new ArgumentException("Programming.Model.Classes.Movie.Minutes <= 0");
+                }
+            }
+        }
 
-        public uint ReleaseYear
+
+        public int ReleaseYear
         {
             get
             {
@@ -25,12 +46,12 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Programming.Model.Classes.Movie.ReleaseYear < 1900 or Programming.Model.Classes.Movie.ReleaseYear > DateTime.Now.Year");
                 }
             }
         }
 
-        public string Genre { get; set; }
+        public Genre Genre { get; set; }
 
         public double Rating
         {
@@ -46,7 +67,7 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Programming.Model.Classes.Movie.Rating < 0 or Programming.Model.Classes.Movie.Rating > 10");
                 }
             }
         }
@@ -54,13 +75,13 @@ namespace Programming.Model.Classes
         public Movie()
         {
             Name = "";
-            Minutes = 0;
-            ReleaseYear = (uint)DateTime.Now.Year;
-            Genre = "";
+            Minutes = 60;
+            ReleaseYear = DateTime.Now.Year;
+            Genre = Genre.None;
             Rating = 0;
         }
 
-        public Movie(string name, uint minutes, uint releaseYear, string genre, double rating)
+        public Movie(string name, int minutes, int releaseYear, Genre genre, double rating)
         {
             Name = name;
             Minutes = minutes;

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Programming.Model.Classes
 {
-    class Time
+    public class Time
     {
         private uint _hours;
 
@@ -9,59 +9,59 @@ namespace Programming.Model.Classes
 
         private uint _seconds;
 
-        public uint Hours
+        public int Hours
         {
             get
             {
-                return _hours;
+                return (int)_hours;
             }
             set
             {
-                if(value < 24)
+                if(value >= 0 && value < 24)
                 {
-                    _hours = value;
+                    _hours = (uint)value;
                 }
                 else
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Programming.Model.Classes.Time.Hours < 0 or Programming.Model.Classes.Time.Hours >= 24");
                 }
             }
         }
 
-        public uint Minutes
+        public int Minutes
         {
             get
             {
-                return _minutes;
+                return (int)_minutes;
             }
             set
             {
-                if (value < 60)
+                if (value >= 0 && value < 60)
                 {
-                    _minutes = value;
+                    _minutes = (uint)value;
                 }
                 else
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Programming.Model.Classes.Time.Minutes < 0 or Programming.Model.Classes.Time.Minutes >= 60");
                 }
             }
         }
 
-        public uint Seconds
+        public int Seconds
         {
             get
             {
-                return _seconds;
+                return (int)_seconds;
             }
             set
             {
-                if(value < 60)
+                if(value >= 0 && value < 60)
                 {
-                    _seconds = value;
+                    _seconds = (uint)value;
                 }
                 else
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Programming.Model.Classes.Time.Hours < 0 or Programming.Model.Classes.Time.Hours >= 60");
                 }
             }
         }
@@ -73,7 +73,7 @@ namespace Programming.Model.Classes
             Seconds = 0;
         }
 
-        public Time(uint hours, uint minutes, uint seconds)
+        public Time(int hours, int minutes, int seconds)
         {
             Hours = hours;
             Minutes = minutes;

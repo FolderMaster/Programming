@@ -2,11 +2,30 @@
 using Programming.Model.Enums;
 namespace Programming.Model.Classes
 {
-    class Subject
+    public class Subject
     {
+        private uint _hours;
+
         public string Name { get; set; }
 
-        public uint Hours { get; set; }
+        public int Hours
+        {
+            get
+            {
+                return (int)_hours;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    _hours = (uint)value;
+                }
+                else
+                {
+                    throw new ArgumentException("Programming.Model.Classes.Subject.Hours <= 0");
+                }
+            }
+        }
 
         public Mark Mark { get; set; }
 
@@ -15,11 +34,11 @@ namespace Programming.Model.Classes
         public Subject()
         {
             Name = "";
-            Hours = 0;
+            Hours = 1;
             Mark = Mark.None;
             ExamDate = new DateTime();
         }
-        public Subject(string name, uint hours, Mark mark, DateTime examDate)
+        public Subject(string name, int hours, Mark mark, DateTime examDate)
         {
             Name = name;
             Hours = hours;
