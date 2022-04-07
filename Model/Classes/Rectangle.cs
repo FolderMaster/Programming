@@ -1,13 +1,32 @@
-﻿using System;
-using Programming.Model.Enums;
+﻿using Programming.Model.Enums;
 namespace Programming.Model.Classes
 {
     public class Rectangle
     {
+        private static int _allRectanglesCount;
+
+        private int _id;
+
         private double _length;
 
         private double _width;
-        
+
+        static public int AllRectanglesCount
+        {
+            get
+            {
+                return _allRectanglesCount;
+            }
+        }
+
+        public int Id
+        {
+            get
+            {
+                return _id;
+            }
+        }
+
         public double Length
         {
             get
@@ -16,14 +35,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if (value > 0)
-                {
-                    _length = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Rectangle.Length <= 0");
-                }
+                Validator.AssertOnPositiveValue(value, "Rectangle.Length");
+                _length = value;
             }
         }
 
@@ -35,30 +48,34 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if(value > 0)
-                {
-                    _width = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Rectangle.Width <= 0");
-                }
+                Validator.AssertOnPositiveValue(value, "Rectangle.Width");
+                _width = value;
             }
         }
+
+        public Point2D Center { get; set; }
 
         public Colour Color { get; set; }
 
         public Rectangle()
         {
+            _id = _allRectanglesCount;
+            _allRectanglesCount += 1;
+
             Length = 1;
             Width = 1;
+            Center = new Point2D(0, 0);
             Color = Colour.None;
         }
 
-        public Rectangle(double length, double width, Colour color)
+        public Rectangle(double length, double width, Point2D center, Colour color)
         {
+            _id = _allRectanglesCount;
+            _allRectanglesCount += 1;
+
             Length = length;
             Width = width;
+            Center = center;
             Color = color;
         }
     }

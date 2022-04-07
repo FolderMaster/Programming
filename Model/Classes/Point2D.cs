@@ -1,0 +1,47 @@
+﻿namespace Programming.Model.Classes
+{
+    public class Point2D
+    {
+        private double _x;
+
+        private double _y;
+
+        public double X
+        {
+            get
+            {
+                return _x;
+            }
+            private set
+            {
+                Validator.AssertOnPositiveValue(value, "Point2D.X");
+                _x = value;
+            }
+        }
+
+        public double Y
+        {
+            get
+            {
+                return _y;
+            }
+            private set
+            {
+                Validator.AssertOnPositiveValue(value, "Point2D.Y");
+                _y = value;
+            }
+        }
+
+        public Point2D()
+        {
+            X = 0;
+            Y = 0;
+        }
+
+        public Point2D(double x, double y)
+        {
+            X = x;
+            Y = y;
+        }
+    }
+}

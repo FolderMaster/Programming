@@ -16,14 +16,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if (value > 0)
-                {
-                    _hours = (uint)value;
-                }
-                else
-                {
-                    throw new ArgumentException("Subject.Hours <= 0");
-                }
+                Validator.AssertOnPositiveValue(value, "Subject.Hours");
+                _hours = (uint)value;
             }
         }
 

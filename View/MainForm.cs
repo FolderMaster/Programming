@@ -26,10 +26,10 @@ namespace Programming.View
         {
             InitializeComponent();
 
-            EnumsEnumListBox.DataSource = Enum.GetValues(typeof(Enums));
-            EnumsEnumListBox.SelectedIndex = 0;
+            EnumsEnumsListBox.DataSource = Enum.GetValues(typeof(Enums));
+            EnumsEnumsListBox.SelectedIndex = 0;
 
-            SeasonComboBox.DataSource = Enum.GetValues(typeof(Season));
+            EnumsSeasonComboBox.DataSource = Enum.GetValues(typeof(Season));
 
             int count = 18;
             CreateRectangles(count);
@@ -45,8 +45,11 @@ namespace Programming.View
                 _rectangles[n] = new Rectangle(
                     Math.Round((random.NextDouble() + 0.0001) * random.Next(1, 100), 10),
                     Math.Round((random.NextDouble() + 0.0001) * random.Next(1, 100), 10),
+                    new Point2D(
+                        Math.Round((random.NextDouble() + 0.0001) * random.Next(1, 100), 3),
+                        Math.Round((random.NextDouble() + 0.0001) * random.Next(1, 100), 3)),
                     (Colour)random.Next(0, 9));
-                RectanglesListBox.Items.Add("Rectangle " + (n + 1));
+                ClassesRectanglesListBox.Items.Add("Rectangle " + (n + 1));
             }
         }
 
@@ -62,7 +65,7 @@ namespace Programming.View
                     1900 + random.Next(0, DateTime.Now.Year - 1900),
                     (Genre)random.Next(0, 7),
                     Math.Round(random.NextDouble() * random.Next(0, 10), 10));
-                MoviesListBox.Items.Add("Movie " + (n + 1));
+                ClassesMoviesListBox.Items.Add("Movie " + (n + 1));
             }
         }
 
@@ -112,25 +115,25 @@ namespace Programming.View
 
         private void EnumListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch((Enums)EnumsEnumListBox.SelectedItem)
+            switch((Enums)EnumsEnumsListBox.SelectedItem)
             {
                 case Enums.Weekday:
-                    ValueEnumListBox.DataSource = Enum.GetValues(typeof(Weekday));
+                    EnumsValueListBox.DataSource = Enum.GetValues(typeof(Weekday));
                     break;
                 case Enums.Genre:
-                    ValueEnumListBox.DataSource = Enum.GetValues(typeof(Genre));
+                    EnumsValueListBox.DataSource = Enum.GetValues(typeof(Genre));
                     break;
                 case Enums.Colour:
-                    ValueEnumListBox.DataSource = Enum.GetValues(typeof(Colour));
+                    EnumsValueListBox.DataSource = Enum.GetValues(typeof(Colour));
                     break;
                 case Enums.StudyForm:
-                    ValueEnumListBox.DataSource = Enum.GetValues(typeof(StudyForm));
+                    EnumsValueListBox.DataSource = Enum.GetValues(typeof(StudyForm));
                     break;
                 case Enums.SmartphoneManufacturers:
-                    ValueEnumListBox.DataSource = Enum.GetValues(typeof(SmartphoneManufacturers));
+                    EnumsValueListBox.DataSource = Enum.GetValues(typeof(SmartphoneManufacturers));
                     break;
                 case Enums.Season:
-                    ValueEnumListBox.DataSource = Enum.GetValues(typeof(Season));
+                    EnumsValueListBox.DataSource = Enum.GetValues(typeof(Season));
                     break;
                 default:
                     throw new NotImplementedException();
@@ -139,25 +142,25 @@ namespace Programming.View
 
         private void ValueListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            IntEnumTextBox.Text = ((int)ValueEnumListBox.SelectedItem).ToString();
+            EnumIntTextBox.Text = ((int)EnumsValueListBox.SelectedItem).ToString();
         }
 
         private void WeekParseButton_Click(object sender, EventArgs e)
         {
             Weekday day;
-            if (Enum.TryParse(WeekParseWeekdayTextBox.Text, out day))
+            if (Enum.TryParse(EnumsWeekdayParseTextBox.Text, out day))
             {
-                ParseWeekdayLabel.Text = $"This day of week ({day.ToString()} = {(int)day}).";
+                EnumsWeekdayParseLabel.Text = $"This day of week ({day.ToString()} = {(int)day}).";
             }
             else
             {
-                ParseWeekdayLabel.Text = "There isn't such day in week!";
+                EnumsWeekdayParseLabel.Text = "There isn't such day in week!";
             }
         }
 
         private void SeasonButton_Click(object sender, EventArgs e)
         {
-            switch ((Season)SeasonComboBox.SelectedItem)
+            switch ((Season)EnumsSeasonComboBox.SelectedItem)
             {
                 case Season.Winter:
                     MessageBox.Show("Br-r-r! Coldly!", "Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
@@ -179,22 +182,24 @@ namespace Programming.View
 
         private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _currentRectangle = _rectangles[RectanglesListBox.SelectedIndex];
-            LengthRectanglesTextBox.Text = _currentRectangle.Length.ToString();
-            WidthRectanglesTextBox.Text = _currentRectangle.Width.ToString();
-            ColorRectanglesTextBox.Text = _currentRectangle.Color.ToString();
+            _currentRectangle = _rectangles[ClassesRectanglesListBox.SelectedIndex];
+            ClassesRectanglesLengthTextBox.Text = _currentRectangle.Length.ToString();
+            ClassesRectanglesWidthTextBox.Text = _currentRectangle.Width.ToString();
+            ClassesRectanglesCenterTextBox.Text = $"{_currentRectangle.Center.X}; {_currentRectangle.Center.Y}";
+            ClassesRectanglesColorTextBox.Text = _currentRectangle.Color.ToString();
+            ClassesRectanglesIdTextBox.Text = _currentRectangle.Id.ToString();
         }
 
         private void LengthRectanglesTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                _currentRectangle.Length = double.Parse(LengthRectanglesTextBox.Text);
-                LengthRectanglesTextBox.BackColor = _correctColor;
+                _currentRectangle.Length = double.Parse(ClassesRectanglesLengthTextBox.Text);
+                ClassesRectanglesLengthTextBox.BackColor = _correctColor;
             }
             catch
             {
-                LengthRectanglesTextBox.BackColor = _errorColor;
+                ClassesRectanglesLengthTextBox.BackColor = _errorColor;
             }
         }
 
@@ -202,12 +207,12 @@ namespace Programming.View
         {
             try
             {
-                _currentRectangle.Width = double.Parse(WidthRectanglesTextBox.Text);
-                WidthRectanglesTextBox.BackColor = _correctColor;
+                _currentRectangle.Width = double.Parse(ClassesRectanglesWidthTextBox.Text);
+                ClassesRectanglesWidthTextBox.BackColor = _correctColor;
             }
             catch
             {
-                WidthRectanglesTextBox.BackColor = _errorColor;
+                ClassesRectanglesWidthTextBox.BackColor = _errorColor;
             }
         }
 
@@ -215,46 +220,46 @@ namespace Programming.View
         {
             try
             {
-                _currentRectangle.Color = (Colour)Enum.Parse(typeof(Colour), ColorRectanglesTextBox.Text);
-                ColorRectanglesTextBox.BackColor = _correctColor;
+                _currentRectangle.Color = (Colour)Enum.Parse(typeof(Colour), ClassesRectanglesColorTextBox.Text);
+                ClassesRectanglesColorTextBox.BackColor = _correctColor;
             }
             catch
             {
-                ColorRectanglesTextBox.BackColor = _errorColor;
+                ClassesRectanglesColorTextBox.BackColor = _errorColor;
             }
         }
 
         private void RectanglesButton_Click(object sender, EventArgs e)
         {
-            RectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth(_rectangles);
+            ClassesRectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth(_rectangles);
         }
 
         private void MoviesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _currentMovie = _movies[MoviesListBox.SelectedIndex];
+            _currentMovie = _movies[ClassesMoviesListBox.SelectedIndex];
 
-            NameMoviesTextBox.Text = _currentMovie.Name;
-            MinutesMoviesTextBox.Text = _currentMovie.Minutes.ToString();
-            ReleaseYearMoviesTextBox.Text = _currentMovie.ReleaseYear.ToString();
-            GenreMoviesTextBox.Text = _currentMovie.Genre.ToString();
-            RatingMoviesTextBox.Text = _currentMovie.Rating.ToString();
+            ClassesMoviesNameTextBox.Text = _currentMovie.Name;
+            ClassesMoviesMinutesTextBox.Text = _currentMovie.Minutes.ToString();
+            ClassesMoviesReleaseYearTextBox.Text = _currentMovie.ReleaseYear.ToString();
+            ClassesMoviesGenreTextBox.Text = _currentMovie.Genre.ToString();
+            ClassesMoviesRatingTextBox.Text = _currentMovie.Rating.ToString();
         }
 
         private void NameMoviesTextBox_TextChanged(object sender, EventArgs e)
         {
-            _currentMovie.Name = NameMoviesTextBox.Text;
+            _currentMovie.Name = ClassesMoviesNameTextBox.Text;
         }
 
         private void MinutesMoviesTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                _currentMovie.Minutes = int.Parse(MinutesMoviesTextBox.Text);
-                MinutesMoviesTextBox.BackColor = _correctColor;
+                _currentMovie.Minutes = int.Parse(ClassesMoviesMinutesTextBox.Text);
+                ClassesMoviesMinutesTextBox.BackColor = _correctColor;
             }
             catch
             {
-                MinutesMoviesTextBox.BackColor = _errorColor;
+                ClassesMoviesMinutesTextBox.BackColor = _errorColor;
             }
         }
 
@@ -262,12 +267,12 @@ namespace Programming.View
         {
             try
             {
-                _currentMovie.ReleaseYear = int.Parse(ReleaseYearMoviesTextBox.Text);
-                ReleaseYearMoviesTextBox.BackColor = _correctColor;
+                _currentMovie.ReleaseYear = int.Parse(ClassesMoviesReleaseYearTextBox.Text);
+                ClassesMoviesReleaseYearTextBox.BackColor = _correctColor;
             }
             catch
             {
-                ReleaseYearMoviesTextBox.BackColor = _errorColor;
+                ClassesMoviesReleaseYearTextBox.BackColor = _errorColor;
             }
         }
 
@@ -275,12 +280,12 @@ namespace Programming.View
         {
             try
             {
-                _currentMovie.Genre = (Genre)Enum.Parse(typeof(Genre), GenreMoviesTextBox.Text);
-                GenreMoviesTextBox.BackColor = _correctColor;
+                _currentMovie.Genre = (Genre)Enum.Parse(typeof(Genre), ClassesMoviesGenreTextBox.Text);
+                ClassesMoviesGenreTextBox.BackColor = _correctColor;
             }
             catch
             {
-                GenreMoviesTextBox.BackColor = _errorColor;
+                ClassesMoviesGenreTextBox.BackColor = _errorColor;
             }
         }
 
@@ -288,18 +293,18 @@ namespace Programming.View
         {
             try
             {
-                _currentMovie.Rating = double.Parse(RatingMoviesTextBox.Text);
-                RatingMoviesTextBox.BackColor = _correctColor;
+                _currentMovie.Rating = double.Parse(ClassesMoviesRatingTextBox.Text);
+                ClassesMoviesRatingTextBox.BackColor = _correctColor;
             }
             catch
             {
-                RatingMoviesTextBox.BackColor = _errorColor;
+                ClassesMoviesRatingTextBox.BackColor = _errorColor;
             }
         }
 
         private void MoviesButton_Click(object sender, EventArgs e)
         {
-            MoviesListBox.SelectedIndex = FindMovieWithMaxRating(_movies);
+            ClassesMoviesListBox.SelectedIndex = FindMovieWithMaxRating(_movies);
         }
     }
 }

@@ -20,14 +20,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if(value > 0)
-                {
-                    _minutes = (uint)value;
-                }
-                else
-                {
-                    throw new ArgumentException("Movie.Minutes <= 0");
-                }
+                Validator.AssertOnPositiveValue(value, "Movie.Minutes");
+                _minutes = (uint)value;
             }
         }
 
@@ -40,15 +34,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if(value >= 1900 && value <= DateTime.Now.Year)
-                {
-                    _releaseYear = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Movie.ReleaseYear < 1900" +
-                        " or Movie.ReleaseYear > DateTime.Now.Year");
-                }
+                Validator.AssertValueInRange(value, 1900, DateTime.Now.Year, "Movie.ReleaseYear");
+                _releaseYear = value;
             }
         }
 
@@ -62,15 +49,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if(value >= 0 && value <= 10)
-                {
-                    _rating = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Movie.Rating < 0" +
-                        " or Movie.Rating > 10");
-                }
+                Validator.AssertValueInRange(value, 0, 10, "Movie.Rating");
+                _rating = value;
             }
         }
 

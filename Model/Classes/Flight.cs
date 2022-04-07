@@ -1,5 +1,4 @@
-﻿using System;
-namespace Programming.Model.Classes
+﻿namespace Programming.Model.Classes
 {
     public class Flight
     {
@@ -17,14 +16,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if(value > 0)
-                {
-                    _minutes = (uint)value;
-                }
-                else
-                {
-                    throw new ArgumentException("Flight.Minutes <= 0");
-                }
+                Validator.AssertOnPositiveValue(value, "Flight.Minutes");
+                _minutes = (uint)value;
             }
         }
 

@@ -1,5 +1,4 @@
-﻿using System;
-namespace Programming.Model.Classes
+﻿namespace Programming.Model.Classes
 {
     public class Time
     {
@@ -17,14 +16,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if(value >= 0 && value < 24)
-                {
-                    _hours = (uint)value;
-                }
-                else
-                {
-                    throw new ArgumentException("Time.Hours < 0 or Time.Hours >= 24");
-                }
+                Validator.AssertValueInRange(value, 0, 23, "Time.Hours");
+                _hours = (uint)value;
             }
         }
 
@@ -36,14 +29,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if (value >= 0 && value < 60)
-                {
-                    _minutes = (uint)value;
-                }
-                else
-                {
-                    throw new ArgumentException("Time.Minutes < 0 or Time.Minutes >= 60");
-                }
+                Validator.AssertValueInRange(value, 0, 59, "Time.Minutes");
+                _minutes = (uint)value;
             }
         }
 
@@ -55,14 +42,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if(value >= 0 && value < 60)
-                {
-                    _seconds = (uint)value;
-                }
-                else
-                {
-                    throw new ArgumentException("Time.Hours < 0 or Time.Hours >= 60");
-                }
+                Validator.AssertValueInRange(value, 0, 59, "Time.Seconds");
+                _seconds = (uint)value;
             }
         }
 

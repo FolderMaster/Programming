@@ -6,6 +6,12 @@ namespace Programming.Model.Classes
     {
         private string _phoneNumber;
 
+        private string _name;
+
+        private string _surname;
+
+        private string _patronymic;
+
         public string PhoneNumber
         {
             get
@@ -32,11 +38,62 @@ namespace Programming.Model.Classes
             }
         }
 
-        public string Name { get; set; }
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                if(AssertStringContainsOnlyLetters(value))
+                {
+                    _name = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Contact.Name must contain only letters");
+                }
+            }
+        }
 
-        public string Surname { get; set; }
+        public string Surname
+        {
+            get
+            {
+                return _surname;
+            }
+            set
+            {
+                if(AssertStringContainsOnlyLetters(value))
+                {
+                    _surname = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Contact.Surname must contain only letters");
+                }
+            }
+        }
 
-        public string Patronymic { get; set; }
+        public string Patronymic
+        {
+            get
+            {
+                return _patronymic;
+            }
+            set
+            {
+                if(AssertStringContainsOnlyLetters(value))
+                {
+                    _patronymic = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Contact.Patronymic must contain only letters");
+                }
+            }
+        }
 
         public Contact()
         {
@@ -52,6 +109,18 @@ namespace Programming.Model.Classes
             Name = name;
             Surname = surname;
             Patronymic = patronymic;
+        }
+
+        private bool AssertStringContainsOnlyLetters(string value)
+        {
+            for(int n = 0; n < value.Length; n++)
+            {
+                if(!char.IsLetter(value[n]))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
