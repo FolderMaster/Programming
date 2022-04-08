@@ -113,7 +113,7 @@ namespace Programming.View
             return result;
         }
 
-        private void EnumListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void EnumsEnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch((Enums)EnumsEnumsListBox.SelectedItem)
             {
@@ -140,12 +140,12 @@ namespace Programming.View
             }
         }
 
-        private void ValueListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void EnumsValueListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             EnumIntTextBox.Text = ((int)EnumsValueListBox.SelectedItem).ToString();
         }
 
-        private void WeekParseButton_Click(object sender, EventArgs e)
+        private void EnumsWeekdayParseButton_Click(object sender, EventArgs e)
         {
             Weekday day;
             if (Enum.TryParse(EnumsWeekdayParseTextBox.Text, out day))
@@ -158,7 +158,7 @@ namespace Programming.View
             }
         }
 
-        private void SeasonButton_Click(object sender, EventArgs e)
+        private void EnumsSeasonButton_Click(object sender, EventArgs e)
         {
             switch ((Season)EnumsSeasonComboBox.SelectedItem)
             {
@@ -180,7 +180,7 @@ namespace Programming.View
             }
         }
 
-        private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ClassesRectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentRectangle = _rectangles[ClassesRectanglesListBox.SelectedIndex];
             ClassesRectanglesLengthTextBox.Text = _currentRectangle.Length.ToString();
@@ -190,7 +190,7 @@ namespace Programming.View
             ClassesRectanglesIdTextBox.Text = _currentRectangle.Id.ToString();
         }
 
-        private void LengthRectanglesTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesRectanglesLengthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -203,7 +203,7 @@ namespace Programming.View
             }
         }
 
-        private void WidthRectanglesTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesRectanglesWidthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -216,7 +216,7 @@ namespace Programming.View
             }
         }
 
-        private void ColorRectanglesTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesRectanglesColorTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -229,12 +229,12 @@ namespace Programming.View
             }
         }
 
-        private void RectanglesButton_Click(object sender, EventArgs e)
+        private void ClassesRectanglesButton_Click(object sender, EventArgs e)
         {
             ClassesRectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth(_rectangles);
         }
 
-        private void MoviesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ClassesMoviesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentMovie = _movies[ClassesMoviesListBox.SelectedIndex];
 
@@ -245,12 +245,12 @@ namespace Programming.View
             ClassesMoviesRatingTextBox.Text = _currentMovie.Rating.ToString();
         }
 
-        private void NameMoviesTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesMoviesNameTextBox_TextChanged(object sender, EventArgs e)
         {
             _currentMovie.Name = ClassesMoviesNameTextBox.Text;
         }
 
-        private void MinutesMoviesTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesMoviesMinutesTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -263,7 +263,7 @@ namespace Programming.View
             }
         }
 
-        private void ReleaseYearMoviesTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesMoviesReleaseYearTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -276,7 +276,7 @@ namespace Programming.View
             }
         }
 
-        private void GenreMoviesTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesMoviesGenreTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -289,7 +289,7 @@ namespace Programming.View
             }
         }
 
-        private void RatingMoviesTextBox_TextChanged(object sender, EventArgs e)
+        private void ClassesMoviesRatingTextBox_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -302,7 +302,7 @@ namespace Programming.View
             }
         }
 
-        private void MoviesButton_Click(object sender, EventArgs e)
+        private void ClassesMoviesButton_Click(object sender, EventArgs e)
         {
             ClassesMoviesListBox.SelectedIndex = FindMovieWithMaxRating(_movies);
         }

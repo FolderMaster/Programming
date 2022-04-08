@@ -3,9 +3,9 @@ namespace Programming.Model.Classes
 {
     public class Rectangle
     {
-        private static int _allRectanglesCount;
+        private static uint _allRectanglesCount;
 
-        private int _id;
+        private uint _id;
 
         private double _length;
 
@@ -15,7 +15,7 @@ namespace Programming.Model.Classes
         {
             get
             {
-                return _allRectanglesCount;
+                return (int)_allRectanglesCount;
             }
         }
 
@@ -23,7 +23,7 @@ namespace Programming.Model.Classes
         {
             get
             {
-                return _id;
+                return (int)_id;
             }
         }
 
@@ -35,7 +35,7 @@ namespace Programming.Model.Classes
             }
             set
             {
-                Validator.AssertOnPositiveValue(value, "Rectangle.Length");
+                Validator.AssertOnPositiveValue(value, nameof(Length));
                 _length = value;
             }
         }
@@ -48,7 +48,7 @@ namespace Programming.Model.Classes
             }
             set
             {
-                Validator.AssertOnPositiveValue(value, "Rectangle.Width");
+                Validator.AssertOnPositiveValue(value, nameof(Width));
                 _width = value;
             }
         }
@@ -64,7 +64,7 @@ namespace Programming.Model.Classes
 
             Length = 1;
             Width = 1;
-            Center = new Point2D(0, 0);
+            Center = new Point2D();
             Color = Colour.None;
         }
 

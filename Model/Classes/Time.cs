@@ -16,7 +16,7 @@
             }
             set
             {
-                Validator.AssertValueInRange(value, 0, 23, "Time.Hours");
+                Validator.AssertValueInRange(value, 0, 23, nameof(Hours));
                 _hours = (uint)value;
             }
         }
@@ -29,7 +29,7 @@
             }
             set
             {
-                Validator.AssertValueInRange(value, 0, 59, "Time.Minutes");
+                Validator.AssertValueInRange(value, 0, 59, nameof(Minutes));
                 _minutes = (uint)value;
             }
         }
@@ -42,7 +42,7 @@
             }
             set
             {
-                Validator.AssertValueInRange(value, 0, 59, "Time.Seconds");
+                Validator.AssertValueInRange(value, 0, 59, nameof(Seconds));
                 _seconds = (uint)value;
             }
         }

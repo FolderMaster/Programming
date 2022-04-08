@@ -1,9 +1,9 @@
 ﻿using System;
 namespace Programming.Model.Classes
 {
-    static public class Validator
+    public static class Validator
     {
-        static public void AssertOnPositiveValue(int value, string name)
+        public static void AssertOnPositiveValue(int value, string name)
         {
             if (value < 0)
             {
@@ -11,7 +11,7 @@ namespace Programming.Model.Classes
             }
         }
 
-        static public void AssertOnPositiveValue(double value, string name)
+        public static void AssertOnPositiveValue(double value, string name)
         {
             if (value < 0)
             {
@@ -19,7 +19,7 @@ namespace Programming.Model.Classes
             }
         }
 
-        static public void AssertValueInRange(int value, int min, int max, string name)
+        public static void AssertValueInRange(int value, int min, int max, string name)
         {
             if ((value < min) || (value > max))
             {
@@ -27,7 +27,7 @@ namespace Programming.Model.Classes
             }
         }
 
-        static public void AssertValueInRange(double value, double min, double max, string name)
+        public static void AssertValueInRange(double value, double min, double max, string name)
         {
             if ((value < min) || (value > max))
             {
@@ -35,7 +35,7 @@ namespace Programming.Model.Classes
             }
         }
 
-        static public void AssertMoreValue(double value, double other, string valueName, string otherName)
+        public static void AssertMoreValue(double value, double other, string valueName, string otherName)
         {
             if (value <= other)
             {
@@ -43,7 +43,7 @@ namespace Programming.Model.Classes
             }
         }
 
-        static public void AssertLessValue(double value, double other, string valueName, string otherName)
+        public static void AssertLessValue(double value, double other, string valueName, string otherName)
         {
             if (value >= other)
             {

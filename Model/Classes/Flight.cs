@@ -16,7 +16,7 @@
             }
             set
             {
-                Validator.AssertOnPositiveValue(value, "Flight.Minutes");
+                Validator.AssertOnPositiveValue(value, nameof(Minutes));
                 _minutes = (uint)value;
             }
         }

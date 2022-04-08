@@ -14,7 +14,7 @@
             }
             private set
             {
-                Validator.AssertOnPositiveValue(value, "Point2D.X");
+                Validator.AssertOnPositiveValue(value, nameof(X));
                 _x = value;
             }
         }
@@ -27,7 +27,7 @@
             }
             private set
             {
-                Validator.AssertOnPositiveValue(value, "Point2D.Y");
+                Validator.AssertOnPositiveValue(value, nameof(Y));
                 _y = value;
             }
         }

@@ -16,7 +16,7 @@ namespace Programming.Model.Classes
             }
             set
             {
-                Validator.AssertOnPositiveValue(value, "Subject.Hours");
+                Validator.AssertOnPositiveValue(value, nameof(Hours));
                 _hours = (uint)value;
             }
         }

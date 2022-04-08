@@ -20,11 +20,10 @@ namespace Programming.Model.Classes
             }
             set
             {
-                Validator.AssertOnPositiveValue(value, "Movie.Minutes");
+                Validator.AssertOnPositiveValue(value, nameof(Minutes));
                 _minutes = (uint)value;
             }
         }
-
 
         public int ReleaseYear
         {
@@ -34,7 +33,7 @@ namespace Programming.Model.Classes
             }
             set
             {
-                Validator.AssertValueInRange(value, 1900, DateTime.Now.Year, "Movie.ReleaseYear");
+                Validator.AssertValueInRange(value, 1900, DateTime.Now.Year, nameof(ReleaseYear));
                 _releaseYear = value;
             }
         }
@@ -49,7 +48,7 @@ namespace Programming.Model.Classes
             }
             set
             {
-                Validator.AssertValueInRange(value, 0, 10, "Movie.Rating");
+                Validator.AssertValueInRange(value, 0, 10, nameof(Rating));
                 _rating = value;
             }
         }

@@ -22,8 +22,8 @@ namespace Programming.Model.Classes
             {
                 // Contact.PhoneNumber must be pattern as "+0-(000)-000-00-00"
                 Match match = 
-                    new Regex(@"(\d{1})\s+(\d{3})\s+(\d{3})\s+(\d{2})\s+(\d{2})").Match(value);
-                if(match != null)
+                    new Regex(@"(\d{1})\s*(\d{3})\s*(\d{3})\s*(\d{2})\s*(\d{2})").Match(value);
+                if(match.Success)
                 {
                     _phoneNumber = "+" + match.Groups[1].Value
                         + "-(" + match.Groups[2].Value
@@ -33,7 +33,7 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException("Contact.PhoneNumber must be pattern as \"+0-(000)-000-00-00\"");
+                    throw new ArgumentException(nameof(PhoneNumber) + " must be pattern as \"+0-(000)-000-00-00\"");
                 }
             }
         }
@@ -46,14 +46,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if(AssertStringContainsOnlyLetters(value))
-                {
-                    _name = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Contact.Name must contain only letters");
-                }
+                AssertStringContainsOnlyLetters(value, nameof(Name));
+                _name = value;
             }
         }
 
@@ -65,14 +59,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if(AssertStringContainsOnlyLetters(value))
-                {
-                    _surname = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Contact.Surname must contain only letters");
-                }
+                AssertStringContainsOnlyLetters(value, nameof(Surname));
+                _surname = value;
             }
         }
 
@@ -84,14 +72,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if(AssertStringContainsOnlyLetters(value))
-                {
-                    _patronymic = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Contact.Patronymic must contain only letters");
-                }
+                AssertStringContainsOnlyLetters(value, nameof(Patronymic));
+                _patronymic = value;
             }
         }
 
@@ -111,16 +93,15 @@ namespace Programming.Model.Classes
             Patronymic = patronymic;
         }
 
-        private bool AssertStringContainsOnlyLetters(string value)
+        private void AssertStringContainsOnlyLetters(string value, string name)
         {
             for(int n = 0; n < value.Length; n++)
             {
                 if(!char.IsLetter(value[n]))
                 {
-                    return false;
+                    throw new ArgumentException($"{name} must contain only letters");
                 }
             }
-            return true;
         }
     }
 }

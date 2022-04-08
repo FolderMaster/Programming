@@ -17,10 +17,11 @@ namespace Programming.Model.Classes
             }
             set
             {
-                Validator.AssertOnPositiveValue(value, "Ring.InnerRadius");
-                Validator.AssertMoreValue(value, _outerRadius, "Ring.InnerRadius", "Ring.OuterRadius");
+                Validator.AssertOnPositiveValue(value, nameof(InnerRadius));
+                Validator.AssertMoreValue(value, _outerRadius,
+                    nameof(InnerRadius), nameof(OuterRadius));
                 _innerRadius = value;
-                UpdateSquare();
+                UpdateArea();
             }
         }
 
@@ -32,14 +33,15 @@ namespace Programming.Model.Classes
             }
             set
             {
-                Validator.AssertOnPositiveValue(value, "Ring.OuterRadius");
-                Validator.AssertLessValue(value, _innerRadius, "Ring.OuterRadius", "Ring.InnerRadius");
+                Validator.AssertOnPositiveValue(value, nameof(OuterRadius));
+                Validator.AssertLessValue(value, _innerRadius,
+                    nameof(OuterRadius), nameof(InnerRadius));
                 _outerRadius = value;
-                UpdateSquare();
+                UpdateArea();
             }
         }
 
-        public double Square { get; private set; }
+        public double Area { get; private set; }
 
         public Ring()
         {
@@ -55,9 +57,9 @@ namespace Programming.Model.Classes
             OuterRadius = outerRadius;
         }
 
-        private void UpdateSquare()
+        private void UpdateArea()
         {
-            Square = Math.PI * (Math.Pow(_outerRadius, 2) - Math.Pow(_innerRadius, 2));
+            Area = Math.PI * (Math.Pow(_outerRadius, 2) - Math.Pow(_innerRadius, 2));
         }
     }
 }
