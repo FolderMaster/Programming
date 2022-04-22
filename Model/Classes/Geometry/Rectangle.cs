@@ -1,5 +1,5 @@
 ﻿using Programming.Model.Enums;
-namespace Programming.Model.Classes
+namespace Programming.Model.Classes.Geometry
 {
     public class Rectangle
     {
@@ -10,6 +10,11 @@ namespace Programming.Model.Classes
         private double _length;
 
         private double _width;
+
+        override public string ToString()
+        {
+            return $"{_id}. (X = {Center.X}, Y = {Center.Y}, L = {Length}, W = {Width})";
+        }
 
         static public int AllRectanglesCount
         {

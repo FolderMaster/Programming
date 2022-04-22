@@ -46,13 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Classes\CollisionManager.cs" />
+    <Compile Include="Model\Classes\Geometry\CollisionManager.cs" />
     <Compile Include="Model\Classes\Contact.cs" />
+    <Compile Include="Model\Classes\Geometry\RectangleFactory.cs" />
     <Compile Include="Model\Classes\Movie.cs" />
     <Compile Include="Model\Classes\Flight.cs" />
-    <Compile Include="Model\Classes\Point2D.cs" />
-    <Compile Include="Model\Classes\Rectangle.cs" />
-    <Compile Include="Model\Classes\Ring.cs" />
+    <Compile Include="Model\Classes\Geometry\Point2D.cs" />
+    <Compile Include="Model\Classes\Geometry\Rectangle.cs" />
+    <Compile Include="Model\Classes\Geometry\Ring.cs" />
     <Compile Include="Model\Classes\Song.cs" />
     <Compile Include="Model\Classes\Subject.cs" />
     <Compile Include="Model\Classes\Time.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -99,7 +101,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resourses\icon.ico" />
+    <None Include="Resources\rectangle_add_24x24.png" />
+    <None Include="Resources\rectangle_remove_24x24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
