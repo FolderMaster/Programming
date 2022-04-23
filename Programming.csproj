@@ -101,8 +101,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\rectangle_add_24x24.png" />
+    <None Include="Resources\rectangle_remove_24x24_uncolor.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\rectangle_remove_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rectangle_add_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rectangle_add_24x24_uncolor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

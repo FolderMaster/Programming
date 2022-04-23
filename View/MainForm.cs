@@ -17,6 +17,10 @@ namespace Programming.View
 
         private readonly Color _errorColor = Color.Yellow;
 
+        private readonly Color _collisionColor = Color.FromArgb(127, 255, 127, 127);
+
+        private readonly Color _noneCollisionColor = Color.FromArgb(127, 127, 255, 127);
+
         private Movie[] _movies;
 
         private Movie _currentMovie = new Movie();
@@ -38,7 +42,7 @@ namespace Programming.View
 
             EnumsSeasonComboBox.DataSource = Enum.GetValues(typeof(Season));
 
-            int count = 0;
+            int count = 5;
             CreateRectangles(count);
             CreateMovies(count);
 
@@ -46,25 +50,97 @@ namespace Programming.View
             RectanglesListListBox.DataSource = _bindingSource;
             ClassesRectanglesListBox.DataSource = _bindingSource;
         }
-
-        private Rectangle CreateRectangle(Random random)
+        private void CreateRectangle()
         {
-            return new Rectangle(
-                Math.Round(/*(random.NextDouble() + 0.0001) * */(double) random.Next(1, RectanglesPanel.Size.Width), 10),
-                Math.Round(/*(random.NextDouble() + 0.0001) * */(double) random.Next(1, RectanglesPanel.Size.Height), 10),
-                new Point2D(
-                    Math.Round(/*(random.NextDouble() + 0.0001) * */(double) random.Next(1, RectanglesPanel.Size.Width), 3),
-                    Math.Round(/*(random.NextDouble() + 0.0001) * */(double) random.Next(1, RectanglesPanel.Size.Height), 3)),
-                (Colour)random.Next(0, 9));
+            //Visual Studio don't want to work correctly!
+            Rectangle currentRectangle = RectangleFactory.Randomize(RectanglesCanvasPanel.Width, RectanglesCanvasPanel.Height);
+            _currentRectangle = currentRectangle;
+            _rectangles.Add(_currentRectangle);
+            _bindingSource.ResetBindings(false);
+
+            Panel panel = new Panel()
+            {
+                BackColor = _noneCollisionColor,
+                Size = new Size((int)currentRectangle.Length, (int)currentRectangle.Width),
+                Location = new Point(
+                    (int)(currentRectangle.Center.X - currentRectangle.Length / 2),
+                    (int)(currentRectangle.Center.Y - currentRectangle.Width / 2))
+            };
+            _rectanglePanels.Add(panel);
+            RectanglesCanvasPanel.Controls.Add(panel);
         }
 
         private void CreateRectangles(int count)
         {
-            Random random = new Random();
             for (int n = 0; n < count; ++n)
             {
-                _rectangles.Add(CreateRectangle(random));
+                CreateRectangle();
             }
+            FindCollisions();
+        }
+
+        private void FindCollisions()
+        {
+            _rectanglePanels.ForEach(panel => panel.BackColor = _noneCollisionColor);
+            for (int i = 0; i < _rectanglePanels.Count; i++)
+            {
+                for (int j = 0; j < _rectanglePanels.Count; j++)
+                {
+                    if (i != j)
+                    {
+                        if (CollisionManager.IsCollision(_rectangles[i], _rectangles[j]))
+                        {
+                            _rectanglePanels[i].BackColor = _collisionColor;
+                            _rectanglePanels[j].BackColor = _collisionColor;
+                        }
+                    }
+                }
+            }
+            RectanglesCanvasPanel.Update();
+        }
+
+        private void FindCollisions(int index)
+        {
+            for (int i = 0; i < _rectanglePanels.Count; i++)
+            {
+                if (i != index)
+                {
+                    if (CollisionManager.IsCollision(_rectangles[i], _rectangles[index]))
+                    {
+                        _rectanglePanels[i].BackColor = _collisionColor;
+                        _rectanglePanels[index].BackColor = _collisionColor;
+                    }
+                }
+            }
+            RectanglesCanvasPanel.Update();
+        }
+
+        private void UpdateRectangleProperty(int index, Rectangle rectangle, Panel panel)
+        {
+            panel.Size = new Size((int)rectangle.Length, (int)rectangle.Width);
+            panel.Location = new Point(
+                (int)(_currentRectangle.Center.X - _currentRectangle.Length / 2),
+                (int)(_currentRectangle.Center.Y - _currentRectangle.Width / 2));
+            FindCollisions(index);
+        }
+
+        private void UpdateRectangleInfo(Rectangle rectangle)
+        {
+            RectanglesInfoIdTextBox.Text = _currentRectangle.Id.ToString();
+            RectanglesInfoXTextBox.Text = _currentRectangle.Center.X.ToString();
+            RectanglesInfoYTextBox.Text = _currentRectangle.Center.Y.ToString();
+            RectanglesInfoWidthTextBox.Text = _currentRectangle.Length.ToString();
+            RectanglesInfoHeightTextBox.Text = _currentRectangle.Width.ToString();
+        }
+
+        private void ClearRectangleInfo()
+        {
+            RectanglesInfoIdTextBox.Text = RectanglesInfoXTextBox.Text =
+                    RectanglesInfoYTextBox.Text = RectanglesInfoWidthTextBox.Text =
+                    RectanglesInfoHeightTextBox.Text = "";
+            RectanglesInfoIdTextBox.BackColor = RectanglesInfoXTextBox.BackColor =
+                RectanglesInfoYTextBox.BackColor = RectanglesInfoWidthTextBox.BackColor =
+                RectanglesInfoHeightTextBox.BackColor = _correctColor;
         }
 
         private void CreateMovies(int count)
@@ -342,35 +418,19 @@ namespace Programming.View
 
         private void RectanglesActionsAddButton_Click(object sender, EventArgs e)
         {
-            Random random = new Random();
-            var currentRectangle = RectangleFactory.Randomize(RectanglesPanel.Size.Width, RectanglesPanel.Size.Height);
-            _rectangles.Add(currentRectangle);
-            _bindingSource.ResetBindings(false);
-            Panel panel = new Panel()
-            {
-                BackColor = Color.FromArgb(127, 127, 255, 127),
-                Size = new Size((int)currentRectangle.Length, (int)currentRectangle.Width),
-                Location = new Point(
-                    (int)(currentRectangle.Center.X - currentRectangle.Length / 2),
-                    (int)(currentRectangle.Center.Y - currentRectangle.Width / 2))
-            };
-            _currentRectangle = currentRectangle;
-            _rectanglePanels.Add(panel);
-            RectanglesPanel.SuspendLayout();
-            RectanglesPanel.Controls.Add(panel);
-            RectanglesPanel.ResumeLayout();
-            FindCollisions();
+            CreateRectangle();
+            FindCollisions(_rectanglePanels.Count - 1);
         }
 
         private void RectanglesActionsRemoveButton_Click(object sender, EventArgs e)
         {
-            if (_currentRectangle != null)
+            if (_currentRectangle != null && RectanglesListListBox.SelectedIndex != -1)
             {
-                RectanglesPanel.Controls.Remove(_rectanglePanels[RectanglesListListBox.SelectedIndex]);
+                RectanglesCanvasPanel.Controls.RemoveAt(RectanglesListListBox.SelectedIndex);
                 _rectanglePanels.RemoveAt(RectanglesListListBox.SelectedIndex);
+                FindCollisions();
                 _rectangles.Remove(_currentRectangle);
                 _bindingSource.ResetBindings(false);
-                FindCollisions();
             }
         }
 
@@ -383,7 +443,7 @@ namespace Programming.View
                     _currentRectangle.Center.X = double.Parse(RectanglesInfoXTextBox.Text);
                     RectanglesInfoXTextBox.BackColor = _correctColor;
                     _bindingSource.ResetBindings(false);
-                    UpdateRectangleProperty(_currentRectangle, _rectanglePanels[RectanglesListListBox.SelectedIndex]);
+                    UpdateRectangleProperty(RectanglesListListBox.SelectedIndex, _currentRectangle, _rectanglePanels[RectanglesListListBox.SelectedIndex]);
                 }
                 catch
                 {
@@ -401,7 +461,7 @@ namespace Programming.View
                     _currentRectangle.Center.Y = double.Parse(RectanglesInfoYTextBox.Text);
                     RectanglesInfoYTextBox.BackColor = _correctColor;
                     _bindingSource.ResetBindings(false);
-                    UpdateRectangleProperty(_currentRectangle, _rectanglePanels[RectanglesListListBox.SelectedIndex]);
+                    UpdateRectangleProperty(RectanglesListListBox.SelectedIndex, _currentRectangle, _rectanglePanels[RectanglesListListBox.SelectedIndex]);
                 }
                 catch
                 {
@@ -419,7 +479,7 @@ namespace Programming.View
                     _currentRectangle.Length = double.Parse(RectanglesInfoWidthTextBox.Text);
                     RectanglesInfoWidthTextBox.BackColor = _correctColor;
                     _bindingSource.ResetBindings(false);
-                    UpdateRectangleProperty(_currentRectangle, _rectanglePanels[RectanglesListListBox.SelectedIndex]);
+                    UpdateRectangleProperty(RectanglesListListBox.SelectedIndex, _currentRectangle, _rectanglePanels[RectanglesListListBox.SelectedIndex]);
                 }
                 catch
                 {
@@ -437,7 +497,7 @@ namespace Programming.View
                     _currentRectangle.Width = double.Parse(RectanglesInfoHeightTextBox.Text);
                     RectanglesInfoHeightTextBox.BackColor = _correctColor;
                     _bindingSource.ResetBindings(false);
-                    UpdateRectangleProperty(_currentRectangle, _rectanglePanels[RectanglesListListBox.SelectedIndex]);
+                    UpdateRectangleProperty(RectanglesListListBox.SelectedIndex, _currentRectangle, _rectanglePanels[RectanglesListListBox.SelectedIndex]);
                 }
                 catch
                 {
@@ -446,51 +506,38 @@ namespace Programming.View
             }
         }
 
-        private void FindCollisions()
+        private void RectanglesActionsAddButton_MouseEnter(object sender, EventArgs e)
         {
-            _rectanglePanels.ForEach(panel => panel.BackColor = Color.FromArgb(127, 127, 255, 127));
-            for(int i = 0; i < _rectanglePanels.Count; i++)
-            {
-                for (int j = 0; j < _rectanglePanels.Count; j++)
-                {
-                    if(CollisionManager.IsCollision(_rectangles[i], _rectangles[j]) && i != j)
-                    {
-                        _rectanglePanels[i].BackColor = Color.FromArgb(127, 255, 127, 127);
-                        _rectanglePanels[j].BackColor = Color.FromArgb(127, 255, 127, 127);
-                    }
-                    //_rectanglePanels[j].Update();
-                }
-                //_rectanglePanels[i].Update();
-            }
-            RectanglesPanel.Update();
+            RectanglesActionsAddButton.Image = (Image)Properties.Resources.ResourceManager.GetObject("rectangle_add_24x24");
+            RectanglesActionsAddButton.FlatAppearance.BorderSize = 0;
         }
 
-        private void UpdateRectangleProperty(Rectangle rectangle, Panel panel)
+        private void RectanglesActionsAddButton_MouseLeave(object sender, EventArgs e)
         {
-            panel.Size = new Size((int)rectangle.Length, (int)rectangle.Width);
-            panel.Location = new Point(
-                (int)(_currentRectangle.Center.X - _currentRectangle.Length / 2),
-                (int)(_currentRectangle.Center.Y - _currentRectangle.Width / 2));
-            FindCollisions();
+            RectanglesActionsAddButton.Image = (Image)Properties.Resources.ResourceManager.GetObject("rectangle_add_24x24_uncolor");
+            RectanglesActionsAddButton.FlatAppearance.BorderSize = 1;
         }
 
-        private void UpdateRectangleInfo(Rectangle rectangle)
+        private void RectanglesActionsAddButton_MouseDown(object sender, MouseEventArgs e)
         {
-            RectanglesInfoIdTextBox.Text = _currentRectangle.Id.ToString();
-            RectanglesInfoXTextBox.Text = _currentRectangle.Center.X.ToString();
-            RectanglesInfoYTextBox.Text = _currentRectangle.Center.Y.ToString();
-            RectanglesInfoWidthTextBox.Text = _currentRectangle.Length.ToString();
-            RectanglesInfoHeightTextBox.Text = _currentRectangle.Width.ToString();
+            RectanglesActionsAddButton.Image = (Image)Properties.Resources.ResourceManager.GetObject("rectangle_add_24x24_uncolor");
         }
 
-        private void ClearRectangleInfo()
+        private void RectanglesActionsRemoveButton_MouseEnter(object sender, EventArgs e)
         {
-            RectanglesInfoIdTextBox.Text = RectanglesInfoXTextBox.Text =
-                    RectanglesInfoYTextBox.Text = RectanglesInfoWidthTextBox.Text =
-                    RectanglesInfoHeightTextBox.Text = "";
-            RectanglesInfoIdTextBox.BackColor = RectanglesInfoXTextBox.BackColor =
-                RectanglesInfoYTextBox.BackColor = RectanglesInfoWidthTextBox.BackColor =
-                RectanglesInfoHeightTextBox.BackColor = _correctColor;
+            RectanglesActionsRemoveButton.Image = (Image)Properties.Resources.ResourceManager.GetObject("rectangle_remove_24x24");
+            RectanglesActionsRemoveButton.FlatAppearance.BorderSize = 0;
+        }
+
+        private void RectanglesActionsRemoveButton_MouseLeave(object sender, EventArgs e)
+        {
+            RectanglesActionsRemoveButton.Image = (Image)Properties.Resources.ResourceManager.GetObject("rectangle_remove_24x24_uncolor");
+            RectanglesActionsRemoveButton.FlatAppearance.BorderSize = 1;
+        }
+
+        private void RectanglesActionsRemoveButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            RectanglesActionsRemoveButton.Image = (Image)Properties.Resources.ResourceManager.GetObject("rectangle_remove_24x24_uncolor");
         }
     }
 }
