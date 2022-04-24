@@ -426,11 +426,11 @@ namespace Programming.View
         {
             if (_currentRectangle != null && RectanglesListListBox.SelectedIndex != -1)
             {
+                _rectangles.Remove(_currentRectangle);
+                _bindingSource.ResetBindings(false);
                 RectanglesCanvasPanel.Controls.RemoveAt(RectanglesListListBox.SelectedIndex);
                 _rectanglePanels.RemoveAt(RectanglesListListBox.SelectedIndex);
                 FindCollisions();
-                _rectangles.Remove(_currentRectangle);
-                _bindingSource.ResetBindings(false);
             }
         }
 
@@ -523,6 +523,12 @@ namespace Programming.View
             RectanglesActionsAddButton.Image = (Image)Properties.Resources.ResourceManager.GetObject("rectangle_add_24x24_uncolor");
         }
 
+        private void RectanglesActionsAddButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            RectanglesActionsAddButton.Image = (Image)Properties.Resources.ResourceManager.GetObject("rectangle_add_24x24");
+            RectanglesActionsAddButton.FlatAppearance.BorderSize = 0;
+        }
+
         private void RectanglesActionsRemoveButton_MouseEnter(object sender, EventArgs e)
         {
             RectanglesActionsRemoveButton.Image = (Image)Properties.Resources.ResourceManager.GetObject("rectangle_remove_24x24");
@@ -538,6 +544,12 @@ namespace Programming.View
         private void RectanglesActionsRemoveButton_MouseDown(object sender, MouseEventArgs e)
         {
             RectanglesActionsRemoveButton.Image = (Image)Properties.Resources.ResourceManager.GetObject("rectangle_remove_24x24_uncolor");
+        }
+
+        private void RectanglesActionsRemoveButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            RectanglesActionsRemoveButton.Image = (Image)Properties.Resources.ResourceManager.GetObject("rectangle_remove_24x24");
+            RectanglesActionsRemoveButton.FlatAppearance.BorderSize = 0;
         }
     }
 }
