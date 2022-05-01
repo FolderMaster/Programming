@@ -33,7 +33,8 @@ namespace Programming.Model.Classes
                 }
                 else
                 {
-                    throw new ArgumentException(nameof(PhoneNumber) + " must be pattern as \"+0-(000)-000-00-00\"");
+                    throw new ArgumentException(nameof(PhoneNumber) +
+                        " must be pattern as \"+0-(000)-000-00-00\"");
                 }
             }
         }
