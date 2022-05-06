@@ -40,11 +40,11 @@ namespace Programming.View
             this.enumerationsControl1 = new Programming.View.Controls.EnumerationsControl();
             this.ClassesTabPage = new System.Windows.Forms.TabPage();
             this.ClassesMoviesGroupBox = new System.Windows.Forms.GroupBox();
+            this.moviesControl1 = new Programming.View.Controls.MoviesControl();
             this.ClassesRectanglesGroupBox = new System.Windows.Forms.GroupBox();
             this.rectanglesControl1 = new Programming.View.Controls.RectanglesControl();
             this.RectanglesTabPage = new System.Windows.Forms.TabPage();
             this.RectanglesCollisionControl = new Programming.View.TabPages.RectanglesCollisionControl();
-            this.moviesControl1 = new Programming.View.Controls.MoviesControl();
             this.TabControl.SuspendLayout();
             this.EnumsTabPage.SuspendLayout();
             this.EnumsSeasonGroupBox.SuspendLayout();
@@ -158,6 +158,14 @@ namespace Programming.View
             this.ClassesMoviesGroupBox.TabStop = false;
             this.ClassesMoviesGroupBox.Text = "Movies";
             // 
+            // moviesControl1
+            // 
+            this.moviesControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.moviesControl1.Location = new System.Drawing.Point(3, 16);
+            this.moviesControl1.Name = "moviesControl1";
+            this.moviesControl1.Size = new System.Drawing.Size(233, 254);
+            this.moviesControl1.TabIndex = 0;
+            // 
             // ClassesRectanglesGroupBox
             // 
             this.ClassesRectanglesGroupBox.Controls.Add(this.rectanglesControl1);
@@ -195,21 +203,12 @@ namespace Programming.View
             this.RectanglesCollisionControl.Size = new System.Drawing.Size(495, 357);
             this.RectanglesCollisionControl.TabIndex = 0;
             // 
-            // moviesControl1
-            // 
-            this.moviesControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.moviesControl1.Location = new System.Drawing.Point(3, 16);
-            this.moviesControl1.Name = "moviesControl1";
-            this.moviesControl1.Size = new System.Drawing.Size(233, 254);
-            this.moviesControl1.TabIndex = 0;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(509, 389);
             this.Controls.Add(this.TabControl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";

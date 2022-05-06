@@ -44,7 +44,7 @@
             // 
             // RatingTextBox
             // 
-            this.RatingTextBox.Location = new System.Drawing.Point(105, 172);
+            this.RatingTextBox.Location = new System.Drawing.Point(104, 171);
             this.RatingTextBox.Name = "RatingTextBox";
             this.RatingTextBox.Size = new System.Drawing.Size(100, 20);
             this.RatingTextBox.TabIndex = 24;
@@ -53,7 +53,7 @@
             // RatingLabel
             // 
             this.RatingLabel.AutoSize = true;
-            this.RatingLabel.Location = new System.Drawing.Point(105, 156);
+            this.RatingLabel.Location = new System.Drawing.Point(101, 155);
             this.RatingLabel.Name = "RatingLabel";
             this.RatingLabel.Size = new System.Drawing.Size(41, 13);
             this.RatingLabel.TabIndex = 27;
@@ -61,7 +61,7 @@
             // 
             // GenreTextBox
             // 
-            this.GenreTextBox.Location = new System.Drawing.Point(105, 133);
+            this.GenreTextBox.Location = new System.Drawing.Point(104, 132);
             this.GenreTextBox.Name = "GenreTextBox";
             this.GenreTextBox.Size = new System.Drawing.Size(100, 20);
             this.GenreTextBox.TabIndex = 22;
@@ -70,7 +70,7 @@
             // GenreLabel
             // 
             this.GenreLabel.AutoSize = true;
-            this.GenreLabel.Location = new System.Drawing.Point(105, 117);
+            this.GenreLabel.Location = new System.Drawing.Point(101, 116);
             this.GenreLabel.Name = "GenreLabel";
             this.GenreLabel.Size = new System.Drawing.Size(39, 13);
             this.GenreLabel.TabIndex = 25;
@@ -78,7 +78,7 @@
             // 
             // Button
             // 
-            this.Button.Location = new System.Drawing.Point(105, 215);
+            this.Button.Location = new System.Drawing.Point(104, 215);
             this.Button.Name = "Button";
             this.Button.Size = new System.Drawing.Size(100, 23);
             this.Button.TabIndex = 26;
@@ -89,7 +89,7 @@
             // ReleaseYearLabel
             // 
             this.ReleaseYearLabel.AutoSize = true;
-            this.ReleaseYearLabel.Location = new System.Drawing.Point(105, 78);
+            this.ReleaseYearLabel.Location = new System.Drawing.Point(101, 77);
             this.ReleaseYearLabel.Name = "ReleaseYearLabel";
             this.ReleaseYearLabel.Size = new System.Drawing.Size(72, 13);
             this.ReleaseYearLabel.TabIndex = 23;
@@ -97,7 +97,7 @@
             // 
             // ReleaseYearTextBox
             // 
-            this.ReleaseYearTextBox.Location = new System.Drawing.Point(105, 94);
+            this.ReleaseYearTextBox.Location = new System.Drawing.Point(104, 93);
             this.ReleaseYearTextBox.Name = "ReleaseYearTextBox";
             this.ReleaseYearTextBox.Size = new System.Drawing.Size(100, 20);
             this.ReleaseYearTextBox.TabIndex = 21;
@@ -106,7 +106,7 @@
             // MinutesLabel
             // 
             this.MinutesLabel.AutoSize = true;
-            this.MinutesLabel.Location = new System.Drawing.Point(105, 39);
+            this.MinutesLabel.Location = new System.Drawing.Point(101, 38);
             this.MinutesLabel.Name = "MinutesLabel";
             this.MinutesLabel.Size = new System.Drawing.Size(47, 13);
             this.MinutesLabel.TabIndex = 19;
@@ -114,7 +114,7 @@
             // 
             // MinutesTextBox
             // 
-            this.MinutesTextBox.Location = new System.Drawing.Point(105, 55);
+            this.MinutesTextBox.Location = new System.Drawing.Point(104, 54);
             this.MinutesTextBox.Name = "MinutesTextBox";
             this.MinutesTextBox.Size = new System.Drawing.Size(100, 20);
             this.MinutesTextBox.TabIndex = 20;
@@ -123,7 +123,7 @@
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(105, 0);
+            this.NameLabel.Location = new System.Drawing.Point(101, 0);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(38, 13);
             this.NameLabel.TabIndex = 16;
@@ -131,7 +131,7 @@
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Location = new System.Drawing.Point(105, 16);
+            this.NameTextBox.Location = new System.Drawing.Point(104, 15);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(100, 20);
             this.NameTextBox.TabIndex = 18;
@@ -163,7 +163,7 @@
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.ListBox);
             this.Name = "MoviesControl";
-            this.Size = new System.Drawing.Size(204, 239);
+            this.Size = new System.Drawing.Size(204, 238);
             this.ResumeLayout(false);
             this.PerformLayout();
 

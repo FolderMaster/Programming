@@ -37,7 +37,7 @@
             // ParseLabel
             // 
             this.ParseLabel.AutoSize = true;
-            this.ParseLabel.Location = new System.Drawing.Point(-3, 40);
+            this.ParseLabel.Location = new System.Drawing.Point(-3, 39);
             this.ParseLabel.Name = "ParseLabel";
             this.ParseLabel.Size = new System.Drawing.Size(130, 13);
             this.ParseLabel.TabIndex = 11;
@@ -45,7 +45,7 @@
             // 
             // ParseButton
             // 
-            this.ParseButton.Location = new System.Drawing.Point(110, 14);
+            this.ParseButton.Location = new System.Drawing.Point(110, 13);
             this.ParseButton.Name = "ParseButton";
             this.ParseButton.Size = new System.Drawing.Size(75, 23);
             this.ParseButton.TabIndex = 10;
@@ -78,7 +78,7 @@
             this.Controls.Add(this.ParseTextBox);
             this.Controls.Add(this.Label);
             this.Name = "WeekdayParsingControl";
-            this.Size = new System.Drawing.Size(184, 53);
+            this.Size = new System.Drawing.Size(185, 52);
             this.ResumeLayout(false);
             this.PerformLayout();
 

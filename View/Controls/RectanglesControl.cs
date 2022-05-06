@@ -11,10 +11,6 @@ namespace Programming.View.Controls
 {
     public partial class RectanglesControl : UserControl
     {
-        private readonly Color _correctColor = Color.White;
-
-        private readonly Color _errorColor = Color.Yellow;
-
         private Rectangle[] _rectangles;
 
         private Rectangle _currentRectangle;
@@ -78,11 +74,11 @@ namespace Programming.View.Controls
                 try
                 {
                     _currentRectangle.Length = double.Parse(LengthTextBox.Text);
-                    LengthTextBox.BackColor = _correctColor;
+                    LengthTextBox.BackColor = AppColors.CorrectColor;
                 }
                 catch
                 {
-                    LengthTextBox.BackColor = _errorColor;
+                    LengthTextBox.BackColor = AppColors.ErrorColor;
                 }
             }
         }
@@ -94,11 +90,11 @@ namespace Programming.View.Controls
                 try
                 {
                     _currentRectangle.Width = double.Parse(WidthTextBox.Text);
-                    WidthTextBox.BackColor = _correctColor;
+                    WidthTextBox.BackColor = AppColors.CorrectColor;
                 }
                 catch
                 {
-                    WidthTextBox.BackColor = _errorColor;
+                    WidthTextBox.BackColor = AppColors.ErrorColor;
                 }
             }
         }
@@ -111,11 +107,11 @@ namespace Programming.View.Controls
                 {
                     _currentRectangle.Color = (Colour)Enum.Parse(typeof(Colour),
                         ColorTextBox.Text);
-                    ColorTextBox.BackColor = _correctColor;
+                    ColorTextBox.BackColor = AppColors.CorrectColor;
                 }
                 catch
                 {
-                    ColorTextBox.BackColor = _errorColor;
+                    ColorTextBox.BackColor = AppColors.ErrorColor;
                 }
             }
         }

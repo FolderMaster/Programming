@@ -24,14 +24,14 @@ namespace Programming.View.Controls
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     break;
                 case Season.Spring:
-                    Button.BackColor = Color.LightGreen;
+                    Button.BackColor = AppColors.SpringColor;
                     break;
                 case Season.Summer:
                     MessageBox.Show("Hooray! Sun!", "Message",
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     break;
                 case Season.Autumn:
-                    Button.BackColor = Color.Orange;
+                    Button.BackColor = AppColors.AutumnColor;
                     break;
                 default:
                     MessageBox.Show("Not selected season!", "Warning!",

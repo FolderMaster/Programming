@@ -65,6 +65,7 @@
     <Compile Include="Model\Enums\SmartphoneManufacturers.cs" />
     <Compile Include="Model\Enums\StudyForm.cs" />
     <Compile Include="Model\Enums\Weekday.cs" />
+    <Compile Include="View\AppColors.cs" />
     <Compile Include="View\Controls\EnumerationsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -43,7 +43,7 @@
             // 
             // Button
             // 
-            this.Button.Location = new System.Drawing.Point(85, 14);
+            this.Button.Location = new System.Drawing.Point(86, 13);
             this.Button.Name = "Button";
             this.Button.Size = new System.Drawing.Size(75, 23);
             this.Button.TabIndex = 10;
@@ -68,7 +68,7 @@
             this.Controls.Add(this.Button);
             this.Controls.Add(this.Label);
             this.Name = "SeasonHandleControl";
-            this.Size = new System.Drawing.Size(156, 35);
+            this.Size = new System.Drawing.Size(160, 36);
             this.ResumeLayout(false);
             this.PerformLayout();
 

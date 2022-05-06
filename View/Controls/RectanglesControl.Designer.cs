@@ -45,7 +45,7 @@
             // IdLabel
             // 
             this.IdLabel.AutoSize = true;
-            this.IdLabel.Location = new System.Drawing.Point(105, 156);
+            this.IdLabel.Location = new System.Drawing.Point(102, 153);
             this.IdLabel.Name = "IdLabel";
             this.IdLabel.Size = new System.Drawing.Size(19, 13);
             this.IdLabel.TabIndex = 28;
@@ -53,7 +53,7 @@
             // 
             // IdTextBox
             // 
-            this.IdTextBox.Location = new System.Drawing.Point(105, 172);
+            this.IdTextBox.Location = new System.Drawing.Point(104, 169);
             this.IdTextBox.Name = "IdTextBox";
             this.IdTextBox.ReadOnly = true;
             this.IdTextBox.Size = new System.Drawing.Size(100, 20);
@@ -62,7 +62,7 @@
             // CenterLabel
             // 
             this.CenterLabel.AutoSize = true;
-            this.CenterLabel.Location = new System.Drawing.Point(105, 78);
+            this.CenterLabel.Location = new System.Drawing.Point(101, 75);
             this.CenterLabel.Name = "CenterLabel";
             this.CenterLabel.Size = new System.Drawing.Size(41, 13);
             this.CenterLabel.TabIndex = 27;
@@ -70,7 +70,7 @@
             // 
             // CenterTextBox
             // 
-            this.CenterTextBox.Location = new System.Drawing.Point(105, 94);
+            this.CenterTextBox.Location = new System.Drawing.Point(104, 91);
             this.CenterTextBox.Name = "CenterTextBox";
             this.CenterTextBox.ReadOnly = true;
             this.CenterTextBox.Size = new System.Drawing.Size(100, 20);
@@ -89,7 +89,7 @@
             // ColorLabel
             // 
             this.ColorLabel.AutoSize = true;
-            this.ColorLabel.Location = new System.Drawing.Point(105, 117);
+            this.ColorLabel.Location = new System.Drawing.Point(101, 114);
             this.ColorLabel.Name = "ColorLabel";
             this.ColorLabel.Size = new System.Drawing.Size(34, 13);
             this.ColorLabel.TabIndex = 26;
@@ -97,7 +97,7 @@
             // 
             // ColorTextBox
             // 
-            this.ColorTextBox.Location = new System.Drawing.Point(105, 133);
+            this.ColorTextBox.Location = new System.Drawing.Point(104, 130);
             this.ColorTextBox.Name = "ColorTextBox";
             this.ColorTextBox.Size = new System.Drawing.Size(100, 20);
             this.ColorTextBox.TabIndex = 21;
@@ -106,7 +106,7 @@
             // WidthLabel
             // 
             this.WidthLabel.AutoSize = true;
-            this.WidthLabel.Location = new System.Drawing.Point(105, 36);
+            this.WidthLabel.Location = new System.Drawing.Point(101, 36);
             this.WidthLabel.Name = "WidthLabel";
             this.WidthLabel.Size = new System.Drawing.Size(38, 13);
             this.WidthLabel.TabIndex = 25;
@@ -114,7 +114,7 @@
             // 
             // WidthTextBox
             // 
-            this.WidthTextBox.Location = new System.Drawing.Point(105, 55);
+            this.WidthTextBox.Location = new System.Drawing.Point(105, 52);
             this.WidthTextBox.Name = "WidthTextBox";
             this.WidthTextBox.Size = new System.Drawing.Size(100, 20);
             this.WidthTextBox.TabIndex = 19;
@@ -123,7 +123,7 @@
             // LengthLabel
             // 
             this.LengthLabel.AutoSize = true;
-            this.LengthLabel.Location = new System.Drawing.Point(105, -3);
+            this.LengthLabel.Location = new System.Drawing.Point(101, 0);
             this.LengthLabel.Name = "LengthLabel";
             this.LengthLabel.Size = new System.Drawing.Size(43, 13);
             this.LengthLabel.TabIndex = 24;
@@ -163,7 +163,7 @@
             this.Controls.Add(this.LengthTextBox);
             this.Controls.Add(this.ListBox);
             this.Name = "RectanglesControl";
-            this.Size = new System.Drawing.Size(206, 236);
+            this.Size = new System.Drawing.Size(204, 238);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -48,7 +48,7 @@
             // IntLabel
             // 
             this.IntLabel.AutoSize = true;
-            this.IntLabel.Location = new System.Drawing.Point(211, 2);
+            this.IntLabel.Location = new System.Drawing.Point(214, 0);
             this.IntLabel.Name = "IntLabel";
             this.IntLabel.Size = new System.Drawing.Size(58, 13);
             this.IntLabel.TabIndex = 11;
@@ -65,7 +65,7 @@
             // 
             // IntTextBox
             // 
-            this.IntTextBox.Location = new System.Drawing.Point(214, 18);
+            this.IntTextBox.Location = new System.Drawing.Point(214, 16);
             this.IntTextBox.Name = "IntTextBox";
             this.IntTextBox.ReadOnly = true;
             this.IntTextBox.Size = new System.Drawing.Size(55, 20);

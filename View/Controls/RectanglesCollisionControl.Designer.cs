@@ -28,196 +28,201 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CanvasPanel = new System.Windows.Forms.Panel();
-            this.InfoHeightLabel = new System.Windows.Forms.Label();
-            this.InfoHeightTextBox = new System.Windows.Forms.TextBox();
-            this.InfoYLabel = new System.Windows.Forms.Label();
-            this.InfoWidthLabel = new System.Windows.Forms.Label();
-            this.InfoYTextBox = new System.Windows.Forms.TextBox();
-            this.InfoWidthTextBox = new System.Windows.Forms.TextBox();
-            this.InfoLabel = new System.Windows.Forms.Label();
-            this.ListLabel = new System.Windows.Forms.Label();
-            this.ListListBox = new System.Windows.Forms.ListBox();
-            this.InfoXLabel = new System.Windows.Forms.Label();
-            this.InfoIdLabel = new System.Windows.Forms.Label();
-            this.InfoXTextBox = new System.Windows.Forms.TextBox();
-            this.InfoIdTextBox = new System.Windows.Forms.TextBox();
-            this.ActionsRemoveButton = new System.Windows.Forms.Button();
-            this.ActionsAddButton = new System.Windows.Forms.Button();
+            this.Panel = new System.Windows.Forms.Panel();
+            this.HeightLabel = new System.Windows.Forms.Label();
+            this.HeightTextBox = new System.Windows.Forms.TextBox();
+            this.YLabel = new System.Windows.Forms.Label();
+            this.WidthLabel = new System.Windows.Forms.Label();
+            this.YTextBox = new System.Windows.Forms.TextBox();
+            this.WidthTextBox = new System.Windows.Forms.TextBox();
+            this.SelectedRectanglesLabel = new System.Windows.Forms.Label();
+            this.RectanglesLabel = new System.Windows.Forms.Label();
+            this.ListBox = new System.Windows.Forms.ListBox();
+            this.XLabel = new System.Windows.Forms.Label();
+            this.IdLabel = new System.Windows.Forms.Label();
+            this.XTextBox = new System.Windows.Forms.TextBox();
+            this.IdTextBox = new System.Windows.Forms.TextBox();
+            this.RemoveButton = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // CanvasPanel
+            // Panel
             // 
-            this.CanvasPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CanvasPanel.Location = new System.Drawing.Point(212, 3);
-            this.CanvasPanel.Name = "CanvasPanel";
-            this.CanvasPanel.Size = new System.Drawing.Size(273, 343);
-            this.CanvasPanel.TabIndex = 31;
+            this.Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Panel.Location = new System.Drawing.Point(214, 0);
+            this.Panel.Name = "Panel";
+            this.Panel.Size = new System.Drawing.Size(273, 352);
+            this.Panel.TabIndex = 31;
             // 
-            // InfoHeightLabel
+            // HeightLabel
             // 
-            this.InfoHeightLabel.AutoSize = true;
-            this.InfoHeightLabel.Location = new System.Drawing.Point(-3, 315);
-            this.InfoHeightLabel.Name = "InfoHeightLabel";
-            this.InfoHeightLabel.Size = new System.Drawing.Size(41, 13);
-            this.InfoHeightLabel.TabIndex = 30;
-            this.InfoHeightLabel.Text = "Height:";
+            this.HeightLabel.AutoSize = true;
+            this.HeightLabel.Location = new System.Drawing.Point(3, 316);
+            this.HeightLabel.Name = "HeightLabel";
+            this.HeightLabel.Size = new System.Drawing.Size(41, 13);
+            this.HeightLabel.TabIndex = 30;
+            this.HeightLabel.Text = "Height:";
             // 
-            // InfoHeightTextBox
+            // HeightTextBox
             // 
-            this.InfoHeightTextBox.Location = new System.Drawing.Point(0, 330);
-            this.InfoHeightTextBox.Name = "InfoHeightTextBox";
-            this.InfoHeightTextBox.Size = new System.Drawing.Size(100, 20);
-            this.InfoHeightTextBox.TabIndex = 25;
-            this.InfoHeightTextBox.TextChanged += new System.EventHandler(this.InfoHeightTextBox_TextChanged);
+            this.HeightTextBox.Location = new System.Drawing.Point(6, 332);
+            this.HeightTextBox.Name = "HeightTextBox";
+            this.HeightTextBox.Size = new System.Drawing.Size(100, 20);
+            this.HeightTextBox.TabIndex = 25;
+            this.HeightTextBox.TextChanged += new System.EventHandler(this.HeightTextBox_TextChanged);
             // 
-            // InfoYLabel
+            // YLabel
             // 
-            this.InfoYLabel.AutoSize = true;
-            this.InfoYLabel.Location = new System.Drawing.Point(-3, 237);
-            this.InfoYLabel.Name = "InfoYLabel";
-            this.InfoYLabel.Size = new System.Drawing.Size(17, 13);
-            this.InfoYLabel.TabIndex = 29;
-            this.InfoYLabel.Text = "Y:";
+            this.YLabel.AutoSize = true;
+            this.YLabel.Location = new System.Drawing.Point(3, 237);
+            this.YLabel.Name = "YLabel";
+            this.YLabel.Size = new System.Drawing.Size(17, 13);
+            this.YLabel.TabIndex = 29;
+            this.YLabel.Text = "Y:";
             // 
-            // InfoWidthLabel
+            // WidthLabel
             // 
-            this.InfoWidthLabel.AutoSize = true;
-            this.InfoWidthLabel.Location = new System.Drawing.Point(-3, 276);
-            this.InfoWidthLabel.Name = "InfoWidthLabel";
-            this.InfoWidthLabel.Size = new System.Drawing.Size(38, 13);
-            this.InfoWidthLabel.TabIndex = 28;
-            this.InfoWidthLabel.Text = "Width:";
+            this.WidthLabel.AutoSize = true;
+            this.WidthLabel.Location = new System.Drawing.Point(3, 276);
+            this.WidthLabel.Name = "WidthLabel";
+            this.WidthLabel.Size = new System.Drawing.Size(38, 13);
+            this.WidthLabel.TabIndex = 28;
+            this.WidthLabel.Text = "Width:";
             // 
-            // InfoYTextBox
+            // YTextBox
             // 
-            this.InfoYTextBox.Location = new System.Drawing.Point(0, 253);
-            this.InfoYTextBox.Name = "InfoYTextBox";
-            this.InfoYTextBox.Size = new System.Drawing.Size(100, 20);
-            this.InfoYTextBox.TabIndex = 22;
-            this.InfoYTextBox.TextChanged += new System.EventHandler(this.InfoYTextBox_TextChanged);
+            this.YTextBox.Location = new System.Drawing.Point(6, 253);
+            this.YTextBox.Name = "YTextBox";
+            this.YTextBox.Size = new System.Drawing.Size(100, 20);
+            this.YTextBox.TabIndex = 22;
+            this.YTextBox.TextChanged += new System.EventHandler(this.YTextBox_TextChanged);
             // 
-            // InfoWidthTextBox
+            // WidthTextBox
             // 
-            this.InfoWidthTextBox.Location = new System.Drawing.Point(0, 292);
-            this.InfoWidthTextBox.Name = "InfoWidthTextBox";
-            this.InfoWidthTextBox.Size = new System.Drawing.Size(100, 20);
-            this.InfoWidthTextBox.TabIndex = 24;
-            this.InfoWidthTextBox.TextChanged += new System.EventHandler(this.InfoWidthTextBox_TextChanged);
+            this.WidthTextBox.Location = new System.Drawing.Point(6, 292);
+            this.WidthTextBox.Name = "WidthTextBox";
+            this.WidthTextBox.Size = new System.Drawing.Size(100, 20);
+            this.WidthTextBox.TabIndex = 24;
+            this.WidthTextBox.TextChanged += new System.EventHandler(this.WidthTextBox_TextChanged);
             // 
-            // InfoLabel
+            // SelectedRectanglesLabel
             // 
-            this.InfoLabel.AutoSize = true;
-            this.InfoLabel.Location = new System.Drawing.Point(-3, 146);
-            this.InfoLabel.Name = "InfoLabel";
-            this.InfoLabel.Size = new System.Drawing.Size(104, 13);
-            this.InfoLabel.TabIndex = 27;
-            this.InfoLabel.Text = "Selected Rectangle:";
+            this.SelectedRectanglesLabel.AutoSize = true;
+            this.SelectedRectanglesLabel.Location = new System.Drawing.Point(-3, 146);
+            this.SelectedRectanglesLabel.Name = "SelectedRectanglesLabel";
+            this.SelectedRectanglesLabel.Size = new System.Drawing.Size(104, 13);
+            this.SelectedRectanglesLabel.TabIndex = 27;
+            this.SelectedRectanglesLabel.Text = "Selected Rectangle:";
             // 
-            // ListLabel
+            // RectanglesLabel
             // 
-            this.ListLabel.AutoSize = true;
-            this.ListLabel.Location = new System.Drawing.Point(-3, 0);
-            this.ListLabel.Name = "ListLabel";
-            this.ListLabel.Size = new System.Drawing.Size(64, 13);
-            this.ListLabel.TabIndex = 26;
-            this.ListLabel.Text = "Rectangles:";
+            this.RectanglesLabel.AutoSize = true;
+            this.RectanglesLabel.Location = new System.Drawing.Point(-3, 0);
+            this.RectanglesLabel.Name = "RectanglesLabel";
+            this.RectanglesLabel.Size = new System.Drawing.Size(64, 13);
+            this.RectanglesLabel.TabIndex = 26;
+            this.RectanglesLabel.Text = "Rectangles:";
             // 
-            // ListListBox
+            // ListBox
             // 
-            this.ListListBox.FormattingEnabled = true;
-            this.ListListBox.Location = new System.Drawing.Point(0, 16);
-            this.ListListBox.Name = "ListListBox";
-            this.ListListBox.Size = new System.Drawing.Size(206, 95);
-            this.ListListBox.TabIndex = 16;
-            this.ListListBox.SelectedIndexChanged += new System.EventHandler(this.ListListBox_SelectedIndexChanged);
+            this.ListBox.FormattingEnabled = true;
+            this.ListBox.Location = new System.Drawing.Point(0, 16);
+            this.ListBox.Name = "ListBox";
+            this.ListBox.Size = new System.Drawing.Size(207, 95);
+            this.ListBox.TabIndex = 16;
+            this.ListBox.SelectedIndexChanged += new System.EventHandler(this.ListBox_SelectedIndexChanged);
             // 
-            // InfoXLabel
+            // XLabel
             // 
-            this.InfoXLabel.AutoSize = true;
-            this.InfoXLabel.Location = new System.Drawing.Point(-3, 198);
-            this.InfoXLabel.Name = "InfoXLabel";
-            this.InfoXLabel.Size = new System.Drawing.Size(17, 13);
-            this.InfoXLabel.TabIndex = 23;
-            this.InfoXLabel.Text = "X:";
+            this.XLabel.AutoSize = true;
+            this.XLabel.Location = new System.Drawing.Point(3, 198);
+            this.XLabel.Name = "XLabel";
+            this.XLabel.Size = new System.Drawing.Size(17, 13);
+            this.XLabel.TabIndex = 23;
+            this.XLabel.Text = "X:";
             // 
-            // InfoIdLabel
+            // IdLabel
             // 
-            this.InfoIdLabel.AutoSize = true;
-            this.InfoIdLabel.Location = new System.Drawing.Point(-3, 159);
-            this.InfoIdLabel.Name = "InfoIdLabel";
-            this.InfoIdLabel.Size = new System.Drawing.Size(19, 13);
-            this.InfoIdLabel.TabIndex = 20;
-            this.InfoIdLabel.Text = "Id:";
+            this.IdLabel.AutoSize = true;
+            this.IdLabel.Location = new System.Drawing.Point(3, 159);
+            this.IdLabel.Name = "IdLabel";
+            this.IdLabel.Size = new System.Drawing.Size(19, 13);
+            this.IdLabel.TabIndex = 20;
+            this.IdLabel.Text = "Id:";
             // 
-            // InfoXTextBox
+            // XTextBox
             // 
-            this.InfoXTextBox.Location = new System.Drawing.Point(0, 214);
-            this.InfoXTextBox.Name = "InfoXTextBox";
-            this.InfoXTextBox.Size = new System.Drawing.Size(100, 20);
-            this.InfoXTextBox.TabIndex = 21;
-            this.InfoXTextBox.TextChanged += new System.EventHandler(this.InfoXTextBox_TextChanged);
+            this.XTextBox.Location = new System.Drawing.Point(6, 214);
+            this.XTextBox.Name = "XTextBox";
+            this.XTextBox.Size = new System.Drawing.Size(100, 20);
+            this.XTextBox.TabIndex = 21;
+            this.XTextBox.TextChanged += new System.EventHandler(this.XTextBox_TextChanged);
             // 
-            // InfoIdTextBox
+            // IdTextBox
             // 
-            this.InfoIdTextBox.Location = new System.Drawing.Point(0, 175);
-            this.InfoIdTextBox.Name = "InfoIdTextBox";
-            this.InfoIdTextBox.ReadOnly = true;
-            this.InfoIdTextBox.Size = new System.Drawing.Size(100, 20);
-            this.InfoIdTextBox.TabIndex = 19;
+            this.IdTextBox.Location = new System.Drawing.Point(6, 175);
+            this.IdTextBox.Name = "IdTextBox";
+            this.IdTextBox.ReadOnly = true;
+            this.IdTextBox.Size = new System.Drawing.Size(100, 20);
+            this.IdTextBox.TabIndex = 19;
             // 
-            // ActionsRemoveButton
+            // RemoveButton
             // 
-            this.ActionsRemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ActionsRemoveButton.Image = global::Programming.Properties.Resources.rectangle_remove_24x24_uncolor;
-            this.ActionsRemoveButton.Location = new System.Drawing.Point(107, 117);
-            this.ActionsRemoveButton.Name = "ActionsRemoveButton";
-            this.ActionsRemoveButton.Size = new System.Drawing.Size(99, 26);
-            this.ActionsRemoveButton.TabIndex = 18;
-            this.ActionsRemoveButton.UseVisualStyleBackColor = true;
-            this.ActionsRemoveButton.Click += new System.EventHandler(this.ActionsRemoveButton_Click);
-            this.ActionsRemoveButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ActionsRemoveButton_MouseDown);
-            this.ActionsRemoveButton.MouseEnter += new System.EventHandler(this.ActionsRemoveButton_MouseEnter);
-            this.ActionsRemoveButton.MouseLeave += new System.EventHandler(this.ActionsRemoveButton_MouseLeave);
-            this.ActionsRemoveButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ActionsRemoveButton_MouseUp);
+            this.RemoveButton.FlatAppearance.BorderSize = 0;
+            this.RemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RemoveButton.Image = global::Programming.Properties.Resources.rectangle_remove_24x24_uncolor;
+            this.RemoveButton.Location = new System.Drawing.Point(107, 117);
+            this.RemoveButton.Name = "RemoveButton";
+            this.RemoveButton.Size = new System.Drawing.Size(100, 26);
+            this.RemoveButton.TabIndex = 18;
+            this.RemoveButton.UseVisualStyleBackColor = true;
+            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
+            this.RemoveButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RemoveButton_MouseDown);
+            this.RemoveButton.MouseEnter += new System.EventHandler(this.RemoveButton_MouseEnter);
+            this.RemoveButton.MouseLeave += new System.EventHandler(this.RemoveButton_MouseLeave);
+            this.RemoveButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.RemoveButton_MouseUp);
             // 
-            // ActionsAddButton
+            // AddButton
             // 
-            this.ActionsAddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ActionsAddButton.Image = global::Programming.Properties.Resources.rectangle_add_24x24_uncolor;
-            this.ActionsAddButton.Location = new System.Drawing.Point(0, 117);
-            this.ActionsAddButton.Name = "ActionsAddButton";
-            this.ActionsAddButton.Size = new System.Drawing.Size(101, 26);
-            this.ActionsAddButton.TabIndex = 17;
-            this.ActionsAddButton.UseVisualStyleBackColor = true;
-            this.ActionsAddButton.Click += new System.EventHandler(this.ActionsAddButton_Click);
-            this.ActionsAddButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ActionsAddButton_MouseDown);
-            this.ActionsAddButton.MouseEnter += new System.EventHandler(this.ActionsAddButton_MouseEnter);
-            this.ActionsAddButton.MouseLeave += new System.EventHandler(this.ActionsAddButton_MouseLeave);
-            this.ActionsAddButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ActionsAddButton_MouseUp);
+            this.AddButton.FlatAppearance.BorderSize = 0;
+            this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddButton.Image = global::Programming.Properties.Resources.rectangle_add_24x24_uncolor;
+            this.AddButton.Location = new System.Drawing.Point(0, 117);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(100, 26);
+            this.AddButton.TabIndex = 17;
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            this.AddButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddButton_MouseDown);
+            this.AddButton.MouseEnter += new System.EventHandler(this.AddButton_MouseEnter);
+            this.AddButton.MouseLeave += new System.EventHandler(this.AddButton_MouseLeave);
+            this.AddButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AddButton_MouseUp);
             // 
             // RectanglesCollisionControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.CanvasPanel);
-            this.Controls.Add(this.InfoHeightLabel);
-            this.Controls.Add(this.InfoHeightTextBox);
-            this.Controls.Add(this.InfoYLabel);
-            this.Controls.Add(this.InfoWidthLabel);
-            this.Controls.Add(this.InfoYTextBox);
-            this.Controls.Add(this.InfoWidthTextBox);
-            this.Controls.Add(this.InfoLabel);
-            this.Controls.Add(this.ListLabel);
-            this.Controls.Add(this.ListListBox);
-            this.Controls.Add(this.InfoXLabel);
-            this.Controls.Add(this.InfoIdLabel);
-            this.Controls.Add(this.InfoXTextBox);
-            this.Controls.Add(this.InfoIdTextBox);
-            this.Controls.Add(this.ActionsRemoveButton);
-            this.Controls.Add(this.ActionsAddButton);
+            this.Controls.Add(this.Panel);
+            this.Controls.Add(this.HeightLabel);
+            this.Controls.Add(this.HeightTextBox);
+            this.Controls.Add(this.YLabel);
+            this.Controls.Add(this.WidthLabel);
+            this.Controls.Add(this.YTextBox);
+            this.Controls.Add(this.WidthTextBox);
+            this.Controls.Add(this.SelectedRectanglesLabel);
+            this.Controls.Add(this.RectanglesLabel);
+            this.Controls.Add(this.ListBox);
+            this.Controls.Add(this.XLabel);
+            this.Controls.Add(this.IdLabel);
+            this.Controls.Add(this.XTextBox);
+            this.Controls.Add(this.IdTextBox);
+            this.Controls.Add(this.RemoveButton);
+            this.Controls.Add(this.AddButton);
             this.Name = "RectanglesCollisionControl";
-            this.Size = new System.Drawing.Size(486, 350);
+            this.Size = new System.Drawing.Size(486, 352);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,21 +230,21 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel CanvasPanel;
-        private System.Windows.Forms.Label InfoHeightLabel;
-        private System.Windows.Forms.TextBox InfoHeightTextBox;
-        private System.Windows.Forms.Label InfoYLabel;
-        private System.Windows.Forms.Label InfoWidthLabel;
-        private System.Windows.Forms.TextBox InfoYTextBox;
-        private System.Windows.Forms.TextBox InfoWidthTextBox;
-        private System.Windows.Forms.Label InfoLabel;
-        private System.Windows.Forms.Label ListLabel;
-        private System.Windows.Forms.ListBox ListListBox;
-        private System.Windows.Forms.Label InfoXLabel;
-        private System.Windows.Forms.Label InfoIdLabel;
-        private System.Windows.Forms.TextBox InfoXTextBox;
-        private System.Windows.Forms.TextBox InfoIdTextBox;
-        private System.Windows.Forms.Button ActionsRemoveButton;
-        private System.Windows.Forms.Button ActionsAddButton;
+        private System.Windows.Forms.Panel Panel;
+        private System.Windows.Forms.Label HeightLabel;
+        private System.Windows.Forms.TextBox HeightTextBox;
+        private System.Windows.Forms.Label YLabel;
+        private System.Windows.Forms.Label WidthLabel;
+        private System.Windows.Forms.TextBox YTextBox;
+        private System.Windows.Forms.TextBox WidthTextBox;
+        private System.Windows.Forms.Label SelectedRectanglesLabel;
+        private System.Windows.Forms.Label RectanglesLabel;
+        private System.Windows.Forms.ListBox ListBox;
+        private System.Windows.Forms.Label XLabel;
+        private System.Windows.Forms.Label IdLabel;
+        private System.Windows.Forms.TextBox XTextBox;
+        private System.Windows.Forms.TextBox IdTextBox;
+        private System.Windows.Forms.Button RemoveButton;
+        private System.Windows.Forms.Button AddButton;
     }
 }

@@ -9,10 +9,6 @@ namespace Programming.View.Controls
 {
     public partial class MoviesControl : UserControl
     {
-        private readonly Color _correctColor = Color.White;
-
-        private readonly Color _errorColor = Color.Yellow;
-
         private Movie[] _movies;
 
         private Movie _currentMovie;
@@ -92,11 +88,11 @@ namespace Programming.View.Controls
                 try
                 {
                     _currentMovie.Minutes = int.Parse(MinutesTextBox.Text);
-                    MinutesTextBox.BackColor = _correctColor;
+                    MinutesTextBox.BackColor = AppColors.CorrectColor;
                 }
                 catch
                 {
-                    MinutesTextBox.BackColor = _errorColor;
+                    MinutesTextBox.BackColor = AppColors.ErrorColor;
                 }
             }
         }
@@ -108,11 +104,11 @@ namespace Programming.View.Controls
                 try
                 {
                     _currentMovie.ReleaseYear = int.Parse(ReleaseYearTextBox.Text);
-                    ReleaseYearTextBox.BackColor = _correctColor;
+                    ReleaseYearTextBox.BackColor = AppColors.CorrectColor;
                 }
                 catch
                 {
-                    ReleaseYearTextBox.BackColor = _errorColor;
+                    ReleaseYearTextBox.BackColor = AppColors.ErrorColor;
                 }
             }
         }
@@ -125,11 +121,11 @@ namespace Programming.View.Controls
                 {
                     _currentMovie.Genre = (Genre)Enum.Parse(typeof(Genre),
                         GenreTextBox.Text);
-                    GenreTextBox.BackColor = _correctColor;
+                    GenreTextBox.BackColor = AppColors.CorrectColor;
                 }
                 catch
                 {
-                    GenreTextBox.BackColor = _errorColor;
+                    GenreTextBox.BackColor = AppColors.ErrorColor;
                 }
             }
         }
@@ -141,11 +137,11 @@ namespace Programming.View.Controls
                 try
                 {
                     _currentMovie.Rating = double.Parse(RatingTextBox.Text);
-                    RatingTextBox.BackColor = _correctColor;
+                    RatingTextBox.BackColor = AppColors.CorrectColor;
                 }
                 catch
                 {
-                    RatingTextBox.BackColor = _errorColor;
+                    RatingTextBox.BackColor = AppColors.ErrorColor;
                 }
             }
         }
