@@ -7,12 +7,24 @@ using Programming.Model.Classes;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Элемент управления длля работы с массивом экземпляров класса <see cref="Movie"/>.
+    /// </summary>
     public partial class MoviesControl : UserControl
     {
+        /// <summary>
+        /// Массив экземпляров класса <see cref="Movie"/>.
+        /// </summary>
         private Movie[] _movies;
 
+        /// <summary>
+        /// Выбранный экземпляр класса <see cref="Movie"/>.
+        /// </summary>
         private Movie _currentMovie;
 
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="MoviesControl"/>.
+        /// </summary>
         public MoviesControl()
         {
             InitializeComponent();
@@ -20,6 +32,10 @@ namespace Programming.View.Controls
             CreateMovies(18);
         }
 
+        /// <summary>
+        /// Создаёт массив экземпляров класса <see cref="Movie"/>.
+        /// </summary>
+        /// <param name="count">Количество элементов массива.</param>
         private void CreateMovies(int count)
         {
             Random random = new Random();
@@ -35,6 +51,13 @@ namespace Programming.View.Controls
                 ListBox.Items.Add("Movie " + (n + 1));
             }
         }
+
+        /// <summary>
+        /// Находит в массиве экземпляров класса <see cref="Movie"/>
+        /// элемент с максимальным <see cref="Movie.Rating"/>.
+        /// </summary>
+        /// <param name="movies">Массив экземпляров класса <see cref="Movie"/>.</param>
+        /// <returns>Индекс элемента с максимальным <see cref="Movie.Rating"/>.</returns>
         private int FindMovieWithMaxRating(Movie[] movies)
         {
             int indexMaxRating = -1;
@@ -52,6 +75,12 @@ namespace Programming.View.Controls
             return indexMaxRating;
         }
 
+        /// <summary>
+        /// Создаёт строку с случайными буквами латинского алфавита.
+        /// </summary>
+        /// <param name="size">Размер строки.</param>
+        /// <param name="random">Экземпляр генератора случайных чисел.</param>
+        /// <returns>Строка, состоящая из случайных букв латинского алфавита.</returns>
         private string CreateRandomString(int size, Random random)
         {
             string result = ((char)random.Next(65, 91)).ToString();

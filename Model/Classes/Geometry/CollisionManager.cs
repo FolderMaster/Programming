@@ -1,8 +1,18 @@
 ﻿using System;
 namespace Programming.Model.Classes.Geometry
 {
+    /// <summary>
+    /// Предоставляет методы проверки коллизий различных геометрических объектов.
+    /// </summary>
     public static class CollisionManager
     {
+        /// <summary>
+        /// Проверяет коллизию между двумя прямоугольниками.
+        /// </summary>
+        /// <param name="rectangle1">Первый прямоугольник.</param>
+        /// <param name="rectangle2">Второй прямоугольник.</param>
+        /// <returns>Возвращает true, если условия коллизии выполнены для прямоугольников,
+        /// а иначе - false.</returns>
         public static bool IsCollision(Rectangle rectangle1, Rectangle rectangle2)
         {
             double dX = Math.Abs(rectangle1.Center.X - rectangle2.Center.X);
@@ -12,6 +22,13 @@ namespace Programming.Model.Classes.Geometry
             return dX < (sLength / 2) && dY < (sWidth / 2);
         }
 
+        /// <summary>
+        /// Проверяет коллизию между двумя кольцами.
+        /// </summary>
+        /// <param name="ring1">Первое кольцо.</param>
+        /// <param name="ring2">Второе кольцо.</param>
+        /// <returns>Возвращает true, если условия коллизиии выполнены для колец,
+        /// а иначе - false.</returns>
         public static bool IsCollion(Ring ring1, Ring ring2)
         {
             double c = Math.Sqrt(Math.Pow(ring1.Center.X - ring2.Center.X, 2)

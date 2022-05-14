@@ -9,10 +9,19 @@ using Rectangle = Programming.Model.Classes.Geometry.Rectangle;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Элемент управления для работы с массивом экземпляров класса <see cref="Rectangle"/>.
+    /// </summary>
     public partial class RectanglesControl : UserControl
     {
+        /// <summary>
+        /// Массив экземпляров класса <see cref="Rectangle"/>.
+        /// </summary>
         private Rectangle[] _rectangles;
 
+        /// <summary>
+        /// Выбранный экземпляр класса <see cref="Rectangle"/>.
+        /// </summary>
         private Rectangle _currentRectangle;
 
         public RectanglesControl()
@@ -22,6 +31,10 @@ namespace Programming.View.Controls
             CreateRectangles(18);
         }
 
+        /// <summary>
+        /// Создаёт массив экземпляров класса <see cref="Rectangle"/>.
+        /// </summary>
+        /// <param name="count">Количество элементов массива.</param>
         private void CreateRectangles(int count)
         {
             Random random = new Random();
@@ -39,6 +52,12 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// Ищет в массиве экземпляров класса <see cref="Rectangle"/>
+        /// элемент с максимальной <see cref="Rectangle.Width"/>.
+        /// </summary>
+        /// <param name="rectangles">Массив экземпляров класса <see cref="Rectangle"/>.</param>
+        /// <returns>Индекс элемента с максимальной <see cref="Rectangle.Width"/>.</returns>
         private int FindRectangleWithMaxWidth(Rectangle[] rectangles)
         {
             int indexMaxWidth = -1;

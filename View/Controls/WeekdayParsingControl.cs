@@ -5,8 +5,14 @@ using Programming.Model.Enums;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Элемемент управления для работы с парсингом перечисления <see cref="Weekday"/>.
+    /// </summary>
     public partial class WeekdayParsingControl : UserControl
     {
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="WeekdayParsingControl"/>.
+        /// </summary>
         public WeekdayParsingControl()
         {
             InitializeComponent();

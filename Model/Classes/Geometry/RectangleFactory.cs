@@ -4,10 +4,27 @@ using Programming.Model.Enums;
 
 namespace Programming.Model.Classes.Geometry
 {
+    /// <summary>
+    /// Фабрика, создающая экземпляры класса <see cref="Rectangle"/>.
+    /// </summary>
     public static class RectangleFactory
     {
+        /// <summary>
+        /// Размер отсутупа от краёв полотна.
+        /// </summary>
         private static int _margin = 15;
+
+        /// <summary>
+        /// Экземпляр генератора случайных чисел.
+        /// </summary>
         private static Random _random = new Random();
+
+        /// <summary>
+        /// Метод рандомизации экзепляров класса <see cref="Rectangle"/> по размерам полотна.
+        /// </summary>
+        /// <param name="widthCanvas">Длина полотна.</param>
+        /// <param name="heightCanvas">Высота полотна.</param>
+        /// <returns>Возвращает экземпляр класса <see cref="Rectangle"/>.</returns>
         public static Rectangle Randomize(int widthCanvas, int heightCanvas)
         {
             double length = Math.Round(_random.NextDouble() +

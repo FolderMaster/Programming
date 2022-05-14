@@ -1,5 +1,8 @@
 ﻿namespace Programming.Model.Enums
 {
+    /// <summary>
+    /// Перечисление цветов.
+    /// </summary>
     public enum Colour
     {
         None,

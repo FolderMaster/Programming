@@ -2,16 +2,34 @@
 using System.Text.RegularExpressions;
 namespace Programming.Model.Classes
 {
+    /// <summary>
+    /// Хранит информацию о человеке: имя, фамилию, отчество, номер телефона.
+    /// </summary>
     public class Contact
     {
+        /// <summary>
+        /// Номер телефона.
+        /// </summary>
         private string _phoneNumber;
 
+        /// <summary>
+        /// Имя.
+        /// </summary>
         private string _name;
 
+        /// <summary>
+        /// Фамилия.
+        /// </summary>
         private string _surname;
 
+        /// <summary>
+        /// Отчество.
+        /// </summary>
         private string _patronymic;
 
+        /// <summary>
+        /// Возвращает и задаёт номер телефона. Должен быть представлен как "+0-(000)-000-00-00".
+        /// </summary>
         public string PhoneNumber
         {
             get
@@ -20,7 +38,6 @@ namespace Programming.Model.Classes
             }
             set
             {
-                // Contact.PhoneNumber must be pattern as "+0-(000)-000-00-00"
                 Match match = 
                     new Regex(@"(\d{1})\s*(\d{3})\s*(\d{3})\s*(\d{2})\s*(\d{2})").Match(value);
                 if(match.Success)
@@ -39,6 +56,9 @@ namespace Programming.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Возвращает и задаёт имя. Должно состоять только из букв.
+        /// </summary>
         public string Name
         {
             get
@@ -52,6 +72,9 @@ namespace Programming.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Возвращает и задаёт фамилию. Должна состоять только из букв.
+        /// </summary>
         public string Surname
         {
             get
@@ -65,6 +88,9 @@ namespace Programming.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Возвращает и задаёт отчество. Должно состоять только из букв.
+        /// </summary>
         public string Patronymic
         {
             get
@@ -78,6 +104,9 @@ namespace Programming.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Contact"/> по умолчанию.
+        /// </summary>
         public Contact()
         {
             PhoneNumber = "+0-(000)-000-00-00";
@@ -86,6 +115,14 @@ namespace Programming.Model.Classes
             Patronymic = "";
         }
 
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Contact"/>.
+        /// </summary>
+        /// <param name="phoneNumber">Номер телефона. Должен быть представлен как
+        /// "+0-(000)-000-00-00".</param>
+        /// <param name="name">Имя. Должно состоять только из букв.</param>
+        /// <param name="surname">Фамилия. Должна состоять только из букв.</param>
+        /// <param name="patronymic">Отчество. Должно состоять только из букв.</param>
         public Contact(string phoneNumber, string name, string surname, string patronymic)
         {
             PhoneNumber = phoneNumber;
@@ -94,6 +131,12 @@ namespace Programming.Model.Classes
             Patronymic = patronymic;
         }
 
+        /// <summary>
+        /// Проверяет, что строка состоит только из букв.
+        /// </summary>
+        /// <param name="value">Проверяемое значение.</param>
+        /// <param name="name">Имя поля.</param>
+        /// <exception cref="ArgumentException"></exception>
         private void AssertStringContainsOnlyLetters(string value, string name)
         {
             for(int n = 0; n < value.Length; n++)

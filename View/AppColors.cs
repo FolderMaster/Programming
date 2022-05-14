@@ -2,6 +2,9 @@
 
 namespace Programming.View
 {
+    /// <summary>
+    /// Хранит в себе константные значения цветов приложения.
+    /// </summary>
     public class AppColors
     {
         public static readonly Color SpringColor = Color.LightGreen;

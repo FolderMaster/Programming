@@ -6,8 +6,14 @@ using Programming.Model.Enums;
 
 namespace Programming.View.Controls
 {
+    /// <summary>
+    /// Элемент управления для работы с перечислением <see cref="Season"/>.
+    /// </summary>
     public partial class SeasonHandleControl : UserControl
     {
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="SeasonHandleControl"/>.
+        /// </summary>
         public SeasonHandleControl()
         {
             InitializeComponent();

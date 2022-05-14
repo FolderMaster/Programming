@@ -9,16 +9,34 @@ using Rectangle = Programming.Model.Classes.Geometry.Rectangle;
 
 namespace Programming.View.TabPages
 {
+    /// <summary>
+    /// Элемент управления для работы с коллизией прямоугольников.
+    /// </summary>
     public partial class RectanglesCollisionControl : UserControl
     {
+        /// <summary>
+        /// Выбранный экземпляр класса <see cref="Rectangle"/>.
+        /// </summary>
         private Rectangle _currentRectangle;
 
+        /// <summary>
+        /// Лист экземпляров класса <see cref="Rectangle"/>.
+        /// </summary>
         private List<Rectangle> _rectangles = new List<Rectangle>();
 
+        /// <summary>
+        /// 
+        /// </summary>
         private BindingSource _bindingSource = new BindingSource();
 
+        /// <summary>
+        /// Лист экземпляров класса <see cref="Panel"/> для отображения прямоугольников.
+        /// </summary>
         private List<Panel> _rectanglePanels = new List<Panel>();
 
+        /// <summary>
+        /// Создаёт экземляр класса <see cref="RectangleCollisionControl"/>.
+        /// </summary>
         public RectanglesCollisionControl()
         {
             InitializeComponent();
@@ -28,6 +46,10 @@ namespace Programming.View.TabPages
             ListBox.DataSource = _bindingSource;
         }
 
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Rectangle"/> для <see cref="_rectangles"/>,
+        /// создаёт ассоциативный <see cref="Panel"/> для <see cref="_rectanglePanels"/>.
+        /// </summary>
         private void CreateRectangle()
         {
             //Visual Studio don't want to work correctly!
@@ -48,6 +70,10 @@ namespace Programming.View.TabPages
             Panel.Controls.Add(panel);
         }
 
+        /// <summary>
+        /// Реализует логику <see cref="CreateRectangle"/> для множества объектов.
+        /// </summary>
+        /// <param name="count">Количество элементов листа.</param>
         private void CreateRectangles(int count)
         {
             for (int n = 0; n < count; ++n)
@@ -58,6 +84,11 @@ namespace Programming.View.TabPages
             FindCollisions();
         }
 
+        /// <summary>
+        /// Ищет коллизии прямоугольников:
+        /// окрашивает в <see cref="AppColors.CollisionColor"/> при коллизии,
+        /// а иначе в <see cref="AppColors.NoneCollisionColor"/>.
+        /// </summary>
         private void FindCollisions()
         {
             _rectanglePanels.ForEach(panel => panel.BackColor = AppColors.NoneCollisionColor);
@@ -82,6 +113,12 @@ namespace Programming.View.TabPages
             Panel.Update();
         }
 
+        /// <summary>
+        /// Ищет коллизии прямоугольников относительно одного элемента:
+        /// окрашивает в <see cref="AppColors.CollisionColor"/> при коллизии,
+        /// а иначе в <see cref="AppColors.NoneCollisionColor"/>.
+        /// </summary>
+        /// <param name="index">Индекс элемента, относительно которого проверяется коллизия.</param>
         private void FindCollisionsWith(int index)
         {
             for (int i = 0; i < _rectanglePanels.Count; i++)
@@ -95,6 +132,11 @@ namespace Programming.View.TabPages
             Panel.Update();
         }
 
+        /// <summary>
+        /// Обновляет свойства прямоугольника для отображения.
+        /// </summary>
+        /// <param name="rectangle">Обновляемый прямоугольник.</param>
+        /// <param name="panel">Панель, ассоциируемая с данным прямоугольником.</param>
         private void UpdateRectangleProperty(Rectangle rectangle, Panel panel)
         {
             panel.Size = new Size((int)rectangle.Length, (int)rectangle.Width);
@@ -104,7 +146,10 @@ namespace Programming.View.TabPages
             FindCollisions();
         }
 
-        private void UpdateRectangleInfo(Rectangle rectangle)
+        /// <summary>
+        /// Обновляет для элементов управления информацию о выбранном прямоугольнике.
+        /// </summary>
+        private void UpdateRectangleInfo()
         {
             IdTextBox.Text = _currentRectangle.Id.ToString();
             XTextBox.Text = _currentRectangle.Center.X.ToString();
@@ -113,6 +158,9 @@ namespace Programming.View.TabPages
             HeightTextBox.Text = _currentRectangle.Width.ToString();
         }
 
+        /// <summary>
+        /// Очищает для элементов управления информацию о прямоугольнике.
+        /// </summary>
         private void ClearRectangleInfo()
         {
             IdTextBox.Text = XTextBox.Text =
@@ -132,7 +180,7 @@ namespace Programming.View.TabPages
             }
             else
             {
-                UpdateRectangleInfo(_currentRectangle);
+                UpdateRectangleInfo();
             }
         }
 
