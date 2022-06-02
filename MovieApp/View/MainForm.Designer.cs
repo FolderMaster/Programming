@@ -91,6 +91,7 @@
             this.Controls.Add(this.MovieListGroupBox);
             this.Controls.Add(this.MovieEditorGroupBox);
             this.Name = "MainForm";
+            this.ShowIcon = false;
             this.Text = "MovieApp";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
