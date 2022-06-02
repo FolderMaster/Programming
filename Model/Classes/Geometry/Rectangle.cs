@@ -26,11 +26,6 @@ namespace Programming.Model.Classes.Geometry
         /// </summary>
         private double _width;
 
-        override public string ToString()
-        {
-            return $"{_id}. (X = {Center.X}, Y = {Center.Y}, L = {Length}, W = {Width})";
-        }
-
         /// <summary>
         /// Возвращает количество всех экземпляров класса.
         /// </summary>
@@ -125,6 +120,11 @@ namespace Programming.Model.Classes.Geometry
             Width = width;
             Center = center;
             Color = color;
+        }
+
+        override public string ToString()
+        {
+            return $"{_id}. (X = {Center.X}, Y = {Center.Y}, L = {Length}, W = {Width})";
         }
     }
 }

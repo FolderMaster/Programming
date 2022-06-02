@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Programming", "Programming.csproj", "{785A6645-CD89-495F-9F6C-64CE7D5A4088}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieApp", "..\MovieApp\MovieApp.csproj", "{8D335DC1-A933-41D9-8D37-E1DEF7AC4229}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieApp", "..\..\..\Desktop\Учёба\Семестр 2\Программирование\MovieApp\MovieApp\MovieApp.csproj", "{8D335DC1-A933-41D9-8D37-E1DEF7AC4229}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -108,5 +108,10 @@ namespace Programming.Model.Classes
             Genre = genre;
             Rating = rating;
         }
+
+        override public string ToString()
+        {
+            return $"{Name} / {ReleaseYear} / {Genre}";
+        }
     }
 }
