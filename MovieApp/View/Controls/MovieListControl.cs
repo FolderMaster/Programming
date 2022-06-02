@@ -114,9 +114,9 @@ namespace MovieApp.View.Controls
                 {
                     if (!IsAlphabetically(Movies[j].Name, Movies[j + 1].Name))
                     {
-                        Movie movie = Movies[j + 1];
-                        Movies[j + 1] = Movies[j];
-                        Movies[j] = movie;
+                        Movie movie = Movies[j];
+                        Movies[j] = Movies[j + 1];
+                        Movies[j + 1] = movie;
                     }
                 }
             }
@@ -136,6 +136,10 @@ namespace MovieApp.View.Controls
                 if (text1[n] > text2[n])
                 {
                     return false;
+                }
+                else if (text1[n] < text2[n])
+                {
+                    return true;
                 }
             }
             return text1.Length <= text2.Length;
@@ -186,16 +190,6 @@ namespace MovieApp.View.Controls
             {
                 ListBox.SelectedItem = SelectedMovie;
             }
-        }
-
-        private void EditButton_MouseEnter(object sender, EventArgs e)
-        {
-            EditButton.Image = Properties.Resources.rectangle_edit_24x24;
-        }
-
-        private void EditButton_MouseLeave(object sender, EventArgs e)
-        {
-            EditButton.Image = Properties.Resources.rectangle_edit_24x24_uncolor;
         }
 
         private void EditButton_Click(object sender, EventArgs e)
