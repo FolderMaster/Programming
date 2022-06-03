@@ -36,12 +36,12 @@ namespace MovieApp.View.Controls
         /// <summary>
         /// Возвращает и задаёт выбранный экземпляр класса <see cref="Movie"/>.
         /// </summary>
-        public Movie SelectedMovie { get; set; } = null;
+        public Movie SelectedMovie { get; set; }
 
         /// <summary>
         /// Возвращает и задаёт список экземпляров класса <see cref="Movie"/>.
         /// </summary>
-        public List<Movie> Movies { get; set; } = new List<Movie>();
+        public List<Movie> Movies { get; set; }
 
         /// <summary>
         /// Добавляет и удаляет события для обработчика события нажатия по кнопке <see cref="EditButton"/>.
@@ -81,6 +81,7 @@ namespace MovieApp.View.Controls
         {
             InitializeComponent();
 
+            Movies = new List<Movie>();
             _bindingSource.DataSource = Movies;
             ListBox.DataSource = _bindingSource;
         }

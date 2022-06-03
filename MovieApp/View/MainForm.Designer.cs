@@ -90,8 +90,8 @@
             this.ClientSize = new System.Drawing.Size(433, 450);
             this.Controls.Add(this.MovieListGroupBox);
             this.Controls.Add(this.MovieEditorGroupBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.ShowIcon = false;
             this.Text = "MovieApp";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
