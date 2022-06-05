@@ -56,7 +56,7 @@
             this.MovieEditorControl.Movie = null;
             this.MovieEditorControl.Name = "MovieEditorControl";
             this.MovieEditorControl.Size = new System.Drawing.Size(197, 127);
-            this.MovieEditorControl.TabIndex = 0;
+            this.MovieEditorControl.TabIndex = 3;
             this.MovieEditorControl.UpdateMode = MovieApp.View.Controls.UpdateType.None;
             this.MovieEditorControl.CurrentPropertyChanged += new System.EventHandler(this.MovieEditorControl_CurrentPropertyChanged);
             // 
@@ -65,11 +65,11 @@
             this.MovieListControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MovieListControl.Location = new System.Drawing.Point(3, 16);
             this.MovieListControl.Name = "MovieListControl";
-            this.MovieListControl.SelectedMovie = null;
+            this.MovieListControl.SelectedIndex = -1;
             this.MovieListControl.Size = new System.Drawing.Size(194, 407);
             this.MovieListControl.TabIndex = 1;
-            this.MovieListControl.EditButtonClicked += new System.EventHandler(this.MovieListControl_EditButtonClicked);
             this.MovieListControl.ListBoxSelectedIndexChanged += new System.EventHandler(this.MovieListControl_ListBoxSelectedIndexChanged);
+            this.MovieListControl.RemoveButtonClick += new System.EventHandler(this.MovieListControl_RemoveButtonClick);
             // 
             // MovieListGroupBox
             // 
@@ -79,7 +79,7 @@
             this.MovieListGroupBox.Location = new System.Drawing.Point(12, 12);
             this.MovieListGroupBox.Name = "MovieListGroupBox";
             this.MovieListGroupBox.Size = new System.Drawing.Size(200, 426);
-            this.MovieListGroupBox.TabIndex = 3;
+            this.MovieListGroupBox.TabIndex = 0;
             this.MovieListGroupBox.TabStop = false;
             this.MovieListGroupBox.Text = "Movie list";
             // 

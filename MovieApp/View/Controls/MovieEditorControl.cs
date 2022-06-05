@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Programming.Model.Enums;
@@ -28,11 +21,6 @@ namespace MovieApp.View.Controls
         /// Делегат для обработки информации.
         /// </summary>
         private delegate void Parse();
-
-        /// <summary>
-        /// Обработчик события изменения <see cref="Movie"/>.
-        /// </summary>
-        private EventHandler onCurrentPropertyChanged;
 
         /// <summary>
         /// Возвращает и задаёт экземпляр класса <see cref="Movie"/>.
@@ -63,19 +51,9 @@ namespace MovieApp.View.Controls
         public UpdateType UpdateMode { set; get; }
 
         /// <summary>
-        /// Добавляет и удаляет события для обработчика события изменения <see cref="Movie"/>.
+        /// Обработчик события изменения <see cref="Movie"/>.
         /// </summary>
-        public event EventHandler CurrentPropertyChanged
-        {
-            add
-            {
-                onCurrentPropertyChanged += value;
-            }
-            remove
-            {
-                onCurrentPropertyChanged -= value;
-            }
-        }
+        public event EventHandler CurrentPropertyChanged;
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="MovieEditorControl"/>.
@@ -83,7 +61,6 @@ namespace MovieApp.View.Controls
         public MovieEditorControl()
         {
             InitializeComponent();
-
             GenreComboBox.DataSource = Enum.GetValues(typeof(Genre));
         }
 
@@ -171,7 +148,7 @@ namespace MovieApp.View.Controls
                     parse();
                     control.BackColor = AppColors.CorrectColor;
                     ToolTip.RemoveAll();
-                    OnCurrentPropertyChanged(EventArgs.Empty);
+                    CurrentPropertyChanged?.Invoke(this, EventArgs.Empty);
                 }
                 catch(Exception ex)
                 {
@@ -183,15 +160,6 @@ namespace MovieApp.View.Controls
             {
                 ClearInfo();
             }
-        }
-
-        /// <summary>
-        /// Вызывает обработчик события изменения <see cref="Movie"/>.
-        /// </summary>
-        /// <param name="e">Данные о событии.</param>
-        protected virtual void OnCurrentPropertyChanged(EventArgs e)
-        {
-            onCurrentPropertyChanged?.Invoke(this, e);
         }
 
         private void NameTextBox_TextChanged(object sender, EventArgs e)

@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Programming.Model.Classes;
 
 namespace MovieApp.View.Controls
 {
+    ///innosetup
     /// <summary>
     /// Элемент управления для работы со списком <see cref="Movie"/>.
     /// </summary>
@@ -23,56 +18,65 @@ namespace MovieApp.View.Controls
         private BindingSource _bindingSource = new BindingSource();
 
         /// <summary>
-        /// Обработчик для события нажатия по кнопке <see cref="EditButton"/>.
+        /// Индекс выбранного экземпляра класса <see cref="Movie"/>.
         /// </summary>
-        private EventHandler onEditButtonClicked;
+        private int _selectedIndex;
+
+        /// <summary>
+        /// Cписок экземпляров класса <see cref="Movie"/>.
+        /// </summary>
+        private List<Movie> _movies = new List<Movie>();
+
+        /// <summary>
+        /// Возвращает и задаёт индекс выбранного экземпляра класса <see cref="Movie"/>.
+        /// </summary>
+        public int SelectedIndex
+        {
+            get
+            {
+                return _selectedIndex;
+            }
+            set
+            {
+                _selectedIndex = value;
+
+                ListBox.SelectedIndex = value;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает и задаёт список экземпляров класса <see cref="Movie"/>.
+        /// </summary>
+        public List<Movie> Movies
+        {
+            get
+            {
+                return _movies;
+            }
+            set
+            {
+                _movies = value;
+
+                _bindingSource.DataSource = Movies;
+                UpdateList();
+                if(_movies.Count > 0)
+                {
+                    SelectedIndex = 0;
+                    ListBoxSelectedIndexChanged?.Invoke(this, EventArgs.Empty);
+                }
+            }
+        }
 
         /// <summary>
         /// Обработчик для события изменения индекса выбранного в списке элементов
         /// <see cref="ListBox"/>.
         /// </summary>
-        private EventHandler onListBoxSelectedIndexChanged;
+        public event EventHandler ListBoxSelectedIndexChanged;
 
         /// <summary>
-        /// Возвращает и задаёт выбранный экземпляр класса <see cref="Movie"/>.
+        /// Обработчик для события нажатия на кнопку <see cref="RemoveButton"/>.
         /// </summary>
-        public Movie SelectedMovie { get; set; }
-
-        /// <summary>
-        /// Возвращает и задаёт список экземпляров класса <see cref="Movie"/>.
-        /// </summary>
-        public List<Movie> Movies { get; set; }
-
-        /// <summary>
-        /// Добавляет и удаляет события для обработчика события нажатия по кнопке <see cref="EditButton"/>.
-        /// </summary>
-        public event EventHandler EditButtonClicked
-        {
-            add
-            {
-                onEditButtonClicked += value;
-            }
-            remove
-            {
-                onEditButtonClicked -= value;
-            }
-        }
-
-        /// <summary>
-        /// Добавляет и удаляет события для обработчика события изменения индекса выбранного в списке элементов
-        /// <see cref="ListBox"/>.
-        /// </summary>
-        public event EventHandler ListBoxSelectedIndexChanged
-        {
-            add
-            {
-                onListBoxSelectedIndexChanged += value;
-            }
-            remove
-            {
-                onListBoxSelectedIndexChanged -= value;
-            }
-        }
+        public event EventHandler RemoveButtonClick;
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="MovieListControl"/>.
@@ -99,9 +103,17 @@ namespace MovieApp.View.Controls
         /// </summary>
         public void SortUpdateList()
         {
+            Movie movie = null;
+            if (SelectedIndex != -1)
+            {
+                movie = Movies[SelectedIndex];
+            }
             SortMoviesAlphabetically();
             _bindingSource.ResetBindings(false);
-            ListBox.SelectedItem = SelectedMovie;
+            if (SelectedIndex != -1)
+            {
+                SelectedIndex = Movies.IndexOf(movie);
+            }
         }
 
         /// <summary>
@@ -109,66 +121,14 @@ namespace MovieApp.View.Controls
         /// </summary>
         private void SortMoviesAlphabetically()
         {
-            for(int n = 0; n < Movies.Count; ++n)
-            {
-                for(int j = 0; j < Movies.Count - 1; ++j)
-                {
-                    if (!IsAlphabetically(Movies[j].Name, Movies[j + 1].Name))
-                    {
-                        Movie movie = Movies[j];
-                        Movies[j] = Movies[j + 1];
-                        Movies[j + 1] = movie;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Проверяет, первый текст стоит перед вторым по алфавитному порядку.
-        /// </summary>
-        /// <param name="text1">Первый текст.</param>
-        /// <param name="text2">Второй текст.</param>
-        /// <returns>Возвращает true, когда по алфавитному порядку первый текст идёт после второго,
-        /// а иначе - false.</returns>
-        private bool IsAlphabetically(string text1, string text2)
-        {
-            for(int n = 0; n < text1.Length && n < text2.Length; ++n)
-            {
-                if (text1[n] > text2[n])
-                {
-                    return false;
-                }
-                else if (text1[n] < text2[n])
-                {
-                    return true;
-                }
-            }
-            return text1.Length <= text2.Length;
-        }
-
-        /// <summary>
-        /// Вызывает обработчик события нажатия по кнопке <see cref="EditButton"/>.
-        /// </summary>
-        /// <param name="e">Данные о событии.</param>
-        protected virtual void OnEditButtonClicked(EventArgs e)
-        {
-            onEditButtonClicked?.Invoke(this, e);
-        }
-
-        /// <summary>
-        /// Вызывает обработчик события изменения индекса выбранного в списке элементов
-        /// <see cref="ListBox"/>.
-        /// </summary>
-        /// <param name="e">Данные о событии.</param>
-        protected virtual void OnListBoxSelectedIndexChanged(EventArgs e)
-        {
-            onListBoxSelectedIndexChanged?.Invoke(this, e);
+            Movies.Sort((a, b) => string.Compare(a.Name, b.Name));
         }
 
         private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SelectedMovie = (Movie)ListBox.SelectedItem;
-            OnListBoxSelectedIndexChanged(EventArgs.Empty);
+            SelectedIndex = ListBox.SelectedIndex;
+
+            ListBoxSelectedIndexChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void AddButton_MouseEnter(object sender, EventArgs e)
@@ -183,21 +143,12 @@ namespace MovieApp.View.Controls
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            SelectedMovie = new Movie();
-            Movies.Add(SelectedMovie);
-            _bindingSource.ResetBindings(false);
-            SortUpdateList();
-            if(ListBox.SelectedItem != null)
-            {
-                ListBox.SelectedItem = SelectedMovie;
-            }
-        }
+            Movies.Add(new Movie());
 
-        private void EditButton_Click(object sender, EventArgs e)
-        {
-            if (SelectedMovie != null)
+            SortUpdateList();
+            if (Movies.Count == 1)
             {
-                OnEditButtonClicked(EventArgs.Empty);
+                SelectedIndex = 0;
             }
         }
 
@@ -213,14 +164,12 @@ namespace MovieApp.View.Controls
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-            if (SelectedMovie != null)
+            if (Movies.Count != 0)
             {
-                Movies.Remove(SelectedMovie);
-                _bindingSource.ResetBindings(false);
-                if(ListBox.SelectedIndex != -1)
-                {
-                    SelectedMovie = (Movie)ListBox.Items[ListBox.SelectedIndex];
-                }
+                Movies.RemoveAt(SelectedIndex);
+                UpdateList();
+
+                RemoveButtonClick?.Invoke(this, EventArgs.Empty);
             }
         }
     }

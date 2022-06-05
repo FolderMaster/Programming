@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
-using System.IO;
+using System.Collections.Generic;
 
-using MovieApp.View.Controls;
 using Programming.Model.Classes;
-using Programming.Model.Enums;
+
+using MovieApp.Model.Classes;
+using MovieApp.View.Controls;
 
 namespace MovieApp.View
 {
@@ -22,9 +15,9 @@ namespace MovieApp.View
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Название файла сохранения.
+        /// Путь к файлу сохранения.
         /// </summary>
-        private const string _fileName = "Movies.txt";
+        private const string _filePath = "Movies.txt";
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="MainForm"/>.
@@ -36,42 +29,35 @@ namespace MovieApp.View
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            using (FileStream fileReader = File.Open(_fileName, FileMode.OpenOrCreate))
+            try
             {
-                byte[] arrayBytes = new byte[fileReader.Length];
-                fileReader.Read(arrayBytes, 0, arrayBytes.Length);
-                string text = System.Text.Encoding.Default.GetString(arrayBytes);
-
-                Regex regex = new Regex(@"(.*)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+\,*\d*)");
-                Match match = regex.Match(text);
-                for (int n = 0; match.Success; ++n)
-                {
-                    MovieListControl.Movies.Add(new Movie(match.Groups[1].Value,
-                        int.Parse(match.Groups[2].Value), int.Parse(match.Groups[3].Value),
-                        (Genre)Enum.Parse(typeof(Genre), match.Groups[4].Value),
-                        double.Parse(match.Groups[5].Value)));
-                    match = match.NextMatch();
-                }
-                MovieListControl.UpdateList();
+                MovieListControl.Movies = Serialization<List<Movie>>.Load(_filePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
             }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            using (FileStream fileWriter = new FileStream(_fileName, FileMode.Create))
+            try
             {
-                string text = "";
-                for (int n = 0; n < MovieListControl.Movies.Count; ++n)
-                {
-                    text += MovieListControl.Movies[n].Name + "\r\n" +
-                        MovieListControl.Movies[n].Minutes + "\t" +
-                        MovieListControl.Movies[n].ReleaseYear + "\t" +
-                        ((int)MovieListControl.Movies[n].Genre) + "\t" +
-                        MovieListControl.Movies[n].Rating + "\r\n";
-                }
+                Serialization<List<Movie>>.Save(MovieListControl.Movies, _filePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+            }
+        }
 
-                byte[] arrayBytes = System.Text.Encoding.Default.GetBytes(text);
-                fileWriter.Write(arrayBytes, 0, arrayBytes.Length);
+        private void MovieListControl_ListBoxSelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(MovieListControl.SelectedIndex != -1)
+            {
+                MovieEditorControl.Movie = MovieListControl.Movies[MovieListControl.SelectedIndex];
             }
         }
 
@@ -88,14 +74,16 @@ namespace MovieApp.View
             }
         }
 
-        private void MovieListControl_EditButtonClicked(object sender, EventArgs e)
+        private void MovieListControl_RemoveButtonClick(object sender, EventArgs e)
         {
-            MovieEditorControl.Movie = MovieListControl.SelectedMovie;
-        }
-
-        private void MovieListControl_ListBoxSelectedIndexChanged(object sender, EventArgs e)
-        {
-            MovieEditorControl.Movie = MovieListControl.SelectedMovie;
+            if (MovieListControl.SelectedIndex != -1)
+            {
+                MovieEditorControl.Movie = MovieListControl.Movies[MovieListControl.SelectedIndex];
+            }
+            else
+            {
+                MovieEditorControl.Movie = null;
+            }
         }
     }
 }

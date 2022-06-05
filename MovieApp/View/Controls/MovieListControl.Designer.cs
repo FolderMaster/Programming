@@ -69,7 +69,7 @@
             this.RemoveButton.Location = new System.Drawing.Point(85, 259);
             this.RemoveButton.Name = "RemoveButton";
             this.RemoveButton.Size = new System.Drawing.Size(78, 34);
-            this.RemoveButton.TabIndex = 3;
+            this.RemoveButton.TabIndex = 2;
             this.RemoveButton.UseVisualStyleBackColor = true;
             this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             this.RemoveButton.MouseEnter += new System.EventHandler(this.RemoveButton_MouseEnter);
