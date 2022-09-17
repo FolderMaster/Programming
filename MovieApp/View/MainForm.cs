@@ -31,7 +31,7 @@ namespace MovieApp.View
         {
             try
             {
-                MovieListControl.Movies = Serialization<List<Movie>>.Load(_filePath);
+                MovieListControl.Movies = FileManager<List<Movie>>.Load(_filePath);
             }
             catch (Exception ex)
             {
@@ -44,7 +44,7 @@ namespace MovieApp.View
         {
             try
             {
-                Serialization<List<Movie>>.Save(MovieListControl.Movies, _filePath);
+                FileManager<List<Movie>>.Save(MovieListControl.Movies, _filePath);
             }
             catch (Exception ex)
             {

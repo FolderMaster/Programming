@@ -6,7 +6,6 @@ using Programming.Model.Classes;
 
 namespace MovieApp.View.Controls
 {
-    ///innosetup
     /// <summary>
     /// Элемент управления для работы со списком <see cref="Movie"/>.
     /// </summary>
@@ -86,7 +85,6 @@ namespace MovieApp.View.Controls
             InitializeComponent();
 
             Movies = new List<Movie>();
-            _bindingSource.DataSource = Movies;
             ListBox.DataSource = _bindingSource;
         }
 

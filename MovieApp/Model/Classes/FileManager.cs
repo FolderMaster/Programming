@@ -8,16 +8,16 @@ using Programming.Model.Enums;
 namespace MovieApp.Model.Classes
 {
     /// <summary>
-    /// Предоставляет методы сериализации и десериализации данных.
+    /// Предоставляет методы сериализации и десериализации данных в файл.
     /// </summary>
     /// <typeparam name="T">Тип данных.</typeparam>
-    public static class Serialization<T>
+    public static class FileManager<T>
     {
         /// <summary>
         /// Загружает данные из файла.
         /// </summary>
         /// <param name="filePath">Путь к файлу.</param>
-        /// <returns></returns>
+        /// <returns>Объект данных, хранящийся в файле.</returns>
         public static T Load(string filePath)
         {
             using (FileStream fileReader = File.Open(filePath, FileMode.OpenOrCreate))

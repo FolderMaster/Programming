@@ -138,7 +138,6 @@ namespace MovieApp.View.Controls
         /// </summary>
         /// <param name="control">Связанный с этим, элемент управления.</param>
         /// <param name="parse">Метод парсинга.</param>
-        /// <param name="updateMode">Режим обновления.</param>
         private void UpdateProperty(Control control, Parse parse)
         {
             if (Movie != null)
