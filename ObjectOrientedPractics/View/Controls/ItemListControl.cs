@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Services.Factories;
 
 namespace ObjectOrientedPractics.View.Controls
 {
@@ -32,10 +33,7 @@ namespace ObjectOrientedPractics.View.Controls
         /// </summary>
         public int SelectedIndex
         {
-            get
-            {
-                return _selectedIndex;
-            }
+            get => _selectedIndex;
             set
             {
                 if(value < ListBox.Items.Count)
@@ -53,10 +51,7 @@ namespace ObjectOrientedPractics.View.Controls
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Item> Items
         {
-            get
-            {
-                return _items;
-            }
+            get => _items;
             set
             {
                 _items = value;
@@ -129,9 +124,19 @@ namespace ObjectOrientedPractics.View.Controls
             SelectedIndex = ListBox.SelectedIndex;
         }
 
-        private void AddButton_Click(object sender, EventArgs e)
+        private void AddEmptyButton_Click(object sender, EventArgs e)
         {
             Items.Add(new Item());
+            UpdateListWithSort();
+            if (Items.Count == 1)
+            {
+                SelectedIndex = 0;
+            }
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            Items.Add(ItemFactory.CreateItem());
             UpdateListWithSort();
             if (Items.Count == 1)
             {

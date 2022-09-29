@@ -23,9 +23,19 @@ namespace ObjectOrientedPractics.Model
         private string _fullname;
 
         /// <summary>
-        /// Адресс.
+        /// Адрес.
         /// </summary>
         private string _adress;
+
+        /// <summary>
+        /// Максимальная длина <see cref="FullName"/>.
+        /// </summary>
+        public static int MaxFullNameLength { get; } = 200;
+
+        /// <summary>
+        /// Максимальная длина <see cref="Adress"/>.
+        /// </summary>
+        public static int MaxAdressLength { get; } = 500;
 
         /// <summary>
         /// Возвращает уникальный индентификатор экземпляра класса.
@@ -36,27 +46,30 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
-        /// Возвращает и задаёт ФИО. Длина строки должна быть не больше 200 символов.
+        /// Возвращает и задаёт ФИО. Длина строки должна быть не больше 
+        /// <see cref="MaxFullNameLength"/>.
         /// </summary>
         public string FullName
         {
             get => _fullname;
             set
             {
-                Validator.AssertStringOnLessLength(value, 200, nameof(FullName));
+                ValueValidator.AssertStringOnLessLength(value, MaxFullNameLength,
+                    nameof(FullName));
                 _fullname = value;
             }
         }
 
         /// <summary>
-        /// Возвращает и задаёт адресс. Длина строки должна быть не больше 500 символов.
+        /// Возвращает и задаёт адрес. Длина строки должна быть не больше 
+        /// <see cref="MaxAdressLength"/>.
         /// </summary>
         public string Adress
         {
             get => _adress;
             set
             {
-                Validator.AssertStringOnLessLength(value, 500, nameof(Adress));
+                ValueValidator.AssertStringOnLessLength(value, MaxAdressLength, nameof(Adress));
                 _adress = value;
             }
         }
@@ -75,7 +88,7 @@ namespace ObjectOrientedPractics.Model
         /// Создаёт экземпляр класса <see cref="Customer"/>.
         /// </summary>
         /// <param name="fullName">ФИО.</param>
-        /// <param name="adress">Адресс.</param>
+        /// <param name="adress">Адрес.</param>
         public Customer(string fullName, string adress)
         {
             _id = _idGenerator.GetNextId();
@@ -85,7 +98,7 @@ namespace ObjectOrientedPractics.Model
 
         public override string ToString()
         {
-            return $"{Id} {FullName}";
+            return $"{FullName} ({Id})";
         }
     }
 }

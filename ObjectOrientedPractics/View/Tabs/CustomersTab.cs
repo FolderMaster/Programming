@@ -3,6 +3,7 @@ using System.Windows.Forms;
 
 using ObjectOrientedPractics.View.Controls;
 using ObjectOrientedPractics.Model;
+using System.Collections.Generic;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -11,6 +12,15 @@ namespace ObjectOrientedPractics.View.Tabs
     /// </summary>
     public partial class CustomersTab : UserControl
     {
+        /// <summary>
+        /// Возращает и задаёт список экземпляров класса <see cref="Customer"/>.
+        /// </summary>
+        public List<Customer> Customers
+        {
+            get => CustomerListControl.Customers;
+            set => CustomerListControl.Customers = value;
+        }
+
         /// <summary>
         /// Создаёт экземпляр класса <see cref="CustomersTab"/> по-умолчанию.
         /// </summary>

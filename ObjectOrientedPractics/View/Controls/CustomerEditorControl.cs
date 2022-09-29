@@ -25,10 +25,7 @@ namespace ObjectOrientedPractics.View.Controls
         /// </summary>
         public Customer Customer
         {
-            get
-            {
-                return _customer;
-            }
+            get => _customer;
             set
             {
                 _customer = value;

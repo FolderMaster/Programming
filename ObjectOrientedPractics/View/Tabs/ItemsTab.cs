@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 using ObjectOrientedPractics.View.Controls;
 using ObjectOrientedPractics.Model;
@@ -11,6 +12,15 @@ namespace ObjectOrientedPractics.View.Tabs
     /// </summary>
     public partial class ItemsTab : UserControl
     {
+        /// <summary>
+        /// Возращает и задаёт список экземпляров класса <see cref="Item"/>.
+        /// </summary>
+        public List<Item> Items
+        {
+            get => ItemListControl.Items;
+            set => ItemListControl.Items = value;
+        }
+
         /// <summary>
         /// Создаёт экземпляр класса <see cref="ItemsTab"/> по-умолчанию.
         /// </summary>

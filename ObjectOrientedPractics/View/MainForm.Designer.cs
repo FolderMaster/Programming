@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.TabControl = new System.Windows.Forms.TabControl();
             this.ItemsTabPage = new System.Windows.Forms.TabPage();
             this.ItemsTab = new ObjectOrientedPractics.View.Tabs.ItemsTab();
             this.CustomersTabPage = new System.Windows.Forms.TabPage();
-            this.customersTab1 = new ObjectOrientedPractics.View.Tabs.CustomersTab();
+            this.CustomersTab = new ObjectOrientedPractics.View.Tabs.CustomersTab();
             this.TabControl.SuspendLayout();
             this.ItemsTabPage.SuspendLayout();
             this.CustomersTabPage.SuspendLayout();
@@ -69,7 +70,7 @@
             // 
             // CustomersTabPage
             // 
-            this.CustomersTabPage.Controls.Add(this.customersTab1);
+            this.CustomersTabPage.Controls.Add(this.CustomersTab);
             this.CustomersTabPage.Location = new System.Drawing.Point(4, 22);
             this.CustomersTabPage.Name = "CustomersTabPage";
             this.CustomersTabPage.Size = new System.Drawing.Size(623, 488);
@@ -77,13 +78,13 @@
             this.CustomersTabPage.Text = "Customers";
             this.CustomersTabPage.UseVisualStyleBackColor = true;
             // 
-            // customersTab1
+            // CustomersTab
             // 
-            this.customersTab1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customersTab1.Location = new System.Drawing.Point(0, 0);
-            this.customersTab1.Name = "customersTab1";
-            this.customersTab1.Size = new System.Drawing.Size(623, 488);
-            this.customersTab1.TabIndex = 0;
+            this.CustomersTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CustomersTab.Location = new System.Drawing.Point(0, 0);
+            this.CustomersTab.Name = "CustomersTab";
+            this.CustomersTab.Size = new System.Drawing.Size(623, 488);
+            this.CustomersTab.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -91,8 +92,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(631, 514);
             this.Controls.Add(this.TabControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Object Oriented Practics";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.TabControl.ResumeLayout(false);
             this.ItemsTabPage.ResumeLayout(false);
             this.CustomersTabPage.ResumeLayout(false);
@@ -106,7 +110,7 @@
         private System.Windows.Forms.TabPage ItemsTabPage;
         private Tabs.ItemsTab ItemsTab;
         private System.Windows.Forms.TabPage CustomersTabPage;
-        private Tabs.CustomersTab customersTab1;
+        private Tabs.CustomersTab CustomersTab;
     }
 }
 

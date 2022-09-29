@@ -8,12 +8,12 @@
         /// <summary>
         /// Новый уникальный индентификатор.
         /// </summary>
-        static int _newId = 0;
+        int _newId = 0;
 
         /// <summary>
         /// Возращает новый уникальный индентификатор.
         /// </summary>
-        static public int NewId
+        public int NewId
         {
             get => _newId;
             private set => _newId = value;

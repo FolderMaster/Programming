@@ -31,6 +31,7 @@
             this.ListBox = new System.Windows.Forms.ListBox();
             this.AddButton = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
+            this.AddEmptyButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ListBox
@@ -42,14 +43,14 @@
             this.ListBox.IntegralHeight = false;
             this.ListBox.Location = new System.Drawing.Point(0, 0);
             this.ListBox.Name = "ListBox";
-            this.ListBox.Size = new System.Drawing.Size(195, 267);
+            this.ListBox.Size = new System.Drawing.Size(401, 371);
             this.ListBox.TabIndex = 0;
             this.ListBox.SelectedIndexChanged += new System.EventHandler(this.ListBox_SelectedIndexChanged);
             // 
             // AddButton
             // 
             this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddButton.Location = new System.Drawing.Point(0, 273);
+            this.AddButton.Location = new System.Drawing.Point(0, 377);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(75, 23);
             this.AddButton.TabIndex = 1;
@@ -60,7 +61,7 @@
             // RemoveButton
             // 
             this.RemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveButton.Location = new System.Drawing.Point(120, 273);
+            this.RemoveButton.Location = new System.Drawing.Point(326, 377);
             this.RemoveButton.Name = "RemoveButton";
             this.RemoveButton.Size = new System.Drawing.Size(75, 23);
             this.RemoveButton.TabIndex = 2;
@@ -68,15 +69,27 @@
             this.RemoveButton.UseVisualStyleBackColor = true;
             this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
+            // AddEmptyButton
+            // 
+            this.AddEmptyButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.AddEmptyButton.Location = new System.Drawing.Point(163, 377);
+            this.AddEmptyButton.Name = "AddEmptyButton";
+            this.AddEmptyButton.Size = new System.Drawing.Size(75, 23);
+            this.AddEmptyButton.TabIndex = 3;
+            this.AddEmptyButton.Text = "Add empty";
+            this.AddEmptyButton.UseVisualStyleBackColor = true;
+            this.AddEmptyButton.Click += new System.EventHandler(this.AddEmptyButton_Click);
+            // 
             // ItemListControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.AddEmptyButton);
             this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.ListBox);
             this.Name = "ItemListControl";
-            this.Size = new System.Drawing.Size(195, 296);
+            this.Size = new System.Drawing.Size(401, 400);
             this.ResumeLayout(false);
 
         }
@@ -86,5 +99,6 @@
         private System.Windows.Forms.ListBox ListBox;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button RemoveButton;
+        private System.Windows.Forms.Button AddEmptyButton;
     }
 }

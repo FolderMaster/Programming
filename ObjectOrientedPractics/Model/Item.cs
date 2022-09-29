@@ -10,7 +10,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Генератор уникального индентификатора экземпляра класса.
         /// </summary>
-        private static IdGenerator _idGenerator = new IdGenerator();
+        private static readonly IdGenerator _idGenerator = new IdGenerator();
 
         /// <summary>
         /// Уникальный индентификатор экземпляра класса.
@@ -33,6 +33,26 @@ namespace ObjectOrientedPractics.Model
         private int _cost;
 
         /// <summary>
+        /// Максимальная длина <see cref="Name"/>.
+        /// </summary>
+        public static int MaxNameLength { get; } = 200;
+
+        /// <summary>
+        /// Максимальная длина <see cref="Info"/>.
+        /// </summary>
+        public static int MaxInfoLength { get; } = 1000;
+
+        /// <summary>
+        /// Верхняя граница для <see cref="Cost"/>.
+        /// </summary>
+        public static int CostMax { get; } = 100000;
+
+        /// <summary>
+        /// Нижняя граница для <see cref="Cost"/>.
+        /// </summary>
+        public static int CostMin { get; } = 0;
+
+        /// <summary>
         /// Возвращает уникальный индентификатор экземпляра класса.
         /// </summary>
         public int Id
@@ -41,40 +61,43 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
-        /// Возвращает и задаёт название. Длина строки должна быть не больше 200 символов.
+        /// Возвращает и задаёт название. Длина строки должна быть не больше 
+        /// <see cref="MaxNameLength"/>.
         /// </summary>
         public string Name
         {
             get => _name;
             set
             {
-                Validator.AssertStringOnLessLength(value, 200, nameof(Name));
+                ValueValidator.AssertStringOnLessLength(value, MaxNameLength, nameof(Name));
                 _name = value;
             }
         }
 
         /// <summary>
-        /// Возвращает и задаёт описание. Длина строки должна быть не больше 1000 символов.
+        /// Возвращает и задаёт описание. Длина строки должна быть не больше 
+        /// <see cref="MaxInfoLength"/>.
         /// </summary>
         public string Info
         {
             get => _info;
             set
             {
-                Validator.AssertStringOnLessLength(value, 1000, nameof(Info));
+                ValueValidator.AssertStringOnLessLength(value, MaxInfoLength, nameof(Info));
                 _info = value;
             }
         }
 
         /// <summary>
-        /// Возвращает и задаёт стоимость. Должно быть от 0 до 100000.
+        /// Возвращает и задаёт стоимость. Должно быть от <see cref="CostMin"/> до
+        /// <see cref="CostMax"/>.
         /// </summary>
         public int Cost
         {
             get => _cost;
             set
             {
-                Validator.AssertValueInRange(value, 0, 100000, nameof(Cost));
+                ValueValidator.AssertValueInRange(value, CostMin, CostMax, nameof(Cost));
                 _cost = value;
             }
         }
@@ -106,7 +129,7 @@ namespace ObjectOrientedPractics.Model
 
         public override string ToString()
         {
-            return $"{Id} {Name} {Cost}";
+            return $"{Name} ({Id}) - {Cost}";
         }
     }
 }

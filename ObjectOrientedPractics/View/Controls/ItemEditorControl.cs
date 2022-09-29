@@ -25,10 +25,7 @@ namespace ObjectOrientedPractics.View.Controls
         /// </summary>
         public Item Item
         {
-            get
-            {
-                return _item;
-            }
+            get => _item;
             set
             {
                 _item = value;
