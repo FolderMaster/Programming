@@ -92,6 +92,7 @@
     <Compile Include="Model\Adress.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\Store.cs" />
     <Compile Include="Services\IO\CsvManager.cs" />
     <Compile Include="Services\IO\SaveFormat.cs" />
     <Compile Include="Services\Factories\CustomerFactory.cs" />

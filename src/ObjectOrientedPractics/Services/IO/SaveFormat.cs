@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-using ObjectOrientedPractics.Model;
+﻿using ObjectOrientedPractics.Model;
 
 namespace ObjectOrientedPractics.Services.IO
 {
@@ -10,14 +8,19 @@ namespace ObjectOrientedPractics.Services.IO
     public class SaveFormat
     {
         /// <summary>
-        /// Возращает и задаёт список экземпляров класса <see cref="Item"/>.
+        /// Магазин.
         /// </summary>
-        public List<Item> Items { get; set; }
+        private Store _store;
 
         /// <summary>
-        /// Возращает и задаёт список экземпляров класса <see cref="Customer"/>.
+        /// Возращает и задаёт магазин.
         /// </summary>
-        public List<Customer> Customers { get; set; }
+        public Store Store
+        {
+            get => _store;
+            set => _store = value;
+        }
+
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="SaveFormat"/> по-умолчанию.
@@ -29,12 +32,10 @@ namespace ObjectOrientedPractics.Services.IO
         /// <summary>
         /// Создаёт экземпляр класса <see cref="SaveFormat"/>.
         /// </summary>
-        /// <param name="items">Список экземпляров класса <see cref="Item"/>.</param>
-        /// <param name="customers">Список экземпляров класса <see cref="Customer"/>.</param>
-        public SaveFormat(List<Item> items, List<Customer> customers)
+        /// <param name="store">Магазин.</param>
+        public SaveFormat(Store store)
         {
-            Items = items;
-            Customers = customers;
+            Store = store;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using ObjectOrientedPractics.Services.Factories;
 using ObjectOrientedPractics.Services.IO;
 using ObjectOrientedPractics.Services;
+using ObjectOrientedPractics.Model;
 
 namespace ObjectOrientedPractics.View
 {
@@ -12,6 +13,11 @@ namespace ObjectOrientedPractics.View
     /// </summary>
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Магазин.
+        /// </summary>
+        Store _store = new Store();
+
         /// <summary>
         /// Создаёт экземпляр класса <see cref="MainForm"/> по-умолчанию.
         /// </summary>
@@ -24,11 +30,11 @@ namespace ObjectOrientedPractics.View
         {
             try
             {
-                SaveFormat save = JsonManager.Load<SaveFormat>(Settings.SavePath);
-                if(save != null)
+                _store = JsonManager.Load<SaveFormat>(Settings.SavePath).Store;
+                if(_store != null)
                 {
-                    ItemsTab.Items = save.Items;
-                    CustomersTab.Customers = save.Customers;
+                    ItemsTab.Items = _store.Items;
+                    CustomersTab.Customers = _store.Customers;
                 }
 
                 CustomerFactory.Load(Settings.CustomersPath);
@@ -45,7 +51,7 @@ namespace ObjectOrientedPractics.View
         {
             try
             {
-                SaveFormat save = new SaveFormat(ItemsTab.Items, CustomersTab.Customers);
+                SaveFormat save = new SaveFormat(_store);
                 JsonManager.Save(save, Settings.SavePath);
             }
             catch (Exception ex)

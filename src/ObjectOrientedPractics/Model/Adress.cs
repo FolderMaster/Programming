@@ -2,6 +2,10 @@
 
 namespace ObjectOrientedPractics.Model
 {
+    /// <summary>
+    /// Адресс с почтовым индексом, страной/регионом, населённым пунктом, улицей, номером дома,
+    /// номером помещения.
+    /// </summary>
     public class Adress
     {
         /// <summary>
