@@ -68,20 +68,12 @@ namespace ObjectOrientedPractics.View.Controls
         }
 
         /// <summary>
-        /// Обрабатывает информацию для <see cref="Customer.Adress"/>.
-        /// </summary>
-        private void AdressParse()
-        {
-            Customer.Adress = AdressTextBox.Text;
-            UpdateMode = UpdateType.None;
-        }
-
-        /// <summary>
         /// Очищает информацию с элементов управления.
         /// </summary>
         private void ClearInfo()
         {
-            IdTextBox.Text = FullNameTextBox.Text = AdressTextBox.Text = null;
+            IdTextBox.Text = FullNameTextBox.Text = null;
+            AdressEditorControl.Adress = null;
         }
 
         /// <summary>
@@ -91,7 +83,7 @@ namespace ObjectOrientedPractics.View.Controls
         {
             IdTextBox.Text = Customer.Id.ToString();
             FullNameTextBox.Text = Customer.FullName;
-            AdressTextBox.Text = Customer.Adress;
+            AdressEditorControl.Adress = Customer.Adress;
         }
 
         /// <summary>
@@ -127,9 +119,9 @@ namespace ObjectOrientedPractics.View.Controls
             UpdateProperty(FullNameTextBox, FullNameParse);
         }
 
-        private void AdressTextBox_TextChanged(object sender, EventArgs e)
+        private void AdressEditorControl_CurrentPropertyChanged(object sender, EventArgs e)
         {
-            UpdateProperty(AdressTextBox, AdressParse);
+            Customer.Adress = AdressEditorControl.Adress;
         }
     }
 }

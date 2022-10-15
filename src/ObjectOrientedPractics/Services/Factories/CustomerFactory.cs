@@ -28,12 +28,26 @@ namespace ObjectOrientedPractics.Services.Factories
                 fullName = fullName.Substring(0, Customer.MaxFullNameLength);
             }
 
-            string adress = reader.GetField("address") + " " + reader.GetField("city") + " " +
-            reader.GetField("county");
-            if (adress.Length > Customer.MaxAdressLength)
+            Adress adress = new Adress();
+            string country = reader.GetField("county");
+            if (country.Length > Adress.MaxCountryLength)
             {
-                adress = adress.Substring(0, Customer.MaxAdressLength);
+                adress.Country = country.Substring(0, Adress.MaxCountryLength);
             }
+            else
+            {
+                adress.Country = country;
+            }
+            string city = reader.GetField("city");
+            if (city.Length > Adress.MaxCityLength)
+            {
+                adress.City = city.Substring(0, Adress.MaxCityLength);
+            }
+            else
+            {
+                adress.City = city;
+            }
+            reader.GetField("address");
 
             return new Customer(fullName, adress);
         };

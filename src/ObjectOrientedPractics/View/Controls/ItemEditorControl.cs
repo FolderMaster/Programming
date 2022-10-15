@@ -56,6 +56,8 @@ namespace ObjectOrientedPractics.View.Controls
         public ItemEditorControl()
         {
             InitializeComponent();
+
+            CategoryComboBox.DataSource = Enum.GetValues(typeof(Item.Type));
         }
 
         /// <summary>
@@ -86,11 +88,21 @@ namespace ObjectOrientedPractics.View.Controls
         }
 
         /// <summary>
+        /// Обрабатывает информацию для <see cref="Item.Category"/>.
+        /// </summary>
+        private void CategoryParse()
+        {
+            Item.Category = (Item.Type)CategoryComboBox.SelectedIndex;
+            UpdateMode = UpdateType.None;
+        }
+
+        /// <summary>
         /// Очищает информацию с элементов управления.
         /// </summary>
         private void ClearInfo()
         {
-            IdTextBox.Text = CostTextBox.Text = NameTextBox.Text = InfoTextBox.Text = null;
+            IdTextBox.Text = CostTextBox.Text = NameTextBox.Text = InfoTextBox.Text =
+                CategoryComboBox.Text = null;
         }
 
         /// <summary>
@@ -102,6 +114,7 @@ namespace ObjectOrientedPractics.View.Controls
             CostTextBox.Text = Item.Cost.ToString();
             NameTextBox.Text = Item.Name.ToString();
             InfoTextBox.Text = Item.Info.ToString();
+            CategoryComboBox.Text = Item.Category.ToString();
         }
 
         /// <summary>
@@ -145,6 +158,11 @@ namespace ObjectOrientedPractics.View.Controls
         private void InfoTextBox_TextChanged(object sender, EventArgs e)
         {
             UpdateProperty(InfoTextBox, InfoParse);
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateProperty(CategoryComboBox, CategoryParse);
         }
     }
 }

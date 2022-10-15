@@ -15,22 +15,22 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Уникальный индентификатор экземпляра класса.
         /// </summary>
-        private readonly int _id;
+        private readonly int _id = _idGenerator.GetNextId();
 
         /// <summary>
         /// Название.
         /// </summary>
-        private string _name;
+        private string _name = "";
 
         /// <summary>
         /// Описание.
         /// </summary>
-        private string _info;
+        private string _info = "";
 
         /// <summary>
         /// Стоимость.
         /// </summary>
-        private int _cost;
+        private int _cost = 0;
 
         /// <summary>
         /// Максимальная длина <see cref="Name"/>.
@@ -103,14 +103,15 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
+        /// Возвращает и задаёт категорию товара.
+        /// </summary>
+        public Type Category { get; set; } = Type.None;
+
+        /// <summary>
         /// Создаёт экземпляр класса <see cref="Item"/> по-умолчанию.
         /// </summary>
         public Item()
         {
-            _id = _idGenerator.GetNextId();
-            Name = "";
-            Info = "";
-            Cost = 0;
         }
 
         /// <summary>
@@ -119,17 +120,27 @@ namespace ObjectOrientedPractics.Model
         /// <param name="name">Название.</param>
         /// <param name="info">Описание.</param>
         /// <param name="cost">Стоимость.</param>
-        public Item(string name, string info, int cost)
+        /// <param name="category">Категория.</param>
+        public Item(string name, string info, int cost, Type category)
         {
-            _id = _idGenerator.GetNextId();
             Name = name;
             Info = info;
             Cost = cost;
+            Category = category;
         }
 
         public override string ToString()
         {
             return $"{Name} ({Id}) - {Cost}";
+        }
+
+        /// <summary>
+        /// Тип товара.
+        /// </summary>
+        public enum Type
+        {
+            None,
+            Game
         }
     }
 }

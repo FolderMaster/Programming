@@ -15,27 +15,22 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Уникальный индентификатор экземпляра класса.
         /// </summary>
-        private readonly int _id;
+        private readonly int _id = _idGenerator.GetNextId();
 
         /// <summary>
         /// ФИО.
         /// </summary>
-        private string _fullname;
+        private string _fullname = "";
 
         /// <summary>
         /// Адрес.
         /// </summary>
-        private string _adress;
+        private Adress _adress = new Adress();
 
         /// <summary>
         /// Максимальная длина <see cref="FullName"/>.
         /// </summary>
         public static int MaxFullNameLength { get; } = 200;
-
-        /// <summary>
-        /// Максимальная длина <see cref="Adress"/>.
-        /// </summary>
-        public static int MaxAdressLength { get; } = 500;
 
         /// <summary>
         /// Возвращает уникальный индентификатор экземпляра класса.
@@ -61,17 +56,12 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
-        /// Возвращает и задаёт адрес. Длина строки должна быть не больше 
-        /// <see cref="MaxAdressLength"/>.
+        /// Возвращает и задаёт адрес.
         /// </summary>
-        public string Adress
+        public Adress Adress
         {
             get => _adress;
-            set
-            {
-                ValueValidator.AssertStringOnLessLength(value, MaxAdressLength, nameof(Adress));
-                _adress = value;
-            }
+            set => _adress = value;
         }
 
         /// <summary>
@@ -79,9 +69,6 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public Customer()
         {
-            _id = _idGenerator.GetNextId();
-            FullName = "";
-            Adress = "";
         }
 
         /// <summary>
@@ -89,9 +76,8 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="fullName">ФИО.</param>
         /// <param name="adress">Адрес.</param>
-        public Customer(string fullName, string adress)
+        public Customer(string fullName, Adress adress)
         {
-            _id = _idGenerator.GetNextId();
             FullName = fullName;
             Adress = adress;
         }

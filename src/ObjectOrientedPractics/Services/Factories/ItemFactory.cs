@@ -51,7 +51,7 @@ namespace ObjectOrientedPractics.Services.Factories
                 cost = _random.Next(Item.CostMax);
             }
 
-            return new Item(name, info, cost);
+            return new Item(name, info, cost, Item.Type.None);
         };
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace ObjectOrientedPractics.Services.Factories
             else
             {
                 Item item = Items[_random.Next(Items.Count)];
-                return new Item(item.Name, item.Info, item.Cost);
+                return new Item(item.Name, item.Info, item.Cost, item.Category);
             }
         }
     }

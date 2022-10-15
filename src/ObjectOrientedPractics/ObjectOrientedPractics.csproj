@@ -89,6 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Adress.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Services\IO\CsvManager.cs" />
@@ -100,6 +101,12 @@
     <Compile Include="Services\Settings.cs" />
     <Compile Include="Services\ValueValidator.cs" />
     <Compile Include="View\ColorManager.cs" />
+    <Compile Include="View\Controls\AdressEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\AdressEditorControl.Designer.cs">
+      <DependentUpon>AdressEditorControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\CustomerEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -155,6 +162,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\Controls\AdressEditorControl.resx">
+      <DependentUpon>AdressEditorControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\CustomerEditorControl.resx">
       <DependentUpon>CustomerEditorControl.cs</DependentUpon>
     </EmbeddedResource>

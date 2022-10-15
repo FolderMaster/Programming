@@ -31,11 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.IdLabel = new System.Windows.Forms.Label();
             this.FullNameLabel = new System.Windows.Forms.Label();
-            this.AdressLabel = new System.Windows.Forms.Label();
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
-            this.AdressTextBox = new System.Windows.Forms.TextBox();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.AdressGroupBox = new System.Windows.Forms.GroupBox();
+            this.AdressEditorControl = new ObjectOrientedPractics.View.Controls.AdressEditorControl();
+            this.AdressGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // IdLabel
@@ -55,15 +56,6 @@
             this.FullNameLabel.Size = new System.Drawing.Size(55, 13);
             this.FullNameLabel.TabIndex = 2;
             this.FullNameLabel.Text = "Full name:";
-            // 
-            // AdressLabel
-            // 
-            this.AdressLabel.AutoSize = true;
-            this.AdressLabel.Location = new System.Drawing.Point(-3, 55);
-            this.AdressLabel.Name = "AdressLabel";
-            this.AdressLabel.Size = new System.Drawing.Size(42, 13);
-            this.AdressLabel.TabIndex = 4;
-            this.AdressLabel.Text = "Adress:";
             // 
             // IdTextBox
             // 
@@ -85,30 +77,41 @@
             this.FullNameTextBox.TabIndex = 3;
             this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
-            // AdressTextBox
+            // AdressGroupBox
             // 
-            this.AdressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.AdressGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AdressTextBox.Location = new System.Drawing.Point(45, 52);
-            this.AdressTextBox.Multiline = true;
-            this.AdressTextBox.Name = "AdressTextBox";
-            this.AdressTextBox.Size = new System.Drawing.Size(268, 270);
-            this.AdressTextBox.TabIndex = 5;
-            this.AdressTextBox.TextChanged += new System.EventHandler(this.AdressTextBox_TextChanged);
+            this.AdressGroupBox.Controls.Add(this.AdressEditorControl);
+            this.AdressGroupBox.Location = new System.Drawing.Point(0, 52);
+            this.AdressGroupBox.Name = "AdressGroupBox";
+            this.AdressGroupBox.Size = new System.Drawing.Size(313, 175);
+            this.AdressGroupBox.TabIndex = 4;
+            this.AdressGroupBox.TabStop = false;
+            this.AdressGroupBox.Text = "Adress";
+            // 
+            // AdressEditorControl
+            // 
+            this.AdressEditorControl.Adress = null;
+            this.AdressEditorControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AdressEditorControl.Location = new System.Drawing.Point(3, 16);
+            this.AdressEditorControl.Name = "AdressEditorControl";
+            this.AdressEditorControl.Size = new System.Drawing.Size(307, 156);
+            this.AdressEditorControl.TabIndex = 0;
+            this.AdressEditorControl.CurrentPropertyChanged += new System.EventHandler(this.AdressEditorControl_CurrentPropertyChanged);
             // 
             // CustomerEditorControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.AdressTextBox);
+            this.Controls.Add(this.AdressGroupBox);
             this.Controls.Add(this.FullNameTextBox);
             this.Controls.Add(this.IdTextBox);
-            this.Controls.Add(this.AdressLabel);
             this.Controls.Add(this.FullNameLabel);
             this.Controls.Add(this.IdLabel);
             this.Name = "CustomerEditorControl";
-            this.Size = new System.Drawing.Size(313, 322);
+            this.Size = new System.Drawing.Size(313, 227);
+            this.AdressGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,10 +121,10 @@
 
         private System.Windows.Forms.Label IdLabel;
         private System.Windows.Forms.Label FullNameLabel;
-        private System.Windows.Forms.Label AdressLabel;
         private System.Windows.Forms.TextBox IdTextBox;
         private System.Windows.Forms.TextBox FullNameTextBox;
-        private System.Windows.Forms.TextBox AdressTextBox;
         private System.Windows.Forms.ToolTip ToolTip;
+        private System.Windows.Forms.GroupBox AdressGroupBox;
+        private AdressEditorControl AdressEditorControl;
     }
 }
