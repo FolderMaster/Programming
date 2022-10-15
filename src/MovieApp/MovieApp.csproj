@@ -120,7 +120,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Programming.csproj">
+    <ProjectReference Include="..\Programming\Programming.csproj">
       <Project>{785a6645-cd89-495f-9f6c-64ce7d5a4088}</Project>
       <Name>Programming</Name>
     </ProjectReference>

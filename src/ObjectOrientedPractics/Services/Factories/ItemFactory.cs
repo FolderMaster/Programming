@@ -36,15 +36,19 @@ namespace ObjectOrientedPractics.Services.Factories
             }
 
             string stringCost = reader.GetField("Selling Price");
-            int cost = 1;
+            int cost;
             Regex regex = new Regex(@"\n+");
             if (regex.IsMatch(stringCost))
             {
                 cost = int.Parse(regex.Match(stringCost).Value);
                 if(cost < Item.CostMin && cost >= Item.CostMax)
                 {
-                    cost = 1;
+                    cost = _random.Next(Item.CostMax);
                 }
+            }
+            else
+            {
+                cost = _random.Next(Item.CostMax);
             }
 
             return new Item(name, info, cost);
