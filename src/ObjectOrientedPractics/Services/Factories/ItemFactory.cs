@@ -52,8 +52,8 @@ namespace ObjectOrientedPractics.Services.Factories
                 cost = _random.Next(Item.CostMax);
             }
 
-            Category category = (Category)_random.Next((int)Enum.GetValues(typeof(Category)).
-                Cast<Category>().Max() + 1);
+            ItemCategory category = (ItemCategory)_random.Next((int)Enum.GetValues(typeof(ItemCategory)).
+                Cast<ItemCategory>().Max() + 1);
 
             return new Item(name, info, cost, category);
         };

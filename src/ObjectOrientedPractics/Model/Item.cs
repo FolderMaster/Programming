@@ -105,7 +105,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задаёт категорию товара.
         /// </summary>
-        public Category Category { get; set; } = Category.None;
+        public ItemCategory Category { get; set; } = ItemCategory.None;
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="Item"/> по-умолчанию.
@@ -121,7 +121,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="info">Описание.</param>
         /// <param name="cost">Стоимость.</param>
         /// <param name="category">Категория.</param>
-        public Item(string name, string info, int cost, Category category)
+        public Item(string name, string info, int cost, ItemCategory category)
         {
             Name = name;
             Info = info;

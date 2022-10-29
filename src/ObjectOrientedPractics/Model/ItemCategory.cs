@@ -3,7 +3,7 @@
     /// <summary>
     /// Категория товара.
     /// </summary>
-    public enum Category
+    public enum ItemCategory
     {
         None,
         Food,

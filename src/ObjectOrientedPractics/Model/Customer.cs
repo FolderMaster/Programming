@@ -1,4 +1,5 @@
 ﻿using ObjectOrientedPractics.Services;
+using System.Collections.Generic;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -31,6 +32,11 @@ namespace ObjectOrientedPractics.Model
         /// Корзина.
         /// </summary>
         private Cart _cart = new Cart();
+
+        /// <summary>
+        /// Список заказов.
+        /// </summary>
+        private List<Order> _orders = new List<Order>();
 
         /// <summary>
         /// Максимальная длина <see cref="FullName"/>.
@@ -76,6 +82,15 @@ namespace ObjectOrientedPractics.Model
         {
             get => _cart;
             set => _cart = value;
+        }
+
+        /// <summary>
+        /// Возращает и задаёт список заказов.
+        /// </summary>
+        public List<Order> Orders
+        {
+            get => _orders;
+            set => _orders = value;
         }
 
         /// <summary>
