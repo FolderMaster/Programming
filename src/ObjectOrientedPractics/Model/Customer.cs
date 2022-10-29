@@ -3,7 +3,7 @@
 namespace ObjectOrientedPractics.Model
 {
     /// <summary>
-    /// Покупатель с ФИО и адресом.
+    /// Покупатель с ФИО, адресом и корзиной.
     /// </summary>
     public class Customer
     {
@@ -26,6 +26,11 @@ namespace ObjectOrientedPractics.Model
         /// Адрес.
         /// </summary>
         private Adress _adress = new Adress();
+
+        /// <summary>
+        /// Корзина.
+        /// </summary>
+        private Cart _cart = new Cart();
 
         /// <summary>
         /// Максимальная длина <see cref="FullName"/>.
@@ -62,6 +67,15 @@ namespace ObjectOrientedPractics.Model
         {
             get => _adress;
             set => _adress = value;
+        }
+
+        /// <summary>
+        /// Возращает и задаёт корзину.
+        /// </summary>
+        public Cart Cart
+        {
+            get => _cart;
+            set => _cart = value;
         }
 
         /// <summary>
