@@ -57,7 +57,7 @@ namespace ObjectOrientedPractics.View.Controls
         {
             InitializeComponent();
 
-            CategoryComboBox.DataSource = Enum.GetValues(typeof(Item.Type));
+            CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace ObjectOrientedPractics.View.Controls
         /// </summary>
         private void CategoryParse()
         {
-            Item.Category = (Item.Type)CategoryComboBox.SelectedIndex;
+            Item.Category = (Category)CategoryComboBox.SelectedIndex;
             UpdateMode = UpdateType.None;
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 using ObjectOrientedPractics.Model;
@@ -51,7 +52,10 @@ namespace ObjectOrientedPractics.Services.Factories
                 cost = _random.Next(Item.CostMax);
             }
 
-            return new Item(name, info, cost, Item.Type.None);
+            Category category = (Category)_random.Next((int)Enum.GetValues(typeof(Category)).
+                Cast<Category>().Max() + 1);
+
+            return new Item(name, info, cost, category);
         };
 
         /// <summary>

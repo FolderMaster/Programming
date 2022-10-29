@@ -28,14 +28,10 @@ namespace ObjectOrientedPractics.View
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            Store store = null;
             try
             {
-                _store = JsonManager.Load<SaveFormat>(Settings.SavePath).Store;
-                if(_store != null)
-                {
-                    ItemsTab.Items = _store.Items;
-                    CustomersTab.Customers = _store.Customers;
-                }
+                store = JsonManager.Load<SaveFormat>(Settings.SavePath).Store;
 
                 CustomerFactory.Load(Settings.CustomersPath);
                 ItemFactory.Load(Settings.ItemsPath);
@@ -44,6 +40,13 @@ namespace ObjectOrientedPractics.View
             {
                 MessageBox.Show(ex.Message, "Error!",
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                _store = store == null ? _store : store;
+
+                ItemsTab.Items = _store.Items;
+                CustomersTab.Customers = _store.Customers;
             }
         }
 

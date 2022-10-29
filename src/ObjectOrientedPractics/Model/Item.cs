@@ -105,7 +105,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задаёт категорию товара.
         /// </summary>
-        public Type Category { get; set; } = Type.None;
+        public Category Category { get; set; } = Category.None;
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="Item"/> по-умолчанию.
@@ -121,7 +121,7 @@ namespace ObjectOrientedPractics.Model
         /// <param name="info">Описание.</param>
         /// <param name="cost">Стоимость.</param>
         /// <param name="category">Категория.</param>
-        public Item(string name, string info, int cost, Type category)
+        public Item(string name, string info, int cost, Category category)
         {
             Name = name;
             Info = info;
@@ -132,15 +132,6 @@ namespace ObjectOrientedPractics.Model
         public override string ToString()
         {
             return $"{Name} ({Id}) - {Cost}";
-        }
-
-        /// <summary>
-        /// Тип товара.
-        /// </summary>
-        public enum Type
-        {
-            None,
-            Game
         }
     }
 }
