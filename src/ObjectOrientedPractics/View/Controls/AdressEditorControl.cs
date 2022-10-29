@@ -2,19 +2,18 @@
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ObjectOrientedPractics.View.Controls
 {
     /// <summary>
-    /// Элемент управления для изменения экземпляра класса <see cref="Model.Adress"/>.
+    /// Элемент управления для изменения экземпляра класса <see cref="Item"/>.
     /// </summary>
-    public partial class AdressEditorControl : UserControl
+    public partial class ItemEditorControl : UserControl
     {
         /// <summary>
-        /// Экземпляр класса <see cref="Model.Adress"/>.
+        /// Экземпляр класса <see cref="Item"/>.
         /// </summary>
-        private Adress _adress;
+        private Item _item;
 
         /// <summary>
         /// Делегат для обработки информации.
@@ -22,15 +21,15 @@ namespace ObjectOrientedPractics.View.Controls
         private delegate void Parse();
 
         /// <summary>
-        /// Возвращает и задаёт экземпляр класса <see cref="Model.Adress"/>.
+        /// Возвращает и задаёт экземпляр класса <see cref="Item"/>.
         /// </summary>
-        public Adress Adress
+        public Item Item
         {
-            get => _adress;
+            get => _item;
             set
             {
-                _adress = value;
-                if (_adress == null)
+                _item = value;
+                if (_item == null)
                 {
                     ClearInfo();
                 }
@@ -42,64 +41,59 @@ namespace ObjectOrientedPractics.View.Controls
         }
 
         /// <summary>
-        /// Обработчик события изменения <see cref="Model.Adress"/>.
+        /// Возвращает и задаёт режим обновления <see cref="UpdateMode"/>.
+        /// </summary>
+        public UpdateType UpdateMode { set; get; }
+
+        /// <summary>
+        /// Обработчик события изменения <see cref="Item"/>.
         /// </summary>
         public event EventHandler CurrentPropertyChanged;
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="AdressEditorControl"/> по-умолчанию.
+        /// Создаёт экземпляр класса <see cref="ItemEditorControl"/> по-умолчанию.
         /// </summary>
-        public AdressEditorControl()
+        public ItemEditorControl()
         {
             InitializeComponent();
+
+            CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
         }
 
         /// <summary>
-        /// Обрабатывает информацию для <see cref="Adress.Index"/>.
+        /// Обрабатывает информацию для <see cref="Item.Cost"/>.
         /// </summary>
-        private void PostIndexParse()
+        private void CostParse()
         {
-            Adress.Index = int.Parse(PostIndexTextBox.Text);
+            Item.Cost = int.Parse(CostTextBox.Text);
+            UpdateMode = UpdateType.UpdateCurrentObject;
         }
 
         /// <summary>
-        /// Обрабатывает информацию для <see cref="Adress.Country"/>.
+        /// Обрабатывает информацию для <see cref="Item.Name"/>.
         /// </summary>
-        private void CountryParse()
+        private void NameParse()
         {
-            Adress.Country = CountryTextBox.Text;
+            Item.Name = NameTextBox.Text;
+            UpdateMode = UpdateType.UpdateList;
         }
 
         /// <summary>
-        /// Обрабатывает информацию для <see cref="Adress.City"/>.
+        /// Обрабатывает информацию для <see cref="Item.Info"/>.
         /// </summary>
-        private void CityParse()
+        private void InfoParse()
         {
-            Adress.City = CityTextBox.Text;
+            Item.Info = InfoTextBox.Text;
+            UpdateMode = UpdateType.None;
         }
 
         /// <summary>
-        /// Обрабатывает информацию для <see cref="Adress.Street"/>.
+        /// Обрабатывает информацию для <see cref="Item.Category"/>.
         /// </summary>
-        private void StreetParse()
+        private void CategoryParse()
         {
-            Adress.Street = StreetTextBox.Text;
-        }
-
-        /// <summary>
-        /// Обрабатывает информацию для <see cref="Adress.Building"/>.
-        /// </summary>
-        private void BuildingParse()
-        {
-            Adress.Building = BuildingTextBox.Text;
-        }
-
-        /// <summary>
-        /// Обрабатывает информацию для <see cref="Adress.Apartment"/>.
-        /// </summary>
-        private void ApartmentParse()
-        {
-            Adress.Apartment = ApartmentTextBox.Text;
+            Item.Category = (Category)CategoryComboBox.SelectedIndex;
+            UpdateMode = UpdateType.None;
         }
 
         /// <summary>
@@ -107,8 +101,8 @@ namespace ObjectOrientedPractics.View.Controls
         /// </summary>
         private void ClearInfo()
         {
-            PostIndexTextBox.Text = CountryTextBox.Text = CityTextBox.Text = StreetTextBox.Text =
-                BuildingTextBox.Text = ApartmentTextBox.Text = null;
+            IdTextBox.Text = CostTextBox.Text = NameTextBox.Text = InfoTextBox.Text =
+                CategoryComboBox.Text = null;
         }
 
         /// <summary>
@@ -116,22 +110,21 @@ namespace ObjectOrientedPractics.View.Controls
         /// </summary>
         private void FillInfo()
         {
-            PostIndexTextBox.Text = Adress.Index.ToString();
-            CountryTextBox.Text = Adress.Country;
-            CityTextBox.Text = Adress.City;
-            StreetTextBox.Text = Adress.Street;
-            BuildingTextBox.Text = Adress.Building;
-            ApartmentTextBox.Text = Adress.Apartment;
+            IdTextBox.Text = Item.Id.ToString();
+            CostTextBox.Text = Item.Cost.ToString();
+            NameTextBox.Text = Item.Name.ToString();
+            InfoTextBox.Text = Item.Info.ToString();
+            CategoryComboBox.Text = Item.Category.ToString();
         }
 
         /// <summary>
-        /// Обновляет свойство <see cref="Customer"/>.
+        /// Обновляет свойство <see cref="Item"/>.
         /// </summary>
         /// <param name="control">Связанный с этим, элемент управления.</param>
         /// <param name="parse">Метод парсинга.</param>
         private void UpdateProperty(Control control, Parse parse)
         {
-            if (Adress != null)
+            if (Item != null)
             {
                 try
                 {
@@ -152,34 +145,24 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
-        private void PostIndexTextBox_TextChanged(object sender, EventArgs e)
+        private void CostTextBox_TextChanged(object sender, EventArgs e)
         {
-            UpdateProperty(PostIndexTextBox, PostIndexParse);
+            UpdateProperty(CostTextBox, CostParse);
         }
 
-        private void CountryTextBox_TextChanged(object sender, EventArgs e)
+        private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
-            UpdateProperty(CountryTextBox, CountryParse);
+            UpdateProperty(NameTextBox, NameParse);
         }
 
-        private void CityTextBox_TextChanged(object sender, EventArgs e)
+        private void InfoTextBox_TextChanged(object sender, EventArgs e)
         {
-            UpdateProperty(CityTextBox, CityParse);
+            UpdateProperty(InfoTextBox, InfoParse);
         }
 
-        private void StreetTextBox_TextChanged(object sender, EventArgs e)
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateProperty(StreetTextBox, StreetParse);
-        }
-
-        private void BuildingTextBox_TextChanged(object sender, EventArgs e)
-        {
-            UpdateProperty(BuildingTextBox, BuildingParse);
-        }
-
-        private void ApartmentTextBox_TextChanged(object sender, EventArgs e)
-        {
-            UpdateProperty(ApartmentTextBox, ApartmentParse);
+            UpdateProperty(CategoryComboBox, CategoryParse);
         }
     }
 }
