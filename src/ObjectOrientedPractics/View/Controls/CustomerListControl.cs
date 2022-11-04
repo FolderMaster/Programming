@@ -14,7 +14,7 @@ namespace ObjectOrientedPractics.View.Controls
     public partial class CustomerListControl : UserControl
     {
         /// <summary>
-        /// Источник данных для формы <see cref="ListBox"/>.
+        /// Источник данных для <see cref="ListBox"/>.
         /// </summary>
         private BindingSource _bindingSource = new BindingSource();
 
@@ -69,9 +69,14 @@ namespace ObjectOrientedPractics.View.Controls
         public event EventHandler ListBoxSelectedIndexChanged;
 
         /// <summary>
-        /// Обработчик для события нажатия на кнопку <see cref="RemoveButton"/>.
+        /// Обработчик для события удаления элемента из <see cref="Customers"/>.
         /// </summary>
-        public event EventHandler RemoveButtonClick;
+        public event EventHandler RemoveFromCustomers;
+
+        /// <summary>
+        /// Обработчик для события добавления элемента в <see cref="Customers"/>.
+        /// </summary>
+        public event EventHandler AddToCustomers;
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="CustomerListControl"/> по-умолчанию.
@@ -132,6 +137,7 @@ namespace ObjectOrientedPractics.View.Controls
             {
                 SelectedIndex = 0;
             }
+            AddToCustomers?.Invoke(this, EventArgs.Empty);
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -142,6 +148,7 @@ namespace ObjectOrientedPractics.View.Controls
             {
                 SelectedIndex = 0;
             }
+            AddToCustomers?.Invoke(this, EventArgs.Empty);
         }
 
         private void RemoveButton_Click(object sender, EventArgs e)
@@ -150,7 +157,7 @@ namespace ObjectOrientedPractics.View.Controls
             {
                 Customers.RemoveAt(SelectedIndex);
                 UpdateList();
-                RemoveButtonClick?.Invoke(this, EventArgs.Empty);
+                RemoveFromCustomers?.Invoke(this, EventArgs.Empty);
             }
         }
     }

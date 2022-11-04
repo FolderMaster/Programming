@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.View.Controls;
@@ -15,11 +16,17 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Возращает и задаёт список экземпляров класса <see cref="Customer"/>.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Customer> Customers
         {
             get => CustomerListControl.Customers;
             set => CustomerListControl.Customers = value;
         }
+
+        /// <summary>
+        /// Обработчик для события изменения списка <see cref="Customers"/>.
+        /// </summary>
+        public event EventHandler CustomersChanged;
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="CustomersTab"/> по-умолчанию.
@@ -40,6 +47,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 CustomerEditorControl.Customer = null;
             }
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void CustomerListControl_RemoveButtonClick(object sender, EventArgs e)
@@ -49,6 +57,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 CustomerEditorControl.Customer = CustomerListControl.Customers
                     [CustomerListControl.SelectedIndex];
             }
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void CustomerEditorControl_CurrentPropertyChanged(object sender, EventArgs e)
@@ -62,6 +71,12 @@ namespace ObjectOrientedPractics.View.Tabs
                     CustomerListControl.UpdateListWithSort();
                     break;
             }
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CustomerListControl_AddButtonClick(object sender, EventArgs e)
+        {
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

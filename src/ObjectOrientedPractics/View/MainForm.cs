@@ -46,7 +46,9 @@ namespace ObjectOrientedPractics.View
                 _store = store == null ? _store : store;
 
                 ItemsTab.Items = _store.Items;
+                CartsTab.Items = _store.Items;
                 CustomersTab.Customers = _store.Customers;
+                CartsTab.Customers = _store.Customers;
             }
         }
 
@@ -61,6 +63,25 @@ namespace ObjectOrientedPractics.View
             {
                 MessageBox.Show(ex.Message, "Error!",
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ItemsTab_ItemsChanged(object sender, EventArgs e)
+        {
+            CartsTab.UpdateItems();
+        }
+
+        private void CustomersTab_CustomersChanged(object sender, EventArgs e)
+        {
+            CartsTab.UpdateCustomers();
+        }
+
+        private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(TabControl.SelectedIndex == 2)
+            {
+                CartsTab.UpdateItems();
+                CartsTab.UpdateCustomers();
             }
         }
     }

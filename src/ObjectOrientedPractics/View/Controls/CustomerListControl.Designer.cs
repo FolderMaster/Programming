@@ -71,8 +71,8 @@
             // 
             // AddEmptyButton
             // 
-            this.AddEmptyButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.AddEmptyButton.Location = new System.Drawing.Point(163, 377);
+            this.AddEmptyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddEmptyButton.Location = new System.Drawing.Point(81, 377);
             this.AddEmptyButton.Name = "AddEmptyButton";
             this.AddEmptyButton.Size = new System.Drawing.Size(75, 23);
             this.AddEmptyButton.TabIndex = 3;

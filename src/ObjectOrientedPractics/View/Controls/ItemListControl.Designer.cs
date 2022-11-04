@@ -32,6 +32,7 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
             this.AddEmptyButton = new System.Windows.Forms.Button();
+            this.ClearAllButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ListBox
@@ -71,8 +72,8 @@
             // 
             // AddEmptyButton
             // 
-            this.AddEmptyButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.AddEmptyButton.Location = new System.Drawing.Point(163, 377);
+            this.AddEmptyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddEmptyButton.Location = new System.Drawing.Point(81, 377);
             this.AddEmptyButton.Name = "AddEmptyButton";
             this.AddEmptyButton.Size = new System.Drawing.Size(75, 23);
             this.AddEmptyButton.TabIndex = 3;
@@ -80,10 +81,22 @@
             this.AddEmptyButton.UseVisualStyleBackColor = true;
             this.AddEmptyButton.Click += new System.EventHandler(this.AddEmptyButton_Click);
             // 
+            // ClearAllButton
+            // 
+            this.ClearAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ClearAllButton.Location = new System.Drawing.Point(245, 377);
+            this.ClearAllButton.Name = "ClearAllButton";
+            this.ClearAllButton.Size = new System.Drawing.Size(75, 23);
+            this.ClearAllButton.TabIndex = 4;
+            this.ClearAllButton.Text = "Clear all";
+            this.ClearAllButton.UseVisualStyleBackColor = true;
+            this.ClearAllButton.Click += new System.EventHandler(this.ClearAllButton_Click);
+            // 
             // ItemListControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ClearAllButton);
             this.Controls.Add(this.AddEmptyButton);
             this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.AddButton);
@@ -100,5 +113,6 @@
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.Button AddEmptyButton;
+        private System.Windows.Forms.Button ClearAllButton;
     }
 }

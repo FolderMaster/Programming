@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
@@ -15,11 +16,18 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Возращает и задаёт список экземпляров класса <see cref="Item"/>.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Item> Items
         {
             get => ItemListControl.Items;
             set => ItemListControl.Items = value;
         }
+
+
+        /// <summary>
+        /// Обработчик для события изменения списка <see cref="Items"/>.
+        /// </summary>
+        public event EventHandler ItemsChanged;
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="ItemsTab"/> по-умолчанию.
@@ -39,6 +47,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 ItemEditorControl.Item = null;
             }
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void ItemListControl_ListBoxSelectedIndexChanged(object sender, EventArgs e)
@@ -47,6 +56,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 ItemEditorControl.Item = ItemListControl.Items[ItemListControl.SelectedIndex];
             }
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void ItemEditorControl_CurrentPropertyChanged(object sender, EventArgs e)
@@ -60,6 +70,12 @@ namespace ObjectOrientedPractics.View.Tabs
                     ItemListControl.UpdateListWithSort();
                     break;
             }
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void ItemListControl_AddButtonClick(object sender, EventArgs e)
+        {
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }
