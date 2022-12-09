@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{223C9486-2DC
 		doc\Practics1.png = doc\Practics1.png
 		doc\Practics2.mdj = doc\Practics2.mdj
 		doc\Practics2.png = doc\Practics2.png
+		doc\Practics3.mdj = doc\Practics3.mdj
+		doc\Practics3.png = doc\Practics3.png
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectOrientedPractics", "src\ObjectOrientedPractics\ObjectOrientedPractics.csproj", "{29A30578-A4DD-4DAD-94B1-66FF2ADD7019}"

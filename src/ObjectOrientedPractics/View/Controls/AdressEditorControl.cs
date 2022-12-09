@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
@@ -17,6 +18,11 @@ namespace ObjectOrientedPractics.View.Controls
         private Adress _adress;
 
         /// <summary>
+        /// Значение, указывающее, что элемент управления прездназначен только для чтения.
+        /// </summary>
+        private bool _isReadOnly = false;
+
+        /// <summary>
         /// Делегат для обработки информации.
         /// </summary>
         private delegate void Parse();
@@ -24,6 +30,7 @@ namespace ObjectOrientedPractics.View.Controls
         /// <summary>
         /// Возвращает и задаёт экземпляр класса <see cref="Model.Adress"/>.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Adress Adress
         {
             get => _adress;
@@ -38,6 +45,22 @@ namespace ObjectOrientedPractics.View.Controls
                 {
                     FillInfo();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Возвращает и задаёт значение, указывающее, что элемент управления прездназначен только для чтения.
+        /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool IsReadOnly
+        {
+            get => _isReadOnly;
+            set
+            {
+                _isReadOnly = value;
+                PostIndexTextBox.ReadOnly = CountryTextBox.ReadOnly = CityTextBox.ReadOnly =
+                        StreetTextBox.ReadOnly = BuildingTextBox.ReadOnly =
+                        ApartmentTextBox.ReadOnly = value;
             }
         }
 

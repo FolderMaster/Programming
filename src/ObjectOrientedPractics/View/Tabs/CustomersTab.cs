@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.View.Controls;
 using ObjectOrientedPractics.Model;
-using System.Collections.Generic;
+using ObjectOrientedPractics.Services.Factories;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -24,9 +25,20 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
+        /// Возращает и задаёт список экземпляров класса <see cref="Item"/>.
+        /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public List<Item> Items { get; set; } = new List<Item>();
+
+        /// <summary>
         /// Обработчик для события изменения списка <see cref="Customers"/>.
         /// </summary>
         public event EventHandler CustomersChanged;
+
+        /// <summary>
+        /// Обработчик для события создания заказа.
+        /// </summary>
+        public event EventHandler OrderCreated;
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="CustomersTab"/> по-умолчанию.
@@ -77,6 +89,16 @@ namespace ObjectOrientedPractics.View.Tabs
         private void CustomerListControl_AddButtonClick(object sender, EventArgs e)
         {
             CustomersChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void GenerateOrderButton_Click(object sender, EventArgs e)
+        {
+            Customer customer = CustomerEditorControl.Customer;
+            if(customer != null && Items.Count != 0)
+            {
+                customer.Orders.Add(OrderFactory.CreateOrder(Items, Customers));
+                OrderCreated?.Invoke(this, EventArgs.Empty);
+            }
         }
     }
 }

@@ -46,6 +46,7 @@ namespace ObjectOrientedPractics.View.Controls
         /// <summary>
         /// Возвращает и задаёт индекс выбранного экземпляра класса <see cref="Item"/>.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int SelectedIndex
         {
             get => _selectedIndex;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
@@ -23,6 +24,7 @@ namespace ObjectOrientedPractics.View.Controls
         /// <summary>
         /// Возвращает и задаёт экземпляр класса <see cref="Item"/>.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Item Item
         {
             get => _item;
@@ -43,6 +45,7 @@ namespace ObjectOrientedPractics.View.Controls
         /// <summary>
         /// Возвращает и задаёт режим обновления <see cref="UpdateMode"/>.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public UpdateType UpdateMode { set; get; }
 
         /// <summary>

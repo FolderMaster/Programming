@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.CustomerListGroupBox = new System.Windows.Forms.GroupBox();
-            this.CustomerListControl = new ObjectOrientedPractics.View.Controls.CustomerListControl();
             this.CustomerGroupBox = new System.Windows.Forms.GroupBox();
             this.CustomerEditorControl = new ObjectOrientedPractics.View.Controls.CustomerEditorControl();
+            this.CustomerListControl = new ObjectOrientedPractics.View.Controls.CustomerListControl();
+            this.GenerateOrderButton = new System.Windows.Forms.Button();
             this.CustomerListGroupBox.SuspendLayout();
             this.CustomerGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -48,18 +49,6 @@
             this.CustomerListGroupBox.TabStop = false;
             this.CustomerListGroupBox.Text = "Customer list";
             // 
-            // CustomerListControl
-            // 
-            this.CustomerListControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CustomerListControl.Location = new System.Drawing.Point(3, 16);
-            this.CustomerListControl.Name = "CustomerListControl";
-            this.CustomerListControl.SelectedIndex = 0;
-            this.CustomerListControl.Size = new System.Drawing.Size(318, 481);
-            this.CustomerListControl.TabIndex = 1;
-            this.CustomerListControl.ListBoxSelectedIndexChanged += new System.EventHandler(this.CustomerListControl_ListBoxSelectedIndexChanged);
-            this.CustomerListControl.RemoveFromCustomers += new System.EventHandler(this.CustomerListControl_RemoveButtonClick);
-            this.CustomerListControl.AddToCustomers += new System.EventHandler(this.CustomerListControl_AddButtonClick);
-            // 
             // CustomerGroupBox
             // 
             this.CustomerGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -68,26 +57,47 @@
             this.CustomerGroupBox.Controls.Add(this.CustomerEditorControl);
             this.CustomerGroupBox.Location = new System.Drawing.Point(330, 0);
             this.CustomerGroupBox.Name = "CustomerGroupBox";
-            this.CustomerGroupBox.Size = new System.Drawing.Size(470, 500);
+            this.CustomerGroupBox.Size = new System.Drawing.Size(470, 471);
             this.CustomerGroupBox.TabIndex = 2;
             this.CustomerGroupBox.TabStop = false;
             this.CustomerGroupBox.Text = "Customer";
             // 
             // CustomerEditorControl
             // 
-            this.CustomerEditorControl.Customer = null;
             this.CustomerEditorControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CustomerEditorControl.Location = new System.Drawing.Point(3, 16);
             this.CustomerEditorControl.Name = "CustomerEditorControl";
-            this.CustomerEditorControl.Size = new System.Drawing.Size(464, 481);
+            this.CustomerEditorControl.Size = new System.Drawing.Size(464, 452);
             this.CustomerEditorControl.TabIndex = 3;
-            this.CustomerEditorControl.UpdateMode = ObjectOrientedPractics.View.Controls.UpdateType.None;
             this.CustomerEditorControl.CurrentPropertyChanged += new System.EventHandler(this.CustomerEditorControl_CurrentPropertyChanged);
+            // 
+            // CustomerListControl
+            // 
+            this.CustomerListControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CustomerListControl.Location = new System.Drawing.Point(3, 16);
+            this.CustomerListControl.Name = "CustomerListControl";
+            this.CustomerListControl.Size = new System.Drawing.Size(318, 481);
+            this.CustomerListControl.TabIndex = 1;
+            this.CustomerListControl.ListBoxSelectedIndexChanged += new System.EventHandler(this.CustomerListControl_ListBoxSelectedIndexChanged);
+            this.CustomerListControl.RemoveFromCustomers += new System.EventHandler(this.CustomerListControl_RemoveButtonClick);
+            this.CustomerListControl.AddToCustomers += new System.EventHandler(this.CustomerListControl_AddButtonClick);
+            // 
+            // GenerateOrderButton
+            // 
+            this.GenerateOrderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.GenerateOrderButton.Location = new System.Drawing.Point(712, 477);
+            this.GenerateOrderButton.Name = "GenerateOrderButton";
+            this.GenerateOrderButton.Size = new System.Drawing.Size(88, 23);
+            this.GenerateOrderButton.TabIndex = 3;
+            this.GenerateOrderButton.Text = "Generate order";
+            this.GenerateOrderButton.UseVisualStyleBackColor = true;
+            this.GenerateOrderButton.Click += new System.EventHandler(this.GenerateOrderButton_Click);
             // 
             // CustomersTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.GenerateOrderButton);
             this.Controls.Add(this.CustomerGroupBox);
             this.Controls.Add(this.CustomerListGroupBox);
             this.Name = "CustomersTab";
@@ -104,5 +114,6 @@
         private System.Windows.Forms.GroupBox CustomerGroupBox;
         private Controls.CustomerEditorControl CustomerEditorControl;
         private Controls.CustomerListControl CustomerListControl;
+        private System.Windows.Forms.Button GenerateOrderButton;
     }
 }

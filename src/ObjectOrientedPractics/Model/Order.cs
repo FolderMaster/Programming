@@ -32,6 +32,12 @@ namespace ObjectOrientedPractics.Model
         private readonly DateTime _createdDateTime = DateTime.UtcNow;
 
         /// <summary>
+        /// Словарь статусов заказа по времени изменения.
+        /// </summary>
+        private Dictionary<DateTime, OrderStatus> _statusDictionary = new Dictionary<DateTime,
+            OrderStatus>();
+
+        /// <summary>
         /// Возвращает уникальный индентификатор экземпляра класса.
         /// </summary>
         public int Id
@@ -56,7 +62,19 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возращает и задаёт статус заказа.
         /// </summary>
-        public OrderStatus Status { get; set; } = OrderStatus.None;
+        public OrderStatus Status
+        {
+            get => _statusDictionary.Last().Value;
+            set => _statusDictionary.Add(DateTime.Now, value);
+        }
+
+        /// <summary>
+        /// Возращает время последнего изменения статуса.
+        /// </summary>
+        public DateTime LastChangedStatusDateTime
+        {
+            get => _statusDictionary.Last().Key;
+        }
 
         /// <summary>
         /// Возвращает время создания.

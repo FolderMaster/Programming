@@ -28,25 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CustomerSelectorControl = new ObjectOrientedPractics.View.Controls.CustomerSelectorControl();
             this.ItemListGroupBox = new System.Windows.Forms.GroupBox();
-            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemListControl();
             this.AddToCartButton = new System.Windows.Forms.Button();
             this.CartGroupBox = new System.Windows.Forms.GroupBox();
             this.CartEditorControl = new ObjectOrientedPractics.View.Controls.CartEditorControl();
+            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemListControl();
+            this.CustomerSelectorControl = new ObjectOrientedPractics.View.Controls.CustomerSelectorControl();
             this.ItemListGroupBox.SuspendLayout();
             this.CartGroupBox.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // CustomerSelectorControl
-            // 
-            this.CustomerSelectorControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CustomerSelectorControl.Location = new System.Drawing.Point(330, 3);
-            this.CustomerSelectorControl.Name = "CustomerSelectorControl";
-            this.CustomerSelectorControl.Size = new System.Drawing.Size(401, 21);
-            this.CustomerSelectorControl.TabIndex = 0;
-            this.CustomerSelectorControl.SelectedCustomerChanged += new System.EventHandler(this.CustomerSelectorControl_SelectedCustomerChanged);
             // 
             // ItemListGroupBox
             // 
@@ -59,18 +49,6 @@
             this.ItemListGroupBox.TabIndex = 1;
             this.ItemListGroupBox.TabStop = false;
             this.ItemListGroupBox.Text = "Item list";
-            // 
-            // ItemListControl
-            // 
-            this.ItemListControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemListControl.IsAdding = true;
-            this.ItemListControl.IsEditor = false;
-            this.ItemListControl.IsRemoving = true;
-            this.ItemListControl.Location = new System.Drawing.Point(3, 16);
-            this.ItemListControl.Name = "ItemListControl";
-            this.ItemListControl.SelectedIndex = 0;
-            this.ItemListControl.Size = new System.Drawing.Size(318, 531);
-            this.ItemListControl.TabIndex = 1;
             // 
             // AddToCartButton
             // 
@@ -91,19 +69,39 @@
             this.CartGroupBox.Controls.Add(this.CartEditorControl);
             this.CartGroupBox.Location = new System.Drawing.Point(330, 30);
             this.CartGroupBox.Name = "CartGroupBox";
-            this.CartGroupBox.Size = new System.Drawing.Size(404, 549);
+            this.CartGroupBox.Size = new System.Drawing.Size(404, 520);
             this.CartGroupBox.TabIndex = 3;
             this.CartGroupBox.TabStop = false;
             this.CartGroupBox.Text = "Cart";
             // 
             // CartEditorControl
             // 
-            this.CartEditorControl.Customer = null;
             this.CartEditorControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CartEditorControl.Location = new System.Drawing.Point(3, 16);
             this.CartEditorControl.Name = "CartEditorControl";
-            this.CartEditorControl.Size = new System.Drawing.Size(398, 530);
+            this.CartEditorControl.Size = new System.Drawing.Size(398, 501);
             this.CartEditorControl.TabIndex = 0;
+            // 
+            // ItemListControl
+            // 
+            this.ItemListControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ItemListControl.IsAdding = true;
+            this.ItemListControl.IsEditor = false;
+            this.ItemListControl.IsRemoving = true;
+            this.ItemListControl.Location = new System.Drawing.Point(3, 16);
+            this.ItemListControl.Name = "ItemListControl";
+            this.ItemListControl.Size = new System.Drawing.Size(318, 531);
+            this.ItemListControl.TabIndex = 1;
+            // 
+            // CustomerSelectorControl
+            // 
+            this.CustomerSelectorControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CustomerSelectorControl.Location = new System.Drawing.Point(330, 3);
+            this.CustomerSelectorControl.Name = "CustomerSelectorControl";
+            this.CustomerSelectorControl.Size = new System.Drawing.Size(401, 21);
+            this.CustomerSelectorControl.TabIndex = 0;
+            this.CustomerSelectorControl.SelectedCustomerChanged += new System.EventHandler(this.CustomerSelectorControl_SelectedCustomerChanged);
             // 
             // CartsTab
             // 

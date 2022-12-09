@@ -27,11 +27,14 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Возращает и задаёт список экземпляров класса <see cref="Item"/>.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Item> Items
         {
             get => ItemListControl.Items;
             set => ItemListControl.Items = value;
         }
+
+        public event EventHandler OrderCreated;
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="CartsTab"/> по умолчанию.
@@ -44,7 +47,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Обновляет информацию о <see cref="Customers"/>.
         /// </summary>
-        public void UpdateCustomers()
+        public void RefreshCustomers()
         {
             CustomerSelectorControl.RefreshData();
         }
@@ -52,7 +55,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Обновляет информацию о <see cref="Items"/>.
         /// </summary>
-        public void UpdateItems()
+        public void RefreshItems()
         {
             ItemListControl.UpdateList();
         }
@@ -60,7 +63,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
             CartEditorControl.AddItem(ItemListControl.Items[ItemListControl.SelectedIndex]);
-            CartEditorControl.UpdateCart();
+            CartEditorControl.RefreshCart();
         }
 
         private void CustomerSelectorControl_SelectedCustomerChanged(object sender, EventArgs e)

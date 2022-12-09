@@ -47,8 +47,10 @@ namespace ObjectOrientedPractics.View
 
                 ItemsTab.Items = _store.Items;
                 CartsTab.Items = _store.Items;
+                CustomersTab.Items = _store.Items;
                 CustomersTab.Customers = _store.Customers;
                 CartsTab.Customers = _store.Customers;
+                OrdersTab.Customers = _store.Customers;
             }
         }
 
@@ -68,20 +70,34 @@ namespace ObjectOrientedPractics.View
 
         private void ItemsTab_ItemsChanged(object sender, EventArgs e)
         {
-            CartsTab.UpdateItems();
+            CartsTab.RefreshItems();
         }
 
         private void CustomersTab_CustomersChanged(object sender, EventArgs e)
         {
-            CartsTab.UpdateCustomers();
+            CartsTab.RefreshCustomers();
+        }
+
+        private void CustomersTab_OrderCreated(object sender, EventArgs e)
+        {
+            OrdersTab.RefreshData();
+        }
+
+        private void CartsTab_OrderCreated(object sender, EventArgs e)
+        {
+            OrdersTab.RefreshData();
         }
 
         private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(TabControl.SelectedIndex == 2)
             {
-                CartsTab.UpdateItems();
-                CartsTab.UpdateCustomers();
+                CartsTab.RefreshItems();
+                CartsTab.RefreshCustomers();
+            }
+            else if(TabControl.SelectedIndex == 3)
+            {
+                OrdersTab.RefreshData();
             }
         }
     }
