@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Services.Factories;
 
 namespace ObjectOrientedPractics.View.Controls
 {
@@ -13,7 +16,7 @@ namespace ObjectOrientedPractics.View.Controls
         /// <summary>
         /// Текст для <see cref="AmountLabel"/>.
         /// </summary>
-        private const string AmountText = "Amount: ";
+        private const string AmountLabelText = "Amount: ";
 
         /// <summary>
         /// Корзина покупателя.
@@ -28,19 +31,21 @@ namespace ObjectOrientedPractics.View.Controls
         /// <summary>
         /// Возращает и задаёт корзину покупателя.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Cart Cart
         {
             get => _cart;
             private set
             {
                 _cart = value;
-                UpdateCart();
+                RefreshCart();
             }
         }
 
         /// <summary>
         /// Возращает и задаёт покупателя.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Customer Customer
         {
             get => _customer;
@@ -87,12 +92,12 @@ namespace ObjectOrientedPractics.View.Controls
         /// <summary>
         /// Обновляет корзину.
         /// </summary>
-        public void UpdateCart()
+        public void RefreshCart()
         {
             if(Cart != null)
             {
                 ItemListControl.UpdateList();
-                AmountLabel.Text = AmountText + Cart.Amount;
+                AmountLabel.Text = AmountLabelText + Cart.Amount;
             }
         }
 
@@ -102,19 +107,19 @@ namespace ObjectOrientedPractics.View.Controls
         private void ClearInfo()
         {
             ItemListControl.Items = null;
-            AmountLabel.Text = AmountText;
+            AmountLabel.Text = AmountLabelText;
         }
 
         private void ItemListControl_RemoveFromItems(object sender, EventArgs e)
         {
-            UpdateCart();
+            RefreshCart();
         }
 
         private void CreateOrderButton_Click(object sender, EventArgs e)
         {
-            Customer.Orders.Add(new Order(Cart.Items, Customer.Adress, OrderStatus.New));
+            Customer.Orders.Add(new Order(new List<Item>(Cart.Items), Customer.Adress, OrderStatus.New));
             Cart.Items.Clear();
-            UpdateCart();
+            RefreshCart();
         }
     }
 }

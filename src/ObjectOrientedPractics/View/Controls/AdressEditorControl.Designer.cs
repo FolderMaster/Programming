@@ -175,7 +175,7 @@
             this.Controls.Add(this.PostIndexTextBox);
             this.Controls.Add(this.PostIndexLabel);
             this.Name = "AdressEditorControl";
-            this.Size = new System.Drawing.Size(397, 187);
+            this.Size = new System.Drawing.Size(397, 155);
             this.ResumeLayout(false);
             this.PerformLayout();
 

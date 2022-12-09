@@ -48,6 +48,7 @@ namespace ObjectOrientedPractics.View.Controls
         /// <summary>
         /// Возращает и задаёт выбранного покупателя <see cref="ComboBox"/>.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Customer SelectedCustomer
         {
             get => _selectedCustomer;
@@ -64,6 +65,7 @@ namespace ObjectOrientedPractics.View.Controls
         /// <summary>
         /// Возращает и задаёт выбранный индекс <see cref="ComboBox"/>.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int SelectedIndex
         {
             get => ComboBox.SelectedIndex;

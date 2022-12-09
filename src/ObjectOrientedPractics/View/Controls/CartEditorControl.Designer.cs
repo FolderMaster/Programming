@@ -41,9 +41,9 @@
             this.AmountLabel.AutoSize = true;
             this.AmountLabel.Location = new System.Drawing.Point(-3, 422);
             this.AmountLabel.Name = "AmountLabel";
-            this.AmountLabel.Size = new System.Drawing.Size(55, 13);
+            this.AmountLabel.Size = new System.Drawing.Size(49, 13);
             this.AmountLabel.TabIndex = 2;
-            this.AmountLabel.Text = "Amount: 0";
+            this.AmountLabel.Text = "Amount: ";
             // 
             // CreateOrderButton
             // 
@@ -77,7 +77,6 @@
             this.ItemListControl.IsRemoving = true;
             this.ItemListControl.Location = new System.Drawing.Point(3, 16);
             this.ItemListControl.Name = "ItemListControl";
-            this.ItemListControl.SelectedIndex = 0;
             this.ItemListControl.Size = new System.Drawing.Size(322, 392);
             this.ItemListControl.TabIndex = 0;
             this.ItemListControl.RemoveFromItems += new System.EventHandler(this.ItemListControl_RemoveFromItems);

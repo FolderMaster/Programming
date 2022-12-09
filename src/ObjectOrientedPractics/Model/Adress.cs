@@ -184,12 +184,11 @@ namespace ObjectOrientedPractics.Model
             Street = street;
             Building = building;
             Apartment = apartment;
-            Index = index;
-            Country = country;
-            City = city;
-            Street = street;
-            Building = building;
-            Apartment = apartment;
+        }
+
+        public override string ToString()
+        {
+            return $"{Index} {Country} {City} {Street} {Building} {Apartment}";
         }
     }
 }
