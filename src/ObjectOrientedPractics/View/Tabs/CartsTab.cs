@@ -62,13 +62,21 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
-            CartEditorControl.AddItem(ItemListControl.Items[ItemListControl.SelectedIndex]);
-            CartEditorControl.RefreshCart();
+            if(ItemListControl.SelectedIndex != -1)
+            {
+                CartEditorControl.AddItem(ItemListControl.Items[ItemListControl.SelectedIndex]);
+                CartEditorControl.RefreshCart();
+            }
         }
 
         private void CustomerSelectorControl_SelectedCustomerChanged(object sender, EventArgs e)
         {
             CartEditorControl.Customer = CustomerSelectorControl.SelectedCustomer;
+        }
+
+        private void CartEditorControl_OrderCreated(object sender, EventArgs e)
+        {
+            OrderCreated?.Invoke(this, EventArgs.Empty);
         }
     }
 }

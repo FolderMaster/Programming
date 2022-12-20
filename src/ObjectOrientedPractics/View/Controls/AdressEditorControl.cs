@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
@@ -6,14 +7,14 @@ using ObjectOrientedPractics.Model;
 namespace ObjectOrientedPractics.View.Controls
 {
     /// <summary>
-    /// Элемент управления для изменения экземпляра класса <see cref="Item"/>.
+    /// Элемент управления для изменения экземпляра класса <see cref="Customer"/>.
     /// </summary>
-    public partial class ItemEditorControl : UserControl
+    public partial class CustomerEditorControl : UserControl
     {
         /// <summary>
-        /// Экземпляр класса <see cref="Item"/>.
+        /// Экземпляр класса <see cref="Customer"/>.
         /// </summary>
-        private Item _item;
+        private Customer _customer;
 
         /// <summary>
         /// Делегат для обработки информации.
@@ -21,15 +22,16 @@ namespace ObjectOrientedPractics.View.Controls
         private delegate void Parse();
 
         /// <summary>
-        /// Возвращает и задаёт экземпляр класса <see cref="Item"/>.
+        /// Возвращает и задаёт экземпляр класса <see cref="Customer"/>.
         /// </summary>
-        public Item Item
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Customer Customer
         {
-            get => _item;
+            get => _customer;
             set
             {
-                _item = value;
-                if (_item == null)
+                _customer = value;
+                if (_customer == null)
                 {
                     ClearInfo();
                 }
@@ -43,56 +45,37 @@ namespace ObjectOrientedPractics.View.Controls
         /// <summary>
         /// Возвращает и задаёт режим обновления <see cref="UpdateMode"/>.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public UpdateType UpdateMode { set; get; }
 
         /// <summary>
-        /// Обработчик события изменения <see cref="Item"/>.
+        /// Обработчик события изменения <see cref="Customer"/>.
         /// </summary>
         public event EventHandler CurrentPropertyChanged;
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="ItemEditorControl"/> по-умолчанию.
+        /// Создаёт экземпляр класса <see cref="CustomerEditorControl"/> по-умолчанию.
         /// </summary>
-        public ItemEditorControl()
+        public CustomerEditorControl()
         {
             InitializeComponent();
-
-            CategoryComboBox.DataSource = Enum.GetValues(typeof(ItemCategory));
         }
 
         /// <summary>
-        /// Обрабатывает информацию для <see cref="Item.Cost"/>.
+        /// Обрабатывает информацию для <see cref="Customer.FullName"/>.
         /// </summary>
-        private void CostParse()
+        private void FullNameParse()
         {
-            Item.Cost = int.Parse(CostTextBox.Text);
-            UpdateMode = UpdateType.UpdateCurrentObject;
-        }
-
-        /// <summary>
-        /// Обрабатывает информацию для <see cref="Item.Name"/>.
-        /// </summary>
-        private void NameParse()
-        {
-            Item.Name = NameTextBox.Text;
+            Customer.FullName = FullNameTextBox.Text;
             UpdateMode = UpdateType.UpdateList;
         }
 
         /// <summary>
-        /// Обрабатывает информацию для <see cref="Item.Info"/>.
+        /// Обрабатывает информацию для <see cref="Customer.IsPriority"/>.
         /// </summary>
-        private void InfoParse()
+        private void IsPriorityParse()
         {
-            Item.Info = InfoTextBox.Text;
-            UpdateMode = UpdateType.None;
-        }
-
-        /// <summary>
-        /// Обрабатывает информацию для <see cref="Item.Category"/>.
-        /// </summary>
-        private void CategoryParse()
-        {
-            Item.Category = (ItemCategory)CategoryComboBox.SelectedIndex;
+            Customer.IsPriority = IsPriorityCheckBox.Checked;
             UpdateMode = UpdateType.None;
         }
 
@@ -101,8 +84,9 @@ namespace ObjectOrientedPractics.View.Controls
         /// </summary>
         private void ClearInfo()
         {
-            IdTextBox.Text = CostTextBox.Text = NameTextBox.Text = InfoTextBox.Text =
-                CategoryComboBox.Text = null;
+            IdTextBox.Text = FullNameTextBox.Text = null;
+            AdressEditorControl.Adress = null;
+            IsPriorityCheckBox.Checked = false;
         }
 
         /// <summary>
@@ -110,21 +94,20 @@ namespace ObjectOrientedPractics.View.Controls
         /// </summary>
         private void FillInfo()
         {
-            IdTextBox.Text = Item.Id.ToString();
-            CostTextBox.Text = Item.Cost.ToString();
-            NameTextBox.Text = Item.Name.ToString();
-            InfoTextBox.Text = Item.Info.ToString();
-            CategoryComboBox.Text = Item.Category.ToString();
+            IdTextBox.Text = Customer.Id.ToString();
+            FullNameTextBox.Text = Customer.FullName;
+            AdressEditorControl.Adress = Customer.Adress;
+            IsPriorityCheckBox.Checked = Customer.IsPriority;
         }
 
         /// <summary>
-        /// Обновляет свойство <see cref="Item"/>.
+        /// Обновляет свойство <see cref="Customer"/>.
         /// </summary>
         /// <param name="control">Связанный с этим, элемент управления.</param>
         /// <param name="parse">Метод парсинга.</param>
         private void UpdateProperty(Control control, Parse parse)
         {
-            if (Item != null)
+            if (Customer != null)
             {
                 try
                 {
@@ -145,24 +128,19 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
-        private void CostTextBox_TextChanged(object sender, EventArgs e)
+        private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            UpdateProperty(CostTextBox, CostParse);
+            UpdateProperty(FullNameTextBox, FullNameParse);
         }
 
-        private void NameTextBox_TextChanged(object sender, EventArgs e)
+        private void AdressEditorControl_CurrentPropertyChanged(object sender, EventArgs e)
         {
-            UpdateProperty(NameTextBox, NameParse);
+            Customer.Adress = AdressEditorControl.Adress;
         }
 
-        private void InfoTextBox_TextChanged(object sender, EventArgs e)
+        private void IsPriorityCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            UpdateProperty(InfoTextBox, InfoParse);
-        }
-
-        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateProperty(CategoryComboBox, CategoryParse);
+            UpdateProperty(IsPriorityCheckBox, IsPriorityParse);
         }
     }
 }

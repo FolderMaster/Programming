@@ -1,6 +1,6 @@
 ﻿namespace ObjectOrientedPractics.View.Tabs
 {
-    partial class CartsTab
+    partial class PriorityOrdersTab
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -28,15 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.PriorityOrderCreatorControl = new ObjectOrientedPractics.View.Controls.PriorityOrderCreatorControl();
             this.ItemListGroupBox = new System.Windows.Forms.GroupBox();
             this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemListControl();
             this.AddToCartButton = new System.Windows.Forms.Button();
-            this.CartGroupBox = new System.Windows.Forms.GroupBox();
-            this.CartEditorControl = new ObjectOrientedPractics.View.Controls.CartEditorControl();
-            this.CustomerSelectorControl = new ObjectOrientedPractics.View.Controls.CustomerSelectorControl();
+            this.PriorityOrderGroupBox = new System.Windows.Forms.GroupBox();
+            this.RandomlyAddToCartButton = new System.Windows.Forms.Button();
             this.ItemListGroupBox.SuspendLayout();
-            this.CartGroupBox.SuspendLayout();
+            this.PriorityOrderGroupBox.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // PriorityOrderCreatorControl
+            // 
+            this.PriorityOrderCreatorControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PriorityOrderCreatorControl.Location = new System.Drawing.Point(3, 16);
+            this.PriorityOrderCreatorControl.Name = "PriorityOrderCreatorControl";
+            this.PriorityOrderCreatorControl.Size = new System.Drawing.Size(504, 536);
+            this.PriorityOrderCreatorControl.TabIndex = 0;
             // 
             // ItemListGroupBox
             // 
@@ -45,8 +53,8 @@
             this.ItemListGroupBox.Controls.Add(this.ItemListControl);
             this.ItemListGroupBox.Location = new System.Drawing.Point(0, 0);
             this.ItemListGroupBox.Name = "ItemListGroupBox";
-            this.ItemListGroupBox.Size = new System.Drawing.Size(324, 550);
-            this.ItemListGroupBox.TabIndex = 1;
+            this.ItemListGroupBox.Size = new System.Drawing.Size(324, 555);
+            this.ItemListGroupBox.TabIndex = 2;
             this.ItemListGroupBox.TabStop = false;
             this.ItemListGroupBox.Text = "Item list";
             // 
@@ -58,75 +66,67 @@
             this.ItemListControl.IsRemoving = true;
             this.ItemListControl.Location = new System.Drawing.Point(3, 16);
             this.ItemListControl.Name = "ItemListControl";
-            this.ItemListControl.Size = new System.Drawing.Size(318, 531);
+            this.ItemListControl.Size = new System.Drawing.Size(318, 536);
             this.ItemListControl.TabIndex = 1;
             // 
             // AddToCartButton
             // 
             this.AddToCartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddToCartButton.Location = new System.Drawing.Point(0, 556);
+            this.AddToCartButton.Location = new System.Drawing.Point(0, 561);
             this.AddToCartButton.Name = "AddToCartButton";
             this.AddToCartButton.Size = new System.Drawing.Size(75, 23);
-            this.AddToCartButton.TabIndex = 2;
+            this.AddToCartButton.TabIndex = 3;
             this.AddToCartButton.Text = "Add to cart";
             this.AddToCartButton.UseVisualStyleBackColor = true;
             this.AddToCartButton.Click += new System.EventHandler(this.AddToCartButton_Click);
             // 
-            // CartGroupBox
+            // PriorityOrderGroupBox
             // 
-            this.CartGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.PriorityOrderGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CartGroupBox.Controls.Add(this.CartEditorControl);
-            this.CartGroupBox.Location = new System.Drawing.Point(330, 30);
-            this.CartGroupBox.Name = "CartGroupBox";
-            this.CartGroupBox.Size = new System.Drawing.Size(404, 520);
-            this.CartGroupBox.TabIndex = 3;
-            this.CartGroupBox.TabStop = false;
-            this.CartGroupBox.Text = "Cart";
+            this.PriorityOrderGroupBox.Controls.Add(this.PriorityOrderCreatorControl);
+            this.PriorityOrderGroupBox.Location = new System.Drawing.Point(330, 0);
+            this.PriorityOrderGroupBox.Name = "PriorityOrderGroupBox";
+            this.PriorityOrderGroupBox.Size = new System.Drawing.Size(510, 555);
+            this.PriorityOrderGroupBox.TabIndex = 4;
+            this.PriorityOrderGroupBox.TabStop = false;
+            this.PriorityOrderGroupBox.Text = "Priority order";
             // 
-            // CartEditorControl
+            // RandomlyAddToCartButton
             // 
-            this.CartEditorControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CartEditorControl.Location = new System.Drawing.Point(3, 16);
-            this.CartEditorControl.Name = "CartEditorControl";
-            this.CartEditorControl.Size = new System.Drawing.Size(398, 501);
-            this.CartEditorControl.TabIndex = 0;
-            this.CartEditorControl.OrderCreated += new System.EventHandler(this.CartEditorControl_OrderCreated);
+            this.RandomlyAddToCartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RandomlyAddToCartButton.Location = new System.Drawing.Point(208, 561);
+            this.RandomlyAddToCartButton.Name = "RandomlyAddToCartButton";
+            this.RandomlyAddToCartButton.Size = new System.Drawing.Size(116, 23);
+            this.RandomlyAddToCartButton.TabIndex = 5;
+            this.RandomlyAddToCartButton.Text = "Randomly add to cart";
+            this.RandomlyAddToCartButton.UseVisualStyleBackColor = true;
+            this.RandomlyAddToCartButton.Click += new System.EventHandler(this.RandomlyAddToCartButton_Click);
             // 
-            // CustomerSelectorControl
-            // 
-            this.CustomerSelectorControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CustomerSelectorControl.Location = new System.Drawing.Point(330, 3);
-            this.CustomerSelectorControl.Name = "CustomerSelectorControl";
-            this.CustomerSelectorControl.Size = new System.Drawing.Size(401, 21);
-            this.CustomerSelectorControl.TabIndex = 0;
-            this.CustomerSelectorControl.SelectedCustomerChanged += new System.EventHandler(this.CustomerSelectorControl_SelectedCustomerChanged);
-            // 
-            // CartsTab
+            // PriorityOrdersTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.CartGroupBox);
+            this.Controls.Add(this.RandomlyAddToCartButton);
+            this.Controls.Add(this.PriorityOrderGroupBox);
             this.Controls.Add(this.AddToCartButton);
             this.Controls.Add(this.ItemListGroupBox);
-            this.Controls.Add(this.CustomerSelectorControl);
-            this.Name = "CartsTab";
-            this.Size = new System.Drawing.Size(734, 579);
+            this.Name = "PriorityOrdersTab";
+            this.Size = new System.Drawing.Size(840, 584);
             this.ItemListGroupBox.ResumeLayout(false);
-            this.CartGroupBox.ResumeLayout(false);
+            this.PriorityOrderGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Controls.CustomerSelectorControl CustomerSelectorControl;
+        private Controls.PriorityOrderCreatorControl PriorityOrderCreatorControl;
         private System.Windows.Forms.GroupBox ItemListGroupBox;
         private Controls.ItemListControl ItemListControl;
         private System.Windows.Forms.Button AddToCartButton;
-        private System.Windows.Forms.GroupBox CartGroupBox;
-        private Controls.CartEditorControl CartEditorControl;
+        private System.Windows.Forms.GroupBox PriorityOrderGroupBox;
+        private System.Windows.Forms.Button RandomlyAddToCartButton;
     }
 }

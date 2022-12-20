@@ -17,9 +17,19 @@ namespace ObjectOrientedPractics.View.Controls
         private const string AmountLabelText = "Amount: ";
 
         /// <summary>
+        /// Делегат для обработки информации.
+        /// </summary>
+        private delegate void Parse();
+
+        /// <summary>
         /// Заказ.
         /// </summary>
         private Order _order = null;
+
+        /// <summary>
+        /// Заказ приоритетного обслуживания.
+        /// </summary>
+        private PriorityOrder _priorityOrder = null;
 
         /// <summary>
         /// Возращает и задаёт заказ.
@@ -31,9 +41,18 @@ namespace ObjectOrientedPractics.View.Controls
             set
             {
                 _order = value;
+                if(Order is PriorityOrder priorityOrder)
+                {
+                    _priorityOrder = priorityOrder;
+                }
+                else
+                {
+                    _priorityOrder = null;
+                }
+
                 if(Order != null)
                 {
-                    RefreshOrder();
+                    FillInfo();
                 }
                 else
                 {
@@ -55,10 +74,11 @@ namespace ObjectOrientedPractics.View.Controls
             InitializeComponent();
 
             StatusComboBox.DataSource = Enum.GetValues(typeof(OrderStatus));
+            DesiredDeliveryTimeComboBox.DataSource = PriorityOrder.DeliveryTimes;
         }
 
         /// <summary>
-        /// Очищает информацию.
+        /// Очищает информацию с элементов управления.
         /// </summary>
         private void ClearInfo()
         {
@@ -66,12 +86,13 @@ namespace ObjectOrientedPractics.View.Controls
             AdressEditorControl.Adress = null;
             ItemListControl.Items = null;
             AmountLabel.Text = AmountLabelText;
+            PriorityOptionsPanel.Visible = false;
         }
 
         /// <summary>
-        /// Обновляет заказ.
+        /// Заполняет информацию в элементы управления.
         /// </summary>
-        public void RefreshOrder()
+        private void FillInfo()
         {
             IdTextBox.Text = Order.Id.ToString();
             CreatedDateTimeTextBox.Text = Order.CreatedDateTime.ToString();
@@ -79,19 +100,84 @@ namespace ObjectOrientedPractics.View.Controls
             AdressEditorControl.Adress = Order.Adress;
             ItemListControl.Items = Order.Items;
             AmountLabel.Text = AmountLabelText + Order.Amount;
+            if (_priorityOrder != null)
+            {
+                PriorityOptionsPanel.Visible = true;
+                DesiredDeliveryDateTextBox.Text =
+                    _priorityOrder.DesiredDeliveryDate.ToShortDateString();
+                DesiredDeliveryTimeComboBox.SelectedItem = _priorityOrder.DesiredDeliveryTime;
+            }
+            else
+            {
+                PriorityOptionsPanel.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// Обрабатывает информацию для <see cref="Order.Status"/>.
+        /// </summary>
+        private void StatusParse()
+        {
+            Order.Status = (OrderStatus)StatusComboBox.SelectedItem;
+            StatusChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// Обрабатывает информацию для <see cref="PriorityOrder.DesiredDeliveryDate"/>.
+        /// </summary>
+        private void DesiredDeliveryDateParse()
+        {
+            _priorityOrder.DesiredDeliveryDate = DateTime.Parse(DesiredDeliveryDateTextBox.Text);
+        }
+
+        /// <summary>
+        /// Обрабатывает информацию для <see cref="PriorityOrder.DesiredDeliveryTime"/>.
+        /// </summary>
+        private void DesiredDeliveryTimeParse()
+        {
+            _priorityOrder.DesiredDeliveryTime = (string)DesiredDeliveryTimeComboBox.SelectedItem;
+        }
+
+        /// <summary>
+        /// Обновляет свойство <see cref="Order"/>.
+        /// </summary>
+        /// <param name="control">Связанный с этим, элемент управления.</param>
+        /// <param name="parse">Метод парсинга.</param>
+        private void UpdateProperty(Control control, Parse parse)
+        {
+            if (Order != null)
+            {
+                try
+                {
+                    parse();
+                    control.BackColor = ColorManager.CorrectColor;
+                    ToolTip.RemoveAll();
+                }
+                catch (Exception ex)
+                {
+                    control.BackColor = ColorManager.ErrorColor;
+                    ToolTip.SetToolTip(control, ex.Message);
+                }
+            }
+            else
+            {
+                ClearInfo();
+            }
         }
 
         private void StatusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(Order != null)
-            {
-                Order.Status = (OrderStatus)StatusComboBox.SelectedItem;
-                StatusChanged?.Invoke(this, EventArgs.Empty);
-            }
-            else
-            {
-                StatusComboBox.Text = null;
-            }
+            UpdateProperty(StatusComboBox, StatusParse);
+        }
+
+        private void DesiredDeliveryDateTextBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateProperty(DesiredDeliveryDateTextBox, DesiredDeliveryDateParse);
+        }
+
+        private void DesiredDeliveryTimeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateProperty(DesiredDeliveryTimeComboBox, DesiredDeliveryTimeParse);
         }
     }
 }
