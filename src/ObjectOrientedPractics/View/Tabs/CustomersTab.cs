@@ -96,7 +96,8 @@ namespace ObjectOrientedPractics.View.Tabs
             Customer customer = CustomerEditorControl.Customer;
             if(customer != null && Items.Count != 0)
             {
-                customer.Orders.Add(OrderFactory.CreateOrder(Items, Customers));
+                customer.Orders.Add(OrderFactory.CreateOrder(Items, Customers, 
+                    customer.IsPriority));
                 OrderCreated?.Invoke(this, EventArgs.Empty);
             }
         }

@@ -13,7 +13,10 @@ namespace ObjectOrientedPractics.Services.IO
         /// </summary>
         private static readonly JsonSerializerSettings _jsonSerializerSettings = 
             new JsonSerializerSettings()
-            { ObjectCreationHandling = ObjectCreationHandling.Replace };
+            {
+                ObjectCreationHandling = ObjectCreationHandling.Replace,
+                TypeNameHandling = TypeNameHandling.All
+            };
 
         /// <summary>
         /// Загружает данные из Json-файла.

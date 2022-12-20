@@ -123,6 +123,11 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
+        bool ShowOnlyPriorityOrders
+        {
+            get => ShowOnlyPriorityOrdersCheckBox.Checked;
+        }
+
         /// <summary>
         /// Обработчик события при изменении <see cref="SelectedOrder"/>.
         /// </summary>
@@ -158,8 +163,9 @@ namespace ObjectOrientedPractics.View.Controls
                         OrderStatus status = order.Status;
                         int amount = order.Amount;
                         Adress adress = order.Adress;
+                        bool isPriority = order as PriorityOrder != null ? true : false;
                         _orderViews.Add(new OrderView(id, status, lastChangedStatusDateTime, 
-                            amount, customerFullName, adress));
+                            amount, customerFullName, adress, isPriority));
                     }
                 }
             }
@@ -182,8 +188,16 @@ namespace ObjectOrientedPractics.View.Controls
         /// </summary>
         private void RefreshView()
         {
-            _visibleOrderViews = _orderViews.Where((ov) => ov.CustomerFullName.IndexOf(FindText, 
-                StringComparison.OrdinalIgnoreCase) != -1).ToList();
+            _visibleOrderViews = _orderViews;
+
+            if (ShowOnlyPriorityOrders)
+            {
+                _visibleOrderViews = _visibleOrderViews.Where((ov) => ov.IsPriority).ToList();
+            }
+
+            _visibleOrderViews = _visibleOrderViews.Where((ov) => ov.CustomerFullName.IndexOf(
+                FindText, StringComparison.OrdinalIgnoreCase) != -1).ToList();
+
             switch(_idSortStatus)
             {
                 case SortStatus.Ascending:
@@ -194,6 +208,7 @@ namespace ObjectOrientedPractics.View.Controls
                         ToList();
                     break;
             }
+
             switch (_amountSortStatus)
             {
                 case SortStatus.Ascending:
@@ -204,7 +219,18 @@ namespace ObjectOrientedPractics.View.Controls
                         ToList();
                     break;
             }
+
             _bindingSource.DataSource = _visibleOrderViews;
+
+            if(_visibleOrderViews.Count == 0)
+            {
+                SelectedId = -1;
+            }
+            else
+            {
+                DataGridView.Columns[0].Selected = true;
+                SelectedId = _visibleOrderViews[0].Id;
+            }
         }
 
         private void FindTextBox_TextChanged(object sender, EventArgs e)
@@ -245,6 +271,11 @@ namespace ObjectOrientedPractics.View.Controls
                 }
                 RefreshView();
             }
+        }
+
+        private void IsPriorityCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshView();
         }
     }
 }

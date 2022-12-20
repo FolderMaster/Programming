@@ -39,6 +39,11 @@ namespace ObjectOrientedPractics.Model
         private List<Order> _orders = new List<Order>();
 
         /// <summary>
+        /// Значение, указывающее приоритетный покупатель или нет.
+        /// </summary>
+        private bool _isPriority = false;
+
+        /// <summary>
         /// Максимальная длина <see cref="FullName"/>.
         /// </summary>
         public static int MaxFullNameLength { get; } = 200;
@@ -94,6 +99,16 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
+        /// Возращает и задаёт значение, указывающее приоритетный покупатель или 
+        /// нет.
+        /// </summary>
+        public bool IsPriority
+        {
+            get => _isPriority;
+            set => _isPriority = value;
+        }
+
+        /// <summary>
         /// Создаёт экземпляр класса <see cref="Customer"/> по-умолчанию.
         /// </summary>
         public Customer()
@@ -105,10 +120,12 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="fullName">ФИО.</param>
         /// <param name="adress">Адрес.</param>
-        public Customer(string fullName, Adress adress)
+        /// <param name="isPriority"></param>
+        public Customer(string fullName, Adress adress, bool isPriority)
         {
             FullName = fullName;
             Adress = adress;
+            IsPriority = isPriority;
         }
 
         public override string ToString()

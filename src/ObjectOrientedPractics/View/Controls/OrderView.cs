@@ -40,6 +40,11 @@ namespace ObjectOrientedPractics.View.Controls
         public Adress Adress { get; set; }
 
         /// <summary>
+        /// Возращает и задаёт значение, указывающее приоритетный заказ или нет.
+        /// </summary>
+        public bool IsPriority { get; set; }
+
+        /// <summary>
         /// Создаёт экземпляр класса <see cref="OrderView"/> по-умолчанию.
         /// </summary>
         public OrderView()
@@ -56,8 +61,9 @@ namespace ObjectOrientedPractics.View.Controls
         /// <param name="amount">Стоимость.</param>
         /// <param name="customerFullName">Имя и фамилия покупателя.</param>
         /// <param name="adress">Адрес.</param>
+        /// <param name="isPriority">Значение, указывающее приоритетный заказ или нет.</param>
         public OrderView(int id, OrderStatus status, DateTime lastChangedStatusDateTime, 
-            int amount, string customerFullName, Adress adress)
+            int amount, string customerFullName, Adress adress, bool isPriority)
         {
             Id = id;
             Status = status;
@@ -65,6 +71,7 @@ namespace ObjectOrientedPractics.View.Controls
             Amount = amount;
             CustomerFullName = customerFullName;
             Adress = adress;
+            IsPriority = isPriority;
         }
     }
 }

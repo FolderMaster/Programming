@@ -49,7 +49,7 @@ namespace ObjectOrientedPractics.Services.Factories
             }
             reader.GetField("address");
 
-            return new Customer(fullName, adress);
+            return new Customer(fullName, adress, false);
         };
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace ObjectOrientedPractics.Services.Factories
             else
             {
                 Customer customer = Customers[_random.Next(Customers.Count)];
-                return new Customer(customer.FullName, customer.Adress);
+                return new Customer(customer.FullName, customer.Adress, false);
             }
         }
     }

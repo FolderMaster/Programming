@@ -255,19 +255,28 @@ namespace ObjectOrientedPractics.View.Controls
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-            if (Items.Count != 0)
+            if (Items != null)
             {
-                Items.RemoveAt(SelectedIndex);
-                UpdateList();
-                RemoveFromItems?.Invoke(this, EventArgs.Empty);
+                if (Items.Count != 0)
+                {
+                    Items.RemoveAt(SelectedIndex);
+                    UpdateList();
+                    RemoveFromItems?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
         private void ClearAllButton_Click(object sender, EventArgs e)
         {
-            Items.Clear();
-            UpdateList();
-            RemoveFromItems?.Invoke(this, EventArgs.Empty);
+            if (Items != null)
+            {
+                if (Items.Count != 0)
+                {
+                    Items.Clear();
+                    UpdateList();
+                    RemoveFromItems?.Invoke(this, EventArgs.Empty);
+                }
+            }
         }
     }
 }

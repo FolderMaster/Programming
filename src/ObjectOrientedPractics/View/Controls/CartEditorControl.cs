@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
-using ObjectOrientedPractics.Services.Factories;
 
 namespace ObjectOrientedPractics.View.Controls
 {
@@ -64,6 +63,8 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
+        public event EventHandler OrderCreated;
+
         /// <summary>
         /// Создаёт экземпляр класса <see cref="CartEditorControl"/> по умолчанию.
         /// </summary>
@@ -78,7 +79,7 @@ namespace ObjectOrientedPractics.View.Controls
         /// <param name="item">Товар.</param>
         public void AddItem(Item item)
         {
-            if(Cart != null)
+            if(Customer != null)
             {
                 Cart.Items.Add(item);
                 ItemListControl.UpdateList();
@@ -117,9 +118,23 @@ namespace ObjectOrientedPractics.View.Controls
 
         private void CreateOrderButton_Click(object sender, EventArgs e)
         {
-            Customer.Orders.Add(new Order(new List<Item>(Cart.Items), Customer.Adress, OrderStatus.New));
-            Cart.Items.Clear();
-            RefreshCart();
+            if (Customer != null)
+            {
+                if(Customer.IsPriority)
+                {
+                    Customer.Orders.Add(new PriorityOrder(new List<Item>(Cart.Items),
+                        Customer.Adress, OrderStatus.New, DateTime.UtcNow, 
+                        PriorityOrder.DeliveryTimes[0]));
+                }
+                else
+                {
+                    Customer.Orders.Add(new Order(new List<Item>(Cart.Items), Customer.Adress,
+                        OrderStatus.New));
+                }
+                Cart.Items.Clear();
+                RefreshCart();
+                OrderCreated?.Invoke(this, EventArgs.Empty);
+            }
         }
     }
 }

@@ -76,6 +76,7 @@ namespace ObjectOrientedPractics.View
         private void CustomersTab_CustomersChanged(object sender, EventArgs e)
         {
             CartsTab.RefreshCustomers();
+            OrdersTab.RefreshData();
         }
 
         private void CustomersTab_OrderCreated(object sender, EventArgs e)
@@ -90,14 +91,15 @@ namespace ObjectOrientedPractics.View
 
         private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(TabControl.SelectedIndex == 2)
+            switch(TabControl.SelectedIndex)
             {
-                CartsTab.RefreshItems();
-                CartsTab.RefreshCustomers();
-            }
-            else if(TabControl.SelectedIndex == 3)
-            {
-                OrdersTab.RefreshData();
+                case 2:
+                    CartsTab.RefreshItems();
+                    CartsTab.RefreshCustomers();
+                    break;
+                case 3:
+                    OrdersTab.RefreshData();
+                    break;
             }
         }
     }

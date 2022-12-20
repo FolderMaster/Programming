@@ -71,12 +71,22 @@ namespace ObjectOrientedPractics.View.Controls
         }
 
         /// <summary>
+        /// Обрабатывает информацию для <see cref="Customer.IsPriority"/>.
+        /// </summary>
+        private void IsPriorityParse()
+        {
+            Customer.IsPriority = IsPriorityCheckBox.Checked;
+            UpdateMode = UpdateType.None;
+        }
+
+        /// <summary>
         /// Очищает информацию с элементов управления.
         /// </summary>
         private void ClearInfo()
         {
             IdTextBox.Text = FullNameTextBox.Text = null;
             AdressEditorControl.Adress = null;
+            IsPriorityCheckBox.Checked = false;
         }
 
         /// <summary>
@@ -87,6 +97,7 @@ namespace ObjectOrientedPractics.View.Controls
             IdTextBox.Text = Customer.Id.ToString();
             FullNameTextBox.Text = Customer.FullName;
             AdressEditorControl.Adress = Customer.Adress;
+            IsPriorityCheckBox.Checked = Customer.IsPriority;
         }
 
         /// <summary>
@@ -125,6 +136,11 @@ namespace ObjectOrientedPractics.View.Controls
         private void AdressEditorControl_CurrentPropertyChanged(object sender, EventArgs e)
         {
             Customer.Adress = AdressEditorControl.Adress;
+        }
+
+        private void IsPriorityCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateProperty(IsPriorityCheckBox, IsPriorityParse);
         }
     }
 }
