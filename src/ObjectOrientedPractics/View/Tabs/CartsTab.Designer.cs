@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.ItemListGroupBox = new System.Windows.Forms.GroupBox();
-            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemListControl();
+            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemControls.ItemListControl();
             this.AddToCartButton = new System.Windows.Forms.Button();
             this.CartGroupBox = new System.Windows.Forms.GroupBox();
             this.CartEditorControl = new ObjectOrientedPractics.View.Controls.CartEditorControl();
-            this.CustomerSelectorControl = new ObjectOrientedPractics.View.Controls.CustomerSelectorControl();
+            this.CustomerSelectorControl = new ObjectOrientedPractics.View.Controls.CustomerControls.CustomerSelectorControl();
             this.ItemListGroupBox.SuspendLayout();
             this.CartGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -122,9 +122,9 @@
 
         #endregion
 
-        private Controls.CustomerSelectorControl CustomerSelectorControl;
+        private Controls.CustomerControls.CustomerSelectorControl CustomerSelectorControl;
         private System.Windows.Forms.GroupBox ItemListGroupBox;
-        private Controls.ItemListControl ItemListControl;
+        private Controls.ItemControls.ItemListControl ItemListControl;
         private System.Windows.Forms.Button AddToCartButton;
         private System.Windows.Forms.GroupBox CartGroupBox;
         private Controls.CartEditorControl CartEditorControl;

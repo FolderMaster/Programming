@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services.Factories;
 
-namespace ObjectOrientedPractics.View.Controls
+namespace ObjectOrientedPractics.View.Controls.ItemControls
 {
     /// <summary>
     /// Элемент управления для работы со списком <see cref="Item"/>.

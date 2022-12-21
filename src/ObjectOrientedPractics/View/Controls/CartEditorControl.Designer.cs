@@ -31,7 +31,7 @@
             this.AmountLabel = new System.Windows.Forms.Label();
             this.CreateOrderButton = new System.Windows.Forms.Button();
             this.ItemListGroupBox = new System.Windows.Forms.GroupBox();
-            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemListControl();
+            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemControls.ItemListControl();
             this.ItemListGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,7 +98,7 @@
 
         #endregion
 
-        private ItemListControl ItemListControl;
+        private ItemControls.ItemListControl ItemListControl;
         private System.Windows.Forms.Label AmountLabel;
         private System.Windows.Forms.Button CreateOrderButton;
         private System.Windows.Forms.GroupBox ItemListGroupBox;

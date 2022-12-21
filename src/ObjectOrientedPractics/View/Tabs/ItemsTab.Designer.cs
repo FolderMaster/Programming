@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.ItemListGroupBox = new System.Windows.Forms.GroupBox();
-            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemListControl();
+            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemControls.ItemListControl();
             this.ItemGroupBox = new System.Windows.Forms.GroupBox();
-            this.ItemEditorControl = new ObjectOrientedPractics.View.Controls.ItemEditorControl();
+            this.ItemEditorControl = new ObjectOrientedPractics.View.Controls.ItemControls.ItemEditorControl();
             this.ItemListGroupBox.SuspendLayout();
             this.ItemGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +84,7 @@
             this.ItemEditorControl.Name = "ItemEditorControl";
             this.ItemEditorControl.Size = new System.Drawing.Size(464, 481);
             this.ItemEditorControl.TabIndex = 3;
-            this.ItemEditorControl.UpdateMode = ObjectOrientedPractics.View.Controls.UpdateType.None;
+            this.ItemEditorControl.UpdateMode = ObjectOrientedPractics.View.Controls.Enums.UpdateType.None;
             this.ItemEditorControl.CurrentPropertyChanged += new System.EventHandler(this.ItemEditorControl_CurrentPropertyChanged);
             // 
             // ItemsTab
@@ -103,8 +103,8 @@
 
         #endregion
 
-        private Controls.ItemEditorControl ItemEditorControl;
-        private Controls.ItemListControl ItemListControl;
+        private Controls.ItemControls.ItemEditorControl ItemEditorControl;
+        private Controls.ItemControls.ItemListControl ItemListControl;
         private System.Windows.Forms.GroupBox ItemListGroupBox;
         private System.Windows.Forms.GroupBox ItemGroupBox;
     }

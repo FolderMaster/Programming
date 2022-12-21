@@ -6,17 +6,17 @@ using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Model.Discounts;
 
-namespace ObjectOrientedPractics.View.Controls
+namespace ObjectOrientedPractics.View.Controls.DiscountControls
 {
     /// <summary>
-    /// Элемент управления для работы с <see cref="PercentDiscount"/>.
+    /// Элемент управления для работы с <see cref="PointsDiscount"/>.
     /// </summary>
-    public partial class PercentDiscountControl : UserControl
+    public partial class PointsDiscountControl : UserControl
     {
         /// <summary>
-        /// Процентная скидка.
+        /// Скидка накопительных баллов.
         /// </summary>
-        private PercentDiscount _percentDiscount = new PercentDiscount();
+        private PointsDiscount _pointsDiscount = new PointsDiscount();
 
         /// <summary>
         /// Список товаров.
@@ -52,14 +52,14 @@ namespace ObjectOrientedPractics.View.Controls
         }
 
         /// <summary>
-        ///  Обработчик события при использовании <see cref="PercentDiscount.Apply(List{Item})"/>.
+        /// Обработчик события при использовании <see cref="PointsDiscount.Apply(List{Item})"/>.
         /// </summary>
         public event EventHandler Applied;
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="PercentDiscountControl"/> по умолчанию.
+        /// Создаёт экземпляр класса <see cref="PointsDiscountControl"/> по умолчанию.
         /// </summary>
-        public PercentDiscountControl()
+        public PointsDiscountControl()
         {
             InitializeComponent();
 
@@ -80,23 +80,24 @@ namespace ObjectOrientedPractics.View.Controls
         /// </summary>
         private void UpdateInfoLabel()
         {
-            InfoLabel.Text = $"Info: {_percentDiscount.Info}";
+            InfoLabel.Text = $"Info: {_pointsDiscount.Info}";
         }
 
         private void CalculateButton_Click(object sender, EventArgs e)
         {
-            Discount = _percentDiscount.Calculate(Items);
+            Discount = _pointsDiscount.Calculate(Items);
         }
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
-            Discount = _percentDiscount.Apply(Items);
+            Discount = _pointsDiscount.Apply(Items);
+            UpdateInfoLabel();
             Applied?.Invoke(this, EventArgs.Empty);
         }
 
         private void UpgradeButton_Click(object sender, EventArgs e)
         {
-            _percentDiscount.Update(Items);
+            _pointsDiscount.Update(Items);
             UpdateInfoLabel();
         }
     }

@@ -30,8 +30,8 @@
         {
             this.OrderGridGroupBox = new System.Windows.Forms.GroupBox();
             this.OrderGroupBox = new System.Windows.Forms.GroupBox();
-            this.OrderEditorControl = new ObjectOrientedPractics.View.Controls.OrderEditorControl();
-            this.OrdersViewControl = new ObjectOrientedPractics.View.Controls.OrdersGridViewControl();
+            this.OrderEditorControl = new ObjectOrientedPractics.View.Controls.OrderControls.OrderEditorControl();
+            this.OrdersViewControl = new ObjectOrientedPractics.View.Controls.OrderControls.OrderGridViewControl();
             this.OrderGridGroupBox.SuspendLayout();
             this.OrderGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -97,7 +97,7 @@
 
         private System.Windows.Forms.GroupBox OrderGridGroupBox;
         private System.Windows.Forms.GroupBox OrderGroupBox;
-        private Controls.OrderEditorControl OrderEditorControl;
-        private Controls.OrdersGridViewControl OrdersViewControl;
+        private Controls.OrderControls.OrderEditorControl OrderEditorControl;
+        private Controls.OrderControls.OrderGridViewControl OrdersViewControl;
     }
 }

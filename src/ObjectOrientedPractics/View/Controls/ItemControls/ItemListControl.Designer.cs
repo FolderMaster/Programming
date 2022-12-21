@@ -1,6 +1,6 @@
-﻿namespace ObjectOrientedPractics.View.Controls
+﻿namespace ObjectOrientedPractics.View.Controls.ItemControls
 {
-    partial class CustomerListControl
+    partial class ItemListControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -32,12 +32,13 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
             this.AddEmptyButton = new System.Windows.Forms.Button();
+            this.ClearAllButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ListBox
             // 
-            this.ListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.ListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ListBox.FormattingEnabled = true;
             this.ListBox.IntegralHeight = false;
@@ -80,15 +81,27 @@
             this.AddEmptyButton.UseVisualStyleBackColor = true;
             this.AddEmptyButton.Click += new System.EventHandler(this.AddEmptyButton_Click);
             // 
-            // CustomerListControl
+            // ClearAllButton
+            // 
+            this.ClearAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ClearAllButton.Location = new System.Drawing.Point(245, 377);
+            this.ClearAllButton.Name = "ClearAllButton";
+            this.ClearAllButton.Size = new System.Drawing.Size(75, 23);
+            this.ClearAllButton.TabIndex = 4;
+            this.ClearAllButton.Text = "Clear all";
+            this.ClearAllButton.UseVisualStyleBackColor = true;
+            this.ClearAllButton.Click += new System.EventHandler(this.ClearAllButton_Click);
+            // 
+            // ItemListControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ClearAllButton);
             this.Controls.Add(this.AddEmptyButton);
             this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.ListBox);
-            this.Name = "CustomerListControl";
+            this.Name = "ItemListControl";
             this.Size = new System.Drawing.Size(401, 400);
             this.ResumeLayout(false);
 
@@ -100,5 +113,6 @@
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.Button AddEmptyButton;
+        private System.Windows.Forms.Button ClearAllButton;
     }
 }

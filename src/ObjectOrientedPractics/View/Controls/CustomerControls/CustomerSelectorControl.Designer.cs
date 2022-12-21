@@ -1,4 +1,4 @@
-﻿namespace ObjectOrientedPractics.View.Controls
+﻿namespace ObjectOrientedPractics.View.Controls.CustomerControls
 {
     partial class CustomerSelectorControl
     {

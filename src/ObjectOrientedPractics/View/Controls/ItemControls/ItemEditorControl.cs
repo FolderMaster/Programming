@@ -4,8 +4,9 @@ using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.View.Controls.Enums;
 
-namespace ObjectOrientedPractics.View.Controls
+namespace ObjectOrientedPractics.View.Controls.ItemControls
 {
     /// <summary>
     /// Элемент управления для изменения экземпляра класса <see cref="Item"/>.

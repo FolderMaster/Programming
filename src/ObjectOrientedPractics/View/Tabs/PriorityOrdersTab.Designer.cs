@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.PriorityOrderCreatorControl = new ObjectOrientedPractics.View.Controls.PriorityOrderCreatorControl();
+            this.PriorityOrderCreatorControl = new ObjectOrientedPractics.View.Controls.OrderControls.PriorityOrderCreatorControl();
             this.ItemListGroupBox = new System.Windows.Forms.GroupBox();
-            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemListControl();
+            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemControls.ItemListControl();
             this.AddToCartButton = new System.Windows.Forms.Button();
             this.PriorityOrderGroupBox = new System.Windows.Forms.GroupBox();
             this.RandomlyAddToCartButton = new System.Windows.Forms.Button();
@@ -122,9 +122,9 @@
 
         #endregion
 
-        private Controls.PriorityOrderCreatorControl PriorityOrderCreatorControl;
+        private Controls.OrderControls.PriorityOrderCreatorControl PriorityOrderCreatorControl;
         private System.Windows.Forms.GroupBox ItemListGroupBox;
-        private Controls.ItemListControl ItemListControl;
+        private Controls.ItemControls.ItemListControl ItemListControl;
         private System.Windows.Forms.Button AddToCartButton;
         private System.Windows.Forms.GroupBox PriorityOrderGroupBox;
         private System.Windows.Forms.Button RandomlyAddToCartButton;

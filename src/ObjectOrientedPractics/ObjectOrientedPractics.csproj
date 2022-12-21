@@ -124,73 +124,73 @@
     <Compile Include="View\Controls\CartEditorControl.Designer.cs">
       <DependentUpon>CartEditorControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\CustomerEditorControl.cs">
+    <Compile Include="View\Controls\CustomerControls\CustomerEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\CustomerEditorControl.Designer.cs">
+    <Compile Include="View\Controls\CustomerControls\CustomerEditorControl.Designer.cs">
       <DependentUpon>CustomerEditorControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\CustomerListControl.cs">
+    <Compile Include="View\Controls\CustomerControls\CustomerListControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\CustomerListControl.Designer.cs">
+    <Compile Include="View\Controls\CustomerControls\CustomerListControl.Designer.cs">
       <DependentUpon>CustomerListControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\CustomerSelectorControl.cs">
+    <Compile Include="View\Controls\CustomerControls\CustomerSelectorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\CustomerSelectorControl.Designer.cs">
+    <Compile Include="View\Controls\CustomerControls\CustomerSelectorControl.Designer.cs">
       <DependentUpon>CustomerSelectorControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\DiscountsTestControl.cs">
+    <Compile Include="View\Controls\DiscountControls\DiscountTestControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\DiscountsTestControl.Designer.cs">
-      <DependentUpon>DiscountsTestControl.cs</DependentUpon>
+    <Compile Include="View\Controls\DiscountControls\DiscountTestControl.Designer.cs">
+      <DependentUpon>DiscountTestControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\OrderEditorControl.cs">
+    <Compile Include="View\Controls\OrderControls\OrderEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\OrderEditorControl.Designer.cs">
+    <Compile Include="View\Controls\OrderControls\OrderEditorControl.Designer.cs">
       <DependentUpon>OrderEditorControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\OrdersGridViewControl.cs">
+    <Compile Include="View\Controls\OrderControls\OrderGridViewControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\OrdersGridViewControl.Designer.cs">
-      <DependentUpon>OrdersGridViewControl.cs</DependentUpon>
+    <Compile Include="View\Controls\OrderControls\OrderGridViewControl.Designer.cs">
+      <DependentUpon>OrderGridViewControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\OrderView.cs" />
-    <Compile Include="View\Controls\PercentDiscountControl.cs">
+    <Compile Include="View\Controls\Classes\OrderView.cs" />
+    <Compile Include="View\Controls\DiscountControls\PercentDiscountControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\PercentDiscountControl.Designer.cs">
+    <Compile Include="View\Controls\DiscountControls\PercentDiscountControl.Designer.cs">
       <DependentUpon>PercentDiscountControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\PointsDiscountControl.cs">
+    <Compile Include="View\Controls\DiscountControls\PointsDiscountControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\PointsDiscountControl.Designer.cs">
+    <Compile Include="View\Controls\DiscountControls\PointsDiscountControl.Designer.cs">
       <DependentUpon>PointsDiscountControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\PriorityOrderCreatorControl.cs">
+    <Compile Include="View\Controls\OrderControls\PriorityOrderCreatorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\PriorityOrderCreatorControl.Designer.cs">
+    <Compile Include="View\Controls\OrderControls\PriorityOrderCreatorControl.Designer.cs">
       <DependentUpon>PriorityOrderCreatorControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\SortStatus.cs" />
-    <Compile Include="View\Controls\UpdateType.cs" />
-    <Compile Include="View\Controls\ItemEditorControl.cs">
+    <Compile Include="View\Controls\Enums\SortStatus.cs" />
+    <Compile Include="View\Controls\Enums\UpdateType.cs" />
+    <Compile Include="View\Controls\ItemControls\ItemEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\ItemEditorControl.Designer.cs">
+    <Compile Include="View\Controls\ItemControls\ItemEditorControl.Designer.cs">
       <DependentUpon>ItemEditorControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\ItemListControl.cs">
+    <Compile Include="View\Controls\ItemControls\ItemListControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\ItemListControl.Designer.cs">
+    <Compile Include="View\Controls\ItemControls\ItemListControl.Designer.cs">
       <DependentUpon>ItemListControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MainForm.cs">
@@ -253,37 +253,37 @@
     <EmbeddedResource Include="View\Controls\CartEditorControl.resx">
       <DependentUpon>CartEditorControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\CustomerEditorControl.resx">
+    <EmbeddedResource Include="View\Controls\CustomerControls\CustomerEditorControl.resx">
       <DependentUpon>CustomerEditorControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\CustomerListControl.resx">
+    <EmbeddedResource Include="View\Controls\CustomerControls\CustomerListControl.resx">
       <DependentUpon>CustomerListControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\CustomerSelectorControl.resx">
+    <EmbeddedResource Include="View\Controls\CustomerControls\CustomerSelectorControl.resx">
       <DependentUpon>CustomerSelectorControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\DiscountsTestControl.resx">
-      <DependentUpon>DiscountsTestControl.cs</DependentUpon>
+    <EmbeddedResource Include="View\Controls\DiscountControls\DiscountTestControl.resx">
+      <DependentUpon>DiscountTestControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\ItemEditorControl.resx">
+    <EmbeddedResource Include="View\Controls\ItemControls\ItemEditorControl.resx">
       <DependentUpon>ItemEditorControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\ItemListControl.resx">
+    <EmbeddedResource Include="View\Controls\ItemControls\ItemListControl.resx">
       <DependentUpon>ItemListControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\OrderEditorControl.resx">
+    <EmbeddedResource Include="View\Controls\OrderControls\OrderEditorControl.resx">
       <DependentUpon>OrderEditorControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\OrdersGridViewControl.resx">
-      <DependentUpon>OrdersGridViewControl.cs</DependentUpon>
+    <EmbeddedResource Include="View\Controls\OrderControls\OrderGridViewControl.resx">
+      <DependentUpon>OrderGridViewControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\PercentDiscountControl.resx">
+    <EmbeddedResource Include="View\Controls\DiscountControls\PercentDiscountControl.resx">
       <DependentUpon>PercentDiscountControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\PointsDiscountControl.resx">
+    <EmbeddedResource Include="View\Controls\DiscountControls\PointsDiscountControl.resx">
       <DependentUpon>PointsDiscountControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\PriorityOrderCreatorControl.resx">
+    <EmbeddedResource Include="View\Controls\OrderControls\PriorityOrderCreatorControl.resx">
       <DependentUpon>PriorityOrderCreatorControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">

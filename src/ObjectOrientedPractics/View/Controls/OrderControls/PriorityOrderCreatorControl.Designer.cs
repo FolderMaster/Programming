@@ -1,4 +1,4 @@
-﻿namespace ObjectOrientedPractics.View.Controls
+﻿namespace ObjectOrientedPractics.View.Controls.OrderControls
 {
     partial class PriorityOrderCreatorControl
     {
@@ -38,7 +38,7 @@
             this.DesiredDeliveryDateTextBox = new System.Windows.Forms.TextBox();
             this.DesiredDeliveryDateLabel = new System.Windows.Forms.Label();
             this.ItemListGroupBox = new System.Windows.Forms.GroupBox();
-            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemListControl();
+            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemControls.ItemListControl();
             this.ClearOrderButton = new System.Windows.Forms.Button();
             this.AmountLabel = new System.Windows.Forms.Label();
             this.CreatedDateTimeTextBox = new System.Windows.Forms.TextBox();
@@ -53,7 +53,7 @@
             // 
             // StatusComboBox
             // 
-            this.StatusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.StatusComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StatusComboBox.FormattingEnabled = true;
             this.StatusComboBox.Location = new System.Drawing.Point(43, 52);
@@ -64,7 +64,7 @@
             // 
             // AdressGroupBox
             // 
-            this.AdressGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.AdressGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AdressGroupBox.Controls.Add(this.AdressEditorControl);
             this.AdressGroupBox.Location = new System.Drawing.Point(0, 146);
@@ -94,7 +94,7 @@
             // 
             // DesiredDeliveryTimeComboBox
             // 
-            this.DesiredDeliveryTimeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.DesiredDeliveryTimeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DesiredDeliveryTimeComboBox.FormattingEnabled = true;
             this.DesiredDeliveryTimeComboBox.Location = new System.Drawing.Point(110, 119);
@@ -114,7 +114,7 @@
             // 
             // DesiredDeliveryDateTextBox
             // 
-            this.DesiredDeliveryDateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.DesiredDeliveryDateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DesiredDeliveryDateTextBox.Location = new System.Drawing.Point(112, 93);
             this.DesiredDeliveryDateTextBox.Name = "DesiredDeliveryDateTextBox";
@@ -133,8 +133,8 @@
             // 
             // ItemListGroupBox
             // 
-            this.ItemListGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.ItemListGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ItemListGroupBox.Controls.Add(this.ItemListControl);
             this.ItemListGroupBox.Location = new System.Drawing.Point(0, 321);
@@ -180,7 +180,7 @@
             // 
             // CreatedDateTimeTextBox
             // 
-            this.CreatedDateTimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.CreatedDateTimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CreatedDateTimeTextBox.Location = new System.Drawing.Point(96, 26);
             this.CreatedDateTimeTextBox.Name = "CreatedDateTimeTextBox";
@@ -199,7 +199,7 @@
             // 
             // IdTextBox
             // 
-            this.IdTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.IdTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.IdTextBox.Location = new System.Drawing.Point(22, 0);
             this.IdTextBox.Name = "IdTextBox";
@@ -264,7 +264,7 @@
         private System.Windows.Forms.TextBox DesiredDeliveryDateTextBox;
         private System.Windows.Forms.Label DesiredDeliveryDateLabel;
         private System.Windows.Forms.GroupBox ItemListGroupBox;
-        private ItemListControl ItemListControl;
+        private ItemControls.ItemListControl ItemListControl;
         private System.Windows.Forms.Button ClearOrderButton;
         private System.Windows.Forms.Label AmountLabel;
         private System.Windows.Forms.TextBox CreatedDateTimeTextBox;

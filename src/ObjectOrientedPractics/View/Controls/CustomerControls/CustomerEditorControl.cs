@@ -3,8 +3,9 @@ using System.ComponentModel;
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.View.Controls.Enums;
 
-namespace ObjectOrientedPractics.View.Controls
+namespace ObjectOrientedPractics.View.Controls.CustomerControls
 {
     /// <summary>
     /// Элемент управления для изменения экземпляра класса <see cref="Customer"/>.

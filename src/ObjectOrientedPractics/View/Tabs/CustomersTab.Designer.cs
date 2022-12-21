@@ -30,8 +30,8 @@
         {
             this.CustomerListGroupBox = new System.Windows.Forms.GroupBox();
             this.CustomerGroupBox = new System.Windows.Forms.GroupBox();
-            this.CustomerEditorControl = new ObjectOrientedPractics.View.Controls.CustomerEditorControl();
-            this.CustomerListControl = new ObjectOrientedPractics.View.Controls.CustomerListControl();
+            this.CustomerEditorControl = new ObjectOrientedPractics.View.Controls.CustomerControls.CustomerEditorControl();
+            this.CustomerListControl = new ObjectOrientedPractics.View.Controls.CustomerControls.CustomerListControl();
             this.GenerateOrderButton = new System.Windows.Forms.Button();
             this.CustomerListGroupBox.SuspendLayout();
             this.CustomerGroupBox.SuspendLayout();
@@ -112,8 +112,8 @@
 
         private System.Windows.Forms.GroupBox CustomerListGroupBox;
         private System.Windows.Forms.GroupBox CustomerGroupBox;
-        private Controls.CustomerEditorControl CustomerEditorControl;
-        private Controls.CustomerListControl CustomerListControl;
+        private Controls.CustomerControls.CustomerEditorControl CustomerEditorControl;
+        private Controls.CustomerControls.CustomerListControl CustomerListControl;
         private System.Windows.Forms.Button GenerateOrderButton;
     }
 }
