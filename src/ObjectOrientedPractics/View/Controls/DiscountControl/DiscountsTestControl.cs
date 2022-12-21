@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
 
-namespace ObjectOrientedPractics.View.Controls
+namespace ObjectOrientedPractics.View.Controls.DiscountControls
 {
     /// <summary>
     /// Элемент управления для теста <see cref="PointsDiscount"/> и <see cref="PercentDiscount"/>.
@@ -37,7 +37,6 @@ namespace ObjectOrientedPractics.View.Controls
         {
             InitializeComponent();
 
-            PercentDiscountControl.Items = PercentDiscountControl.Items = ItemListControl.Items;
             PointsDiscountControl.Items = ItemListControl.Items;
             PercentDiscountControl.Items = ItemListControl.Items;
             UpdateAmountLabel();

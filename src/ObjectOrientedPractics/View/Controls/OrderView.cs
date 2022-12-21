@@ -62,7 +62,7 @@ namespace ObjectOrientedPractics.View.Controls
         /// <param name="customerFullName">Имя и фамилия покупателя.</param>
         /// <param name="adress">Адрес.</param>
         /// <param name="isPriority">Значение, указывающее приоритетный заказ или нет.</param>
-        public OrderView(int id, OrderStatus status, DateTime lastChangedStatusDateTime, 
+        public OrderView(int id, OrderStatus status, DateTime lastChangedStatusDateTime,
             int amount, string customerFullName, Adress adress, bool isPriority)
         {
             Id = id;
