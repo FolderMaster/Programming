@@ -48,6 +48,7 @@ namespace ObjectOrientedPractics.View
                 ItemsTab.Items = _store.Items;
                 CartsTab.Items = _store.Items;
                 CustomersTab.Items = _store.Items;
+                DiscountsTab.Items = _store.Items;
                 CustomersTab.Customers = _store.Customers;
                 CartsTab.Customers = _store.Customers;
                 OrdersTab.Customers = _store.Customers;
@@ -71,6 +72,7 @@ namespace ObjectOrientedPractics.View
         private void ItemsTab_ItemsChanged(object sender, EventArgs e)
         {
             CartsTab.RefreshItems();
+            DiscountsTab.RefreshItems();
         }
 
         private void CustomersTab_CustomersChanged(object sender, EventArgs e)
@@ -99,6 +101,9 @@ namespace ObjectOrientedPractics.View
                     break;
                 case 3:
                     OrdersTab.RefreshData();
+                    break;
+                case 4:
+                    DiscountsTab.RefreshItems();
                     break;
             }
         }

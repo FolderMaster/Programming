@@ -96,6 +96,8 @@
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderStatus.cs" />
+    <Compile Include="Model\PercentDiscount.cs" />
+    <Compile Include="Model\PointsDiscount.cs" />
     <Compile Include="Model\PriorityOrder.cs" />
     <Compile Include="Model\Store.cs" />
     <Compile Include="Services\Factories\AdressFactory.cs" />
@@ -139,6 +141,12 @@
     <Compile Include="View\Controls\CustomerSelectorControl.Designer.cs">
       <DependentUpon>CustomerSelectorControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\DiscountsTestControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\DiscountsTestControl.Designer.cs">
+      <DependentUpon>DiscountsTestControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\OrderEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,6 +160,18 @@
       <DependentUpon>OrdersGridViewControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\OrderView.cs" />
+    <Compile Include="View\Controls\PercentDiscountControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\PercentDiscountControl.Designer.cs">
+      <DependentUpon>PercentDiscountControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\PointsDiscountControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\PointsDiscountControl.Designer.cs">
+      <DependentUpon>PointsDiscountControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\PriorityOrderCreatorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -191,6 +211,12 @@
     </Compile>
     <Compile Include="View\Tabs\CustomersTab.Designer.cs">
       <DependentUpon>CustomersTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tabs\DiscountsTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Tabs\DiscountsTab.Designer.cs">
+      <DependentUpon>DiscountsTab.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Tabs\ItemsTab.cs">
       <SubType>UserControl</SubType>
@@ -235,6 +261,9 @@
     <EmbeddedResource Include="View\Controls\CustomerSelectorControl.resx">
       <DependentUpon>CustomerSelectorControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\DiscountsTestControl.resx">
+      <DependentUpon>DiscountsTestControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\ItemEditorControl.resx">
       <DependentUpon>ItemEditorControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -247,6 +276,12 @@
     <EmbeddedResource Include="View\Controls\OrdersGridViewControl.resx">
       <DependentUpon>OrdersGridViewControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\PercentDiscountControl.resx">
+      <DependentUpon>PercentDiscountControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\PointsDiscountControl.resx">
+      <DependentUpon>PointsDiscountControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\PriorityOrderCreatorControl.resx">
       <DependentUpon>PriorityOrderCreatorControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Tabs\CustomersTab.resx">
       <DependentUpon>CustomersTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Tabs\DiscountsTab.resx">
+      <DependentUpon>DiscountsTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Tabs\ItemsTab.resx">
       <DependentUpon>ItemsTab.cs</DependentUpon>
