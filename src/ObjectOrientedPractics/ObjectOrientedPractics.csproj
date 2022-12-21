@@ -142,6 +142,12 @@
     <Compile Include="View\Controls\CustomerControls\CustomerSelectorControl.Designer.cs">
       <DependentUpon>CustomerSelectorControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\DiscountControls\DiscountListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\DiscountControls\DiscountListControl.Designer.cs">
+      <DependentUpon>DiscountListControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\DiscountControls\DiscountTestControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -193,14 +199,26 @@
     <Compile Include="View\Controls\ItemControls\ItemListControl.Designer.cs">
       <DependentUpon>ItemListControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\MainForm.cs">
+    <Compile Include="View\Forms\AddDiscountForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MainForm.Designer.cs">
+    <Compile Include="View\Forms\AddDiscountForm.Designer.cs">
+      <DependentUpon>AddDiscountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Tabs\AddDiscountTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Tabs\AddDiscountTab.Designer.cs">
+      <DependentUpon>AddDiscountTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Tabs\CartsTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -262,6 +280,9 @@
     <EmbeddedResource Include="View\Controls\CustomerControls\CustomerSelectorControl.resx">
       <DependentUpon>CustomerSelectorControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\DiscountControls\DiscountListControl.resx">
+      <DependentUpon>DiscountListControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\DiscountControls\DiscountTestControl.resx">
       <DependentUpon>DiscountTestControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -286,8 +307,14 @@
     <EmbeddedResource Include="View\Controls\OrderControls\PriorityOrderCreatorControl.resx">
       <DependentUpon>PriorityOrderCreatorControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MainForm.resx">
+    <EmbeddedResource Include="View\Forms\AddDiscountForm.resx">
+      <DependentUpon>AddDiscountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Tabs\AddDiscountTab.resx">
+      <DependentUpon>AddDiscountTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Tabs\CartsTab.resx">
       <DependentUpon>CartsTab.cs</DependentUpon>

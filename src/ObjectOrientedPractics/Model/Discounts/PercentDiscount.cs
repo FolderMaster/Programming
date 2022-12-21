@@ -81,6 +81,15 @@ namespace ObjectOrientedPractics.Model.Discounts
         }
 
         /// <summary>
+        /// Создаёт экземпляр класса <see cref="PercentDiscount"/>.
+        /// </summary>
+        /// <param name="category">Категория товаров, для которого действует скидка.</param>
+        public PercentDiscount(ItemCategory category)
+        {
+            Category = category;
+        }
+
+        /// <summary>
         /// Подсчитывает стоимость товаров категории <see cref="Category"/>.
         /// </summary>
         /// <param name="items">Товары.</param>

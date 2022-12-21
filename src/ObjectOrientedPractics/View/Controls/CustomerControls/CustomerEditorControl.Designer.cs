@@ -35,9 +35,12 @@
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.AdressGroupBox = new System.Windows.Forms.GroupBox();
-            this.IsPriorityCheckBox = new System.Windows.Forms.CheckBox();
             this.AdressEditorControl = new ObjectOrientedPractics.View.Controls.AdressEditorControl();
+            this.IsPriorityCheckBox = new System.Windows.Forms.CheckBox();
+            this.DiscountListGroupBox = new System.Windows.Forms.GroupBox();
+            this.DiscountListControl = new ObjectOrientedPractics.View.Controls.DiscountControls.DiscountListControl();
             this.AdressGroupBox.SuspendLayout();
+            this.DiscountListGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // IdLabel
@@ -60,7 +63,7 @@
             // 
             // IdTextBox
             // 
-            this.IdTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.IdTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.IdTextBox.Location = new System.Drawing.Point(22, 0);
             this.IdTextBox.Name = "IdTextBox";
@@ -70,7 +73,7 @@
             // 
             // FullNameTextBox
             // 
-            this.FullNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.FullNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FullNameTextBox.Location = new System.Drawing.Point(58, 26);
             this.FullNameTextBox.Name = "FullNameTextBox";
@@ -80,16 +83,24 @@
             // 
             // AdressGroupBox
             // 
-            this.AdressGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.AdressGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AdressGroupBox.Controls.Add(this.AdressEditorControl);
             this.AdressGroupBox.Location = new System.Drawing.Point(0, 75);
             this.AdressGroupBox.Name = "AdressGroupBox";
-            this.AdressGroupBox.Size = new System.Drawing.Size(313, 170);
+            this.AdressGroupBox.Size = new System.Drawing.Size(313, 169);
             this.AdressGroupBox.TabIndex = 4;
             this.AdressGroupBox.TabStop = false;
             this.AdressGroupBox.Text = "Adress";
+            // 
+            // AdressEditorControl
+            // 
+            this.AdressEditorControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AdressEditorControl.Location = new System.Drawing.Point(3, 16);
+            this.AdressEditorControl.Name = "AdressEditorControl";
+            this.AdressEditorControl.Size = new System.Drawing.Size(307, 150);
+            this.AdressEditorControl.TabIndex = 0;
+            this.AdressEditorControl.CurrentPropertyChanged += new System.EventHandler(this.AdressEditorControl_CurrentPropertyChanged);
             // 
             // IsPriorityCheckBox
             // 
@@ -102,19 +113,33 @@
             this.IsPriorityCheckBox.UseVisualStyleBackColor = true;
             this.IsPriorityCheckBox.CheckedChanged += new System.EventHandler(this.IsPriorityCheckBox_CheckedChanged);
             // 
-            // AdressEditorControl
+            // DiscountListGroupBox
             // 
-            this.AdressEditorControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AdressEditorControl.Location = new System.Drawing.Point(3, 16);
-            this.AdressEditorControl.Name = "AdressEditorControl";
-            this.AdressEditorControl.Size = new System.Drawing.Size(307, 151);
-            this.AdressEditorControl.TabIndex = 0;
-            this.AdressEditorControl.CurrentPropertyChanged += new System.EventHandler(this.AdressEditorControl_CurrentPropertyChanged);
+            this.DiscountListGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DiscountListGroupBox.Controls.Add(this.DiscountListControl);
+            this.DiscountListGroupBox.Location = new System.Drawing.Point(0, 250);
+            this.DiscountListGroupBox.Name = "DiscountListGroupBox";
+            this.DiscountListGroupBox.Size = new System.Drawing.Size(313, 161);
+            this.DiscountListGroupBox.TabIndex = 7;
+            this.DiscountListGroupBox.TabStop = false;
+            this.DiscountListGroupBox.Text = "Discount list";
+            // 
+            // DiscountListControl
+            // 
+            this.DiscountListControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DiscountListControl.Location = new System.Drawing.Point(3, 16);
+            this.DiscountListControl.Name = "DiscountListControl";
+            this.DiscountListControl.SelectedDiscount = null;
+            this.DiscountListControl.Size = new System.Drawing.Size(307, 142);
+            this.DiscountListControl.TabIndex = 0;
             // 
             // CustomerEditorControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.DiscountListGroupBox);
             this.Controls.Add(this.IsPriorityCheckBox);
             this.Controls.Add(this.AdressGroupBox);
             this.Controls.Add(this.FullNameTextBox);
@@ -122,8 +147,9 @@
             this.Controls.Add(this.FullNameLabel);
             this.Controls.Add(this.IdLabel);
             this.Name = "CustomerEditorControl";
-            this.Size = new System.Drawing.Size(313, 245);
+            this.Size = new System.Drawing.Size(313, 411);
             this.AdressGroupBox.ResumeLayout(false);
+            this.DiscountListGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,5 +165,7 @@
         private System.Windows.Forms.GroupBox AdressGroupBox;
         private AdressEditorControl AdressEditorControl;
         private System.Windows.Forms.CheckBox IsPriorityCheckBox;
+        private System.Windows.Forms.GroupBox DiscountListGroupBox;
+        private DiscountControls.DiscountListControl DiscountListControl;
     }
 }

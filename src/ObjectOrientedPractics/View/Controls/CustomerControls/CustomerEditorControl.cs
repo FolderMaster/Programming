@@ -88,6 +88,7 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
             IdTextBox.Text = FullNameTextBox.Text = null;
             AdressEditorControl.Adress = null;
             IsPriorityCheckBox.Checked = false;
+            DiscountListControl.Discounts = null;
         }
 
         /// <summary>
@@ -99,6 +100,7 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
             FullNameTextBox.Text = Customer.FullName;
             AdressEditorControl.Adress = Customer.Adress;
             IsPriorityCheckBox.Checked = Customer.IsPriority;
+            DiscountListControl.Discounts = Customer.Discounts;
         }
 
         /// <summary>

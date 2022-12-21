@@ -6,7 +6,7 @@ using ObjectOrientedPractics.Services.IO;
 using ObjectOrientedPractics.Services;
 using ObjectOrientedPractics.Model;
 
-namespace ObjectOrientedPractics.View
+namespace ObjectOrientedPractics.View.Forms
 {
     /// <summary>
     /// Основное окно приложения.
