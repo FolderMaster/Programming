@@ -3,12 +3,12 @@ using System.Linq;
 
 using ObjectOrientedPractics.Services;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Discounts
 {
     /// <summary>
     /// Скидка накопительных баллов.
     /// </summary>
-    public class PointsDiscount
+    public class PointsDiscount : IDiscount
     {
         /// <summary>
         /// Максимальная скидка.
@@ -28,7 +28,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возращает и задаёт количество накопительных баллов.
         /// </summary>
-        public int PointCount
+        private int PointCount
         {
             get => _pointCount;
             set
@@ -68,20 +68,10 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="items">Товары.</param>
         /// <returns>Возращает размер скидки для товаров.</returns>
-        private int GetDiscountAmount(List<Item> items)
+        public int Calculate(List<Item> items)
         {
             int maxDiscountAmount = (int)(GetItemCost(items) * _maxDiscount);
             return maxDiscountAmount > PointCount ? PointCount : maxDiscountAmount;
-        }
-
-        /// <summary>
-        /// Рассчитывает размер скидки для товаров.
-        /// </summary>
-        /// <param name="items">Товары.</param>
-        /// <returns>Возращает размер скидки для товаров.</returns>
-        public int Calculate(List<Item> items)
-        {
-            return GetDiscountAmount(items);
         }
 
         /// <summary>
@@ -91,7 +81,7 @@ namespace ObjectOrientedPractics.Model
         /// <returns>Возращает размер скидки для товаров.</returns>
         public int Apply(List<Item> items)
         {
-            int discountAmount = GetDiscountAmount(items);
+            int discountAmount = Calculate(items);
             PointCount -= discountAmount;
             return discountAmount;
         }

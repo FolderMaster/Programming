@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ObjectOrientedPractics.Model
+using ObjectOrientedPractics.Model.Enums;
+
+namespace ObjectOrientedPractics.Model.Orders
 {
     /// <summary>
     /// Заказ приоритетного обслуживания с желаемой датой и времени доставки.

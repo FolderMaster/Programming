@@ -1,6 +1,7 @@
 ﻿using System;
 
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Enums;
 
 namespace ObjectOrientedPractics.View.Controls
 {

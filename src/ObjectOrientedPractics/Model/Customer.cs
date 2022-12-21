@@ -1,5 +1,8 @@
-﻿using ObjectOrientedPractics.Services;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
+using ObjectOrientedPractics.Services;
+using ObjectOrientedPractics.Model.Orders;
+using ObjectOrientedPractics.Model.Discounts;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -42,6 +45,11 @@ namespace ObjectOrientedPractics.Model
         /// Значение, указывающее приоритетный покупатель или нет.
         /// </summary>
         private bool _isPriority = false;
+
+        /// <summary>
+        /// Список скидок.
+        /// </summary>
+        private List<IDiscount> _discounts = new List<IDiscount>();
 
         /// <summary>
         /// Максимальная длина <see cref="FullName"/>.
@@ -109,10 +117,20 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
+        /// Возращает и задаёт список скидок.
+        /// </summary>
+        public List<IDiscount> Discounts
+        {
+            get => _discounts;
+            set => _discounts = value;
+        }
+
+        /// <summary>
         /// Создаёт экземпляр класса <see cref="Customer"/> по-умолчанию.
         /// </summary>
         public Customer()
         {
+            Discounts.Add(new PointsDiscount());
         }
 
         /// <summary>
@@ -126,6 +144,7 @@ namespace ObjectOrientedPractics.Model
             FullName = fullName;
             Adress = adress;
             IsPriority = isPriority;
+            Discounts.Add(new PointsDiscount());
         }
 
         public override string ToString()
