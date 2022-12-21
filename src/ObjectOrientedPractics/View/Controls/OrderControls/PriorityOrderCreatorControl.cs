@@ -7,7 +7,7 @@ using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Model.Orders;
 using ObjectOrientedPractics.Model.Enums;
 
-namespace ObjectOrientedPractics.View.Controls
+namespace ObjectOrientedPractics.View.Controls.OrderControls
 {
     /// <summary>
     /// Элемент управления для редактирования созданного <see cref="PriorityOrder"/>.

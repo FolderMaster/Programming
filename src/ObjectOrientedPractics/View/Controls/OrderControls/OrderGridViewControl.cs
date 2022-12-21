@@ -8,13 +8,15 @@ using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Model.Orders;
 using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.View.Controls.Classes;
+using ObjectOrientedPractics.View.Controls.Enums;
 
-namespace ObjectOrientedPractics.View.Controls
+namespace ObjectOrientedPractics.View.Controls.OrderControls
 {
     /// <summary>
     /// Элемент управления для представления заказов в таблице.
     /// </summary>
-    public partial class OrdersGridViewControl : UserControl
+    public partial class OrderGridViewControl : UserControl
     {
         /// <summary>
         /// Список покупателей.
@@ -136,9 +138,9 @@ namespace ObjectOrientedPractics.View.Controls
         public event EventHandler SelectedOrderChanged;
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="OrdersGridViewControl"/>.
+        /// Создаёт экземпляр класса <see cref="OrderGridViewControl"/>.
         /// </summary>
-        public OrdersGridViewControl()
+        public OrderGridViewControl()
         {
             InitializeComponent();
 

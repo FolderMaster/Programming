@@ -5,12 +5,12 @@ using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
 
-namespace ObjectOrientedPractics.View.Controls
+namespace ObjectOrientedPractics.View.Controls.DiscountControls
 {
     /// <summary>
     /// Элемент управления для теста <see cref="PointsDiscount"/> и <see cref="PercentDiscount"/>.
     /// </summary>
-    public partial class DiscountsTestControl : UserControl
+    public partial class DiscountTestControl : UserControl
     {
         /// <summary>
         /// Стоимость товара.
@@ -31,9 +31,9 @@ namespace ObjectOrientedPractics.View.Controls
         }
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="DiscountsTestControl"/> по умолчанию.
+        /// Создаёт экземпляр класса <see cref="DiscountTestControl"/> по умолчанию.
         /// </summary>
-        public DiscountsTestControl()
+        public DiscountTestControl()
         {
             InitializeComponent();
 

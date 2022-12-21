@@ -3,7 +3,7 @@
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Model.Enums;
 
-namespace ObjectOrientedPractics.View.Controls
+namespace ObjectOrientedPractics.View.Controls.Classes
 {
     /// <summary>
     /// Представление класса <see cref="Order"/>.

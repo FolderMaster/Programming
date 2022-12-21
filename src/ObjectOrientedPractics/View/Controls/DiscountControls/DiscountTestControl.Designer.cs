@@ -1,6 +1,6 @@
-﻿namespace ObjectOrientedPractics.View.Controls
+﻿namespace ObjectOrientedPractics.View.Controls.DiscountControls
 {
-    partial class DiscountsTestControl
+    partial class DiscountTestControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.ItemListGroupBox = new System.Windows.Forms.GroupBox();
-            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemListControl();
+            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemControls.ItemListControl();
             this.AmountLabel = new System.Windows.Forms.Label();
-            this.PointsDiscountControl = new ObjectOrientedPractics.View.Controls.PointsDiscountControl();
-            this.PercentDiscountControl = new ObjectOrientedPractics.View.Controls.PercentDiscountControl();
+            this.PointsDiscountControl = new ObjectOrientedPractics.View.Controls.DiscountControls.PointsDiscountControl();
+            this.PercentDiscountControl = new ObjectOrientedPractics.View.Controls.DiscountControls.PercentDiscountControl();
             this.ItemListGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // ItemListGroupBox
             // 
-            this.ItemListGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.ItemListGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ItemListGroupBox.Controls.Add(this.ItemListControl);
             this.ItemListGroupBox.Location = new System.Drawing.Point(0, 0);
@@ -73,7 +73,7 @@
             // 
             // PointsDiscountControl
             // 
-            this.PointsDiscountControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.PointsDiscountControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PointsDiscountControl.Discount = 0;
             this.PointsDiscountControl.Location = new System.Drawing.Point(0, 395);
@@ -84,7 +84,7 @@
             // 
             // PercentDiscountControl
             // 
-            this.PercentDiscountControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.PercentDiscountControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PercentDiscountControl.Discount = 0;
             this.PercentDiscountControl.Location = new System.Drawing.Point(0, 456);
@@ -113,7 +113,7 @@
         private PercentDiscountControl PercentDiscountControl;
         private PointsDiscountControl PointsDiscountControl;
         private System.Windows.Forms.GroupBox ItemListGroupBox;
-        private ItemListControl ItemListControl;
+        private ItemControls.ItemListControl ItemListControl;
         private System.Windows.Forms.Label AmountLabel;
     }
 }

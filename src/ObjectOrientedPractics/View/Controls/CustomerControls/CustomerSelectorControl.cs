@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
 
-namespace ObjectOrientedPractics.View.Controls
+namespace ObjectOrientedPractics.View.Controls.CustomerControls
 {
     /// <summary>
     /// Элемент управления для выбора экземпляра класса <see cref="Customer"/>.
