@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 
 using ObjectOrientedPractics.Services;
+using ObjectOrientedPractics.Model.Enums;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Discounts
 {
     /// <summary>
     /// Процентная скидка, действующая на определённую категорию товаров.
     /// </summary>
-    public class PercentDiscount
+    public class PercentDiscount : IDiscount
     {
         /// <summary>
         /// Максимальная скидка.
@@ -44,7 +45,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возращает и задаёт скидку.
         /// </summary>
-        public double Discount
+        private double Discount
         {
             get => _discount;
             set
@@ -92,23 +93,12 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Рассчитывает размер скидки для товаров категории <see cref="Category"/>.
         /// </summary>
-        /// <param name="items">Товаров.</param>
-        /// <returns>Возращает размер скидки для товаров категории <see cref="Category"/>.
-        /// </returns>
-        private int GetDiscountAmount(List<Item> items)
-        {
-            return (int)(GetItemCost(items) * _discount);
-        }
-
-        /// <summary>
-        /// Рассчитывает размер скидки для товаров категории <see cref="Category"/>.
-        /// </summary>
         /// <param name="items">Товары.</param>
         /// <returns>Возращает размер скидки для товаров категории <see cref="Category"/>.
         /// </returns>
         public int Calculate(List<Item> items)
         {
-            return GetDiscountAmount(items);
+            return (int)(GetItemCost(items) * _discount);
         }
 
         /// <summary>
@@ -119,7 +109,7 @@ namespace ObjectOrientedPractics.Model
         /// </returns>
         public int Apply(List<Item> items)
         {
-            return GetDiscountAmount(items);
+            return Calculate(items);
         }
 
         /// <summary>

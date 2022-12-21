@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Orders;
+using ObjectOrientedPractics.Model.Enums;
 using ObjectOrientedPractics.View.Controls;
 
 namespace ObjectOrientedPractics.View.Tabs

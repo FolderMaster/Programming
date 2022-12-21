@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 using ObjectOrientedPractics.Services;
+using ObjectOrientedPractics.Model.Enums;
 
-namespace ObjectOrientedPractics.Model
+namespace ObjectOrientedPractics.Model.Orders
 {
     /// <summary>
     /// Заказ c списком товаров, адресом и статусом.
@@ -36,6 +37,11 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         private Dictionary<DateTime, OrderStatus> _statusDictionary = new Dictionary<DateTime,
             OrderStatus>();
+
+        /// <summary>
+        /// Размер примененных скидок.
+        /// </summary>
+        private int _discountAmount = 0;
 
         /// <summary>
         /// Возвращает уникальный индентификатор экземпляра класса.
@@ -90,6 +96,27 @@ namespace ObjectOrientedPractics.Model
         public int Amount
         {
             get => _items.Select(item => item.Cost).Sum();
+        }
+
+        /// <summary>
+        /// Возращает и задаёт размер примененных скидок. Должно быть положительными.
+        /// </summary>
+        public int DiscountAmount
+        {
+            get => _discountAmount;
+            set
+            {
+                ValueValidator.AssertOnPositiveValue(value, nameof(DiscountAmount));
+                _discountAmount = value;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает конечную стоимость заказа.
+        /// </summary>
+        public int Total
+        {
+            get => Amount - DiscountAmount;
         }
 
         /// <summary>

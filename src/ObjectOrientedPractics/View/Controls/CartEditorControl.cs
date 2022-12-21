@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.Model.Orders;
 
 namespace ObjectOrientedPractics.View.Controls
 {
