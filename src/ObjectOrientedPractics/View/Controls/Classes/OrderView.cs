@@ -1,7 +1,7 @@
 ﻿using System;
-
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.Model.Orders;
 
 namespace ObjectOrientedPractics.View.Controls.Classes
 {
@@ -26,9 +26,14 @@ namespace ObjectOrientedPractics.View.Controls.Classes
         public DateTime LastChangedStatusDateTime { get; set; }
 
         /// <summary>
-        /// Возращает и задаёт стоимость.
+        /// Возращает и задаёт стоимость товаров.
         /// </summary>
         public int Amount { get; set; }
+
+        /// <summary>
+        /// Возращаит и задаёт итоговую стоимость.
+        /// </summary>
+        public int Total { get; set; }
 
         /// <summary>
         /// Имя и фамилия покупателя.
@@ -55,24 +60,18 @@ namespace ObjectOrientedPractics.View.Controls.Classes
         /// <summary>
         /// Создаёт экземпляр класса <see cref="OrderView"/>.
         /// </summary>
-        /// <param name="id">Уникальный индентификатор.</param>
-        /// <param name="status">Статус заказа.</param>
-        /// <param name="lastChangedStatusDateTime">Время последнего изменения статуса 
-        /// заказа.</param>
-        /// <param name="amount">Стоимость.</param>
-        /// <param name="customerFullName">Имя и фамилия покупателя.</param>
-        /// <param name="adress">Адрес.</param>
-        /// <param name="isPriority">Значение, указывающее приоритетный заказ или нет.</param>
-        public OrderView(int id, OrderStatus status, DateTime lastChangedStatusDateTime,
-            int amount, string customerFullName, Adress adress, bool isPriority)
+        /// <param name="order">Заказ.</param>
+        /// <param name="customer">Покупатель.</param>
+        public OrderView(Order order, Customer customer)
         {
-            Id = id;
-            Status = status;
-            LastChangedStatusDateTime = lastChangedStatusDateTime;
-            Amount = amount;
-            CustomerFullName = customerFullName;
-            Adress = adress;
-            IsPriority = isPriority;
+            Id = order.Id;
+            Status = order.Status;
+            LastChangedStatusDateTime= order.LastChangedStatusDateTime;
+            Amount = order.Amount;
+            Total = order.Total;
+            CustomerFullName = customer.FullName;
+            Adress = order.Adress;
+            IsPriority = order as PriorityOrder != null;
         }
     }
 }

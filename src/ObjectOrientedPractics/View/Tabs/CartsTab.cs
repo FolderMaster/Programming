@@ -50,6 +50,7 @@ namespace ObjectOrientedPractics.View.Tabs
         public void RefreshCustomers()
         {
             CustomerSelectorControl.RefreshData();
+            CartEditorControl.RefreshCart();
         }
 
         /// <summary>

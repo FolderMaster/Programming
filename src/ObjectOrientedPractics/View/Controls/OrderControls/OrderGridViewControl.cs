@@ -162,14 +162,7 @@ namespace ObjectOrientedPractics.View.Controls.OrderControls
                     foreach (Order order in customer.Orders)
                     {
                         _orders.Add(order);
-                        int id = order.Id;
-                        DateTime lastChangedStatusDateTime = order.LastChangedStatusDateTime;
-                        OrderStatus status = order.Status;
-                        int amount = order.Amount;
-                        Adress adress = order.Adress;
-                        bool isPriority = order as PriorityOrder != null ? true : false;
-                        _orderViews.Add(new OrderView(id, status, lastChangedStatusDateTime, 
-                            amount, customerFullName, adress, isPriority));
+                        _orderViews.Add(new OrderView(order, customer));
                     }
                 }
             }

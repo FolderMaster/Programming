@@ -43,20 +43,6 @@ namespace ObjectOrientedPractics.Model.Discounts
         private int _itemAmount = 0;
 
         /// <summary>
-        /// Возращает и задаёт скидку.
-        /// </summary>
-        private double Discount
-        {
-            get => _discount;
-            set
-            {
-                ValueValidator.AssertValueInRange(value, _minDiscount, _maxDiscount, 
-                    nameof(Discount));
-                _discount = value;
-            }
-        }
-
-        /// <summary>
         /// Возращает и задаёт категорию товаров, для которого действует скидка.
         /// </summary>
         public ItemCategory Category
@@ -66,11 +52,25 @@ namespace ObjectOrientedPractics.Model.Discounts
         }
 
         /// <summary>
+        /// Возращает и задаёт стоимость купленных товаров. Должно быть положительным.
+        /// </summary>
+        public int ItemAmount
+        {
+            get => _itemAmount;
+            set
+            {
+                ValueValidator.AssertOnPositiveValue(value, nameof(ItemAmount));
+                _itemAmount = value;
+                UpdateDiscount();
+            }
+        }
+
+        /// <summary>
         /// Возращает информацию о скидке.
         /// </summary>
         public string Info
         {
-            get => $"Percentage \"{Category}\" - {Discount}%";
+            get => $"Percentage \"{Category}\" - {_discount}%";
         }
 
         /// <summary>
@@ -84,9 +84,11 @@ namespace ObjectOrientedPractics.Model.Discounts
         /// Создаёт экземпляр класса <see cref="PercentDiscount"/>.
         /// </summary>
         /// <param name="category">Категория товаров, для которого действует скидка.</param>
-        public PercentDiscount(ItemCategory category)
+        /// <param name="itemAmount">Стоимость купленных товаров.</param>
+        public PercentDiscount(ItemCategory category, int itemAmount)
         {
             Category = category;
+            ItemAmount = itemAmount;
         }
 
         /// <summary>
@@ -97,6 +99,16 @@ namespace ObjectOrientedPractics.Model.Discounts
         private int GetItemCost(List<Item> items)
         {
             return items.Where((i) => i.Category == Category).Select((i) => i.Cost).Sum();
+        }
+
+        /// <summary>
+        /// Обновляет скидку.
+        /// </summary>
+        private void UpdateDiscount()
+        {
+            double newDiscount = _minDiscount + Math.Round(ItemAmount / (_upgradeItemAmount * 100),
+                2);
+            _discount = newDiscount > _maxDiscount ? _maxDiscount : newDiscount;
         }
 
         /// <summary>
@@ -127,9 +139,7 @@ namespace ObjectOrientedPractics.Model.Discounts
         /// <param name="items">Товары.</param>
         public void Update(List<Item> items)
         {
-            _itemAmount += GetItemCost(items);
-            double newDiscount = _minDiscount + Math.Round(_itemAmount / _upgradeItemAmount, 2);
-            _discount = newDiscount > _maxDiscount ? _maxDiscount : newDiscount;
+            ItemAmount += GetItemCost(items);
         }
     }
 }

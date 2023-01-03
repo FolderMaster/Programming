@@ -1,6 +1,6 @@
-﻿namespace ObjectOrientedPractics.View.Tabs
+﻿namespace ObjectOrientedPractics.View.Controls.DiscountControls
 {
-    partial class AddDiscountTab
+    partial class DiscountAddingControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -55,7 +55,7 @@
             // 
             // ComboBox
             // 
-            this.ComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.ComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBox.FormattingEnabled = true;
             this.ComboBox.Location = new System.Drawing.Point(55, 16);

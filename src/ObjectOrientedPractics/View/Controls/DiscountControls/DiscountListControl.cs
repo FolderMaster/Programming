@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
+using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Model.Discounts;
 using ObjectOrientedPractics.View.Forms;
 
@@ -13,6 +14,16 @@ namespace ObjectOrientedPractics.View.Controls.DiscountControls
     /// </summary>
     public partial class DiscountListControl : UserControl
     {
+        /// <summary>
+        /// Источник данных для <see cref="ListBox"/>.
+        /// </summary>
+        private BindingSource _bindingSource = new BindingSource();
+
+        /// <summary>
+        /// Список информации о скидках.
+        /// </summary>
+        private List<string> _infoList = new List<string>();
+
         /// <summary>
         /// Список скидок.
         /// </summary>
@@ -59,6 +70,9 @@ namespace ObjectOrientedPractics.View.Controls.DiscountControls
         public DiscountListControl()
         {
             InitializeComponent();
+
+            ListBox.DataSource = _bindingSource;
+            _bindingSource.DataSource = _infoList;
         }
 
         /// <summary>
@@ -66,17 +80,18 @@ namespace ObjectOrientedPractics.View.Controls.DiscountControls
         /// </summary>
         private void ClearInfo()
         {
-            ListBox.DataSource = null;
+            _infoList.Clear();
+            _bindingSource.ResetBindings(false);
         }
 
         /// <summary>
         /// Обновить содержимое <see cref="ListBox"/>.
         /// </summary>
-        private void UpdateListBox()
+        public void UpdateListBox()
         {
-            List<string> infoList = new List<string>();
-            Discounts.ForEach((d) => infoList.Add(d.Info));
-            ListBox.DataSource = infoList;
+            _infoList.Clear();
+            Discounts.ForEach((d) => _infoList.Add(d.Info));
+            _bindingSource.ResetBindings(false);
         }
 
         private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -89,7 +104,9 @@ namespace ObjectOrientedPractics.View.Controls.DiscountControls
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-            if (ListBox.SelectedIndex != 0)
+            if (ListBox.SelectedIndex != Customer.PointsDiscountIndex && 
+                ListBox.SelectedIndex != Customer.BirthDateDiscountIndex && 
+                Discounts != null)
             {
                 Discounts.RemoveAt(ListBox.SelectedIndex);
                 UpdateListBox();
@@ -98,11 +115,14 @@ namespace ObjectOrientedPractics.View.Controls.DiscountControls
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            AddDiscountForm form = new AddDiscountForm();
-            if(form.ShowDialog() == DialogResult.OK)
+            if (Discounts != null)
             {
-                Discounts.Add(new PercentDiscount(form.Category));
-                UpdateListBox();
+                AddDiscountForm form = new AddDiscountForm();
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    Discounts.Add(new PercentDiscount(form.Category, 0));
+                    UpdateListBox();
+                }
             }
         }
     }

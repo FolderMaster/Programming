@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.AddDiscountTab = new ObjectOrientedPractics.View.Tabs.AddDiscountTab();
+            this.AddDiscountControl = new Controls.DiscountControls.DiscountAddingControl();
             this.SuspendLayout();
             // 
             // AddDiscountTab
             // 
-            this.AddDiscountTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddDiscountTab.Location = new System.Drawing.Point(3, 3);
-            this.AddDiscountTab.Name = "AddDiscountTab";
-            this.AddDiscountTab.Size = new System.Drawing.Size(158, 72);
-            this.AddDiscountTab.TabIndex = 0;
+            this.AddDiscountControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddDiscountControl.Location = new System.Drawing.Point(3, 3);
+            this.AddDiscountControl.Name = "AddDiscountControl";
+            this.AddDiscountControl.Size = new System.Drawing.Size(158, 72);
+            this.AddDiscountControl.TabIndex = 0;
             // 
             // AddDiscountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(164, 78);
-            this.Controls.Add(this.AddDiscountTab);
+            this.Controls.Add(this.AddDiscountControl);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddDiscountForm";
@@ -56,6 +56,6 @@
 
         #endregion
 
-        private Tabs.AddDiscountTab AddDiscountTab;
+        private Controls.DiscountControls.DiscountAddingControl AddDiscountControl;
     }
 }

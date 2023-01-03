@@ -132,11 +132,13 @@ namespace ObjectOrientedPractics.Model.Orders
         /// <param name="items">Список товаров.</param>
         /// <param name="adress">Адрес.</param>
         /// <param name="status">Статус заказа.</param>
-        public Order(List<Item> items, Adress adress, OrderStatus status)
+        /// <param name="discountAmount">Размер примененных скидок.</param>
+        public Order(List<Item> items, Adress adress, OrderStatus status, int discountAmount)
         {
             Items = items;
             Adress = adress;
             Status = status;
+            DiscountAmount = discountAmount;
         }
     }
 }

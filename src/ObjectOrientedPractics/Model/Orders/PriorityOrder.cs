@@ -75,10 +75,12 @@ namespace ObjectOrientedPractics.Model.Orders
         /// <param name="items">Список товаров.</param>
         /// <param name="adress">Адрес.</param>
         /// <param name="status">Статус заказа.</param>
+        /// <param name="discountAmount">Размер примененных скидок.</param>
         /// <param name="desiredDeliveryDate">Желаемая дата доставки.</param>
         /// <param name="desiredDeliveryTime">Желаемое время доставки.</param>
-        public PriorityOrder(List<Item> items, Adress adress, OrderStatus status, DateTime 
-            desiredDeliveryDate, string desiredDeliveryTime) : base(items, adress, status)
+        public PriorityOrder(List<Item> items, Adress adress, OrderStatus status, int 
+            discountAmount, DateTime desiredDeliveryDate, string desiredDeliveryTime) : 
+            base(items, adress, status, discountAmount)
         {
             DesiredDeliveryDate = desiredDeliveryDate;
             DesiredDeliveryTime = desiredDeliveryTime;

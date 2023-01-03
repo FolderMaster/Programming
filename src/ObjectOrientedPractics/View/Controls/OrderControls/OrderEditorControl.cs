@@ -13,11 +13,6 @@ namespace ObjectOrientedPractics.View.Controls.OrderControls
     public partial class OrderEditorControl : UserControl
     {
         /// <summary>
-        /// Текст для <see cref="AmountLabel"/>.
-        /// </summary>
-        private const string AmountLabelText = "Amount: ";
-
-        /// <summary>
         /// Делегат для обработки информации.
         /// </summary>
         private delegate void Parse();
@@ -86,7 +81,8 @@ namespace ObjectOrientedPractics.View.Controls.OrderControls
             IdTextBox.Text = CreatedDateTimeTextBox.Text = StatusComboBox.Text = null;
             AdressEditorControl.Adress = null;
             ItemListControl.Items = null;
-            AmountLabel.Text = AmountLabelText;
+            AmountLabel.Text = "Amount:";
+            TotalLabel.Text = "Total:";
             PriorityOptionsPanel.Visible = false;
         }
 
@@ -100,7 +96,8 @@ namespace ObjectOrientedPractics.View.Controls.OrderControls
             StatusComboBox.SelectedItem = Order.Status;
             AdressEditorControl.Adress = Order.Adress;
             ItemListControl.Items = Order.Items;
-            AmountLabel.Text = AmountLabelText + Order.Amount;
+            AmountLabel.Text = $"Amount: {Order.Amount}";
+            TotalLabel.Text = $"Total: {Order.Total}";
             if (_priorityOrder != null)
             {
                 PriorityOptionsPanel.Visible = true;

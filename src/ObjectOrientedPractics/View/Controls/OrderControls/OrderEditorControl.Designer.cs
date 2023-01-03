@@ -30,10 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AdressGroupBox = new System.Windows.Forms.GroupBox();
-            this.AdressEditorControl = new ObjectOrientedPractics.View.Controls.AdressEditorControl();
             this.AmountLabel = new System.Windows.Forms.Label();
             this.ItemListGroupBox = new System.Windows.Forms.GroupBox();
-            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemControls.ItemListControl();
             this.IdLabel = new System.Windows.Forms.Label();
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.CreatedDateTimeTextBox = new System.Windows.Forms.TextBox();
@@ -47,6 +45,9 @@
             this.DesiredDeliveryTimeComboBox = new System.Windows.Forms.ComboBox();
             this.DesiredDeliveryTimeLabel = new System.Windows.Forms.Label();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.TotalLabel = new System.Windows.Forms.Label();
+            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemControls.ItemListControl();
+            this.AdressEditorControl = new ObjectOrientedPractics.View.Controls.AdressEditorControl();
             this.AdressGroupBox.SuspendLayout();
             this.ItemListGroupBox.SuspendLayout();
             this.PriorityOptionsPanel.SuspendLayout();
@@ -54,7 +55,7 @@
             // 
             // AdressGroupBox
             // 
-            this.AdressGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.AdressGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AdressGroupBox.Controls.Add(this.AdressEditorControl);
             this.AdressGroupBox.Location = new System.Drawing.Point(0, 79);
@@ -64,19 +65,11 @@
             this.AdressGroupBox.TabStop = false;
             this.AdressGroupBox.Text = "Adress";
             // 
-            // AdressEditorControl
-            // 
-            this.AdressEditorControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AdressEditorControl.Location = new System.Drawing.Point(3, 16);
-            this.AdressEditorControl.Name = "AdressEditorControl";
-            this.AdressEditorControl.Size = new System.Drawing.Size(489, 151);
-            this.AdressEditorControl.TabIndex = 0;
-            // 
             // AmountLabel
             // 
             this.AmountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.AmountLabel.AutoSize = true;
-            this.AmountLabel.Location = new System.Drawing.Point(-3, 438);
+            this.AmountLabel.Location = new System.Drawing.Point(235, 474);
             this.AmountLabel.Name = "AmountLabel";
             this.AmountLabel.Size = new System.Drawing.Size(46, 13);
             this.AmountLabel.TabIndex = 2;
@@ -84,27 +77,16 @@
             // 
             // ItemListGroupBox
             // 
-            this.ItemListGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.ItemListGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ItemListGroupBox.Controls.Add(this.ItemListControl);
             this.ItemListGroupBox.Location = new System.Drawing.Point(0, 255);
             this.ItemListGroupBox.Name = "ItemListGroupBox";
-            this.ItemListGroupBox.Size = new System.Drawing.Size(495, 180);
+            this.ItemListGroupBox.Size = new System.Drawing.Size(495, 216);
             this.ItemListGroupBox.TabIndex = 3;
             this.ItemListGroupBox.TabStop = false;
             this.ItemListGroupBox.Text = "Item list";
-            // 
-            // ItemListControl
-            // 
-            this.ItemListControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemListControl.IsAdding = false;
-            this.ItemListControl.IsEditor = false;
-            this.ItemListControl.IsRemoving = false;
-            this.ItemListControl.Location = new System.Drawing.Point(3, 16);
-            this.ItemListControl.Name = "ItemListControl";
-            this.ItemListControl.Size = new System.Drawing.Size(489, 161);
-            this.ItemListControl.TabIndex = 0;
             // 
             // IdLabel
             // 
@@ -160,7 +142,7 @@
             // 
             // PriorityOptionsPanel
             // 
-            this.PriorityOptionsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.PriorityOptionsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PriorityOptionsPanel.Controls.Add(this.PriorityOptionsLabel);
             this.PriorityOptionsPanel.Controls.Add(this.DesiredDeliveryDateTextBox);
@@ -183,7 +165,7 @@
             // 
             // DesiredDeliveryDateTextBox
             // 
-            this.DesiredDeliveryDateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.DesiredDeliveryDateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DesiredDeliveryDateTextBox.Location = new System.Drawing.Point(112, 26);
             this.DesiredDeliveryDateTextBox.Name = "DesiredDeliveryDateTextBox";
@@ -202,7 +184,7 @@
             // 
             // DesiredDeliveryTimeComboBox
             // 
-            this.DesiredDeliveryTimeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.DesiredDeliveryTimeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DesiredDeliveryTimeComboBox.FormattingEnabled = true;
             this.DesiredDeliveryTimeComboBox.Location = new System.Drawing.Point(110, 52);
@@ -220,10 +202,40 @@
             this.DesiredDeliveryTimeLabel.TabIndex = 29;
             this.DesiredDeliveryTimeLabel.Text = "Desired delivery time:";
             // 
+            // TotalLabel
+            // 
+            this.TotalLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TotalLabel.AutoSize = true;
+            this.TotalLabel.Location = new System.Drawing.Point(-3, 474);
+            this.TotalLabel.Name = "TotalLabel";
+            this.TotalLabel.Size = new System.Drawing.Size(34, 13);
+            this.TotalLabel.TabIndex = 11;
+            this.TotalLabel.Text = "Total:";
+            // 
+            // ItemListControl
+            // 
+            this.ItemListControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ItemListControl.IsAdding = false;
+            this.ItemListControl.IsEditor = false;
+            this.ItemListControl.IsRemoving = false;
+            this.ItemListControl.Location = new System.Drawing.Point(3, 16);
+            this.ItemListControl.Name = "ItemListControl";
+            this.ItemListControl.Size = new System.Drawing.Size(489, 197);
+            this.ItemListControl.TabIndex = 0;
+            // 
+            // AdressEditorControl
+            // 
+            this.AdressEditorControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AdressEditorControl.Location = new System.Drawing.Point(3, 16);
+            this.AdressEditorControl.Name = "AdressEditorControl";
+            this.AdressEditorControl.Size = new System.Drawing.Size(489, 151);
+            this.AdressEditorControl.TabIndex = 0;
+            // 
             // OrderEditorControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.TotalLabel);
             this.Controls.Add(this.PriorityOptionsPanel);
             this.Controls.Add(this.StatusComboBox);
             this.Controls.Add(this.StatusLabel);
@@ -235,7 +247,7 @@
             this.Controls.Add(this.AmountLabel);
             this.Controls.Add(this.AdressGroupBox);
             this.Name = "OrderEditorControl";
-            this.Size = new System.Drawing.Size(495, 451);
+            this.Size = new System.Drawing.Size(495, 487);
             this.AdressGroupBox.ResumeLayout(false);
             this.ItemListGroupBox.ResumeLayout(false);
             this.PriorityOptionsPanel.ResumeLayout(false);
@@ -265,5 +277,6 @@
         private System.Windows.Forms.ComboBox DesiredDeliveryTimeComboBox;
         private System.Windows.Forms.Label DesiredDeliveryTimeLabel;
         private System.Windows.Forms.ToolTip ToolTip;
+        private System.Windows.Forms.Label TotalLabel;
     }
 }

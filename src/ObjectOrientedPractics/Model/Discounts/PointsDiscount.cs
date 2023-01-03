@@ -26,9 +26,9 @@ namespace ObjectOrientedPractics.Model.Discounts
         private int _pointCount = 0;
 
         /// <summary>
-        /// Возращает и задаёт количество накопительных баллов.
+        /// Возращает и задаёт количество накопительных баллов. Должно быть положительным.
         /// </summary>
-        private int PointCount
+        public int PointCount
         {
             get => _pointCount;
             set
@@ -54,11 +54,20 @@ namespace ObjectOrientedPractics.Model.Discounts
         }
 
         /// <summary>
+        /// Создаёт экземпляр класса <see cref="PointsDiscount"/>.
+        /// </summary>
+        /// <param name="pointCount">Количество накопительных баллов.</param>
+        public PointsDiscount(int pointCount)
+        {
+            PointCount = pointCount;
+        }
+
+        /// <summary>
         /// Подсчитывает стоимость товаров.
         /// </summary>
         /// <param name="items">Товары.</param>
-        /// <returns>Возращает размер скидки для товаров.</returns>
-        int GetItemCost(List<Item> items)
+        /// <returns>Возращает стоимость товаров.</returns>
+        private int GetItemCost(List<Item> items)
         {
             return items.Select((i) => i.Cost).Sum();
         }
