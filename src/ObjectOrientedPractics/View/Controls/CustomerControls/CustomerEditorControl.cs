@@ -81,6 +81,16 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
         }
 
         /// <summary>
+        /// Обрабатывает информацию для <see cref="Customer.BirthDate"/>.
+        /// </summary>
+        private void BirthDateParse()
+        {
+            Customer.BirthDate = DateTime.Parse(BirthDateTextBox.Text);
+            DiscountListControl.UpdateListBox();
+            UpdateMode = UpdateType.None;
+        }
+
+        /// <summary>
         /// Очищает информацию с элементов управления.
         /// </summary>
         private void ClearInfo()
@@ -89,6 +99,7 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
             AdressEditorControl.Adress = null;
             IsPriorityCheckBox.Checked = false;
             DiscountListControl.Discounts = null;
+            BirthDateTextBox.Text = null;
         }
 
         /// <summary>
@@ -101,6 +112,7 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
             AdressEditorControl.Adress = Customer.Adress;
             IsPriorityCheckBox.Checked = Customer.IsPriority;
             DiscountListControl.Discounts = Customer.Discounts;
+            BirthDateTextBox.Text = Customer.BirthDate.ToShortDateString();
         }
 
         /// <summary>
@@ -144,6 +156,11 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
         private void IsPriorityCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             UpdateProperty(IsPriorityCheckBox, IsPriorityParse);
+        }
+
+        private void BirthDateTextBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateProperty(BirthDateTextBox, BirthDateParse);
         }
     }
 }

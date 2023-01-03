@@ -132,7 +132,7 @@ namespace ObjectOrientedPractics.Model
 
         public override string ToString()
         {
-            return $"{Name} ({Id}) - {Cost}";
+            return $"{Name} {{{Category}}} ({Id}) - {Cost}";
         }
     }
 }

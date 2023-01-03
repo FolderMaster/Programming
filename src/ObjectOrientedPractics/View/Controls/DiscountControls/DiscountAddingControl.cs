@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
 
+using ObjectOrientedPractics.Model.Discounts;
 using ObjectOrientedPractics.Model.Enums;
 
-namespace ObjectOrientedPractics.View.Tabs
+namespace ObjectOrientedPractics.View.Controls.DiscountControls
 {
     /// <summary>
     /// Элемент управления для добавления скидки <see cref="PercentDiscount"/>.
     /// </summary>
-    public partial class AddDiscountTab : UserControl
+    public partial class DiscountAddingControl : UserControl
     {
         /// <summary>
         /// Возращает выбранную категорию товара.
@@ -19,9 +20,9 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// Создаёт экземпляр класса <see cref="AddDiscountTab"/> по умолчанию.
+        /// Создаёт экземпляр класса <see cref="DiscountAddingControl"/> по умолчанию.
         /// </summary>
-        public AddDiscountTab()
+        public DiscountAddingControl()
         {
             InitializeComponent();
 

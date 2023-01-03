@@ -3,6 +3,7 @@
 using ObjectOrientedPractics.Services;
 using ObjectOrientedPractics.Model.Orders;
 using ObjectOrientedPractics.Model.Discounts;
+using System;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -47,14 +48,29 @@ namespace ObjectOrientedPractics.Model
         private bool _isPriority = false;
 
         /// <summary>
+        /// Дата рождения.
+        /// </summary>
+        private DateTime _birthDate = DateTime.UtcNow;
+
+        /// <summary>
         /// Список скидок.
         /// </summary>
-        private List<IDiscount> _discounts = new List<IDiscount>();
+        private List<IDiscount> _discounts = new List<IDiscount>() { new PointsDiscount() };
 
         /// <summary>
         /// Максимальная длина <see cref="FullName"/>.
         /// </summary>
         public static int MaxFullNameLength { get; } = 200;
+
+        /// <summary>
+        /// Индекс скидки накопительных баллов в <see cref="Discounts"/>.
+        /// </summary>
+        public static int PointsDiscountIndex { get; } = 0;
+
+        /// <summary>
+        /// Индекс cкидки по дню рождения в <see cref="Discounts"/>.
+        /// </summary>
+        public static int BirthDateDiscountIndex { get; } = 1;
 
         /// <summary>
         /// Возвращает уникальный индентификатор экземпляра класса.
@@ -126,11 +142,31 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
+        /// Возращает и задаёт дату рождения.
+        /// </summary>
+        public DateTime BirthDate
+        {
+            get => _birthDate;
+            set
+            {
+                _birthDate = value;
+                if (Discounts[BirthDateDiscountIndex] is BirthDateDiscount birthDateDiscount)
+                {
+                    birthDateDiscount.BirthDate = BirthDate;
+                }
+                else
+                {
+                    throw new InvalidOperationException();
+                }
+            }
+        }
+
+        /// <summary>
         /// Создаёт экземпляр класса <see cref="Customer"/> по-умолчанию.
         /// </summary>
         public Customer()
         {
-            Discounts.Add(new PointsDiscount());
+            Discounts.Add(new BirthDateDiscount(BirthDate));
         }
 
         /// <summary>
@@ -138,13 +174,15 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="fullName">ФИО.</param>
         /// <param name="adress">Адрес.</param>
-        /// <param name="isPriority"></param>
-        public Customer(string fullName, Adress adress, bool isPriority)
+        /// <param name="isPriority">Значение, указывающее приоритетный покупатель или нет.</param>
+        /// <param name="birthDate">Дата рождения.</param>
+        public Customer(string fullName, Adress adress, bool isPriority, DateTime birthDate)
         {
             FullName = fullName;
             Adress = adress;
             IsPriority = isPriority;
-            Discounts.Add(new PointsDiscount());
+            Discounts.Add(new BirthDateDiscount(BirthDate));
+            BirthDate = birthDate;
         }
 
         public override string ToString()

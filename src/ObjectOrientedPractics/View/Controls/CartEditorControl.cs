@@ -15,11 +15,6 @@ namespace ObjectOrientedPractics.View.Controls
     public partial class CartEditorControl : UserControl
     {
         /// <summary>
-        /// Текст для <see cref="AmountLabel"/>.
-        /// </summary>
-        private const string AmountLabelText = "Amount: ";
-
-        /// <summary>
         /// Корзина покупателя.
         /// </summary>
         private Cart _cart = null;
@@ -56,7 +51,8 @@ namespace ObjectOrientedPractics.View.Controls
                 if(Customer != null)
                 {
                     Cart = Customer.Cart;
-                    ItemListControl.Items = Cart.Items;
+                    ItemListControl.Items = DiscountCheckListControl.Items = Cart.Items;
+                    DiscountCheckListControl.Discounts = Customer.Discounts;
                 }
                 else
                 {
@@ -65,6 +61,33 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
+        /// <summary>
+        /// Стоимость товаров.
+        /// </summary>
+        private int Amount
+        {
+            get => Cart.Amount;
+        }
+
+        /// <summary>
+        /// Размер скидки.
+        /// </summary>
+        private int DiscountAmount
+        {
+            get => DiscountCheckListControl.DiscountAmount;
+        }
+
+        /// <summary>
+        /// Итоговая стоимость заказа.
+        /// </summary>
+        private int Total
+        {
+            get => Amount - DiscountAmount;
+        }
+
+        /// <summary>
+        /// Обработчик события создания заказа.
+        /// </summary>
         public event EventHandler OrderCreated;
 
         /// <summary>
@@ -100,7 +123,10 @@ namespace ObjectOrientedPractics.View.Controls
             if(Cart != null)
             {
                 ItemListControl.UpdateList();
-                AmountLabel.Text = AmountLabelText + Cart.Amount;
+                DiscountCheckListControl.UpdateCheckedListBox();
+                AmountLabel.Text = $"Amount: {Amount}";
+                DiscountAmountLabel.Text = $"Discount amount: {DiscountAmount}";
+                TotalLabel.Text = $"Total: {Total}";
             }
         }
 
@@ -110,7 +136,10 @@ namespace ObjectOrientedPractics.View.Controls
         private void ClearInfo()
         {
             ItemListControl.Items = null;
-            AmountLabel.Text = AmountLabelText;
+            AmountLabel.Text = "Amount:";
+            DiscountAmountLabel.Text = "Discount amount:";
+            TotalLabel.Text = "Total:";
+            DiscountCheckListControl.Discounts = null;
         }
 
         private void ItemListControl_RemoveFromItems(object sender, EventArgs e)
@@ -122,21 +151,29 @@ namespace ObjectOrientedPractics.View.Controls
         {
             if (Customer != null)
             {
+                int discountAmount = DiscountCheckListControl.ApplyDiscounts();
                 if(Customer.IsPriority)
                 {
                     Customer.Orders.Add(new PriorityOrder(new List<Item>(Cart.Items),
-                        Customer.Adress, OrderStatus.New, DateTime.UtcNow, 
+                        Customer.Adress, OrderStatus.New, discountAmount, DateTime.UtcNow, 
                         PriorityOrder.DeliveryTimes[0]));
                 }
                 else
                 {
                     Customer.Orders.Add(new Order(new List<Item>(Cart.Items), Customer.Adress,
-                        OrderStatus.New));
+                        OrderStatus.New, discountAmount));
                 }
+                DiscountCheckListControl.UpdateDiscounts();
                 Cart.Items.Clear();
                 RefreshCart();
                 OrderCreated?.Invoke(this, EventArgs.Empty);
             }
+        }
+
+        private void DiscountCheckListControl_DiscountAmountChanged(object sender, EventArgs e)
+        {
+            DiscountAmountLabel.Text = $"Discount amount: {DiscountAmount}";
+            TotalLabel.Text = $"Total: {Total}";
         }
     }
 }

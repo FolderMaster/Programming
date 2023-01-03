@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 
+using ObjectOrientedPractics.View.Controls.DiscountControls;
 using ObjectOrientedPractics.Model.Enums;
 using ObjectOrientedPractics.Model.Discounts;
 
@@ -15,7 +16,7 @@ namespace ObjectOrientedPractics.View.Forms
         /// </summary>
         public ItemCategory Category
         {
-            get => AddDiscountTab.Category;
+            get => AddDiscountControl.Category;
         }
 
         /// <summary>

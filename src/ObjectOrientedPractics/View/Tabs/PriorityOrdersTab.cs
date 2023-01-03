@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Model.Orders;
 using ObjectOrientedPractics.Model.Enums;
-using ObjectOrientedPractics.View.Controls;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -38,7 +37,7 @@ namespace ObjectOrientedPractics.View.Tabs
             InitializeComponent();
 
             PriorityOrderCreatorControl.PriorityOrder = new PriorityOrder(new List<Item>(), new 
-                Adress(), OrderStatus.New, DateTime.UtcNow, PriorityOrder.DeliveryTimes[0]);
+                Adress(), OrderStatus.New, 0, DateTime.UtcNow, PriorityOrder.DeliveryTimes[0]);
         }
 
         /// <summary>

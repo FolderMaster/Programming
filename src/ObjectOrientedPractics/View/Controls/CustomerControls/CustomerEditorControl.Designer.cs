@@ -39,6 +39,8 @@
             this.IsPriorityCheckBox = new System.Windows.Forms.CheckBox();
             this.DiscountListGroupBox = new System.Windows.Forms.GroupBox();
             this.DiscountListControl = new ObjectOrientedPractics.View.Controls.DiscountControls.DiscountListControl();
+            this.BirthDateTextBox = new System.Windows.Forms.TextBox();
+            this.BirthDateLabel = new System.Windows.Forms.Label();
             this.AdressGroupBox.SuspendLayout();
             this.DiscountListGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -86,7 +88,7 @@
             this.AdressGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AdressGroupBox.Controls.Add(this.AdressEditorControl);
-            this.AdressGroupBox.Location = new System.Drawing.Point(0, 75);
+            this.AdressGroupBox.Location = new System.Drawing.Point(0, 101);
             this.AdressGroupBox.Name = "AdressGroupBox";
             this.AdressGroupBox.Size = new System.Drawing.Size(313, 169);
             this.AdressGroupBox.TabIndex = 4;
@@ -105,7 +107,7 @@
             // IsPriorityCheckBox
             // 
             this.IsPriorityCheckBox.AutoSize = true;
-            this.IsPriorityCheckBox.Location = new System.Drawing.Point(0, 52);
+            this.IsPriorityCheckBox.Location = new System.Drawing.Point(0, 78);
             this.IsPriorityCheckBox.Name = "IsPriorityCheckBox";
             this.IsPriorityCheckBox.Size = new System.Drawing.Size(67, 17);
             this.IsPriorityCheckBox.TabIndex = 6;
@@ -119,9 +121,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DiscountListGroupBox.Controls.Add(this.DiscountListControl);
-            this.DiscountListGroupBox.Location = new System.Drawing.Point(0, 250);
+            this.DiscountListGroupBox.Location = new System.Drawing.Point(0, 276);
             this.DiscountListGroupBox.Name = "DiscountListGroupBox";
-            this.DiscountListGroupBox.Size = new System.Drawing.Size(313, 161);
+            this.DiscountListGroupBox.Size = new System.Drawing.Size(313, 135);
             this.DiscountListGroupBox.TabIndex = 7;
             this.DiscountListGroupBox.TabStop = false;
             this.DiscountListGroupBox.Text = "Discount list";
@@ -132,13 +134,34 @@
             this.DiscountListControl.Location = new System.Drawing.Point(3, 16);
             this.DiscountListControl.Name = "DiscountListControl";
             this.DiscountListControl.SelectedDiscount = null;
-            this.DiscountListControl.Size = new System.Drawing.Size(307, 142);
+            this.DiscountListControl.Size = new System.Drawing.Size(307, 116);
             this.DiscountListControl.TabIndex = 0;
+            // 
+            // BirthDateTextBox
+            // 
+            this.BirthDateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BirthDateTextBox.Location = new System.Drawing.Point(58, 52);
+            this.BirthDateTextBox.Name = "BirthDateTextBox";
+            this.BirthDateTextBox.Size = new System.Drawing.Size(255, 20);
+            this.BirthDateTextBox.TabIndex = 8;
+            this.BirthDateTextBox.TextChanged += new System.EventHandler(this.BirthDateTextBox_TextChanged);
+            // 
+            // BirthDateLabel
+            // 
+            this.BirthDateLabel.AutoSize = true;
+            this.BirthDateLabel.Location = new System.Drawing.Point(-3, 55);
+            this.BirthDateLabel.Name = "BirthDateLabel";
+            this.BirthDateLabel.Size = new System.Drawing.Size(55, 13);
+            this.BirthDateLabel.TabIndex = 9;
+            this.BirthDateLabel.Text = "Birth date:";
             // 
             // CustomerEditorControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.BirthDateLabel);
+            this.Controls.Add(this.BirthDateTextBox);
             this.Controls.Add(this.DiscountListGroupBox);
             this.Controls.Add(this.IsPriorityCheckBox);
             this.Controls.Add(this.AdressGroupBox);
@@ -167,5 +190,7 @@
         private System.Windows.Forms.CheckBox IsPriorityCheckBox;
         private System.Windows.Forms.GroupBox DiscountListGroupBox;
         private DiscountControls.DiscountListControl DiscountListControl;
+        private System.Windows.Forms.TextBox BirthDateTextBox;
+        private System.Windows.Forms.Label BirthDateLabel;
     }
 }

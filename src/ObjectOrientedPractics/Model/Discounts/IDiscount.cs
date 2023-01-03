@@ -27,7 +27,7 @@ namespace ObjectOrientedPractics.Model.Discounts
         int Apply(List<Item> items);
 
         /// <summary>
-        /// Применяет скидку для товаров.
+        /// Обновляет скидку для товаров.
         /// </summary>
         /// <param name="items">Товары.</param>
         void Update(List<Item> items);

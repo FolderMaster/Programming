@@ -207,7 +207,7 @@ namespace ObjectOrientedPractics.View.Controls.OrderControls
 
         private void ClearOrderButton_Click(object sender, EventArgs e)
         {
-            PriorityOrder = new PriorityOrder(new List<Item>(), new Adress(), OrderStatus.New,
+            PriorityOrder = new PriorityOrder(new List<Item>(), new Adress(), OrderStatus.New, 0, 
                 DateTime.UtcNow, PriorityOrder.DeliveryTimes[0]);
         }
     }

@@ -41,12 +41,12 @@ namespace ObjectOrientedPractics.Services.Factories
             if(isPriority)
             {
                 return new PriorityOrder(orderItems, AdressFactory.CreateAdress(customers), 
-                    OrderStatus.New, DateTime.UtcNow, PriorityOrder.DeliveryTimes[0]);
+                    OrderStatus.New, 0,  DateTime.UtcNow, PriorityOrder.DeliveryTimes[0]);
             }
             else
             {
-                return new Order(orderItems, AdressFactory.CreateAdress(customers), 
-                    OrderStatus.New);
+                return new Order(orderItems, AdressFactory.CreateAdress(customers),
+                    OrderStatus.New, 0);
             }
         }
     }
