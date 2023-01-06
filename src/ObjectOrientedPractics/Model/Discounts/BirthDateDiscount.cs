@@ -108,5 +108,40 @@ namespace ObjectOrientedPractics.Model.Discounts
         public void Update(List<Item> items)
         {
         }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="other"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
+        public override bool Equals(object other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            BirthDateDiscount birthDateDiscount = other as BirthDateDiscount;
+            if (birthDateDiscount == null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return BirthDate == birthDateDiscount.BirthDate;
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
+        public object Clone()
+        {
+            return new BirthDateDiscount(BirthDate);
+        }
     }
 }

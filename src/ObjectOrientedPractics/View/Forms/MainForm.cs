@@ -49,6 +49,7 @@ namespace ObjectOrientedPractics.View.Forms
                 CartsTab.Items = _store.Items;
                 CustomersTab.Items = _store.Items;
                 DiscountsTab.Items = _store.Items;
+                InterfaceTab.Items = _store.Items;
                 CustomersTab.Customers = _store.Customers;
                 CartsTab.Customers = _store.Customers;
                 OrdersTab.Customers = _store.Customers;
@@ -73,6 +74,7 @@ namespace ObjectOrientedPractics.View.Forms
         {
             CartsTab.RefreshItems();
             DiscountsTab.RefreshItems();
+            InterfaceTab.RefreshItems();
         }
 
         private void CustomersTab_CustomersChanged(object sender, EventArgs e)
@@ -104,6 +106,9 @@ namespace ObjectOrientedPractics.View.Forms
                     break;
                 case 4:
                     DiscountsTab.RefreshItems();
+                    break;
+                case 5:
+                    InterfaceTab.RefreshItems();
                     break;
             }
         }

@@ -1,4 +1,6 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using System;
+
+using ObjectOrientedPractics.Services;
 using ObjectOrientedPractics.Model.Enums;
 
 namespace ObjectOrientedPractics.Model
@@ -6,7 +8,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Товар с названием, описанием и стоимостью.
     /// </summary>
-    public class Item
+    public class Item : ICloneable, IEquatable<object>, IComparable<object>
     {
         /// <summary>
         /// Генератор уникального индентификатора экземпляра класса.
@@ -130,9 +132,76 @@ namespace ObjectOrientedPractics.Model
             Category = category;
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
         public override string ToString()
         {
             return $"{Name} {{{Category}}} ({Id}) - {Cost}";
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
+        public object Clone()
+        {
+            return new Item(Name, Info, Cost, Category);
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="other"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
+        public override bool Equals(object other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            Item item = other as Item;
+            if (item == null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return Name == item.Name && Info == item.Info && Cost == item.Cost && 
+                Category == item.Category;
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="other"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public int CompareTo(object other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+
+            Item item = other as Item;
+            if (item == null)
+            {
+                throw new ArgumentException();
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return 0;
+            }
+
+            return Cost.CompareTo(item.Cost);
         }
     }
 }

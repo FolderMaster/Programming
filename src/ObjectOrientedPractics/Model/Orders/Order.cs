@@ -10,7 +10,7 @@ namespace ObjectOrientedPractics.Model.Orders
     /// <summary>
     /// Заказ c списком товаров, адресом и статусом.
     /// </summary>
-    public class Order
+    public class Order : IEquatable<object>, ICloneable
     {
         /// <summary>
         /// Генератор уникального индентификатора экземпляра класса.
@@ -139,6 +139,43 @@ namespace ObjectOrientedPractics.Model.Orders
             Adress = adress;
             Status = status;
             DiscountAmount = discountAmount;
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="other"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
+        public override bool Equals(object other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            Order order = other as Order;
+            if (order == null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return Items.SequenceEqual(order.Items) && Adress.Equals(order.Adress) && 
+                Status == order.Status && DiscountAmount == order.DiscountAmount;
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
+        public virtual object Clone()
+        {
+            return new Order(new List<Item>(Items), (Adress)Adress.Clone(), Status, 
+                DiscountAmount);
         }
     }
 }

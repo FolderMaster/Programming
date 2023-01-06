@@ -167,6 +167,24 @@
     <Compile Include="View\Controls\DiscountControls\DiscountTestControl.Designer.cs">
       <DependentUpon>DiscountTestControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\InterfaceControls\ICloneableControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\InterfaceControls\ICloneableControl.Designer.cs">
+      <DependentUpon>ICloneableControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\InterfaceControls\IComparableControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\InterfaceControls\IComparableControl.Designer.cs">
+      <DependentUpon>IComparableControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\InterfaceControls\IEquatableControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\InterfaceControls\IEquatableControl.Designer.cs">
+      <DependentUpon>IEquatableControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\OrderControls\OrderEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -244,6 +262,12 @@
     <Compile Include="View\Tabs\DiscountsTab.Designer.cs">
       <DependentUpon>DiscountsTab.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Tabs\InterfaceTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Tabs\InterfaceTab.Designer.cs">
+      <DependentUpon>InterfaceTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Tabs\ItemsTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -299,6 +323,15 @@
     <EmbeddedResource Include="View\Controls\DiscountControls\DiscountTestControl.resx">
       <DependentUpon>DiscountTestControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\InterfaceControls\ICloneableControl.resx">
+      <DependentUpon>ICloneableControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\InterfaceControls\IComparableControl.resx">
+      <DependentUpon>IComparableControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\InterfaceControls\IEquatableControl.resx">
+      <DependentUpon>IEquatableControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\ItemControls\ItemEditorControl.resx">
       <DependentUpon>ItemEditorControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -334,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Tabs\DiscountsTab.resx">
       <DependentUpon>DiscountsTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Tabs\InterfaceTab.resx">
+      <DependentUpon>InterfaceTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Tabs\ItemsTab.resx">
       <DependentUpon>ItemsTab.cs</DependentUpon>

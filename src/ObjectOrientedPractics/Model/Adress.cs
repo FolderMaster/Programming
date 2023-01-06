@@ -1,4 +1,6 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using System;
+
+using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -6,7 +8,7 @@ namespace ObjectOrientedPractics.Model
     /// Адресс с почтовым индексом, страной/регионом, населённым пунктом, улицей, номером дома,
     /// номером помещения.
     /// </summary>
-    public class Adress
+    public class Adress : ICloneable, IEquatable<object>
     {
         /// <summary>
         /// Почтовый индекс.
@@ -186,9 +188,50 @@ namespace ObjectOrientedPractics.Model
             Apartment = apartment;
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
         public override string ToString()
         {
             return $"{Index} {Country} {City} {Street} {Building} {Apartment}";
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
+        public object Clone()
+        {
+            return new Adress(Index, Country, City, Street, Building, Apartment);
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="other"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
+        public override bool Equals(object other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            Adress adress = other as Adress;
+            if (adress == null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return Index == adress.Index && Country == adress.Country && City == adress.City &&
+                Street == adress.Street && Building == adress.Building && 
+                Apartment == adress.Apartment;
         }
     }
 }

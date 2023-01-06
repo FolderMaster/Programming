@@ -1,16 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using ObjectOrientedPractics.Services;
 using ObjectOrientedPractics.Model.Orders;
 using ObjectOrientedPractics.Model.Discounts;
-using System;
+using System.Linq;
 
 namespace ObjectOrientedPractics.Model
 {
     /// <summary>
     /// Покупатель с ФИО, адресом и корзиной.
     /// </summary>
-    public class Customer
+    public class Customer : IEquatable<object>, ICloneable
     {
         /// <summary>
         /// Генератор уникального индентификатора экземпляра класса.
@@ -181,13 +182,84 @@ namespace ObjectOrientedPractics.Model
             FullName = fullName;
             Adress = adress;
             IsPriority = isPriority;
-            Discounts.Add(new BirthDateDiscount(BirthDate));
+            Discounts.Add(new BirthDateDiscount(birthDate));
             BirthDate = birthDate;
         }
 
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="Customer"/>.
+        /// </summary>
+        /// <param name="fullName">ФИО.</param>
+        /// <param name="adress">Адрес.</param>
+        /// <param name="isPriority">Значение, указывающее приоритетный покупатель или нет.</param>
+        /// <param name="birthDate">Дата рождения.</param>
+        /// <param name="cart">Корзина покупателя.</param>
+        public Customer(string fullName, Adress adress, bool isPriority, DateTime birthDate, 
+            Cart cart)
+        {
+            FullName = fullName;
+            Adress = adress;
+            IsPriority = isPriority;
+            Discounts.Add(new BirthDateDiscount(birthDate));
+            BirthDate = birthDate;
+            Cart = cart;
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
         public override string ToString()
         {
             return $"{FullName} ({Id})";
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="other"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
+        public override bool Equals(object other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            Customer customer = other as Customer;
+            if (customer == null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return FullName == customer.FullName && Adress.Equals(customer.Adress) && 
+                IsPriority == customer.IsPriority && BirthDate == customer.BirthDate &&  
+                Cart.Equals(Cart) && Orders.SequenceEqual(customer.Orders) && 
+                Discounts.SequenceEqual(customer.Discounts);
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
+        public object Clone()
+        {
+            Customer customer = new Customer(FullName, (Adress)Adress.Clone(), IsPriority, 
+                BirthDate, (Cart)Cart.Clone());
+            foreach(Order order in Orders)
+            {
+                customer.Orders.Add((Order)order.Clone());
+            }
+            for (int n = 2; n < Discounts.Count; ++n)
+            {
+                customer.Discounts.Add((IDiscount)Discounts[n].Clone());
+            }
+            return customer;
         }
     }
 }
