@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ObjectOrientedPractics.Model.Discounts
 {
     /// <summary>
     /// Интерфейс скидок, которые рассчитывают свой размер, применяют его и обновляются.
     /// </summary>
-    public interface IDiscount
+    public interface IDiscount : ICloneable, IEquatable<object>
     {
         /// <summary>
         /// Возращает информацию о скидке.

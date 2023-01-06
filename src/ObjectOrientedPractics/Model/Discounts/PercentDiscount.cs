@@ -10,7 +10,7 @@ namespace ObjectOrientedPractics.Model.Discounts
     /// <summary>
     /// Процентная скидка, действующая на определённую категорию товаров.
     /// </summary>
-    public class PercentDiscount : IDiscount
+    public class PercentDiscount : IDiscount, IComparable<object>
     {
         /// <summary>
         /// Максимальная скидка.
@@ -63,6 +63,14 @@ namespace ObjectOrientedPractics.Model.Discounts
                 _itemAmount = value;
                 UpdateDiscount();
             }
+        }
+
+        /// <summary>
+        /// Возращает скидку.
+        /// </summary>
+        public double Discount
+        {
+            get => _discount;
         }
 
         /// <summary>
@@ -140,6 +148,60 @@ namespace ObjectOrientedPractics.Model.Discounts
         public void Update(List<Item> items)
         {
             ItemAmount += GetItemCost(items);
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="other"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public int CompareTo(object other)
+        {
+            if (other is PercentDiscount percentDiscount)
+            {
+                return Discount.CompareTo(percentDiscount.Discount);
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="other"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
+        public override bool Equals(object other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            PercentDiscount pointsDiscount = other as PercentDiscount;
+            if (pointsDiscount == null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return Category == pointsDiscount.Category && 
+                ItemAmount == pointsDiscount.ItemAmount;
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
+        public object Clone()
+        {
+            return new PercentDiscount(Category, ItemAmount);
         }
     }
 }

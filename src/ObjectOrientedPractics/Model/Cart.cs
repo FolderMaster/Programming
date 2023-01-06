@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ObjectOrientedPractics.Model
@@ -6,7 +7,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Корзина с товарами.
     /// </summary>
-    public class Cart
+    public class Cart : ICloneable, IEquatable<object>
     {
         /// <summary>
         /// Список товаров.
@@ -44,6 +45,41 @@ namespace ObjectOrientedPractics.Model
         public Cart(List<Item> items)
         {
             Items = items;
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="other"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
+        public override bool Equals(object other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            Cart cart = other as Cart;
+            if (cart == null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return Items.SequenceEqual(cart.Items);
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
+        public object Clone()
+        {
+            return new Cart(new List<Item>(Items));
         }
     }
 }

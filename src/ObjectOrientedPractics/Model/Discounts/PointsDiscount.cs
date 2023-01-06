@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-
 using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.Model.Discounts
@@ -8,7 +8,7 @@ namespace ObjectOrientedPractics.Model.Discounts
     /// <summary>
     /// Скидка накопительных баллов.
     /// </summary>
-    public class PointsDiscount : IDiscount
+    public class PointsDiscount : IDiscount, IComparable<object>
     {
         /// <summary>
         /// Максимальная скидка.
@@ -102,6 +102,59 @@ namespace ObjectOrientedPractics.Model.Discounts
         public void Update(List<Item> items)
         {
             PointCount += (int)(_cashBack * GetItemCost(items));
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="other"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public int CompareTo(object other)
+        {
+            if (other is PointsDiscount pointsDiscount)
+            {
+                return PointCount.CompareTo(pointsDiscount.PointCount);
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="other"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
+        public override bool Equals(object other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            PointsDiscount pointsDiscount = other as PointsDiscount;
+            if (pointsDiscount == null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return PointCount == pointsDiscount.PointCount;
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
+        public object Clone()
+        {
+            return new PointsDiscount(PointCount);
         }
     }
 }

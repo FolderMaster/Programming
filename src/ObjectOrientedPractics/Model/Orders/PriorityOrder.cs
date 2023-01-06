@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using ObjectOrientedPractics.Model.Enums;
 
 namespace ObjectOrientedPractics.Model.Orders
@@ -84,6 +84,47 @@ namespace ObjectOrientedPractics.Model.Orders
         {
             DesiredDeliveryDate = desiredDeliveryDate;
             DesiredDeliveryTime = desiredDeliveryTime;
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="other"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
+        public override bool Equals(object other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            PriorityOrder priorityOrder = other as PriorityOrder;
+            if (priorityOrder == null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return Items.SequenceEqual(priorityOrder.Items) && 
+                Adress.Equals(priorityOrder.Adress) &&
+                Status == priorityOrder.Status && 
+                DiscountAmount == priorityOrder.DiscountAmount &&
+                DesiredDeliveryDate == priorityOrder.DesiredDeliveryDate && 
+                DesiredDeliveryTime == priorityOrder.DesiredDeliveryTime;
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
+        public override object Clone()
+        {
+            return new PriorityOrder(new List<Item>(Items), (Adress)Adress.Clone(), Status, 
+                DiscountAmount, DesiredDeliveryDate, DesiredDeliveryTime);
         }
     }
 }
