@@ -40,15 +40,14 @@ namespace ObjectOrientedPractics.View.Controls.InterfaceControls
         /// </summary>
         private void UseIEquatable()
         {
-            if(ItemListControl1.SelectedIndex == -1 || ItemListControl2.SelectedIndex == -1 ||
-                ItemListControl1.Items.Count == 0 || ItemListControl2.Items.Count == 0)
+            Item item1 = ItemListControl1.SelectedItem;
+            Item item2 = ItemListControl2.SelectedItem;
+            if (item1 == null || item2 == null)
             {
                 SignLabel.Text = "?";
             }
             else
             {
-                Item item1 = ItemListControl1.Items[ItemListControl1.SelectedIndex];
-                Item item2 = ItemListControl2.Items[ItemListControl2.SelectedIndex];
                 if(item1.Equals(item2))
                 {
                     SignLabel.Text = "==";

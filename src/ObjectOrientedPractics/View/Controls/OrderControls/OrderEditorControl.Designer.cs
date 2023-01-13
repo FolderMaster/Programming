@@ -30,8 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AdressGroupBox = new System.Windows.Forms.GroupBox();
+            this.AdressEditorControl = new ObjectOrientedPractics.View.Controls.AdressEditorControl();
             this.AmountLabel = new System.Windows.Forms.Label();
             this.ItemListGroupBox = new System.Windows.Forms.GroupBox();
+            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemControls.ItemListControl();
             this.IdLabel = new System.Windows.Forms.Label();
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.CreatedDateTimeTextBox = new System.Windows.Forms.TextBox();
@@ -46,8 +48,6 @@
             this.DesiredDeliveryTimeLabel = new System.Windows.Forms.Label();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.TotalLabel = new System.Windows.Forms.Label();
-            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemControls.ItemListControl();
-            this.AdressEditorControl = new ObjectOrientedPractics.View.Controls.AdressEditorControl();
             this.AdressGroupBox.SuspendLayout();
             this.ItemListGroupBox.SuspendLayout();
             this.PriorityOptionsPanel.SuspendLayout();
@@ -64,6 +64,14 @@
             this.AdressGroupBox.TabIndex = 1;
             this.AdressGroupBox.TabStop = false;
             this.AdressGroupBox.Text = "Adress";
+            // 
+            // AdressEditorControl
+            // 
+            this.AdressEditorControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AdressEditorControl.Location = new System.Drawing.Point(3, 16);
+            this.AdressEditorControl.Name = "AdressEditorControl";
+            this.AdressEditorControl.Size = new System.Drawing.Size(489, 151);
+            this.AdressEditorControl.TabIndex = 0;
             // 
             // AmountLabel
             // 
@@ -87,6 +95,19 @@
             this.ItemListGroupBox.TabIndex = 3;
             this.ItemListGroupBox.TabStop = false;
             this.ItemListGroupBox.Text = "Item list";
+            // 
+            // ItemListControl
+            // 
+            this.ItemListControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ItemListControl.IsAdding = false;
+            this.ItemListControl.IsEditor = false;
+            this.ItemListControl.IsRemoving = false;
+            this.ItemListControl.IsSampling = false;
+            this.ItemListControl.Location = new System.Drawing.Point(3, 16);
+            this.ItemListControl.Name = "ItemListControl";
+            this.ItemListControl.SelectedItem = null;
+            this.ItemListControl.Size = new System.Drawing.Size(489, 197);
+            this.ItemListControl.TabIndex = 0;
             // 
             // IdLabel
             // 
@@ -211,25 +232,6 @@
             this.TotalLabel.Size = new System.Drawing.Size(34, 13);
             this.TotalLabel.TabIndex = 11;
             this.TotalLabel.Text = "Total:";
-            // 
-            // ItemListControl
-            // 
-            this.ItemListControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemListControl.IsAdding = false;
-            this.ItemListControl.IsEditor = false;
-            this.ItemListControl.IsRemoving = false;
-            this.ItemListControl.Location = new System.Drawing.Point(3, 16);
-            this.ItemListControl.Name = "ItemListControl";
-            this.ItemListControl.Size = new System.Drawing.Size(489, 197);
-            this.ItemListControl.TabIndex = 0;
-            // 
-            // AdressEditorControl
-            // 
-            this.AdressEditorControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AdressEditorControl.Location = new System.Drawing.Point(3, 16);
-            this.AdressEditorControl.Name = "AdressEditorControl";
-            this.AdressEditorControl.Size = new System.Drawing.Size(489, 151);
-            this.AdressEditorControl.TabIndex = 0;
             // 
             // OrderEditorControl
             // 

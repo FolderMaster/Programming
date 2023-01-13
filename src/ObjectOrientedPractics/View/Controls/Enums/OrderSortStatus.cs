@@ -1,9 +1,9 @@
 ﻿namespace ObjectOrientedPractics.View.Controls.Enums
 {
     /// <summary>
-    /// Перечисление статуса сортировки.
+    /// Перечисление статуса сортировки для заказов.
     /// </summary>
-    public enum SortStatus
+    public enum OrderSortStatus
     {
         None,
         Ascending,

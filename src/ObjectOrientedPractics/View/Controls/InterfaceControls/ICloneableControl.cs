@@ -40,10 +40,9 @@ namespace ObjectOrientedPractics.View.Controls.InterfaceControls
 
         private void CloneButton_Click(object sender, EventArgs e)
         {
-            if (ItemListControl.SelectedIndex != -1)
+            if (ItemListControl.SelectedItem != null)
             {
-                ItemCloneListControl.Items.Add((Item)ItemListControl.Items
-                    [ItemListControl.SelectedIndex].Clone());
+                ItemCloneListControl.Items.Add((Item)ItemListControl.SelectedItem.Clone());
                 ItemCloneListControl.UpdateList();
             }
         }
