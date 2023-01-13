@@ -34,6 +34,9 @@ namespace ObjectOrientedPractics.View.Tabs
             set => ItemListControl.Items = value;
         }
 
+        /// <summary>
+        /// бработчик события создания заказа.
+        /// </summary>
         public event EventHandler OrderCreated;
 
         /// <summary>

@@ -38,8 +38,6 @@ namespace ObjectOrientedPractics.View.Controls.DiscountControls
             InitializeComponent();
 
             PercentDiscountControl.Items = PercentDiscountControl.Items = ItemListControl.Items;
-            PointsDiscountControl.Items = ItemListControl.Items;
-            PercentDiscountControl.Items = ItemListControl.Items;
             UpdateAmountLabel();
         }
 

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
@@ -95,6 +93,7 @@ namespace ObjectOrientedPractics.View.Controls.OrderControls
                 _customers = value;
                 if (value != null)
                 {
+                    RefreshData();
                     RefreshData();
                 }
             }
@@ -340,7 +339,6 @@ namespace ObjectOrientedPractics.View.Controls.OrderControls
             }
             _isProcessing = false;
             RefreshView();
-            
         }
 
         /// <summary>
@@ -394,6 +392,11 @@ namespace ObjectOrientedPractics.View.Controls.OrderControls
         private void IsPriorityCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             RefreshView();
+        }
+
+        private void OrderGridViewControl_Load(object sender, EventArgs e)
+        {
+            RefreshData();
         }
     }
 }
