@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{223C9486-2DC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectOrientedPractics", "src\ObjectOrientedPractics\ObjectOrientedPractics.csproj", "{29A30578-A4DD-4DAD-94B1-66FF2ADD7019}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApp", "ContactApp\ContactApp.csproj", "{996FB1B1-1F0B-4083-9B88-63AD8E3F7086}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{29A30578-A4DD-4DAD-94B1-66FF2ADD7019}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29A30578-A4DD-4DAD-94B1-66FF2ADD7019}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29A30578-A4DD-4DAD-94B1-66FF2ADD7019}.Release|Any CPU.Build.0 = Release|Any CPU
+		{996FB1B1-1F0B-4083-9B88-63AD8E3F7086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{996FB1B1-1F0B-4083-9B88-63AD8E3F7086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{996FB1B1-1F0B-4083-9B88-63AD8E3F7086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{996FB1B1-1F0B-4083-9B88-63AD8E3F7086}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{8D335DC1-A933-41D9-8D37-E1DEF7AC4229} = {4F87E6DE-4EC1-4281-99FB-3AC01901AB7C}
 		{C50A9208-EEF5-455B-AC19-D467225AA1D8} = {4F87E6DE-4EC1-4281-99FB-3AC01901AB7C}
 		{29A30578-A4DD-4DAD-94B1-66FF2ADD7019} = {4F87E6DE-4EC1-4281-99FB-3AC01901AB7C}
+		{996FB1B1-1F0B-4083-9B88-63AD8E3F7086} = {4F87E6DE-4EC1-4281-99FB-3AC01901AB7C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F3228D6-E1F0-4A06-AD4E-FA160D569261}

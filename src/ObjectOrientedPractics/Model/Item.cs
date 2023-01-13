@@ -73,7 +73,11 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertStringOnLessLength(value, MaxNameLength, nameof(Name));
-                _name = value;
+                if(value != _name)
+                {
+                    _name = value;
+                    NameChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -87,7 +91,11 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertStringOnLessLength(value, MaxInfoLength, nameof(Info));
-                _info = value;
+                if(value != _info)
+                {
+                    _info = value;
+                    InfoChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -101,7 +109,11 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertValueInRange(value, CostMin, CostMax, nameof(Cost));
-                _cost = value;
+                if (value != _cost)
+                {
+                    _cost = value;
+                    CostChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -109,6 +121,21 @@ namespace ObjectOrientedPractics.Model
         /// Возвращает и задаёт категорию товара.
         /// </summary>
         public ItemCategory Category { get; set; } = ItemCategory.None;
+
+        /// <summary>
+        /// Обработчик события изменения свойства <see cref="Name"/>.
+        /// </summary>
+        public event EventHandler NameChanged;
+
+        /// <summary>
+        /// Обработчик события изменения свойства <see cref="Info"/>.
+        /// </summary>
+        public event EventHandler InfoChanged;
+
+        /// <summary>
+        /// Обработчик события изменения свойства <see cref="Cost"/>.
+        /// </summary>
+        public event EventHandler CostChanged;
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="Item"/> по-умолчанию.

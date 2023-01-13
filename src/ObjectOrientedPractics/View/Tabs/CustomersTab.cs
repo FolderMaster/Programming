@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-using ObjectOrientedPractics.View.Controls.Enums;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services.Factories;
-using ObjectOrientedPractics.View.Controls.ItemControls;
 
 namespace ObjectOrientedPractics.View.Tabs
 {

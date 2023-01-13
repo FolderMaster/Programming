@@ -44,12 +44,6 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
         }
 
         /// <summary>
-        /// Возвращает и задаёт режим обновления <see cref="UpdateMode"/>.
-        /// </summary>
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public UpdateType UpdateMode { set; get; }
-
-        /// <summary>
         /// Обработчик события изменения <see cref="Customer"/>.
         /// </summary>
         public event EventHandler CurrentPropertyChanged;
@@ -68,7 +62,6 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
         private void FullNameParse()
         {
             Customer.FullName = FullNameTextBox.Text;
-            UpdateMode = UpdateType.UpdateList;
         }
 
         /// <summary>
@@ -77,7 +70,6 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
         private void IsPriorityParse()
         {
             Customer.IsPriority = IsPriorityCheckBox.Checked;
-            UpdateMode = UpdateType.None;
         }
 
         /// <summary>
@@ -87,7 +79,6 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
         {
             Customer.BirthDate = DateTime.Parse(BirthDateTextBox.Text);
             DiscountListControl.UpdateListBox();
-            UpdateMode = UpdateType.None;
         }
 
         /// <summary>

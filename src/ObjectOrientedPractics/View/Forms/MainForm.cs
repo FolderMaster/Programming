@@ -93,19 +93,19 @@ namespace ObjectOrientedPractics.View.Forms
 
         private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch(TabControl.SelectedIndex)
-            {
-                case 2:
-                    CartsTab.RefreshItems();
-                    CartsTab.RefreshCustomers();
-                    break;
-                case 3:
-                    OrdersTab.RefreshData();
-                    break;
-                case 4:
-                    InterfaceTab.RefreshItems();
-                    break;
-            }
+            //switch (TabControl.SelectedIndex)
+            //{
+            //    case 2:
+            //        CartsTab.RefreshItems();
+            //        CartsTab.RefreshCustomers();
+            //        break;
+            //    case 3:
+            //        OrdersTab.RefreshData();
+            //        break;
+            //    case 4:
+            //        InterfaceTab.RefreshItems();
+            //        break;
+            //}
         }
     }
 }

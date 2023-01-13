@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ObjectOrientedPractics.View.Controls
 {

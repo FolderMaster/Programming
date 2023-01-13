@@ -85,7 +85,11 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertValueInRange(value, MinIndex, MaxIndex, nameof(Index));
-                _index = value;
+                if(_index != value)
+                {
+                    _index = value;
+                    AdressChanged?.Invoke(value, EventArgs.Empty);
+                }
             }
         }
 
@@ -99,7 +103,11 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertStringOnLessLength(value, MaxCountryLength, nameof(Country));
-                _country = value;
+                if(_country != value)
+                {
+                    _country = value;
+                    AdressChanged?.Invoke(value, EventArgs.Empty);
+                }
             }
         }
 
@@ -113,7 +121,11 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertStringOnLessLength(value, MaxCityLength, nameof(City));
-                _city = value;
+                if(_city != value)
+                {
+                    _city = value;
+                    AdressChanged?.Invoke(value, EventArgs.Empty);
+                }
             }
         }
 
@@ -127,7 +139,11 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertStringOnLessLength(value, MaxStreetLength, nameof(Street));
-                _street = value;
+                if(_street != value)
+                {
+                    _street = value;
+                    AdressChanged?.Invoke(value, EventArgs.Empty);
+                }
             }
         }
 
@@ -142,7 +158,11 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLessLength(value, MaxBuildingLength,
                     nameof(Building));
-                _building = value;
+                if(_building != value)
+                {
+                    _building = value;
+                    AdressChanged?.Invoke(value, EventArgs.Empty);
+                }
             }
         }
 
@@ -157,9 +177,18 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLessLength(value, MaxApartmentLength,
                     nameof(Apartment));
-                _apartment = value;
+                if(_apartment != value)
+                {
+                    _apartment = value;
+                    AdressChanged?.Invoke(value, EventArgs.Empty);
+                }
             }
         }
+
+        /// <summary>
+        /// Обработчик события изменения класса.
+        /// </summary>
+        public event EventHandler AdressChanged;
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="Adress"/> по-умолчанию.
