@@ -63,9 +63,9 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
-            if(ItemListControl.SelectedIndex != -1)
+            if(ItemListControl.SelectedItem != null)
             {
-                CartEditorControl.AddItem(ItemListControl.Items[ItemListControl.SelectedIndex]);
+                CartEditorControl.AddItem(ItemListControl.SelectedItem);
                 CartEditorControl.RefreshCart();
             }
         }

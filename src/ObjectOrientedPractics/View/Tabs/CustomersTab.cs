@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using ObjectOrientedPractics.View.Controls.Enums;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services.Factories;
+using ObjectOrientedPractics.View.Controls.ItemControls;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -50,39 +51,19 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void CustomerListControl_ListBoxSelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CustomerListControl.SelectedIndex != -1)
-            {
-                CustomerEditorControl.Customer = CustomerListControl.Customers
-                    [CustomerListControl.SelectedIndex];
-            }
-            else
-            {
-                CustomerEditorControl.Customer = null;
-            }
+            CustomerEditorControl.Customer = CustomerListControl.SelectedCustomer;
             CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void CustomerListControl_RemoveButtonClick(object sender, EventArgs e)
         {
-            if (CustomerListControl.SelectedIndex != -1)
-            {
-                CustomerEditorControl.Customer = CustomerListControl.Customers
-                    [CustomerListControl.SelectedIndex];
-            }
+            CustomerEditorControl.Customer = CustomerListControl.SelectedCustomer;
             CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void CustomerEditorControl_CurrentPropertyChanged(object sender, EventArgs e)
         {
-            switch (CustomerEditorControl.UpdateMode)
-            {
-                case UpdateType.UpdateCurrentObject:
-                    CustomerListControl.UpdateList();
-                    break;
-                case UpdateType.UpdateList:
-                    CustomerListControl.UpdateListWithSort();
-                    break;
-            }
+            CustomerListControl.UpdateList();
             CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 

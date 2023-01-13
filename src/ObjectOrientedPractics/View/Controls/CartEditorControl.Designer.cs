@@ -31,11 +31,11 @@
             this.TotalLabel = new System.Windows.Forms.Label();
             this.CreateOrderButton = new System.Windows.Forms.Button();
             this.ItemListGroupBox = new System.Windows.Forms.GroupBox();
+            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemControls.ItemListControl();
             this.DiscountCheckListGroupBox = new System.Windows.Forms.GroupBox();
+            this.DiscountCheckListControl = new ObjectOrientedPractics.View.Controls.DiscountControls.DiscountCheckListControl();
             this.AmountLabel = new System.Windows.Forms.Label();
             this.DiscountAmountLabel = new System.Windows.Forms.Label();
-            this.DiscountCheckListControl = new ObjectOrientedPractics.View.Controls.DiscountControls.DiscountCheckListControl();
-            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemControls.ItemListControl();
             this.ItemListGroupBox.SuspendLayout();
             this.DiscountCheckListGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -73,6 +73,20 @@
             this.ItemListGroupBox.TabStop = false;
             this.ItemListGroupBox.Text = "Item list";
             // 
+            // ItemListControl
+            // 
+            this.ItemListControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ItemListControl.IsAdding = false;
+            this.ItemListControl.IsEditor = true;
+            this.ItemListControl.IsRemoving = true;
+            this.ItemListControl.IsSampling = false;
+            this.ItemListControl.Location = new System.Drawing.Point(3, 16);
+            this.ItemListControl.Name = "ItemListControl";
+            this.ItemListControl.SelectedItem = null;
+            this.ItemListControl.Size = new System.Drawing.Size(322, 237);
+            this.ItemListControl.TabIndex = 0;
+            this.ItemListControl.RemoveFromItems += new System.EventHandler(this.ItemListControl_RemoveFromItems);
+            // 
             // DiscountCheckListGroupBox
             // 
             this.DiscountCheckListGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -85,6 +99,15 @@
             this.DiscountCheckListGroupBox.TabIndex = 5;
             this.DiscountCheckListGroupBox.TabStop = false;
             this.DiscountCheckListGroupBox.Text = "Discount check list";
+            // 
+            // DiscountCheckListControl
+            // 
+            this.DiscountCheckListControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DiscountCheckListControl.Location = new System.Drawing.Point(3, 16);
+            this.DiscountCheckListControl.Name = "DiscountCheckListControl";
+            this.DiscountCheckListControl.Size = new System.Drawing.Size(322, 104);
+            this.DiscountCheckListControl.TabIndex = 0;
+            this.DiscountCheckListControl.DiscountAmountChanged += new System.EventHandler(this.DiscountCheckListControl_DiscountAmountChanged);
             // 
             // AmountLabel
             // 
@@ -104,27 +127,6 @@
             this.DiscountAmountLabel.Size = new System.Drawing.Size(93, 13);
             this.DiscountAmountLabel.TabIndex = 7;
             this.DiscountAmountLabel.Text = "Discount amount: ";
-            // 
-            // DiscountCheckListControl
-            // 
-            this.DiscountCheckListControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DiscountCheckListControl.Location = new System.Drawing.Point(3, 16);
-            this.DiscountCheckListControl.Name = "DiscountCheckListControl";
-            this.DiscountCheckListControl.Size = new System.Drawing.Size(322, 104);
-            this.DiscountCheckListControl.TabIndex = 0;
-            this.DiscountCheckListControl.DiscountAmountChanged += new System.EventHandler(this.DiscountCheckListControl_DiscountAmountChanged);
-            // 
-            // ItemListControl
-            // 
-            this.ItemListControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemListControl.IsAdding = false;
-            this.ItemListControl.IsEditor = true;
-            this.ItemListControl.IsRemoving = true;
-            this.ItemListControl.Location = new System.Drawing.Point(3, 16);
-            this.ItemListControl.Name = "ItemListControl";
-            this.ItemListControl.Size = new System.Drawing.Size(322, 237);
-            this.ItemListControl.TabIndex = 0;
-            this.ItemListControl.RemoveFromItems += new System.EventHandler(this.ItemListControl_RemoveFromItems);
             // 
             // CartEditorControl
             // 

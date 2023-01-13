@@ -42,9 +42,9 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
-            if (ItemListControl.SelectedIndex != -1)
+            if (ItemListControl.SelectedItem != null)
             {
-                DiscountsTestControl.AddItem(ItemListControl.Items[ItemListControl.SelectedIndex]);
+                DiscountsTestControl.AddItem(ItemListControl.SelectedItem);
                 DiscountsTestControl.RefreshItems();
             }
         }

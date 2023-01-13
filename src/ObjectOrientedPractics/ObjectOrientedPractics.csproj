@@ -102,6 +102,7 @@
     <Compile Include="Model\Discounts\PointsDiscount.cs" />
     <Compile Include="Model\Orders\PriorityOrder.cs" />
     <Compile Include="Model\Store.cs" />
+    <Compile Include="Services\DataTools.cs" />
     <Compile Include="Services\Factories\AdressFactory.cs" />
     <Compile Include="Services\Factories\OrderFactory.cs" />
     <Compile Include="Services\IO\CsvManager.cs" />
@@ -167,6 +168,8 @@
     <Compile Include="View\Controls\DiscountControls\DiscountTestControl.Designer.cs">
       <DependentUpon>DiscountTestControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\Enums\CustomerSortStatus.cs" />
+    <Compile Include="View\Controls\Enums\ItemSortStatus.cs" />
     <Compile Include="View\Controls\InterfaceControls\ICloneableControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -216,7 +219,7 @@
     <Compile Include="View\Controls\OrderControls\PriorityOrderCreatorControl.Designer.cs">
       <DependentUpon>PriorityOrderCreatorControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\Enums\SortStatus.cs" />
+    <Compile Include="View\Controls\Enums\OrderSortStatus.cs" />
     <Compile Include="View\Controls\Enums\UpdateType.cs" />
     <Compile Include="View\Controls\ItemControls\ItemEditorControl.cs">
       <SubType>UserControl</SubType>

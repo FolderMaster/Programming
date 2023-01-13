@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Services;
 using ObjectOrientedPractics.Services.Factories;
+using ObjectOrientedPractics.View.Controls.Enums;
 
 namespace ObjectOrientedPractics.View.Controls.CustomerControls
 {
@@ -19,14 +21,19 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
         private BindingSource _bindingSource = new BindingSource();
 
         /// <summary>
-        /// Индекс выбранного экземпляра класса <see cref="Customer"/>.
-        /// </summary>
-        private int _selectedIndex;
-
-        /// <summary>
         /// Cписок экземпляров класса <see cref="Customer"/>.
         /// </summary>
         private List<Customer> _customers = new List<Customer>();
+
+        /// <summary>
+        /// Список отображаемых покупателей.
+        /// </summary>
+        private List<Customer> _displayedCustomers = new List<Customer>();
+
+        /// <summary>
+        /// Выбранный покупатель.
+        /// </summary>
+        private Customer _selectedCustomer = null;
 
         /// <summary>
         /// Возвращает и задаёт индекс выбранного экземпляра класса <see cref="Customer"/>.
@@ -34,14 +41,33 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int SelectedIndex
         {
-            get => _selectedIndex;
+            get => ListBox.SelectedIndex;
             set
             {
-                if (value < ListBox.Items.Count)
+                if (value != -1 && value < ListBox.Items.Count)
                 {
-                    _selectedIndex = value;
                     ListBox.SelectedIndex = value;
-                    ListBoxSelectedIndexChanged?.Invoke(this, EventArgs.Empty);
+                    SelectedCustomer = _displayedCustomers[SelectedIndex];
+                }
+                else if (value == -1)
+                {
+                    SelectedCustomer = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Возвращает и задаёт выбранного покупателя.
+        /// </summary>
+        public Customer SelectedCustomer
+        {
+            get => _selectedCustomer;
+            set
+            {
+                if (value != _selectedCustomer)
+                {
+                    _selectedCustomer = value;
+                    SelectedCustomerChanged?.Invoke(this, EventArgs.Empty);
                 }
             }
         }
@@ -56,18 +82,15 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
             set
             {
                 _customers = value;
-                _bindingSource.DataSource = _customers;
 
                 UpdateList();
-                SelectedIndex = 0;
             }
         }
 
-        // <summary>
-        /// Обработчик для события изменения индекса выбранного в списке элементов
-        /// <see cref="ListBox"/>.
+        /// <summary>
+        /// Обработчик для события изменения выбранного покупателя.
         /// </summary>
-        public event EventHandler ListBoxSelectedIndexChanged;
+        public event EventHandler SelectedCustomerChanged;
 
         /// <summary>
         /// Обработчик для события удаления элемента из <see cref="Customers"/>.
@@ -86,8 +109,56 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
         {
             InitializeComponent();
 
-            Customers = new List<Customer>();
+            OrderByComboBox.DataSource = Enum.GetValues(typeof(CustomerSortStatus));
             ListBox.DataSource = _bindingSource;
+        }
+
+        /// <summary>
+        /// Фильтарует покупателей по подстроке имени.
+        /// </summary>
+        /// <param name="customer">Покупатель.</param>
+        /// <param name="text">Подстрока имени.</param>
+        /// <returns>Логическое значение, указывающее, что подстрока названия содержится в названии
+        /// покупателей.</returns>
+        private static bool FilterCustomerByFullName(Customer customer, string text)
+        {
+            return customer.FullName.IndexOf(text, StringComparison.OrdinalIgnoreCase) != -1;
+        }
+
+        /// <summary>
+        /// Указывает нужно ли оставлять покупателя по приоритетности.
+        /// </summary>
+        /// <param name="customer">Покупатель.</param>
+        /// <param name="isPriority">Приоритетность покупателей.</param>
+        /// <returns>Логическое значение, указывающее, что покупатель обладает данной
+        /// приоритетностью.</returns>
+        private static bool FilterCustomerByIsPriority(Customer customer, bool isPriority)
+        {
+            return customer.IsPriority == isPriority;
+        }
+
+        /// <summary>
+        /// Указывает нужно ли менять покупателей для сортировки по возрастанию даты рождения.
+        /// </summary>
+        /// <param name="customer1">Покупатель.</param>
+        /// <param name="customer2">Покупатель.</param>
+        /// <returns>Логическое значение, указывающее, нужно ли менять покупателей.</returns>
+        private static bool SortCustomerByBirthDateAscending(Customer customer1, Customer 
+            customer2)
+        {
+            return customer1.BirthDate < customer2.BirthDate;
+        }
+
+        /// <summary>
+        /// Указывает нужно ли менять покупателей для сортировки по возрастанию даты рождения.
+        /// </summary>
+        /// <param name="customer1">Покупатель.</param>
+        /// <param name="customer2">Покупатель.</param>
+        /// <returns>Логическое значение, указывающее, нужно ли менять покупателей.</returns>
+        private static bool SortCustomerByBirthDateDescending(Customer customer1, Customer
+            customer2)
+        {
+            return customer1.BirthDate > customer2.BirthDate;
         }
 
         /// <summary>
@@ -95,34 +166,42 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
         /// </summary>
         public void UpdateList()
         {
-            _bindingSource.ResetBindings(false);
-        }
-
-        /// <summary>
-        /// Обновляет с сортировкой информацию списка <see cref="Customers"/>.
-        /// </summary>
-        public void UpdateListWithSort()
-        {
-            Customer item = null;
-            if (SelectedIndex != -1)
+            _displayedCustomers = new List<Customer>();
+            if (Customers != null)
             {
-                item = Customers[SelectedIndex];
+                _displayedCustomers.AddRange(Customers);
+                switch (OrderByComboBox.SelectedItem)
+                {
+                    case CustomerSortStatus.None: break;
+                    case CustomerSortStatus.BirthDateAscending: _displayedCustomers = 
+                            DataTools.SortData(_displayedCustomers, 
+                            SortCustomerByBirthDateAscending); break;
+                    case CustomerSortStatus.BirthDateDescending: _displayedCustomers =
+                            DataTools.SortData(_displayedCustomers,
+                            SortCustomerByBirthDateDescending); break;
+                    default: throw new ArgumentException();
+                }
+                if(PriorityCustomersCheckBox.Checked)
+                {
+                    _displayedCustomers = DataTools.FilterData(_displayedCustomers,
+                        FilterCustomerByIsPriority, true);
+                }
+                _displayedCustomers = DataTools.FilterData(_displayedCustomers,
+                    FilterCustomerByFullName, FindTextBox.Text);
             }
-            SortCustomers();
-            _bindingSource.ResetBindings(false);
-            if (SelectedIndex != -1)
+            _bindingSource.DataSource = _displayedCustomers;
+            if (_displayedCustomers.Count == 0)
             {
-                SelectedIndex = Customers.IndexOf(item);
+                SelectedIndex = -1;
             }
-        }
-
-        /// <summary>
-        /// Сортировка по <see cref="Customer.FullName"/> в алфавитном порядке списка
-        /// <see cref="Customers"/>.
-        /// </summary>
-        private void SortCustomers()
-        {
-            Customers.Sort((a, b) => string.Compare(a.FullName, b.FullName));
+            else if (SelectedCustomer == null || !_displayedCustomers.Contains(SelectedCustomer))
+            {
+                SelectedIndex = 0;
+            }
+            else
+            {
+                SelectedIndex = _displayedCustomers.IndexOf(SelectedCustomer);
+            }
         }
 
         private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -133,22 +212,14 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
         private void AddEmptyButton_Click(object sender, EventArgs e)
         {
             Customers.Add(new Customer());
-            UpdateListWithSort();
-            if (Customers.Count == 1)
-            {
-                SelectedIndex = 0;
-            }
+            UpdateList();
             AddToCustomers?.Invoke(this, EventArgs.Empty);
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
             Customers.Add(CustomerFactory.CreateCustomer());
-            UpdateListWithSort();
-            if (Customers.Count == 1)
-            {
-                SelectedIndex = 0;
-            }
+            UpdateList();
             AddToCustomers?.Invoke(this, EventArgs.Empty);
         }
 
@@ -160,6 +231,21 @@ namespace ObjectOrientedPractics.View.Controls.CustomerControls
                 UpdateList();
                 RemoveFromCustomers?.Invoke(this, EventArgs.Empty);
             }
+        }
+
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateList();
+        }
+
+        private void OrderByComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateList();
+        }
+
+        private void PriorityCustomersCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateList();
         }
     }
 }

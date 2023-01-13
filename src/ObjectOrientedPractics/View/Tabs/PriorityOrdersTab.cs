@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Model.Orders;
 using ObjectOrientedPractics.Model.Enums;
+using ObjectOrientedPractics.View.Controls.ItemControls;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -50,18 +51,19 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
-            if (ItemListControl.SelectedIndex != -1)
+            if (ItemListControl.SelectedItem != null)
             {
-                PriorityOrderCreatorControl.AddItem(Items[ItemListControl.SelectedIndex]);
+                PriorityOrderCreatorControl.AddItem(ItemListControl.SelectedItem);
                 PriorityOrderCreatorControl.RefreshPriorityOrder();
             }
         }
 
         private void RandomlyAddToCartButton_Click(object sender, EventArgs e)
         {
-            if (ItemListControl.SelectedIndex != -1)
+            if (ItemListControl.SelectedItem != null)
             {
-                PriorityOrderCreatorControl.AddItem(Items[_random.Next(Items.Count)]);
+                PriorityOrderCreatorControl.AddItem(ItemListControl.Items[_random.Next
+                    (ItemListControl.Items.Count)]);
                 PriorityOrderCreatorControl.RefreshPriorityOrder();
             }
         }

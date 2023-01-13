@@ -38,8 +38,8 @@
             // 
             // ItemListGroupBox
             // 
-            this.ItemListGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.ItemListGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ItemListGroupBox.Controls.Add(this.ItemListControl);
             this.ItemListGroupBox.Location = new System.Drawing.Point(0, 0);
@@ -55,8 +55,10 @@
             this.ItemListControl.IsAdding = false;
             this.ItemListControl.IsEditor = true;
             this.ItemListControl.IsRemoving = true;
+            this.ItemListControl.IsSampling = false;
             this.ItemListControl.Location = new System.Drawing.Point(3, 16);
             this.ItemListControl.Name = "ItemListControl";
+            this.ItemListControl.SelectedItem = null;
             this.ItemListControl.Size = new System.Drawing.Size(513, 357);
             this.ItemListControl.TabIndex = 0;
             this.ItemListControl.RemoveFromItems += new System.EventHandler(this.ItemListControl_RemoveFromItems);
@@ -73,7 +75,7 @@
             // 
             // PointsDiscountControl
             // 
-            this.PointsDiscountControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.PointsDiscountControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PointsDiscountControl.Discount = 0;
             this.PointsDiscountControl.Location = new System.Drawing.Point(0, 395);
@@ -84,7 +86,7 @@
             // 
             // PercentDiscountControl
             // 
-            this.PercentDiscountControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.PercentDiscountControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PercentDiscountControl.Discount = 0;
             this.PercentDiscountControl.Location = new System.Drawing.Point(0, 456);
@@ -93,7 +95,7 @@
             this.PercentDiscountControl.TabIndex = 1;
             this.PercentDiscountControl.Applied += new System.EventHandler(this.PercentDiscountControl_Applied);
             // 
-            // DiscountsTestControl
+            // DiscountTestControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -101,7 +103,7 @@
             this.Controls.Add(this.ItemListGroupBox);
             this.Controls.Add(this.PointsDiscountControl);
             this.Controls.Add(this.PercentDiscountControl);
-            this.Name = "DiscountsTestControl";
+            this.Name = "DiscountTestControl";
             this.Size = new System.Drawing.Size(519, 510);
             this.ItemListGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);

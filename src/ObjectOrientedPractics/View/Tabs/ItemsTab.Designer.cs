@@ -56,10 +56,9 @@
             this.ItemListControl.IsRemoving = true;
             this.ItemListControl.Location = new System.Drawing.Point(3, 16);
             this.ItemListControl.Name = "ItemListControl";
-            this.ItemListControl.SelectedIndex = 0;
             this.ItemListControl.Size = new System.Drawing.Size(318, 481);
             this.ItemListControl.TabIndex = 1;
-            this.ItemListControl.ListBoxSelectedIndexChanged += new System.EventHandler(this.ItemListControl_ListBoxSelectedIndexChanged);
+            this.ItemListControl.SelectedItemChanged += new System.EventHandler(this.ItemListControl_ListBoxSelectedIndexChanged);
             this.ItemListControl.RemoveFromItems += new System.EventHandler(this.ItemListControl_RemoveButtonClick);
             this.ItemListControl.AddToItems += new System.EventHandler(this.ItemListControl_AddButtonClick);
             // 
@@ -84,7 +83,6 @@
             this.ItemEditorControl.Name = "ItemEditorControl";
             this.ItemEditorControl.Size = new System.Drawing.Size(464, 481);
             this.ItemEditorControl.TabIndex = 3;
-            this.ItemEditorControl.UpdateMode = ObjectOrientedPractics.View.Controls.Enums.UpdateType.None;
             this.ItemEditorControl.CurrentPropertyChanged += new System.EventHandler(this.ItemEditorControl_CurrentPropertyChanged);
             // 
             // ItemsTab

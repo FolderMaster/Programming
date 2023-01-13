@@ -78,7 +78,7 @@
             this.CustomerListControl.Name = "CustomerListControl";
             this.CustomerListControl.Size = new System.Drawing.Size(318, 481);
             this.CustomerListControl.TabIndex = 1;
-            this.CustomerListControl.ListBoxSelectedIndexChanged += new System.EventHandler(this.CustomerListControl_ListBoxSelectedIndexChanged);
+            this.CustomerListControl.SelectedCustomerChanged += new System.EventHandler(this.CustomerListControl_ListBoxSelectedIndexChanged);
             this.CustomerListControl.RemoveFromCustomers += new System.EventHandler(this.CustomerListControl_RemoveButtonClick);
             this.CustomerListControl.AddToCustomers += new System.EventHandler(this.CustomerListControl_AddButtonClick);
             // 

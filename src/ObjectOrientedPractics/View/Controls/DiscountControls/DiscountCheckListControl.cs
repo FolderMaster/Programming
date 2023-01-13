@@ -121,9 +121,12 @@ namespace ObjectOrientedPractics.View.Controls.DiscountControls
         private int CalculateDiscounts()
         {
             int result = 0;
-            foreach(int index in CheckedListBox.CheckedIndices)
+            if (Discounts != null)
             {
-                result += Discounts[index].Calculate(Items);
+                foreach (int index in CheckedListBox.CheckedIndices)
+                {
+                    result += Discounts[index].Calculate(Items);
+                }
             }
             return result;
         }

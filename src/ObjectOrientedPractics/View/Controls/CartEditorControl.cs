@@ -108,9 +108,9 @@ namespace ObjectOrientedPractics.View.Controls
             {
                 Cart.Items.Add(item);
                 ItemListControl.UpdateList();
-                if (ItemListControl.Items.Count == 1)
+                if (ItemListControl.SelectedItem != null)
                 {
-                    ItemListControl.SelectedIndex = 0;
+                    //ItemListControl.SelectedIndex = 0;
                 }
             }
         }

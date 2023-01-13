@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Windows.Forms;
 
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Services;
 using ObjectOrientedPractics.Services.Factories;
+using ObjectOrientedPractics.View.Controls.Enums;
 
 namespace ObjectOrientedPractics.View.Controls.ItemControls
 {
@@ -19,14 +21,19 @@ namespace ObjectOrientedPractics.View.Controls.ItemControls
         private BindingSource _bindingSource = new BindingSource();
 
         /// <summary>
-        /// Индекс выбранного экземпляра класса <see cref="Item"/>.
-        /// </summary>
-        private int _selectedIndex;
-
-        /// <summary>
         /// Cписок экземпляров класса <see cref="Item"/>.
         /// </summary>
         private List<Item> _items = new List<Item>();
+
+        /// <summary>
+        /// Список отображаемых товаров.
+        /// </summary>
+        private List<Item> _displayedItems = new List<Item>();
+
+        /// <summary>
+        /// Выбранный товар.
+        /// </summary>
+        private Item _selectedItem = null;
 
         /// <summary>
         /// Отображаются ли кнопки для редактирования.
@@ -44,19 +51,43 @@ namespace ObjectOrientedPractics.View.Controls.ItemControls
         private bool _isRemoving = true;
 
         /// <summary>
+        /// Отображаются ли элементы управления для выборки.
+        /// </summary>
+        private bool _isSampling = true;
+
+        /// <summary>
         /// Возвращает и задаёт индекс выбранного экземпляра класса <see cref="Item"/>.
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int SelectedIndex
+        private int SelectedIndex
         {
-            get => _selectedIndex;
+            get => ListBox.SelectedIndex;
             set
             {
-                if(value < ListBox.Items.Count)
+                if(value != -1 && value < ListBox.Items.Count)
                 {
-                    _selectedIndex = value;
                     ListBox.SelectedIndex = value;
-                    ListBoxSelectedIndexChanged?.Invoke(this, EventArgs.Empty);
+                    SelectedItem = _displayedItems[SelectedIndex];
+                }
+                else if (value == -1)
+                {
+                    SelectedItem = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Возвращает и задаёт выбранный товар.
+        /// </summary>
+        public Item SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                if(value != _selectedItem)
+                {
+                    _selectedItem = value;
+                    SelectedItemChanged?.Invoke(this, EventArgs.Empty);
                 }
             }
         }
@@ -71,10 +102,8 @@ namespace ObjectOrientedPractics.View.Controls.ItemControls
             set
             {
                 _items = value;
-                _bindingSource.DataSource = _items;
 
                 UpdateList();
-                SelectedIndex = 0;
             }
         }
 
@@ -87,36 +116,7 @@ namespace ObjectOrientedPractics.View.Controls.ItemControls
             set
             {
                 _isEditor = value;
-                if (IsAdding && IsEditor)
-                {
-                    AddButton.Visible = true;
-                    AddEmptyButton.Visible = true;
-                }
-                else
-                {
-                    AddButton.Visible = false;
-                    AddEmptyButton.Visible = false;
-                }
-
-                if (IsRemoving && IsEditor)
-                {
-                    RemoveButton.Visible = true;
-                    ClearAllButton.Visible = true;
-                }
-                else
-                {
-                    RemoveButton.Visible = false;
-                    ClearAllButton.Visible = false;
-                }
-
-                if (IsEditor)
-                {
-                    ListBox.Dock = DockStyle.None;
-                }
-                else
-                {
-                    ListBox.Dock = DockStyle.Fill;
-                }
+                UpdateVisibleControl(EditorPanel, IsEditor);
             }
         }
 
@@ -129,16 +129,8 @@ namespace ObjectOrientedPractics.View.Controls.ItemControls
             set
             {
                 _isAdding = value;
-                if (IsAdding && IsEditor)
-                {
-                    AddButton.Visible = true;
-                    AddEmptyButton.Visible = true;
-                }
-                else
-                {
-                    AddButton.Visible = false;
-                    AddEmptyButton.Visible = false;
-                }
+                UpdateVisibleControl(AddButton, IsAdding);
+                UpdateVisibleControl(AddEmptyButton, IsAdding);
             }
         }
 
@@ -151,24 +143,28 @@ namespace ObjectOrientedPractics.View.Controls.ItemControls
             set
             {
                 _isRemoving = value;
-                if (IsRemoving && IsEditor)
-                {
-                    RemoveButton.Visible = true;
-                    ClearAllButton.Visible = true;
-                }
-                else
-                {
-                    RemoveButton.Visible = false;
-                    ClearAllButton.Visible = false;
-                }
+                UpdateVisibleControl(RemoveButton, IsRemoving);
+                UpdateVisibleControl(ClearAllButton, IsRemoving);
             }
         }
 
         /// <summary>
-        /// Обработчик для события изменения индекса выбранного в списке элементов
-        /// <see cref="ListBox"/>.
+        /// Возращает или задаёт отображаются ли элементы управления для выборки.
         /// </summary>
-        public event EventHandler ListBoxSelectedIndexChanged;
+        public bool IsSampling
+        {
+            get => _isSampling;
+            set
+            {
+                _isSampling = value;
+                UpdateVisibleControl(SamplingPanel, IsSampling);
+            }
+        }
+
+        /// <summary>
+        /// Обработчик для события изменения выбранного товара.
+        /// </summary>
+        public event EventHandler SelectedItemChanged;
 
         /// <summary>
         /// Обработчик для события удаления элемента из <see cref="Items"/>.
@@ -187,43 +183,126 @@ namespace ObjectOrientedPractics.View.Controls.ItemControls
         {
             InitializeComponent();
 
-            Items = new List<Item>();
+            OrderByComboBox.DataSource = Enum.GetValues(typeof(ItemSortStatus));
             ListBox.DataSource = _bindingSource;
         }
 
         /// <summary>
-        /// Обновляет информацию списка <see cref="Items"/>.
+        /// Фильтарует товары по подстроке названия.
+        /// </summary>
+        /// <param name="item">Товар.</param>
+        /// <param name="text">Подстрока названия.</param>
+        /// <returns>Логическое значение, указывающее, что подстрока названия содержится в названии
+        /// товара.</returns>
+        private static bool FilterItemByName(Item item, string text)
+        {
+            return item.Name.IndexOf(text, StringComparison.OrdinalIgnoreCase) != -1;
+        }
+
+        /// <summary>
+        /// Указывает нужно ли менять товары для сортировки по возрастанию цены.
+        /// </summary>
+        /// <param name="item1">Товар.</param>
+        /// <param name="item2">Товар.</param>
+        /// <returns>Логическое значение, указывающее, нужно ли менять товары.</returns>
+        private static bool CompareItemByNameAscending(Item item1, Item item2)
+        {
+            return item1.Name.CompareTo(item2.Name) < 0;
+        }
+
+        /// <summary>
+        /// Указывает нужно ли менять товары для сортировки по убыванию цены.
+        /// </summary>
+        /// <param name="item1">Товар.</param>
+        /// <param name="item2">Товар.</param>
+        /// <returns>Логическое значение, указывающее, нужно ли менять товары.</returns>
+        private static bool CompareItemByNameDescending(Item item1, Item item2)
+        {
+            return item1.Name.CompareTo(item2.Name) > 0;
+        }
+
+        /// <summary>
+        /// Указывает нужно ли менять товары для сортировки в алфавитном порядке.
+        /// </summary>
+        /// <param name="item1">Товар.</param>
+        /// <param name="item2">Товар.</param>
+        /// <returns>Логическое значение, указывающее, нужно ли менять товары.</returns>
+        private static bool CompareItemByCostAscending(Item item1, Item item2)
+        {
+            return item1.Cost < item2.Cost;
+        }
+
+        /// <summary>
+        /// Указывает нужно ли менять товары для сортировки в обратном алфавитном порядке.
+        /// </summary>
+        /// <param name="item1">Товар.</param>
+        /// <param name="item2">Товар.</param>
+        /// <returns>Логическое значение, указывающее, нужно ли менять товары.</returns>
+        private static bool CompareItemByCostDescending(Item item1, Item item2)
+        {
+            return item1.Cost > item2.Cost;
+        }
+
+        /// <summary>
+        /// Обновляет видимость для элемента управления.
+        /// </summary>
+        /// <param name="control">Элемент управления.</param>
+        /// <param name="isVisible">Логическое значение, отображается ли элемент 
+        /// управления.</param>
+        private void UpdateVisibleControl(Control control, bool isVisible)
+        {
+            if (isVisible)
+            {
+                control.Visible = true;
+            }
+            else
+            {
+                control.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// Обновляет список видимых товаров.
         /// </summary>
         public void UpdateList()
         {
-            _bindingSource.ResetBindings(false);
-        }
-
-        /// <summary>
-        /// Обновляет с сортировкой информацию списка <see cref="Items"/>.
-        /// </summary>
-        public void UpdateListWithSort()
-        {
-            Item item = null;
-            if (SelectedIndex != -1)
+            _displayedItems = new List<Item>();
+            if (Items != null)
             {
-                item = Items[SelectedIndex];
+                _displayedItems.AddRange(Items);
+                switch (OrderByComboBox.SelectedItem)
+                {
+                    case ItemSortStatus.None: break;
+                    case ItemSortStatus.NameAscending:
+                        _displayedItems = DataTools.SortData
+                            (_displayedItems, CompareItemByNameAscending); break;
+                    case ItemSortStatus.NameDescending:
+                        _displayedItems = DataTools.SortData
+                            (_displayedItems, CompareItemByNameDescending); break;
+                    case ItemSortStatus.CostAscending:
+                        _displayedItems = DataTools.SortData
+                            (_displayedItems, CompareItemByCostAscending); break;
+                    case ItemSortStatus.CostDescending:
+                        _displayedItems = DataTools.SortData
+                            (_displayedItems, CompareItemByCostDescending); break;
+                    default: throw new ArgumentException();
+                }
+                _displayedItems = DataTools.FilterData(_displayedItems, FilterItemByName,
+                    FindTextBox.Text);
             }
-            SortItems();
-            _bindingSource.ResetBindings(false);
-            if (SelectedIndex != -1)
+            _bindingSource.DataSource = _displayedItems;
+            if (_displayedItems.Count == 0)
             {
-                SelectedIndex = Items.IndexOf(item);
+                SelectedIndex = -1;
             }
-        }
-
-        /// <summary>
-        /// Сортировка по названию<see cref="Item.Name"/> в алфавитном порядке списка
-        /// <see cref="Items"/>.
-        /// </summary>
-        private void SortItems()
-        {
-            Items.Sort((a, b) => string.Compare(a.Name, b.Name));
+            else if (SelectedItem == null || !_displayedItems.Contains(SelectedItem))
+            {
+                SelectedIndex = 0;
+            }
+            else
+            {
+                SelectedIndex = _displayedItems.IndexOf(SelectedItem);
+            }
         }
 
         private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -234,22 +313,14 @@ namespace ObjectOrientedPractics.View.Controls.ItemControls
         private void AddEmptyButton_Click(object sender, EventArgs e)
         {
             Items.Add(new Item());
-            UpdateListWithSort();
-            if (Items.Count == 1)
-            {
-                SelectedIndex = 0;
-            }
+            UpdateList();
             AddToItems?.Invoke(this, EventArgs.Empty);
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
             Items.Add(ItemFactory.CreateItem());
-            UpdateListWithSort();
-            if (Items.Count == 1)
-            {
-                SelectedIndex = 0;
-            }
+            UpdateList();
             AddToItems?.Invoke(this, EventArgs.Empty);
         }
 
@@ -259,7 +330,7 @@ namespace ObjectOrientedPractics.View.Controls.ItemControls
             {
                 if (Items.Count != 0)
                 {
-                    Items.RemoveAt(SelectedIndex);
+                    Items.Remove(SelectedItem);
                     UpdateList();
                     RemoveFromItems?.Invoke(this, EventArgs.Empty);
                 }
@@ -277,6 +348,16 @@ namespace ObjectOrientedPractics.View.Controls.ItemControls
                     RemoveFromItems?.Invoke(this, EventArgs.Empty);
                 }
             }
+        }
+
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateList();
+        }
+
+        private void OrderByComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateList();
         }
     }
 }

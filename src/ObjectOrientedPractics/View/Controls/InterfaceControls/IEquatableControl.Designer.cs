@@ -82,7 +82,7 @@
             this.ItemListControl2.Name = "ItemListControl2";
             this.ItemListControl2.Size = new System.Drawing.Size(429, 587);
             this.ItemListControl2.TabIndex = 0;
-            this.ItemListControl2.ListBoxSelectedIndexChanged += new System.EventHandler(this.ItemListControl2_ListBoxSelectedIndexChanged);
+            this.ItemListControl2.SelectedItemChanged += new System.EventHandler(this.ItemListControl2_ListBoxSelectedIndexChanged);
             // 
             // ItemListControl1
             // 
@@ -94,7 +94,7 @@
             this.ItemListControl1.Name = "ItemListControl1";
             this.ItemListControl1.Size = new System.Drawing.Size(318, 587);
             this.ItemListControl1.TabIndex = 0;
-            this.ItemListControl1.ListBoxSelectedIndexChanged += new System.EventHandler(this.ItemListControl1_ListBoxSelectedIndexChanged);
+            this.ItemListControl1.SelectedItemChanged += new System.EventHandler(this.ItemListControl1_ListBoxSelectedIndexChanged);
             // 
             // IEquatableControl
             // 

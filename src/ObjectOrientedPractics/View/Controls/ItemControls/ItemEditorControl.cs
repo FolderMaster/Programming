@@ -45,12 +45,6 @@ namespace ObjectOrientedPractics.View.Controls.ItemControls
         }
 
         /// <summary>
-        /// Возвращает и задаёт режим обновления <see cref="UpdateMode"/>.
-        /// </summary>
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public UpdateType UpdateMode { set; get; }
-
-        /// <summary>
         /// Обработчик события изменения <see cref="Item"/>.
         /// </summary>
         public event EventHandler CurrentPropertyChanged;
@@ -71,7 +65,6 @@ namespace ObjectOrientedPractics.View.Controls.ItemControls
         private void CostParse()
         {
             Item.Cost = int.Parse(CostTextBox.Text);
-            UpdateMode = UpdateType.UpdateCurrentObject;
         }
 
         /// <summary>
@@ -80,7 +73,6 @@ namespace ObjectOrientedPractics.View.Controls.ItemControls
         private void NameParse()
         {
             Item.Name = NameTextBox.Text;
-            UpdateMode = UpdateType.UpdateList;
         }
 
         /// <summary>
@@ -89,7 +81,6 @@ namespace ObjectOrientedPractics.View.Controls.ItemControls
         private void InfoParse()
         {
             Item.Info = InfoTextBox.Text;
-            UpdateMode = UpdateType.None;
         }
 
         /// <summary>
@@ -98,7 +89,6 @@ namespace ObjectOrientedPractics.View.Controls.ItemControls
         private void CategoryParse()
         {
             Item.Category = (ItemCategory)CategoryComboBox.SelectedIndex;
-            UpdateMode = UpdateType.None;
         }
 
         /// <summary>

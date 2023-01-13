@@ -56,6 +56,7 @@
             this.ItemListControl.IsAdding = true;
             this.ItemListControl.IsEditor = false;
             this.ItemListControl.IsRemoving = true;
+            this.ItemListControl.IsSampling = true;
             this.ItemListControl.Location = new System.Drawing.Point(3, 16);
             this.ItemListControl.Name = "ItemListControl";
             this.ItemListControl.Size = new System.Drawing.Size(318, 531);

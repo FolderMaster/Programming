@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Model.Enums;
 using ObjectOrientedPractics.Model.Orders;
@@ -6,55 +7,102 @@ using ObjectOrientedPractics.Model.Orders;
 namespace ObjectOrientedPractics.View.Controls.Classes
 {
     /// <summary>
-    /// Представление класса <see cref="Order"/>.
+    /// Представление заказа.
     /// </summary>
     public class OrderView
     {
         /// <summary>
-        /// Возращает и задаёт уникальный индентификатор.
+        /// Заказ.
         /// </summary>
-        public int Id { get; set; }
+        private Order _order = null;
 
         /// <summary>
-        /// Возращает и задаёт статус заказа.
+        /// Покупатель.
         /// </summary>
-        public OrderStatus Status { get; set; }
+        private Customer _customer = null;
 
         /// <summary>
-        /// Возращает и задаёт время последнего изменения статуса заказа.
+        /// Возращает и задаёт заказ.
         /// </summary>
-        public DateTime LastChangedStatusDateTime { get; set; }
-
-        /// <summary>
-        /// Возращает и задаёт стоимость товаров.
-        /// </summary>
-        public int Amount { get; set; }
-
-        /// <summary>
-        /// Возращаит и задаёт итоговую стоимость.
-        /// </summary>
-        public int Total { get; set; }
-
-        /// <summary>
-        /// Имя и фамилия покупателя.
-        /// </summary>
-        public string CustomerFullName { get; set; }
-
-        /// <summary>
-        /// Возращает и задаёт адрес.
-        /// </summary>
-        public Adress Adress { get; set; }
-
-        /// <summary>
-        /// Возращает и задаёт значение, указывающее приоритетный заказ или нет.
-        /// </summary>
-        public bool IsPriority { get; set; }
-
-        /// <summary>
-        /// Создаёт экземпляр класса <see cref="OrderView"/> по-умолчанию.
-        /// </summary>
-        public OrderView()
+        [Browsable(false)]
+        public Order Order
         {
+            get => _order;
+            set => _order = value;
+        }
+
+        /// <summary>
+        /// Возращает и задаёт покупателя.
+        /// </summary>
+        [Browsable(false)]
+        public Customer Customer
+        {
+            get => _customer;
+            set => _customer = value;
+        }
+
+        /// <summary>
+        /// Возращает уникальный индентификатор.
+        /// </summary>
+        public int Id
+        {
+            get => Order.Id;
+        }
+
+        /// <summary>
+        /// Возращает статус заказа.
+        /// </summary>
+        public OrderStatus Status
+        {
+            get => Order.Status;
+        }
+
+        /// <summary>
+        /// Возращает время последнего изменения статуса заказа.
+        /// </summary>
+        public DateTime LastChangedStatusDateTime
+        {
+            get => Order.LastChangedStatusDateTime;
+        }
+
+        /// <summary>
+        /// Возращает стоимость товаров.
+        /// </summary>
+        public int Amount
+        {
+            get => Order.Amount;
+        }
+
+        /// <summary>
+        /// Возращаит итоговую стоимость.
+        /// </summary>
+        public int Total
+        {
+            get => Order.Total;
+        }
+
+        /// <summary>
+        /// Возращает имя и фамилию покупателя.
+        /// </summary>
+        public string CustomerFullName
+        {
+            get => Customer.FullName;
+        }
+
+        /// <summary>
+        /// Возращает адрес.
+        /// </summary>
+        public Adress Adress
+        {
+            get => Order.Adress;
+        }
+
+        /// <summary>
+        /// Возращает значение, указывающее приоритетный заказ или нет.
+        /// </summary>
+        public bool IsPriority
+        {
+            get => Order as PriorityOrder != null;
         }
 
         /// <summary>
@@ -64,14 +112,8 @@ namespace ObjectOrientedPractics.View.Controls.Classes
         /// <param name="customer">Покупатель.</param>
         public OrderView(Order order, Customer customer)
         {
-            Id = order.Id;
-            Status = order.Status;
-            LastChangedStatusDateTime= order.LastChangedStatusDateTime;
-            Amount = order.Amount;
-            Total = order.Total;
-            CustomerFullName = customer.FullName;
-            Adress = order.Adress;
-            IsPriority = order as PriorityOrder != null;
+            Order = order;
+            Customer = customer;
         }
     }
 }
