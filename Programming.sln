@@ -27,6 +27,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{223C9486-2DC
 		doc\Practics6.png = doc\Practics6.png
 		doc\Practics7.mdj = doc\Practics7.mdj
 		doc\Practics7.png = doc\Practics7.png
+		doc\Practics8.mdj = doc\Practics8.mdj
+		doc\Practics8_CartsTab.png = doc\Practics8_CartsTab.png
+		doc\Practics8_Class.png = doc\Practics8_Class.png
+		doc\Practics8_CustomersTab.png = doc\Practics8_CustomersTab.png
+		doc\Practics8_DiscountsTab.png = doc\Practics8_DiscountsTab.png
+		doc\Practics8_Interface.png = doc\Practics8_Interface.png
+		doc\Practics8_InterfaceTab.png = doc\Practics8_InterfaceTab.png
+		doc\Practics8_ItemsTab.png = doc\Practics8_ItemsTab.png
+		doc\Practics8_MainForm.png = doc\Practics8_MainForm.png
+		doc\Practics8_OrdersTab.png = doc\Practics8_OrdersTab.png
+		doc\Practics8_PriorityOrdersTab.png = doc\Practics8_PriorityOrdersTab.png
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectOrientedPractics", "src\ObjectOrientedPractics\ObjectOrientedPractics.csproj", "{29A30578-A4DD-4DAD-94B1-66FF2ADD7019}"
