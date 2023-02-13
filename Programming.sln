@@ -42,13 +42,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{223C9486-2DC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectOrientedPractics", "src\ObjectOrientedPractics\ObjectOrientedPractics.csproj", "{29A30578-A4DD-4DAD-94B1-66FF2ADD7019}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApp", "ContactApp\ContactApp.csproj", "{996FB1B1-1F0B-4083-9B88-63AD8E3F7086}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactApp", "src\ContactApp\ContactApp.csproj", "{996FB1B1-1F0B-4083-9B88-63AD8E3F7086}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndividualTask1", "IndividualTask1\IndividualTask1.csproj", "{2DA6660E-89C8-4880-B111-22B3D3B22B9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndividualTask1", "src\IndividualTask1\IndividualTask1.csproj", "{2DA6660E-89C8-4880-B111-22B3D3B22B9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndividualTask2", "IndividualTask2\IndividualTask2.csproj", "{56396D2E-F6D7-42DC-AACC-C93C84F32968}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndividualTask2", "src\IndividualTask2\IndividualTask2.csproj", "{56396D2E-F6D7-42DC-AACC-C93C84F32968}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndividualTask3", "IndividualTask3\IndividualTask3.csproj", "{1A2C2828-A542-4D8C-B6B1-389570E8D92C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndividualTask3", "src\IndividualTask3\IndividualTask3.csproj", "{1A2C2828-A542-4D8C-B6B1-389570E8D92C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
