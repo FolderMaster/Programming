@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
-using ObjectOrientedPractics.View.Controls;
 using ObjectOrientedPractics.Model;
-using System.Collections.Generic;
+using ObjectOrientedPractics.Services.Factories;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
@@ -15,11 +16,28 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Возращает и задаёт список экземпляров класса <see cref="Customer"/>.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Customer> Customers
         {
             get => CustomerListControl.Customers;
             set => CustomerListControl.Customers = value;
         }
+
+        /// <summary>
+        /// Возращает и задаёт список экземпляров класса <see cref="Item"/>.
+        /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public List<Item> Items { get; set; } = new List<Item>();
+
+        /// <summary>
+        /// Обработчик для события изменения списка <see cref="Customers"/>.
+        /// </summary>
+        public event EventHandler CustomersChanged;
+
+        /// <summary>
+        /// Обработчик для события создания заказа.
+        /// </summary>
+        public event EventHandler OrderCreated;
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="CustomersTab"/> по-умолчанию.
@@ -31,36 +49,35 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void CustomerListControl_ListBoxSelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CustomerListControl.SelectedIndex != -1)
-            {
-                CustomerEditorControl.Customer = CustomerListControl.Customers
-                    [CustomerListControl.SelectedIndex];
-            }
-            else
-            {
-                CustomerEditorControl.Customer = null;
-            }
+            CustomerEditorControl.Customer = CustomerListControl.SelectedCustomer;
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void CustomerListControl_RemoveButtonClick(object sender, EventArgs e)
         {
-            if (CustomerListControl.SelectedIndex != -1)
-            {
-                CustomerEditorControl.Customer = CustomerListControl.Customers
-                    [CustomerListControl.SelectedIndex];
-            }
+            CustomerEditorControl.Customer = CustomerListControl.SelectedCustomer;
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void CustomerEditorControl_CurrentPropertyChanged(object sender, EventArgs e)
         {
-            switch (CustomerEditorControl.UpdateMode)
+            CustomerListControl.UpdateList();
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CustomerListControl_AddButtonClick(object sender, EventArgs e)
+        {
+            CustomersChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void GenerateOrderButton_Click(object sender, EventArgs e)
+        {
+            Customer customer = CustomerEditorControl.Customer;
+            if(customer != null && Items.Count != 0)
             {
-                case UpdateType.UpdateCurrentObject:
-                    CustomerListControl.UpdateList();
-                    break;
-                case UpdateType.UpdateList:
-                    CustomerListControl.UpdateListWithSort();
-                    break;
+                customer.Orders.Add(OrderFactory.CreateOrder(Items, Customers, 
+                    customer.IsPriority));
+                OrderCreated?.Invoke(this, EventArgs.Empty);
             }
         }
     }

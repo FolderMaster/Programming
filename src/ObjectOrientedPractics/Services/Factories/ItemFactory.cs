@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 using ObjectOrientedPractics.Model;
+using ObjectOrientedPractics.Model.Enums;
 using ObjectOrientedPractics.Services.IO;
 using static ObjectOrientedPractics.Services.IO.CsvManager;
 
@@ -51,7 +53,10 @@ namespace ObjectOrientedPractics.Services.Factories
                 cost = _random.Next(Item.CostMax);
             }
 
-            return new Item(name, info, cost);
+            ItemCategory category = (ItemCategory)_random.Next((int)Enum.GetValues(typeof(ItemCategory)).
+                Cast<ItemCategory>().Max() + 1);
+
+            return new Item(name, info, cost, category);
         };
 
         /// <summary>
@@ -81,7 +86,7 @@ namespace ObjectOrientedPractics.Services.Factories
             else
             {
                 Item item = Items[_random.Next(Items.Count)];
-                return new Item(item.Name, item.Info, item.Cost);
+                return new Item(item.Name, item.Info, item.Cost, item.Category);
             }
         }
     }

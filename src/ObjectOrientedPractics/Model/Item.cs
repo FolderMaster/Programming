@@ -1,11 +1,14 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using System;
+
+using ObjectOrientedPractics.Services;
+using ObjectOrientedPractics.Model.Enums;
 
 namespace ObjectOrientedPractics.Model
 {
     /// <summary>
     /// Товар с названием, описанием и стоимостью.
     /// </summary>
-    public class Item
+    public class Item : ICloneable, IEquatable<object>, IComparable<object>
     {
         /// <summary>
         /// Генератор уникального индентификатора экземпляра класса.
@@ -15,22 +18,22 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Уникальный индентификатор экземпляра класса.
         /// </summary>
-        private readonly int _id;
+        private readonly int _id = _idGenerator.GetNextId();
 
         /// <summary>
         /// Название.
         /// </summary>
-        private string _name;
+        private string _name = "";
 
         /// <summary>
         /// Описание.
         /// </summary>
-        private string _info;
+        private string _info = "";
 
         /// <summary>
         /// Стоимость.
         /// </summary>
-        private int _cost;
+        private int _cost = 0;
 
         /// <summary>
         /// Максимальная длина <see cref="Name"/>.
@@ -70,7 +73,11 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertStringOnLessLength(value, MaxNameLength, nameof(Name));
-                _name = value;
+                if(value != _name)
+                {
+                    _name = value;
+                    NameChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -84,7 +91,11 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertStringOnLessLength(value, MaxInfoLength, nameof(Info));
-                _info = value;
+                if(value != _info)
+                {
+                    _info = value;
+                    InfoChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -98,19 +109,39 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertValueInRange(value, CostMin, CostMax, nameof(Cost));
-                _cost = value;
+                if (value != _cost)
+                {
+                    _cost = value;
+                    CostChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
+
+        /// <summary>
+        /// Возвращает и задаёт категорию товара.
+        /// </summary>
+        public ItemCategory Category { get; set; } = ItemCategory.None;
+
+        /// <summary>
+        /// Обработчик события изменения свойства <see cref="Name"/>.
+        /// </summary>
+        public event EventHandler NameChanged;
+
+        /// <summary>
+        /// Обработчик события изменения свойства <see cref="Info"/>.
+        /// </summary>
+        public event EventHandler InfoChanged;
+
+        /// <summary>
+        /// Обработчик события изменения свойства <see cref="Cost"/>.
+        /// </summary>
+        public event EventHandler CostChanged;
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="Item"/> по-умолчанию.
         /// </summary>
         public Item()
         {
-            _id = _idGenerator.GetNextId();
-            Name = "";
-            Info = "";
-            Cost = 0;
         }
 
         /// <summary>
@@ -119,17 +150,85 @@ namespace ObjectOrientedPractics.Model
         /// <param name="name">Название.</param>
         /// <param name="info">Описание.</param>
         /// <param name="cost">Стоимость.</param>
-        public Item(string name, string info, int cost)
+        /// <param name="category">Категория.</param>
+        public Item(string name, string info, int cost, ItemCategory category)
         {
-            _id = _idGenerator.GetNextId();
             Name = name;
             Info = info;
             Cost = cost;
+            Category = category;
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
         public override string ToString()
         {
-            return $"{Name} ({Id}) - {Cost}";
+            return $"{Name} {{{Category}}} ({Id}) - {Cost}";
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
+        public object Clone()
+        {
+            return new Item(Name, Info, Cost, Category);
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="other"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
+        public override bool Equals(object other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            Item item = other as Item;
+            if (item == null)
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return Name == item.Name && Info == item.Info && Cost == item.Cost && 
+                Category == item.Category;
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="other"><inheritdoc/></param>
+        /// <returns><inheritdoc/></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public int CompareTo(object other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+
+            Item item = other as Item;
+            if (item == null)
+            {
+                throw new ArgumentException();
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return 0;
+            }
+
+            return Cost.CompareTo(item.Cost);
         }
     }
 }

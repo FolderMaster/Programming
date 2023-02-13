@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.ItemListGroupBox = new System.Windows.Forms.GroupBox();
-            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemListControl();
+            this.ItemListControl = new ObjectOrientedPractics.View.Controls.ItemControls.ItemListControl();
             this.ItemGroupBox = new System.Windows.Forms.GroupBox();
-            this.ItemEditorControl = new ObjectOrientedPractics.View.Controls.ItemEditorControl();
+            this.ItemEditorControl = new ObjectOrientedPractics.View.Controls.ItemControls.ItemEditorControl();
             this.ItemListGroupBox.SuspendLayout();
             this.ItemGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -43,7 +43,7 @@
             this.ItemListGroupBox.Controls.Add(this.ItemListControl);
             this.ItemListGroupBox.Location = new System.Drawing.Point(0, 0);
             this.ItemListGroupBox.Name = "ItemListGroupBox";
-            this.ItemListGroupBox.Size = new System.Drawing.Size(250, 500);
+            this.ItemListGroupBox.Size = new System.Drawing.Size(324, 500);
             this.ItemListGroupBox.TabIndex = 0;
             this.ItemListGroupBox.TabStop = false;
             this.ItemListGroupBox.Text = "Item list";
@@ -51,13 +51,16 @@
             // ItemListControl
             // 
             this.ItemListControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ItemListControl.IsAdding = true;
+            this.ItemListControl.IsEditor = true;
+            this.ItemListControl.IsRemoving = true;
             this.ItemListControl.Location = new System.Drawing.Point(3, 16);
             this.ItemListControl.Name = "ItemListControl";
-            this.ItemListControl.SelectedIndex = 0;
-            this.ItemListControl.Size = new System.Drawing.Size(244, 481);
+            this.ItemListControl.Size = new System.Drawing.Size(318, 481);
             this.ItemListControl.TabIndex = 1;
-            this.ItemListControl.ListBoxSelectedIndexChanged += new System.EventHandler(this.ItemListControl_ListBoxSelectedIndexChanged);
-            this.ItemListControl.RemoveButtonClick += new System.EventHandler(this.ItemListControl_RemoveButtonClick);
+            this.ItemListControl.SelectedItemChanged += new System.EventHandler(this.ItemListControl_ListBoxSelectedIndexChanged);
+            this.ItemListControl.RemoveFromItems += new System.EventHandler(this.ItemListControl_RemoveButtonClick);
+            this.ItemListControl.AddToItems += new System.EventHandler(this.ItemListControl_AddButtonClick);
             // 
             // ItemGroupBox
             // 
@@ -65,9 +68,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ItemGroupBox.Controls.Add(this.ItemEditorControl);
-            this.ItemGroupBox.Location = new System.Drawing.Point(256, 0);
+            this.ItemGroupBox.Location = new System.Drawing.Point(330, 0);
             this.ItemGroupBox.Name = "ItemGroupBox";
-            this.ItemGroupBox.Size = new System.Drawing.Size(544, 500);
+            this.ItemGroupBox.Size = new System.Drawing.Size(470, 500);
             this.ItemGroupBox.TabIndex = 2;
             this.ItemGroupBox.TabStop = false;
             this.ItemGroupBox.Text = "Item";
@@ -78,9 +81,8 @@
             this.ItemEditorControl.Item = null;
             this.ItemEditorControl.Location = new System.Drawing.Point(3, 16);
             this.ItemEditorControl.Name = "ItemEditorControl";
-            this.ItemEditorControl.Size = new System.Drawing.Size(538, 481);
+            this.ItemEditorControl.Size = new System.Drawing.Size(464, 481);
             this.ItemEditorControl.TabIndex = 3;
-            this.ItemEditorControl.UpdateMode = ObjectOrientedPractics.View.Controls.UpdateType.None;
             this.ItemEditorControl.CurrentPropertyChanged += new System.EventHandler(this.ItemEditorControl_CurrentPropertyChanged);
             // 
             // ItemsTab
@@ -99,8 +101,8 @@
 
         #endregion
 
-        private Controls.ItemEditorControl ItemEditorControl;
-        private Controls.ItemListControl ItemListControl;
+        private Controls.ItemControls.ItemEditorControl ItemEditorControl;
+        private Controls.ItemControls.ItemListControl ItemListControl;
         private System.Windows.Forms.GroupBox ItemListGroupBox;
         private System.Windows.Forms.GroupBox ItemGroupBox;
     }

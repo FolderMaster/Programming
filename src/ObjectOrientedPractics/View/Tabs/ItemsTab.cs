@@ -1,8 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-using ObjectOrientedPractics.View.Controls;
 using ObjectOrientedPractics.Model;
 
 namespace ObjectOrientedPractics.View.Tabs
@@ -15,11 +15,18 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Возращает и задаёт список экземпляров класса <see cref="Item"/>.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Item> Items
         {
             get => ItemListControl.Items;
             set => ItemListControl.Items = value;
         }
+
+
+        /// <summary>
+        /// Обработчик для события изменения списка <see cref="Items"/>.
+        /// </summary>
+        public event EventHandler ItemsChanged;
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="ItemsTab"/> по-умолчанию.
@@ -31,35 +38,25 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void ItemListControl_RemoveButtonClick(object sender, EventArgs e)
         {
-            if (ItemListControl.SelectedIndex != -1)
-            {
-                ItemEditorControl.Item = ItemListControl.Items[ItemListControl.SelectedIndex];
-            }
-            else
-            {
-                ItemEditorControl.Item = null;
-            }
+            ItemEditorControl.Item = ItemListControl.SelectedItem;
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void ItemListControl_ListBoxSelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ItemListControl.SelectedIndex != -1)
-            {
-                ItemEditorControl.Item = ItemListControl.Items[ItemListControl.SelectedIndex];
-            }
+            ItemEditorControl.Item = ItemListControl.SelectedItem;
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void ItemEditorControl_CurrentPropertyChanged(object sender, EventArgs e)
         {
-            switch (ItemEditorControl.UpdateMode)
-            {
-                case UpdateType.UpdateCurrentObject:
-                    ItemListControl.UpdateList();
-                    break;
-                case UpdateType.UpdateList:
-                    ItemListControl.UpdateListWithSort();
-                    break;
-            }
+            ItemListControl.UpdateList();
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void ItemListControl_AddButtonClick(object sender, EventArgs e)
+        {
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }
