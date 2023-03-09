@@ -5,8 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="Contacts" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Control">
+            <Setter Property="Margin" Value="3"></Setter>
+        </Style>
+        <Style BasedOn="{StaticResource {x:Type Control}}" TargetType="Button">
+            <Setter Property="Width" Value="75"></Setter>
+            <Setter Property="Height" Value="25"></Setter>
+        </Style>
+        <Style BasedOn="{StaticResource {x:Type Control}}" TargetType="TextBox"></Style>
+        <Style BasedOn="{StaticResource {x:Type Control}}" TargetType="Label"></Style>
+        <Style BasedOn="{StaticResource {x:Type Label}}" TargetType="Label" x:Key="BoldLabel">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="15,15,15,15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Row="0" Grid.Column="0" Header="Edit contact">
+            <StackPanel>
+                <Label>Name:</Label>
+                <TextBox/>
+                <Label>Phone number:</Label>
+                <TextBox/>
+                <Label>Email:</Label>
+                <TextBox/>
+            </StackPanel>
+        </GroupBox>
+        <GridSplitter Grid.Column="1"></GridSplitter>
+        <GroupBox Grid.Row="0" Grid.Column="2" Header="Read contact">
+            <StackPanel>
+                <Label>Name:</Label>
+                <Label Style="{StaticResource BoldLabel}">Name</Label>
+                <Label>Phone number:</Label>
+                <Label Style="{StaticResource BoldLabel}">Phone number</Label>
+                <Label>Email:</Label>
+                <Label Style="{StaticResource BoldLabel}">Email</Label>
+            </StackPanel>
+        </GroupBox>
+        <GridSplitter Grid.Row="1"></GridSplitter>
+        <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Right">
+            <Button>Save</Button>
+            <Button>Load</Button>
+        </WrapPanel>
     </Grid>
 </Window>
