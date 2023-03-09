@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="Contacts" Height="450" Width="800">
+        Title="Contacts" Height="450" Width="800" Icon="Resource/icon.ico">
     <Window.Resources>
         <Style TargetType="Control">
             <Setter Property="Margin" Value="3"></Setter>
@@ -34,28 +34,30 @@
         <GroupBox Grid.Row="0" Grid.Column="0" Header="Edit contact">
             <StackPanel>
                 <Label>Name:</Label>
-                <TextBox/>
+                <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label>Phone number:</Label>
-                <TextBox/>
+                <TextBox Text="{Binding Path=PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label>Email:</Label>
-                <TextBox/>
+                <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
         </GroupBox>
         <GridSplitter Grid.Column="1"></GridSplitter>
         <GroupBox Grid.Row="0" Grid.Column="2" Header="Read contact">
             <StackPanel>
                 <Label>Name:</Label>
-                <Label Style="{StaticResource BoldLabel}">Name</Label>
+                <Label Style="{StaticResource BoldLabel}" Content="{Binding Path=Name}"/>
                 <Label>Phone number:</Label>
-                <Label Style="{StaticResource BoldLabel}">Phone number</Label>
+                <Label Style="{StaticResource BoldLabel}" Content="{Binding Path=PhoneNumber}"/>
                 <Label>Email:</Label>
-                <Label Style="{StaticResource BoldLabel}">Email</Label>
+                <Label Style="{StaticResource BoldLabel}" Content="{Binding Path=Email}"/>
             </StackPanel>
         </GroupBox>
         <GridSplitter Grid.Row="1"></GridSplitter>
         <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Right">
-            <Button>Save</Button>
-            <Button>Load</Button>
+            <Button Content="Save" Command="{Binding Path=SaveCommand}"
+                    CommandParameter="{Binding Path=Contact}"/>
+            <Button Content="Load" Command="{Binding Path=LoadCommand}"
+                    CommandParameter="{Binding Path=This}"/>
         </WrapPanel>
     </Grid>
 </Window>
