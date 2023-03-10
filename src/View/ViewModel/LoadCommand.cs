@@ -10,17 +10,38 @@ namespace View.ViewModel
 {
     public class LoadCommand : ICommand
     {
+        private string _filePath;
+
+        public string FilePath
+        {
+            get => _filePath;
+            set => _filePath = value;
+        }
+
+        public event EventHandler<OnLoadedEventArgs>? OnLoaded;
+
         public event EventHandler? CanExecuteChanged;
 
         public bool CanExecute(object? parameter) => true;
 
-        public void Execute(object? parameter)
+        public void Execute(object? parameter) =>
+            OnLoaded?.Invoke(this, new OnLoadedEventArgs(JsonSerializer.Load<Contact>(FilePath)));
+
+        public class OnLoadedEventArgs : EventArgs
         {
-            if(parameter is MainVM mainVM)
+            public Contact? Load { get; set; }
+
+            public OnLoadedEventArgs(Contact? load)
             {
-                mainVM.Contact = JsonSerializer.Load<Contact>(".json");
+                Load = load;
             }
         }
-            
+
+        public LoadCommand() {}
+
+        public LoadCommand(string filePath)
+        {
+            FilePath = filePath;
+        }
     }
 }

@@ -1,19 +1,17 @@
-﻿using System;
-using System.ComponentModel;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
+﻿using System.ComponentModel;
 using View.Model;
 
 namespace View.ViewModel
 {
     public class MainVM : INotifyPropertyChanged
     {
-        private Contact _contact = new Contact();
+        private const string _filePath = ".json";
 
-        private ICommand _saveCommand = new SaveCommand();
+        private Contact _contact;
 
-        private ICommand _loadCommand = new LoadCommand();
+        private SaveCommand _saveCommand;
+
+        private LoadCommand _loadCommand;
 
         public Contact Contact
         {
@@ -23,6 +21,7 @@ namespace View.ViewModel
                 if (_contact != value)
                 {
                     _contact = value;
+                    _saveCommand.Save = value;
                     PropertyChanged?.Invoke(this,
                         new PropertyChangedEventArgs(nameof(Name)));
                     PropertyChanged?.Invoke(this,
@@ -77,14 +76,23 @@ namespace View.ViewModel
 
         public MainVM This => this;
 
-        public ICommand SaveCommand => _saveCommand;
+        public SaveCommand SaveCommand => _saveCommand;
 
-        public ICommand LoadCommand => _loadCommand;
+        public LoadCommand LoadCommand => _loadCommand;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public MainVM()
         {
+            _loadCommand = new LoadCommand(_filePath);
+            _saveCommand = new SaveCommand(_filePath);
+            Contact = new Contact();
+            _loadCommand.OnLoaded += _loadCommand_OnLoaded;
+        }
+
+        private void _loadCommand_OnLoaded(object? sender, LoadCommand.OnLoadedEventArgs e)
+        {
+            Contact = e.Load;
         }
     }
 }

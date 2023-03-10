@@ -34,30 +34,28 @@
         <GroupBox Grid.Row="0" Grid.Column="0" Header="Edit contact">
             <StackPanel>
                 <Label>Name:</Label>
-                <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label>Phone number:</Label>
-                <TextBox Text="{Binding Path=PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label>Email:</Label>
-                <TextBox Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
         </GroupBox>
         <GridSplitter Grid.Column="1"></GridSplitter>
         <GroupBox Grid.Row="0" Grid.Column="2" Header="Read contact">
             <StackPanel>
                 <Label>Name:</Label>
-                <Label Style="{StaticResource BoldLabel}" Content="{Binding Path=Name}"/>
+                <Label Style="{StaticResource BoldLabel}" Content="{Binding Name}"/>
                 <Label>Phone number:</Label>
-                <Label Style="{StaticResource BoldLabel}" Content="{Binding Path=PhoneNumber}"/>
+                <Label Style="{StaticResource BoldLabel}" Content="{Binding PhoneNumber}"/>
                 <Label>Email:</Label>
-                <Label Style="{StaticResource BoldLabel}" Content="{Binding Path=Email}"/>
+                <Label Style="{StaticResource BoldLabel}" Content="{Binding Email}"/>
             </StackPanel>
         </GroupBox>
         <GridSplitter Grid.Row="1"></GridSplitter>
         <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Right">
-            <Button Content="Save" Command="{Binding Path=SaveCommand}"
-                    CommandParameter="{Binding Path=Contact}"/>
-            <Button Content="Load" Command="{Binding Path=LoadCommand}"
-                    CommandParameter="{Binding Path=This}"/>
+            <Button Content="Save" Command="{Binding Path=SaveCommand}"/>
+            <Button Content="Load" Command="{Binding Path=LoadCommand}"/>
         </WrapPanel>
     </Grid>
 </Window>
