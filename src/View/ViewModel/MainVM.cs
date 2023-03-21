@@ -1,18 +1,41 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+
 using View.Model;
 
 namespace View.ViewModel
 {
+    /// <summary>
+    /// Класс логики обработки процессов основного окна приложения <see cref="MainWindow"/> с
+    /// контактом, командами сохранения и загрузки.
+    /// </summary>
     public class MainVM : INotifyPropertyChanged
     {
-        private const string _filePath = ".json";
+        /// <summary>
+        /// Путь к файлу.
+        /// </summary>
+        private readonly string _filePath =
+            Environment.GetFolderPath(Environment.SpecialFolder.Personal).ToString() +
+            "\\Contacts\\contacts.json";
 
+        /// <summary>
+        /// Контакт.
+        /// </summary>
         private Contact _contact;
 
-        private SaveCommand _saveCommand;
+        /// <summary>
+        /// Команда сохранения.
+        /// </summary>
+        private SaveCommand<Contact> _saveCommand;
 
-        private LoadCommand _loadCommand;
+        /// <summary>
+        /// Команда загрузки.
+        /// </summary>
+        private LoadCommand<Contact> _loadCommand;
 
+        /// <summary>
+        /// Возращает и создаёт контакт.
+        /// </summary>
         public Contact Contact
         {
             get => _contact;
@@ -21,7 +44,7 @@ namespace View.ViewModel
                 if (_contact != value)
                 {
                     _contact = value;
-                    _saveCommand.Save = value;
+                    _saveCommand.Data = value;
                     PropertyChanged?.Invoke(this,
                         new PropertyChangedEventArgs(nameof(Name)));
                     PropertyChanged?.Invoke(this,
@@ -32,6 +55,9 @@ namespace View.ViewModel
             }
         }
 
+        /// <summary>
+        /// Возращает и создаёт ФИО контакта.
+        /// </summary>
         public string Name
         {
             get => _contact.Name;
@@ -46,6 +72,9 @@ namespace View.ViewModel
             }
         }
 
+        /// <summary>
+        /// Возращает и создаёт номер телефона контакта.
+        /// </summary>
         public string PhoneNumber
         {
             get => _contact.PhoneNumber;
@@ -60,6 +89,9 @@ namespace View.ViewModel
             }
         }
 
+        /// <summary>
+        /// Возращает и создаёт электронную почту контакта.
+        /// </summary>
         public string Email
         {
             get => _contact.Email;
@@ -74,25 +106,32 @@ namespace View.ViewModel
             }
         }
 
-        public MainVM This => this;
+        /// <summary>
+        /// Возращает команду сохранения.
+        /// </summary>
+        public SaveCommand<Contact> SaveCommand => _saveCommand;
 
-        public SaveCommand SaveCommand => _saveCommand;
-
-        public LoadCommand LoadCommand => _loadCommand;
+        /// <summary>
+        /// Возращает команду загрузки.
+        /// </summary>
+        public LoadCommand<Contact> LoadCommand => _loadCommand;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="MainVM"/> по умолчанию.
+        /// </summary>
         public MainVM()
         {
-            _loadCommand = new LoadCommand(_filePath);
-            _saveCommand = new SaveCommand(_filePath);
+            _loadCommand = new LoadCommand<Contact>(_filePath);
+            _saveCommand = new SaveCommand<Contact>(_filePath);
             Contact = new Contact();
             _loadCommand.OnLoaded += _loadCommand_OnLoaded;
         }
 
-        private void _loadCommand_OnLoaded(object? sender, LoadCommand.OnLoadedEventArgs e)
+        private void _loadCommand_OnLoaded(object? sender, OnLoadedEventArgs<Contact> e)
         {
-            Contact = e.Load;
+            Contact = e.Load != null ? e.Load : Contact;
         }
     }
 }
