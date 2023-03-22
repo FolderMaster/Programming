@@ -30,10 +30,22 @@ namespace View.ViewModel
         /// </summary>
         public event EventHandler<OnLoadedEventArgs<T>>? OnLoaded;
 
+        /// <summary>
+        /// Обработчик события изменения возможности выполнения команды.
+        /// </summary>
         public event EventHandler? CanExecuteChanged;
 
+        /// <summary>
+        /// Проверяет, возможно ли выполнение комманды.
+        /// </summary>
+        /// <param name="parameter">Параметры команды.</param>
+        /// <returns>Логическое значение, указывающее, возможно ли выполнение команды.</returns>
         public bool CanExecute(object? parameter) => true;
 
+        /// <summary>
+        /// Выполняет команду.
+        /// </summary>
+        /// <param name="parameter">Параметры команды.</param>
         public void Execute(object? parameter) =>
             OnLoaded?.Invoke(this, new OnLoadedEventArgs<T>(JsonSerializer.Load<T>(FilePath)));
 

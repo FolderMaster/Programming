@@ -7,55 +7,86 @@
         mc:Ignorable="d"
         Title="Contacts" Height="450" Width="800" Icon="Resource/icon.ico">
     <Window.Resources>
-        <Style TargetType="Control">
-            <Setter Property="Margin" Value="3"></Setter>
+        <Style TargetType="Panel">
+            <Setter Property="Background" Value="#222"></Setter>
         </Style>
+        <Style BasedOn="{StaticResource {x:Type Panel}}" TargetType="DockPanel"></Style>
+        <Style BasedOn="{StaticResource {x:Type Panel}}" TargetType="StackPanel"></Style>
+        <Style BasedOn="{StaticResource {x:Type Panel}}" TargetType="Grid"></Style>
+        <Style TargetType="Control">
+            <Setter Property="Margin" Value="3px"></Setter>
+            <Setter Property="Background" Value="#222"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="BorderBrush" Value="White"></Setter>
+        </Style>
+        <Style BasedOn="{StaticResource {x:Type Control}}" TargetType="GroupBox"></Style>
         <Style BasedOn="{StaticResource {x:Type Control}}" TargetType="Button">
             <Setter Property="Width" Value="75"></Setter>
             <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="White"
+                                BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="RoyalBlue"></Setter>
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <Style BasedOn="{StaticResource {x:Type Control}}" TargetType="TextBox"></Style>
-        <Style BasedOn="{StaticResource {x:Type Control}}" TargetType="Label"></Style>
+        <Style BasedOn="{StaticResource {x:Type Control}}" TargetType="Label">
+            <Setter Property="Padding" Value="1px"></Setter>
+        </Style>
         <Style BasedOn="{StaticResource {x:Type Label}}" TargetType="Label" x:Key="BoldLabel">
             <Setter Property="FontWeight" Value="Bold"></Setter>
         </Style>
     </Window.Resources>
-    <Grid Margin="15,15,15,15">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <GroupBox Grid.Row="0" Grid.Column="0" Header="Edit contact">
-            <StackPanel>
-                <Label>Name:</Label>
-                <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                <Label>Phone number:</Label>
-                <TextBox Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
-                <Label>Email:</Label>
-                <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
-            </StackPanel>
-        </GroupBox>
-        <GridSplitter Grid.Column="1"></GridSplitter>
-        <GroupBox Grid.Row="0" Grid.Column="2" Header="Read contact">
-            <StackPanel>
-                <Label>Name:</Label>
-                <Label Style="{StaticResource BoldLabel}" Content="{Binding Name}"/>
-                <Label>Phone number:</Label>
-                <Label Style="{StaticResource BoldLabel}" Content="{Binding PhoneNumber}"/>
-                <Label>Email:</Label>
-                <Label Style="{StaticResource BoldLabel}" Content="{Binding Email}"/>
-            </StackPanel>
-        </GroupBox>
-        <GridSplitter Grid.Row="1"></GridSplitter>
-        <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Right">
-            <Button Content="Save" Command="{Binding Path=SaveCommand}"/>
-            <Button Content="Load" Command="{Binding Path=LoadCommand}"/>
-        </WrapPanel>
-    </Grid>
+    <DockPanel>
+        <Grid Margin="15,15,15,15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <GroupBox Grid.Row="0" Grid.Column="0" Header="Edit contact">
+                <StackPanel>
+                    <Label>Name:</Label>
+                    <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label>Phone number:</Label>
+                    <TextBox Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label>Email:</Label>
+                    <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </GroupBox>
+            <GridSplitter Grid.Column="1"></GridSplitter>
+            <GroupBox Grid.Row="0" Grid.Column="2" Header="Read contact">
+                <StackPanel>
+                    <Label>Name:</Label>
+                    <Label Style="{StaticResource BoldLabel}" Content="{Binding Name}"/>
+                    <Label>Phone number:</Label>
+                    <Label Style="{StaticResource BoldLabel}" Content="{Binding PhoneNumber}"/>
+                    <Label>Email:</Label>
+                    <Label Style="{StaticResource BoldLabel}" Content="{Binding Email}"/>
+                </StackPanel>
+            </GroupBox>
+            <GridSplitter Grid.Row="1"></GridSplitter>
+            <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                       HorizontalAlignment="Right">
+                <Button Content="Save" Command="{Binding SaveCommand}"/>
+                <Button Content="Load" Command="{Binding LoadCommand}"/>
+            </WrapPanel>
+        </Grid>
+    </DockPanel>
 </Window>

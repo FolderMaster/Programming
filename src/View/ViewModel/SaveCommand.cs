@@ -39,10 +39,22 @@ namespace View.ViewModel
             set => _data = value;
         }
 
+        /// <summary>
+        /// Обработчик события изменения возможности выполнения команды.
+        /// </summary>
         public event EventHandler? CanExecuteChanged;
 
+        /// <summary>
+        /// Проверяет, возможно ли выполнение комманды.
+        /// </summary>
+        /// <param name="parameter">Параметры команды.</param>
+        /// <returns>Логическое значение, указывающее, возможно ли выполнение команды.</returns>
         public bool CanExecute(object? parameter) => true;
 
+        /// <summary>
+        /// Выполняет команду.
+        /// </summary>
+        /// <param name="parameter">Параметры команды.</param>
         public void Execute(object? parameter) => JsonSerializer.Save(Data, FilePath);
 
         /// <summary>

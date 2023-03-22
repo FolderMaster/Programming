@@ -116,6 +116,9 @@ namespace View.ViewModel
         /// </summary>
         public LoadCommand<Contact> LoadCommand => _loadCommand;
 
+        /// <summary>
+        /// Обработчик события изменения свойства.
+        /// </summary>
         public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
