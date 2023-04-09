@@ -1,9 +1,12 @@
-﻿namespace View.Model
+﻿using System;
+using System.ComponentModel;
+
+namespace View.Model
 {
     /// <summary>
     /// Класс контактов с ФИО, номером телефона и электронной почтой.
     /// </summary>
-    public class Contact
+    public class Contact : INotifyPropertyChanged, ICloneable
     {
         /// <summary>
         /// ФИО.
@@ -21,31 +24,60 @@
         private string _email = "";
 
         /// <summary>
-        /// Возращает и задаёт ФИО.
+        /// Возвращает и задаёт ФИО.
         /// </summary>
         public string Name
         {
             get => _name;
-            set => _name = value;
+            set
+            {
+                if (Name != value)
+                {
+                    _name = value;
+                    PropertyChanged?.Invoke(this,
+                        new PropertyChangedEventArgs(nameof(Name)));
+                }
+            }
         }
 
         /// <summary>
-        /// Возращает и задаёт номер телефона.
+        /// Возвращает и задаёт номер телефона.
         /// </summary>
         public string PhoneNumber
         {
             get => _phoneNumber;
-            set => _phoneNumber = value;
+            set
+            {
+                if (PhoneNumber != value)
+                {
+                    _phoneNumber = value;
+                    PropertyChanged?.Invoke(this,
+                        new PropertyChangedEventArgs(nameof(PhoneNumber)));
+                }
+            }
         }
 
         /// <summary>
-        /// Возращает и задаёт электронную почту.
+        /// Возвращает и задаёт электронную почту.
         /// </summary>
         public string Email
         {
             get => _email;
-            set => _email = value;
+            set
+            {
+                if(Email != value)
+                {
+                    _email = value;
+                    PropertyChanged?.Invoke(this,
+                        new PropertyChangedEventArgs(nameof(Email)));
+                }
+            }
         }
+
+        /// <summary>
+        /// Обработчик события изменения свойства.
+        /// </summary>
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="Contact"/> по умолчанию.
@@ -64,5 +96,9 @@
             PhoneNumber = phoneNumber;
             Email = email;
         }
+
+        public override string ToString() => Name;
+
+        public object Clone() => new Contact(Name, PhoneNumber, Email);
     }
 }

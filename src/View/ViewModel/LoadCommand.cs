@@ -17,7 +17,7 @@ namespace View.ViewModel
         private string _filePath;
 
         /// <summary>
-        /// Возращает и задаёт путь к файлу.
+        /// Возвращает и задаёт путь к файлу.
         /// </summary>
         public string FilePath
         {
@@ -36,7 +36,7 @@ namespace View.ViewModel
         public event EventHandler? CanExecuteChanged;
 
         /// <summary>
-        /// Проверяет, возможно ли выполнение комманды.
+        /// Проверяет, возможно ли выполнение команды.
         /// </summary>
         /// <param name="parameter">Параметры команды.</param>
         /// <returns>Логическое значение, указывающее, возможно ли выполнение команды.</returns>

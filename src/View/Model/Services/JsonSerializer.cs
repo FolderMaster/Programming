@@ -9,7 +9,7 @@ namespace View.Model.Services
     public static class JsonSerializer
     {
         /// <summary>
-        /// Настроки Json-сериализатора.
+        /// Настройки Json-сериализатора.
         /// </summary>
         private static readonly JsonSerializerSettings _jsonSerializerSettings =
             new JsonSerializerSettings()

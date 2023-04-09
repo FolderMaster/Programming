@@ -9,7 +9,7 @@ namespace View.ViewModel
     public class OnLoadedEventArgs<T> : EventArgs
     {
         /// <summary>
-        /// Возращает и задаёт данные загрузки.
+        /// Возвращает и задаёт данные загрузки.
         /// </summary>
         public T? Load { get; set; }
 

@@ -22,7 +22,7 @@ namespace View.ViewModel
         private T? _data;
 
         /// <summary>
-        /// Возращает и задаёт путь к файлу.
+        /// Возвращает и задаёт путь к файлу.
         /// </summary>
         public string FilePath
         {
@@ -31,7 +31,7 @@ namespace View.ViewModel
         }
 
         /// <summary>
-        /// Возращает и задаёт данные.
+        /// Возвращает и задаёт данные.
         /// </summary>
         public T? Data
         {
@@ -45,7 +45,7 @@ namespace View.ViewModel
         public event EventHandler? CanExecuteChanged;
 
         /// <summary>
-        /// Проверяет, возможно ли выполнение комманды.
+        /// Проверяет, возможно ли выполнение команды.
         /// </summary>
         /// <param name="parameter">Параметры команды.</param>
         /// <returns>Логическое значение, указывающее, возможно ли выполнение команды.</returns>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 using View.Model;
@@ -19,102 +20,106 @@ namespace View.ViewModel
             "\\Contacts\\contacts.json";
 
         /// <summary>
-        /// Контакт.
+        /// Контакты.
         /// </summary>
-        private Contact _contact;
+        private ObservableCollection<Contact> _contacts;
+
+        /// <summary>
+        /// Выбранный контакт.
+        /// </summary>
+        private Contact? _selectedContact;
+
+        /// <summary>
+        /// Временный контакт.
+        /// </summary>
+        private Contact? _tempContact;
 
         /// <summary>
         /// Команда сохранения.
         /// </summary>
-        private SaveCommand<Contact> _saveCommand;
+        private SaveCommand<ObservableCollection<Contact>> _saveCommand;
 
         /// <summary>
         /// Команда загрузки.
         /// </summary>
-        private LoadCommand<Contact> _loadCommand;
+        private LoadCommand<ObservableCollection<Contact>> _loadCommand;
 
         /// <summary>
-        /// Возращает и создаёт контакт.
+        /// Возвращает и задаёт контакты.
         /// </summary>
-        public Contact Contact
+        public ObservableCollection<Contact> Contacts
         {
-            get => _contact;
+            get => _contacts;
             set
             {
-                if (_contact != value)
+                if (Contacts != value)
                 {
-                    _contact = value;
+                    if(Contacts != null)
+                    {
+                        _loadCommand.OnLoaded -= _loadCommand_OnLoaded;
+                    }
+                    _contacts = value;
                     _saveCommand.Data = value;
+                    if (Contacts != null)
+                    {
+                        _loadCommand.OnLoaded += _loadCommand_OnLoaded;
+                        SelectedContact = Contacts.Count > 0 ? Contacts[0] : null;
+                    }
+                    else
+                    {
+                        SelectedContact = null;
+                    }
                     PropertyChanged?.Invoke(this,
-                        new PropertyChangedEventArgs(nameof(Name)));
-                    PropertyChanged?.Invoke(this,
-                        new PropertyChangedEventArgs(nameof(PhoneNumber)));
-                    PropertyChanged?.Invoke(this,
-                        new PropertyChangedEventArgs(nameof(Email)));
+                        new PropertyChangedEventArgs(nameof(Contacts)));
                 }
             }
         }
 
         /// <summary>
-        /// Возращает и создаёт ФИО контакта.
+        /// Возвращает и задаёт выбранный контакт.
         /// </summary>
-        public string Name
+        public Contact? SelectedContact
         {
-            get => _contact.Name;
+            get => _selectedContact;
             set
             {
-                if (_contact.Name != value)
+                if (SelectedContact != value)
                 {
-                    _contact.Name = value;
+                    _selectedContact = value;
+                    TempContact = SelectedContact != null ?
+                        (Contact)SelectedContact.Clone() : null;
                     PropertyChanged?.Invoke(this,
-                        new PropertyChangedEventArgs(nameof(Name)));
+                        new PropertyChangedEventArgs(nameof(SelectedContact)));
                 }
             }
         }
 
         /// <summary>
-        /// Возращает и создаёт номер телефона контакта.
+        /// Возвращает и задаёт временный контакт.
         /// </summary>
-        public string PhoneNumber
+        public Contact? TempContact
         {
-            get => _contact.PhoneNumber;
+            get => _tempContact;
             set
             {
-                if (_contact.PhoneNumber != value)
+                if (TempContact != value)
                 {
-                    _contact.PhoneNumber = value;
+                    _tempContact = value;
                     PropertyChanged?.Invoke(this,
-                        new PropertyChangedEventArgs(nameof(PhoneNumber)));
+                        new PropertyChangedEventArgs(nameof(TempContact)));
                 }
             }
         }
 
         /// <summary>
-        /// Возращает и создаёт электронную почту контакта.
+        /// Возвращает команду сохранения.
         /// </summary>
-        public string Email
-        {
-            get => _contact.Email;
-            set
-            {
-                if (_contact.Email != value)
-                {
-                    _contact.Email = value;
-                    PropertyChanged?.Invoke(this,
-                        new PropertyChangedEventArgs(nameof(Email)));
-                }
-            }
-        }
+        public SaveCommand<ObservableCollection<Contact>> SaveCommand => _saveCommand;
 
         /// <summary>
-        /// Возращает команду сохранения.
+        /// Возвращает команду загрузки.
         /// </summary>
-        public SaveCommand<Contact> SaveCommand => _saveCommand;
-
-        /// <summary>
-        /// Возращает команду загрузки.
-        /// </summary>
-        public LoadCommand<Contact> LoadCommand => _loadCommand;
+        public LoadCommand<ObservableCollection<Contact>> LoadCommand => _loadCommand;
 
         /// <summary>
         /// Обработчик события изменения свойства.
@@ -126,15 +131,27 @@ namespace View.ViewModel
         /// </summary>
         public MainVM()
         {
-            _loadCommand = new LoadCommand<Contact>(_filePath);
-            _saveCommand = new SaveCommand<Contact>(_filePath);
-            Contact = new Contact();
-            _loadCommand.OnLoaded += _loadCommand_OnLoaded;
+            _loadCommand = new LoadCommand<ObservableCollection<Contact>>(_filePath);
+            _saveCommand = new SaveCommand<ObservableCollection<Contact>>(_filePath);
+            Contacts = new ObservableCollection<Contact>()
+            {
+                new Contact("Affffff Affffff Affffffff", "", ""),
+                new Contact("Affffff Affffff Affffffff", "", ""),
+                new Contact("Affffff Affffff Affffffff", "", ""),
+                new Contact("Affffff Affffff Affffffff", "", ""),
+                new Contact("Affffff Affffff Affffffff", "", ""),
+                new Contact("Affffff Affffff Affffffff", "", ""),
+                new Contact("Affffff Affffff Affffffff", "", ""),
+                new Contact("Affffff Affffff Affffffff", "", ""),
+                new Contact("Affffff Affffff Affffffff", "", ""),
+                new Contact("Affffff Affffff Affffffff", "", "")
+            };
         }
 
-        private void _loadCommand_OnLoaded(object? sender, OnLoadedEventArgs<Contact> e)
+        private void _loadCommand_OnLoaded(object? sender,
+            OnLoadedEventArgs<ObservableCollection<Contact>> e)
         {
-            Contact = e.Load != null ? e.Load : Contact;
+            Contacts = e.Load != null ? e.Load : Contacts;
         }
     }
 }
