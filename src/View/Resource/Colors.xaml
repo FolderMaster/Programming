@@ -3,6 +3,8 @@
     <Color x:Key="ForegroundColor">White</Color>
     <Color x:Key="BackgroudColor">#222</Color>
     <Color x:Key="ControlColor">#333</Color>
+    <Color x:Key="NotEnableColor">#444</Color>
+    <Color x:Key="SelectionColor">#AAA</Color>
     <Color x:Key="SelectedColor">#A000A0</Color>
     <Color x:Key="FocusedColor">#F000F0</Color>
 </ResourceDictionary>

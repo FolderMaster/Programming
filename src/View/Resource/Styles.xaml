@@ -45,7 +45,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
     <Style x:Key="ScrollBarLineButton"
        TargetType="{x:Type RepeatButton}">
         <Setter Property="SnapsToDevicePixels"
@@ -193,7 +192,6 @@
                     <Thumb Style="{StaticResource ScrollBarThumb}"
                Margin="1,0,1,0">
                         <Thumb.BorderBrush>
-
                             <LinearGradientBrush StartPoint="0,0"
                                  EndPoint="1,0">
                                 <LinearGradientBrush.GradientStops>
@@ -205,22 +203,19 @@
                                     </GradientStopCollection>
                                 </LinearGradientBrush.GradientStops>
                             </LinearGradientBrush>
-
                         </Thumb.BorderBrush>
                         <Thumb.Background>
-
                             <LinearGradientBrush StartPoint="0,0"
                                  EndPoint="1,0">
                                 <LinearGradientBrush.GradientStops>
                                     <GradientStopCollection>
-                                        <GradientStop Color="#222"
+                                        <GradientStop Color="#444"
                                 Offset="0.0" />
-                                        <GradientStop Color="#333"
+                                        <GradientStop Color="#AAA"
                                 Offset="1.0" />
                                     </GradientStopCollection>
                                 </LinearGradientBrush.GradientStops>
                             </LinearGradientBrush>
-
                         </Thumb.Background>
                     </Thumb>
                 </Track.Thumb>
@@ -262,9 +257,7 @@
                 <Track.Thumb>
                     <Thumb Style="{StaticResource ScrollBarThumb}"
                Margin="0,1,0,1">
-
                         <Thumb.BorderBrush>
-
                             <LinearGradientBrush StartPoint="0,0"
                                  EndPoint="1,0">
                                 <LinearGradientBrush.GradientStops>
@@ -276,22 +269,19 @@
                                     </GradientStopCollection>
                                 </LinearGradientBrush.GradientStops>
                             </LinearGradientBrush>
-
                         </Thumb.BorderBrush>
                         <Thumb.Background>
-
                             <LinearGradientBrush StartPoint="0,0"
                                  EndPoint="0,1">
                                 <LinearGradientBrush.GradientStops>
                                     <GradientStopCollection>
-                                        <GradientStop Color="#222"
+                                        <GradientStop Color="#444"
                                 Offset="0.0" />
-                                        <GradientStop Color="#333"
+                                        <GradientStop Color="#AAA"
                                 Offset="1.0" />
                                     </GradientStopCollection>
                                 </LinearGradientBrush.GradientStops>
                             </LinearGradientBrush>
-
                         </Thumb.Background>
                     </Thumb>
                 </Track.Thumb>
@@ -367,19 +357,23 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}" BorderThickness="1"
-                                BorderBrush="White">
+                    <Border x:Name="Border" Background="{TemplateBinding Background}"
+                            BorderThickness="1" BorderBrush="White">
                         <ContentPresenter HorizontalAlignment="Center" 
                                               VerticalAlignment="Center"/>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#A000A0"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="BorderBrush" TargetName="Border" Value="#AAA"/>
+                            <Setter Property="Background" Value="#444"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#A000A0"></Setter>
-            </Trigger>
-        </Style.Triggers>
     </Style>
     <Style BasedOn="{StaticResource {x:Type Control}}" TargetType="GridSplitter">
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -389,11 +383,11 @@
     </Style>
     <Style BasedOn="{StaticResource {x:Type Control}}" TargetType="TextBox">
         <Setter Property="Background" Value="#333"/>
-        <Setter Property="SelectionBrush" Value="#F000F0"/>
+        <Setter Property="SelectionBrush" Value="#AAA"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
-                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}"
+                    <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                         <ScrollViewer x:Name="PART_ContentHost" Focusable="false"
@@ -402,13 +396,17 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            <Setter Property="Opacity" TargetName="Border" Value="0.56"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="BorderBrush" TargetName="border" Value="#A000A0"/>
+                            <Setter Property="BorderBrush" TargetName="Border" Value="#A000A0"/>
                         </Trigger>
                         <Trigger Property="IsFocused" Value="true">
-                            <Setter Property="BorderBrush" TargetName="border" Value="#F000F0"/>
+                            <Setter Property="BorderBrush" TargetName="Border" Value="#F000F0"/>
+                        </Trigger>
+                        <Trigger Property="IsReadOnly" Value="True">
+                            <Setter Property="BorderBrush" TargetName="Border" Value="#AAA"/>
+                            <Setter Property="Background" Value="#444"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -416,7 +414,7 @@
         </Setter>
     </Style>
     <Style BasedOn="{StaticResource {x:Type Control}}" TargetType="Label">
-        <Setter Property="Padding" Value="1px"/>
+        <Setter Property="Padding" Value="0px"/>
     </Style>
     <Style BasedOn="{StaticResource {x:Type Label}}" TargetType="Label" x:Key="BoldLabel">
         <Setter Property="FontWeight" Value="Bold"/>

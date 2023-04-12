@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
 
 using View.Model;
+using View.Model.Services;
+using View.Views;
 
 namespace View.ViewModel
 {
@@ -22,27 +25,32 @@ namespace View.ViewModel
         /// <summary>
         /// Контакты.
         /// </summary>
-        private ObservableCollection<Contact> _contacts;
+        private ObservableCollection<Contact> _contacts = new ObservableCollection<Contact>();
 
         /// <summary>
         /// Выбранный контакт.
         /// </summary>
-        private Contact? _selectedContact;
+        private Contact? _selectedContact = null;
+
+        /// <summary>
+        /// Выбранный контакт до действия.
+        /// </summary>
+        private Contact? _selectedContactBeforeAdd = null;
 
         /// <summary>
         /// Временный контакт.
         /// </summary>
-        private Contact? _tempContact;
+        private Contact? _tempContact = null;
 
         /// <summary>
-        /// Команда сохранения.
+        /// Действие использующееся в <see cref="ApplyCommand"/>.
         /// </summary>
-        private SaveCommand<ObservableCollection<Contact>> _saveCommand;
+        private Action _applyAction;
 
         /// <summary>
-        /// Команда загрузки.
+        /// Логическое значение, указывающее, выбрано ли действие.
         /// </summary>
-        private LoadCommand<ObservableCollection<Contact>> _loadCommand;
+        private bool _isActionUnselected = true;
 
         /// <summary>
         /// Возвращает и задаёт контакты.
@@ -54,15 +62,9 @@ namespace View.ViewModel
             {
                 if (Contacts != value)
                 {
-                    if(Contacts != null)
-                    {
-                        _loadCommand.OnLoaded -= _loadCommand_OnLoaded;
-                    }
                     _contacts = value;
-                    _saveCommand.Data = value;
                     if (Contacts != null)
                     {
-                        _loadCommand.OnLoaded += _loadCommand_OnLoaded;
                         SelectedContact = Contacts.Count > 0 ? Contacts[0] : null;
                     }
                     else
@@ -86,6 +88,7 @@ namespace View.ViewModel
                 if (SelectedContact != value)
                 {
                     _selectedContact = value;
+                    IsActionUnselected = true;
                     TempContact = SelectedContact != null ?
                         (Contact)SelectedContact.Clone() : null;
                     PropertyChanged?.Invoke(this,
@@ -112,14 +115,140 @@ namespace View.ViewModel
         }
 
         /// <summary>
-        /// Возвращает команду сохранения.
+        /// Возвращает и задаёт логическое значение, указывающее, выбрано ли действие.
         /// </summary>
-        public SaveCommand<ObservableCollection<Contact>> SaveCommand => _saveCommand;
+        public bool IsActionUnselected
+        {
+            get => _isActionUnselected;
+            set
+            {
+                if (IsActionUnselected != value)
+                {
+                    _isActionUnselected = value;
+                    PropertyChanged?.Invoke(this,
+                        new PropertyChangedEventArgs(nameof(IsActionUnselected)));
+                }
+            }
+        }
 
         /// <summary>
-        /// Возвращает команду загрузки.
+        /// Возвращает команду сохранения <see cref="Contacts"/>.
         /// </summary>
-        public LoadCommand<ObservableCollection<Contact>> LoadCommand => _loadCommand;
+        public ICommand SaveCommand => new RelayCommand((object? obj) =>
+            {
+                try
+                {
+                    JsonSerializer.Save(Contacts, _filePath);
+                }
+                catch(Exception ex)
+                {
+                    if(MessageShowable != null)
+                    {
+                        MessageShowable.Show(ex.Message);
+                    }
+                }
+            });
+
+        /// <summary>
+        /// Возвращает команду загрузки <see cref="Contacts"/>.
+        /// </summary>
+        public ICommand LoadCommand => new RelayCommand((object? obj) =>
+            {
+                try
+                {
+                    Contacts = JsonSerializer.Load<ObservableCollection<Contact>>(_filePath) ??
+                        new ObservableCollection<Contact>();
+                }
+                catch (Exception ex)
+                {
+                    if (MessageShowable != null)
+                    {
+                       MessageShowable.Show(ex.Message);
+                    }
+                }
+            });
+
+        /// <summary>
+        /// Возвращает команду добавления нового контакта.
+        /// </summary>
+        public ICommand AddCommand => new RelayCommand((object? obj) =>
+            {
+                _selectedContactBeforeAdd = SelectedContact;
+                SelectedContact = null;
+                TempContact = new Contact();
+                _applyAction = () =>
+                {
+                    Contacts.Add(TempContact);
+                    SelectedContact = TempContact;
+                };
+                IsActionUnselected = false;
+            }, (object? obj) => IsActionUnselected);
+
+        /// <summary>
+        /// Возвращает команду изменения контакта <see cref="SelectedContact"/>.
+        /// </summary>
+        public ICommand EditCommand => new RelayCommand((object? obj) =>
+            {
+                _applyAction = () =>
+                {
+                    SelectedContact.Assign(TempContact);
+                };
+                IsActionUnselected = false;
+            }, (object? obj) => IsActionUnselected && Contacts.Count > 0);
+
+        /// <summary>
+        /// Возвращает команду удаления контакта <see cref="SelectedContact"/>.
+        /// </summary>
+        public ICommand RemoveCommand => new RelayCommand((object? obj) =>
+            {
+                int selectedIndex = Contacts.IndexOf(SelectedContact);
+                Contacts.Remove(SelectedContact);
+                if(Contacts.Count > 0)
+                {
+                    if(selectedIndex < Contacts.Count)
+                    {
+                        SelectedContact = Contacts[selectedIndex];
+                    }
+                    else
+                    {
+                        SelectedContact = Contacts[Contacts.Count - 1];
+                    }
+                }
+                else
+                {
+                    SelectedContact = null;
+                }
+            }, (object? obj) => IsActionUnselected && Contacts.Count > 0);
+
+        /// <summary>
+        /// Возвращает команду применения <see cref="AddCommand"/> или <see cref="EditCommand"/>.
+        /// </summary>
+        public ICommand ApplyCommand => new RelayCommand((object? obj) =>
+            {
+                _applyAction();
+                IsActionUnselected = true;
+            }, (object? obj) => !IsActionUnselected);
+
+        /// <summary>
+        /// Возвращает команду отмены <see cref="AddCommand"/> или <see cref="EditCommand"/>.
+        /// </summary>
+        public ICommand CancelCommand => new RelayCommand((object? obj) =>
+            {
+                if(SelectedContact != null)
+                {
+                    TempContact = (Contact)SelectedContact.Clone();
+                }
+                else
+                {
+                    SelectedContact = _selectedContactBeforeAdd;
+                }
+                IsActionUnselected = true;
+            }, (object? obj) => !IsActionUnselected);
+
+        /// <summary>
+        /// Возвращает и задаёт интерфейс отображения сообщений.
+        /// </summary>
+        public IMessageShowable? MessageShowable { get; set; } = null;
 
         /// <summary>
         /// Обработчик события изменения свойства.
@@ -129,29 +258,15 @@ namespace View.ViewModel
         /// <summary>
         /// Создаёт экземпляр класса <see cref="MainVM"/> по умолчанию.
         /// </summary>
-        public MainVM()
-        {
-            _loadCommand = new LoadCommand<ObservableCollection<Contact>>(_filePath);
-            _saveCommand = new SaveCommand<ObservableCollection<Contact>>(_filePath);
-            Contacts = new ObservableCollection<Contact>()
-            {
-                new Contact("Affffff Affffff Affffffff", "", ""),
-                new Contact("Affffff Affffff Affffffff", "", ""),
-                new Contact("Affffff Affffff Affffffff", "", ""),
-                new Contact("Affffff Affffff Affffffff", "", ""),
-                new Contact("Affffff Affffff Affffffff", "", ""),
-                new Contact("Affffff Affffff Affffffff", "", ""),
-                new Contact("Affffff Affffff Affffffff", "", ""),
-                new Contact("Affffff Affffff Affffffff", "", ""),
-                new Contact("Affffff Affffff Affffffff", "", ""),
-                new Contact("Affffff Affffff Affffffff", "", "")
-            };
-        }
+        public MainVM() {}
 
-        private void _loadCommand_OnLoaded(object? sender,
-            OnLoadedEventArgs<ObservableCollection<Contact>> e)
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="MainVM"/>.
+        /// </summary>
+        /// <param name="messageShowable">Интерфейс отображения сообщений.</param>
+        public MainVM(IMessageShowable? messageShowable)
         {
-            Contacts = e.Load != null ? e.Load : Contacts;
+            MessageShowable = messageShowable;
         }
     }
 }

@@ -2,7 +2,7 @@
 
 using View.ViewModel;
 
-namespace View
+namespace View.Views
 {
     /// <summary>
     /// Основное окно приложения.
@@ -16,7 +16,17 @@ namespace View
         {
             InitializeComponent();
 
-            DataContext = new MainVM();
+            DataContext = new MainVM(new ErrorMessageBox());
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            ((MainVM)DataContext).LoadCommand.Execute(null);
+        }
+
+        private void MainWindow_Closed(object sender, System.EventArgs e)
+        {
+            ((MainVM)DataContext).SaveCommand.Execute(null);
         }
     }
 }
