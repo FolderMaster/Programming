@@ -7,14 +7,6 @@
         xmlns:local="clr-namespace:View.Views"
         mc:Ignorable="d"
         Title="Contacts" Height="450" Width="800" Icon="../Resource/Icon.ico">
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadCommand}"/>
-        </i:EventTrigger>
-        <i:EventTrigger EventName="Closed">
-            <i:InvokeCommandAction Command="{Binding SaveCommand}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -23,6 +15,14 @@
             <local:BoolToVisibilityConverter x:Key="VisibilityConverter"/>
         </ResourceDictionary>
     </Window.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Closed">
+            <i:InvokeCommandAction Command="{Binding SaveCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid Background="#222">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="260px"/>
@@ -87,15 +87,13 @@
                 <TextBox IsReadOnly="{Binding IsActionUnselected}" Text="{Binding
                     TempContact.Email, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
-            <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal"
-                        HorizontalAlignment="Center" VerticalAlignment="Top"
-                        Margin="0px, 44px, 0px, 0px">
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal"
+                        VerticalAlignment="Top" Margin="0px, 44px, 0px, 0px">
                 <Button Content="Apply" Visibility="{Binding IsActionUnselected, Converter =
                     {StaticResource VisibilityConverter}}" Command="{Binding ApplyCommand}"/>
                 <Button Content="Cancel" Visibility="{Binding IsActionUnselected, Converter =
                     {StaticResource VisibilityConverter}}" Command="{Binding CancelCommand}"/>
             </StackPanel>
-            
         </Grid>
     </Grid>
 </Window>
