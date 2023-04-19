@@ -378,7 +378,7 @@
     <Style BasedOn="{StaticResource {x:Type Control}}" TargetType="GridSplitter">
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>
-        <Setter Property="Background" Value="#333"/>
+        <Setter Property="Background" Value="#FFF"/>
         <Setter Property="Margin" Value="0"/>
     </Style>
     <Style BasedOn="{StaticResource {x:Type Control}}" TargetType="TextBox">
