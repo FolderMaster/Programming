@@ -3,10 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:View.Views"
         mc:Ignorable="d"
-        Closed="MainWindow_Closed" Loaded="MainWindow_Loaded"
         Title="Contacts" Height="450" Width="800" Icon="../Resource/Icon.ico">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Closed">
+            <i:InvokeCommandAction Command="{Binding SaveCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,12 +25,12 @@
     </Window.Resources>
     <Grid Background="#222">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="253px"/>
+            <ColumnDefinition Width="260px"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Background="#333">
-            <DockPanel Margin="5px" LastChildFill="True" >
+            <DockPanel Margin="8px" LastChildFill="True" >
                 <Grid DockPanel.Dock="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -54,8 +62,7 @@
                 </ListBox>
             </DockPanel>
         </Grid>
-        <GridSplitter Grid.Column="1" Width="10px" BorderThickness="1px, 0, 1px, 0"
-                      BorderBrush="#AAA"/>
+        <GridSplitter Grid.Column="1" Width="3px" BorderThickness="1px, 0, 1px, 0"/>
         <Grid Grid.Column="2" Grid.ColumnSpan="3" Margin="5px">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -65,7 +72,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border Grid.Column="0" Grid.Row="0" Height="100px" Width="100px" Margin="10px"
+            <Border Grid.Column="0" Grid.Row="0" Height="100px" Width="100px" Margin="3px"
                     BorderThickness="1px" BorderBrush="White">
                 <Image Source="../Resource/Avatar.jpg"/>
             </Border>
@@ -81,7 +88,8 @@
                     TempContact.Email, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal"
-                        HorizontalAlignment="Center" VerticalAlignment="Top">
+                        HorizontalAlignment="Center" VerticalAlignment="Top"
+                        Margin="0px, 44px, 0px, 0px">
                 <Button Content="Apply" Visibility="{Binding IsActionUnselected, Converter =
                     {StaticResource VisibilityConverter}}" Command="{Binding ApplyCommand}"/>
                 <Button Content="Cancel" Visibility="{Binding IsActionUnselected, Converter =

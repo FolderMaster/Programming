@@ -18,15 +18,5 @@ namespace View.Views
 
             DataContext = new MainVM(new ErrorMessageBox());
         }
-
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            ((MainVM)DataContext).LoadCommand.Execute(null);
-        }
-
-        private void MainWindow_Closed(object sender, System.EventArgs e)
-        {
-            ((MainVM)DataContext).SaveCommand.Execute(null);
-        }
     }
 }
