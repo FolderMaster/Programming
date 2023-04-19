@@ -264,7 +264,9 @@ namespace View.ViewModel
                 {
                     _applyAction = () =>
                     {
-                        SelectedContact.Assign(TempContact);
+                        int selectedIndex = Contacts.IndexOf(SelectedContact);
+                        Contacts[selectedIndex] = TempContact;
+                        SelectedContact = Contacts[selectedIndex];
                     };
                     IsActionUnselected = false;
                 }, (object? obj) => IsActionUnselected && Contacts.Count > 0);

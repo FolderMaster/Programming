@@ -6,7 +6,7 @@ namespace View.Model
     /// <summary>
     /// Класс контактов с ФИО, номером телефона и электронной почтой.
     /// </summary>
-    public class Contact : INotifyPropertyChanged, ICloneable, IAssignable
+    public class Contact : INotifyPropertyChanged, ICloneable
     {
         /// <summary>
         /// ФИО.
@@ -102,31 +102,5 @@ namespace View.Model
         /// </summary>
         /// <returns>Клон текущего экземпляра.</returns>
         public object Clone() => new Contact(Name, PhoneNumber, Email);
-
-        /// <summary>
-        /// Присваивает объект текущему экземпляру.
-        /// </summary>
-        /// <param name="obj">Объект присвоения.</param>
-        public void Assign(object obj)
-        {
-            if(obj == null)
-            {
-                throw new ArgumentNullException(nameof(obj));
-            }
-
-            if (obj != this)
-            {
-                if (obj is Contact contact)
-                {
-                    Name = contact.Name;
-                    PhoneNumber = contact.PhoneNumber;
-                    Email = contact.Email;
-                }
-                else
-                {
-                    throw new ArgumentException(nameof(obj));
-                }
-            }
-        }
     }
 }
