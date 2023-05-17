@@ -33,41 +33,6 @@ namespace View.ViewModel
         private Contact? _selectedContact = null;
 
         /// <summary>
-        /// Команда сохранения <see cref="Contacts"/>.
-        /// </summary>
-        private ICommand _saveCommand;
-
-        /// <summary>
-        /// Команда загрузки <see cref="Contacts"/>.
-        /// </summary>
-        private ICommand _loadCommand;
-
-        /// <summary>
-        /// Команда добавления нового контакта.
-        /// </summary>
-        private ICommand _addCommand;
-
-        /// <summary>
-        /// Команда изменения контакта <see cref="SelectedContact"/>.
-        /// </summary>
-        private ICommand _editCommand;
-
-        /// <summary>
-        /// Команда удаления контакта <see cref="SelectedContact"/>.
-        /// </summary>
-        private ICommand _removeCommand;
-
-        /// <summary>
-        /// Команда применения <see cref="AddCommand"/> или <see cref="EditCommand"/>.
-        /// </summary>
-        private ICommand _applyCommand;
-
-        /// <summary>
-        /// Команда отмены <see cref="AddCommand"/> или <see cref="EditCommand"/>.
-        /// </summary>
-        private ICommand _cancelCommand;
-
-        /// <summary>
         /// Временный контакт.
         /// </summary>
         private Contact? _tempContact = null;
@@ -167,39 +132,46 @@ namespace View.ViewModel
         }
 
         /// <summary>
-        /// Возвращает команду сохранения <see cref="Contacts"/>.
+        /// Возвращает и задаёт команду сохранения <see cref="Contacts"/>.
         /// </summary>
-        public ICommand SaveCommand => _saveCommand;
+        public ICommand SaveCommand { get; private set; }
 
         /// <summary>
-        /// Возвращает команду загрузки <see cref="Contacts"/>.
+        /// Возвращает и задаёт команду загрузки <see cref="Contacts"/>.
         /// </summary>
-        public ICommand LoadCommand => _loadCommand;
+        public ICommand LoadCommand { get; private set; }
 
         /// <summary>
-        /// Возвращает команду добавления нового контакта.
+        /// Возвращает и задаёт команду добавления нового контакта.
         /// </summary>
-        public ICommand AddCommand => _addCommand;
+        public ICommand AddCommand { get; private set; }
 
         /// <summary>
-        /// Возвращает команду изменения контакта <see cref="SelectedContact"/>.
+        /// Возвращает и задаёт команду изменения контакта <see cref="SelectedContact"/>.
         /// </summary>
-        public ICommand EditCommand => _editCommand;
+        public ICommand EditCommand { get; private set; }
 
         /// <summary>
-        /// Возвращает команду удаления контакта <see cref="SelectedContact"/>.
+        /// Возвращает и задаёт команду удаления контакта <see cref="SelectedContact"/>.
         /// </summary>
-        public ICommand RemoveCommand => _removeCommand;
+        public ICommand RemoveCommand { get; private set; }
 
         /// <summary>
-        /// Возвращает команду применения <see cref="AddCommand"/> или <see cref="EditCommand"/>.
+        /// Возвращает и задаёт команду применения <see cref="AddCommand"/> или
+        /// <see cref="EditCommand"/>.
         /// </summary>
-        public ICommand ApplyCommand => _applyCommand;
+        public ICommand ApplyCommand { get; private set; }
 
         /// <summary>
-        /// Возвращает команду отмены <see cref="AddCommand"/> или <see cref="EditCommand"/>.
+        /// Возвращает и задаёт команду отмены <see cref="AddCommand"/> или
+        /// <see cref="EditCommand"/>.
         /// </summary>
-        public ICommand CancelCommand => _cancelCommand;
+        public ICommand CancelCommand { get; private set; }
+
+        /// <summary>
+        /// Возвращает и задаёт команду обработки ввода <see cref="Contact.PhoneNumber"/>.
+        /// </summary>
+        public ICommand PhoneNumberTextInputCommand { get; private set; }
 
         /// <summary>
         /// Возвращает и задаёт интерфейс отображения сообщений.
@@ -216,7 +188,7 @@ namespace View.ViewModel
         /// </summary>
         public MainVM()
         {
-            _saveCommand = new RelayCommand((object? obj) =>
+            SaveCommand = new RelayCommand((object? obj) =>
             {
                 try
                 {
@@ -230,37 +202,34 @@ namespace View.ViewModel
                     }
                 }
             });
-
-            _loadCommand = new RelayCommand((object? obj) =>
+            LoadCommand = new RelayCommand((object? obj) =>
+            {
+                try
                 {
-                    try
-                    {
-                        Contacts = JsonSerializer.Load<ObservableCollection<Contact>>(_filePath) ??
-                            new ObservableCollection<Contact>();
-                    }
-                    catch (Exception ex)
-                    {
-                        if (MessageShowable != null)
-                        {
-                            MessageShowable.Show(ex.Message);
-                        }
-                    }
-                });
-
-            _addCommand = new RelayCommand((object? obj) =>
+                    Contacts = JsonSerializer.Load<ObservableCollection<Contact>>(_filePath) ??
+                        new ObservableCollection<Contact>();
+                }
+                catch (Exception ex)
                 {
-                    _selectedContactBeforeAdd = SelectedContact;
-                    SelectedContact = null;
-                    TempContact = new Contact();
-                    _applyAction = () =>
+                    if (MessageShowable != null)
                     {
-                        Contacts.Add(TempContact);
-                        SelectedContact = TempContact;
-                    };
-                    IsActionUnselected = false;
-                }, (object? obj) => IsActionUnselected);
-
-            _editCommand = new RelayCommand((object? obj) =>
+                        MessageShowable.Show(ex.Message);
+                    }
+                }
+            });
+            AddCommand = new RelayCommand((object? obj) =>
+            {
+                _selectedContactBeforeAdd = SelectedContact;
+                SelectedContact = null;
+                TempContact = new Contact();
+                _applyAction = () =>
+                {
+                    Contacts.Add(TempContact);
+                    SelectedContact = TempContact;
+                };
+                IsActionUnselected = false;
+            }, (object? obj) => IsActionUnselected);
+            EditCommand = new RelayCommand((object? obj) =>
                 {
                     _applyAction = () =>
                     {
@@ -270,40 +239,47 @@ namespace View.ViewModel
                     };
                     IsActionUnselected = false;
                 }, (object? obj) => IsActionUnselected && Contacts.Count > 0);
-
-            _removeCommand = new RelayCommand((object? obj) =>
+            RemoveCommand = new RelayCommand((object? obj) =>
+            {
+                int selectedIndex = Contacts.IndexOf(SelectedContact);
+                Contacts.Remove(SelectedContact);
+                if (Contacts.Count > 0)
                 {
-                    int selectedIndex = Contacts.IndexOf(SelectedContact);
-                    Contacts.Remove(SelectedContact);
-                    if (Contacts.Count > 0)
-                    {
-                        SelectedContact = selectedIndex < Contacts.Count ? Contacts[selectedIndex] :
-                            Contacts[Contacts.Count - 1];
-                    }
-                    else
-                    {
-                        SelectedContact = null;
-                    }
-                }, (object? obj) => IsActionUnselected && Contacts.Count > 0);
-
-            _applyCommand = new RelayCommand((object? obj) =>
+                    SelectedContact = selectedIndex < Contacts.Count ? Contacts[selectedIndex] :
+                        Contacts[Contacts.Count - 1];
+                }
+                else
                 {
-                    _applyAction();
-                    IsActionUnselected = true;
-                }, (object? obj) => !IsActionUnselected);
-
-            _cancelCommand = new RelayCommand((object? obj) =>
+                    SelectedContact = null;
+                }
+            }, (object? obj) => IsActionUnselected && Contacts.Count > 0);
+            ApplyCommand = new RelayCommand((object? obj) =>
+            {
+                _applyAction();
+                IsActionUnselected = true;
+            }, (object? obj) => !IsActionUnselected && string.IsNullOrEmpty(TempContact.Error));
+            CancelCommand = new RelayCommand((object? obj) =>
+            {
+                if (SelectedContact != null)
                 {
-                    if (SelectedContact != null)
-                    {
-                        TempContact = (Contact)SelectedContact.Clone();
-                    }
-                    else
-                    {
-                        SelectedContact = _selectedContactBeforeAdd;
-                    }
-                    IsActionUnselected = true;
-                }, (object? obj) => !IsActionUnselected);
+                    TempContact = (Contact)SelectedContact.Clone();
+                }
+                else
+                {
+                    SelectedContact = _selectedContactBeforeAdd;
+                }
+                IsActionUnselected = true;
+            }, (object? obj) => !IsActionUnselected);
+            PhoneNumberTextInputCommand = new RelayCommand((object? obj) =>
+            {
+                var args = obj as TextInputArgs;
+                if (!ValueValidator.AssertCharsIsForPhoneNumber(args.NewText))
+                {
+                    args.IsCancel = true;
+                }
+            }, (object? obj) => !IsActionUnselected);
+
+            LoadCommand.Execute(null);
         }
 
         /// <summary>
