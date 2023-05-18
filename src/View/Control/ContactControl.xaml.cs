@@ -1,10 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
-using View.Model;
+using Model;
 
-namespace View.Views
+namespace View.Control
 {
     /// <summary>
     /// Класс элемента управления для работы с <see cref="Contact"/>.
@@ -31,15 +30,6 @@ namespace View.Views
         }
 
         /// <summary>
-        /// Возвращает и задаёт команду обработки ввода <see cref="Contact.PhoneNumber"/>.
-        /// </summary>
-        public ICommand PhoneNumberTextInputCommand
-        {
-            get => (ICommand)GetValue(PhoneNumberTextInputCommandProperty);
-            set => SetValue(PhoneNumberTextInputCommandProperty, value);
-        }
-
-        /// <summary>
         /// Зависимое свойство <see cref="Contact"/>.
         /// </summary>
         public static DependencyProperty ContactProperty =
@@ -52,13 +42,6 @@ namespace View.Views
         public static DependencyProperty IsReadOnlyProperty =
             DependencyProperty.Register(nameof(IsReadOnly), typeof(bool), typeof(ContactControl),
                 new FrameworkPropertyMetadata());
-
-        /// <summary>
-        /// Зависимое свойство <see cref="PhoneNumberTextInputCommand"/>.
-        /// </summary>
-        public static DependencyProperty PhoneNumberTextInputCommandProperty =
-            DependencyProperty.Register(nameof(PhoneNumberTextInputCommand), typeof(ICommand),
-                typeof(ContactControl), new FrameworkPropertyMetadata());
 
         /// <summary>
         /// Создаёт экземпляр класса <see cref="ContactControl"/> по умолчанию.

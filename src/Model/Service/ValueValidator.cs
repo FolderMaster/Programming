@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace View.Model.Services
+namespace Model.Service
 {
     /// <summary>
     /// Класс валидации данных с методами.

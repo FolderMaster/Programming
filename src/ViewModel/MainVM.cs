@@ -2,18 +2,20 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
+using System.Xml.Linq;
+using CommunityToolkit.Mvvm.ComponentModel;
+using GalaSoft.MvvmLight.CommandWpf;
 
-using View.Model;
-using View.Model.Services;
-using View.Views;
+using Model;
+using Model.Service;
 
-namespace View.ViewModel
+namespace ViewModel
 {
     /// <summary>
-    /// Класс логики обработки процессов основного окна приложения <see cref="MainWindow"/> с
-    /// контактом, командами сохранения и загрузки.
+    /// Класс логики обработки процессов основного окна приложения с контактом, командами
+    /// сохранения, загрузки и другими.
     /// </summary>
-    public class MainVM : INotifyPropertyChanged
+    public class MainVM : ObservableObject
     {
         /// <summary>
         /// Путь к файлу.
@@ -62,7 +64,7 @@ namespace View.ViewModel
             {
                 if (Contacts != value)
                 {
-                    _contacts = value;
+                    SetProperty(ref _contacts, value);
                     if (Contacts != null)
                     {
                         SelectedContact = Contacts.Count > 0 ? Contacts[0] : null;
@@ -71,8 +73,6 @@ namespace View.ViewModel
                     {
                         SelectedContact = null;
                     }
-                    PropertyChanged?.Invoke(this,
-                        new PropertyChangedEventArgs(nameof(Contacts)));
                 }
             }
         }
@@ -87,12 +87,10 @@ namespace View.ViewModel
             {
                 if (SelectedContact != value)
                 {
-                    _selectedContact = value;
+                    SetProperty(ref _selectedContact, value);
                     IsActionUnselected = true;
                     TempContact = SelectedContact != null ?
                         (Contact)SelectedContact.Clone() : null;
-                    PropertyChanged?.Invoke(this,
-                        new PropertyChangedEventArgs(nameof(SelectedContact)));
                 }
             }
         }
@@ -103,15 +101,7 @@ namespace View.ViewModel
         public Contact? TempContact
         {
             get => _tempContact;
-            set
-            {
-                if (TempContact != value)
-                {
-                    _tempContact = value;
-                    PropertyChanged?.Invoke(this,
-                        new PropertyChangedEventArgs(nameof(TempContact)));
-                }
-            }
+            set => SetProperty(ref _tempContact, value);
         }
 
         /// <summary>
@@ -120,58 +110,45 @@ namespace View.ViewModel
         public bool IsActionUnselected
         {
             get => _isActionUnselected;
-            set
-            {
-                if (IsActionUnselected != value)
-                {
-                    _isActionUnselected = value;
-                    PropertyChanged?.Invoke(this,
-                        new PropertyChangedEventArgs(nameof(IsActionUnselected)));
-                }
-            }
+            set => SetProperty(ref _isActionUnselected, value);
         }
 
         /// <summary>
         /// Возвращает и задаёт команду сохранения <see cref="Contacts"/>.
         /// </summary>
-        public ICommand SaveCommand { get; private set; }
+        public RelayCommand SaveCommand { get; private set; }
 
         /// <summary>
         /// Возвращает и задаёт команду загрузки <see cref="Contacts"/>.
         /// </summary>
-        public ICommand LoadCommand { get; private set; }
+        public RelayCommand LoadCommand { get; private set; }
 
         /// <summary>
         /// Возвращает и задаёт команду добавления нового контакта.
         /// </summary>
-        public ICommand AddCommand { get; private set; }
+        public RelayCommand AddCommand { get; private set; }
 
         /// <summary>
         /// Возвращает и задаёт команду изменения контакта <see cref="SelectedContact"/>.
         /// </summary>
-        public ICommand EditCommand { get; private set; }
+        public RelayCommand EditCommand { get; private set; }
 
         /// <summary>
         /// Возвращает и задаёт команду удаления контакта <see cref="SelectedContact"/>.
         /// </summary>
-        public ICommand RemoveCommand { get; private set; }
+        public RelayCommand RemoveCommand { get; private set; }
 
         /// <summary>
         /// Возвращает и задаёт команду применения <see cref="AddCommand"/> или
         /// <see cref="EditCommand"/>.
         /// </summary>
-        public ICommand ApplyCommand { get; private set; }
+        public RelayCommand ApplyCommand { get; private set; }
 
         /// <summary>
         /// Возвращает и задаёт команду отмены <see cref="AddCommand"/> или
         /// <see cref="EditCommand"/>.
         /// </summary>
-        public ICommand CancelCommand { get; private set; }
-
-        /// <summary>
-        /// Возвращает и задаёт команду обработки ввода <see cref="Contact.PhoneNumber"/>.
-        /// </summary>
-        public ICommand PhoneNumberTextInputCommand { get; private set; }
+        public RelayCommand CancelCommand { get; private set; }
 
         /// <summary>
         /// Возвращает и задаёт интерфейс отображения сообщений.
@@ -179,16 +156,14 @@ namespace View.ViewModel
         public IMessageShowable? MessageShowable { get; set; } = null;
 
         /// <summary>
-        /// Обработчик события изменения свойства.
+        /// Создаёт экземпляр класса <see cref="MainVM"/>.
         /// </summary>
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        /// <summary>
-        /// Создаёт экземпляр класса <see cref="MainVM"/> по умолчанию.
-        /// </summary>
-        public MainVM()
+        /// <param name="messageShowable">Интерфейс отображения сообщений.</param>
+        public MainVM(IMessageShowable? messageShowable)
         {
-            SaveCommand = new RelayCommand((object? obj) =>
+            MessageShowable = messageShowable;
+
+            SaveCommand = new RelayCommand(() =>
             {
                 try
                 {
@@ -202,7 +177,7 @@ namespace View.ViewModel
                     }
                 }
             });
-            LoadCommand = new RelayCommand((object? obj) =>
+            LoadCommand = new RelayCommand(() =>
             {
                 try
                 {
@@ -217,7 +192,7 @@ namespace View.ViewModel
                     }
                 }
             });
-            AddCommand = new RelayCommand((object? obj) =>
+            AddCommand = new RelayCommand(() =>
             {
                 _selectedContactBeforeAdd = SelectedContact;
                 SelectedContact = null;
@@ -228,18 +203,18 @@ namespace View.ViewModel
                     SelectedContact = TempContact;
                 };
                 IsActionUnselected = false;
-            }, (object? obj) => IsActionUnselected);
-            EditCommand = new RelayCommand((object? obj) =>
+            }, () => IsActionUnselected);
+            EditCommand = new RelayCommand(() =>
+            {
+                _applyAction = () =>
                 {
-                    _applyAction = () =>
-                    {
-                        int selectedIndex = Contacts.IndexOf(SelectedContact);
-                        Contacts[selectedIndex] = TempContact;
-                        SelectedContact = Contacts[selectedIndex];
-                    };
-                    IsActionUnselected = false;
-                }, (object? obj) => IsActionUnselected && Contacts.Count > 0);
-            RemoveCommand = new RelayCommand((object? obj) =>
+                    int selectedIndex = Contacts.IndexOf(SelectedContact);
+                    Contacts[selectedIndex] = TempContact;
+                    SelectedContact = Contacts[selectedIndex];
+                };
+                IsActionUnselected = false;
+            }, () => IsActionUnselected && Contacts.Count > 0);
+            RemoveCommand = new RelayCommand(() =>
             {
                 int selectedIndex = Contacts.IndexOf(SelectedContact);
                 Contacts.Remove(SelectedContact);
@@ -252,13 +227,13 @@ namespace View.ViewModel
                 {
                     SelectedContact = null;
                 }
-            }, (object? obj) => IsActionUnselected && Contacts.Count > 0);
-            ApplyCommand = new RelayCommand((object? obj) =>
+            }, () => IsActionUnselected && Contacts.Count > 0);
+            ApplyCommand = new RelayCommand(() =>
             {
                 _applyAction();
                 IsActionUnselected = true;
-            }, (object? obj) => !IsActionUnselected && string.IsNullOrEmpty(TempContact.Error));
-            CancelCommand = new RelayCommand((object? obj) =>
+            }, () => !IsActionUnselected && string.IsNullOrEmpty(TempContact.Error));
+            CancelCommand = new RelayCommand(() =>
             {
                 if (SelectedContact != null)
                 {
@@ -269,26 +244,9 @@ namespace View.ViewModel
                     SelectedContact = _selectedContactBeforeAdd;
                 }
                 IsActionUnselected = true;
-            }, (object? obj) => !IsActionUnselected);
-            PhoneNumberTextInputCommand = new RelayCommand((object? obj) =>
-            {
-                var args = obj as TextInputArgs;
-                if (!ValueValidator.AssertCharsIsForPhoneNumber(args.NewText))
-                {
-                    args.IsCancel = true;
-                }
-            }, (object? obj) => !IsActionUnselected);
+            }, () => !IsActionUnselected);
 
             LoadCommand.Execute(null);
-        }
-
-        /// <summary>
-        /// Создаёт экземпляр класса <see cref="MainVM"/>.
-        /// </summary>
-        /// <param name="messageShowable">Интерфейс отображения сообщений.</param>
-        public MainVM(IMessageShowable? messageShowable) : this()
-        {
-            MessageShowable = messageShowable;
         }
     }
 }

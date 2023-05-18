@@ -447,9 +447,9 @@
     <Style BasedOn="{StaticResource {x:Type Control}}" TargetType="Label">
         <Setter Property="Padding" Value="0px"/>
     </Style>
-    <Style BasedOn="{StaticResource {x:Type Control}}" TargetType="TextBlock">
+    <!--<Style BasedOn="{StaticResource {x:Type Control}}" TargetType="TextBlock">
         <Setter Property="Padding" Value="0px"/>
-    </Style>
+    </Style>-->
     <Style BasedOn="{StaticResource {x:Type Label}}" TargetType="Label" x:Key="BoldLabel">
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>

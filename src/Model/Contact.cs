@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-using View.Model.Services;
+using Model.Service;
 
-namespace View.Model
+namespace Model
 {
     /// <summary>
     /// Класс контактов с ФИО, номером телефона и электронной почтой.

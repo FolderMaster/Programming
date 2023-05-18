@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 
-using View.ViewModel;
+using ViewModel;
 
-namespace View.Views
+namespace View.MessageShowable
 {
     /// <summary>
     /// Класс отображения сообщения ошибки с <see cref="MessageBox"/>.
@@ -13,7 +13,7 @@ namespace View.Views
         /// Отображает сообщение ошибки.
         /// </summary>
         /// <param name="message">Текст сообщения.</param>
-        public void Show(string message) =>
-            MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        public void Show(string message) => MessageBox.Show(message, "Error", MessageBoxButton.OK,
+            MessageBoxImage.Error);
     }
 }

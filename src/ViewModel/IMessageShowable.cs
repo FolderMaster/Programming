@@ -1,4 +1,4 @@
-﻿namespace View.ViewModel
+﻿namespace ViewModel
 {
     /// <summary>
     /// Интерфейс отображения сообщений.

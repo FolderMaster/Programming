@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace View.Views
+namespace View.Converter
 {
     /// <summary>
     /// Класс конвертора <see cref="bool"/> и <see cref="Visibility"/>.
@@ -36,7 +36,7 @@ namespace View.Views
             CultureInfo culture)
         {
             Visibility visibility = (Visibility)value;
-            switch(visibility)
+            switch (visibility)
             {
                 case Visibility.Visible:
                     return false;
