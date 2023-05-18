@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="View.Control.ContactControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:local="clr-namespace:View.Control"
+             xmlns:behavior="clr-namespace:View.Behavior"
+             mc:Ignorable="d"
+             Name="contactControl"
+             d:DesignHeight="150" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resource/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Style="{StaticResource {x:Type Rectangle}}" Grid.Column="0"
+                   Width="100px" Height="100px">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="../Resource/Avatar.jpg"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <StackPanel Grid.Column="1">
+            <Label Content="Name:"/>
+            <TextBox IsReadOnly="{Binding ElementName=contactControl, Path=IsReadOnly}"
+                     Text="{Binding ElementName=contactControl, Path=Contact.Name,
+                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+            <Label Content="Phone number:"/>
+            <TextBox IsReadOnly="{Binding ElementName=contactControl, Path=IsReadOnly}"
+                     Text="{Binding ElementName=contactControl, Path=Contact.PhoneNumber,
+                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                <i:Interaction.Behaviors>
+                    <behavior:PhoneNumberTextBoxBehavior/>
+                </i:Interaction.Behaviors>
+            </TextBox>
+            <Label Content="Email:"/>
+            <TextBox IsReadOnly="{Binding ElementName=contactControl, Path=IsReadOnly}"
+                     Text="{Binding ElementName=contactControl, Path=Contact.Email,
+                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

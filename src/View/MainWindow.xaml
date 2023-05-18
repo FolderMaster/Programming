@@ -1,24 +1,40 @@
-﻿<Window x:Class="View.Views.MainWindow"
+﻿<Window x:Class="View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:local="clr-namespace:View.Views"
+        xmlns:local="clr-namespace:View"
+        xmlns:control="clr-namespace:View.Control"
+        xmlns:converter="clr-namespace:View.Converter"
         mc:Ignorable="d"
-        Title="Contacts" Height="450" Width="800" Icon="../Resource/Icon.ico">
+        Title="Contacts" Height="450" Width="800" Icon="Resource/Icon.ico">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Resource/Styles.xaml"/>
+                <ResourceDictionary Source="Resource/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <local:BoolToVisibilityConverter x:Key="VisibilityConverter"/>
+            <converter:BoolToVisibilityConverter x:Key="VisibilityConverter"/>
+            <DataTemplate x:Key="ContactTemplate">
+                <DockPanel LastChildFill="True">
+                    <Rectangle Style="{StaticResource {x:Type Rectangle}}" DockPanel.Dock="Left"
+                               Width="40px" Height="40px" RadiusX="20px" RadiusY="20px">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="Resource/Avatar.jpg"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock TextWrapping="Wrap" FontSize="12" Margin="3px"
+                                   TextAlignment="Justify" FontWeight="SemiBold"
+                                   Text="{Binding Name}"/>
+                        <TextBlock TextWrapping="Wrap" FontSize="10" Margin="3px"
+                                   Text="{Binding PhoneNumber}"/>
+                    </StackPanel>
+                </DockPanel>
+            </DataTemplate>
         </ResourceDictionary>
     </Window.Resources>
     <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadCommand}"/>
-        </i:EventTrigger>
         <i:EventTrigger EventName="Closed">
             <i:InvokeCommandAction Command="{Binding SaveCommand}"/>
         </i:EventTrigger>
@@ -27,7 +43,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="260px"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="178*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Background="#333">
             <DockPanel Margin="8px" LastChildFill="True" >
@@ -53,42 +70,22 @@
                             Command="{Binding RemoveCommand}"/>
                 </Grid>
                 <ListBox ItemsSource="{Binding Contacts}"
-                         SelectedItem="{Binding SelectedContact}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}"/>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
+                         SelectedItem="{Binding SelectedContact}"
+                         ItemTemplate="{StaticResource ContactTemplate}"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 </ListBox>
             </DockPanel>
         </Grid>
         <GridSplitter Grid.Column="1" Width="3px" BorderThickness="1px, 0, 1px, 0"/>
-        <Grid Grid.Column="2" Grid.ColumnSpan="3" Margin="5px">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        <Grid Grid.Column="2" Margin="5,5,2,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border Grid.Column="0" Grid.Row="0" Height="100px" Width="100px" Margin="3px"
-                    BorderThickness="1px" BorderBrush="White">
-                <Image Source="../Resource/Avatar.jpg"/>
-            </Border>
-            <StackPanel Grid.Column="1" Grid.Row="0">
-                <Label Content="Name:"/>
-                <TextBox IsReadOnly="{Binding IsActionUnselected}" Text="{Binding TempContact.Name,
-                    UpdateSourceTrigger=PropertyChanged}"/>
-                <Label Content="Phone number:"/>
-                <TextBox IsReadOnly="{Binding IsActionUnselected}" Text="{Binding
-                    TempContact.PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
-                <Label Content="Email:"/>
-                <TextBox IsReadOnly="{Binding IsActionUnselected}" Text="{Binding
-                    TempContact.Email, UpdateSourceTrigger=PropertyChanged}"/>
-            </StackPanel>
-            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal"
-                        VerticalAlignment="Top" Margin="0px, 44px, 0px, 0px">
+            <control:ContactControl Grid.Row="0" Contact="{Binding TempContact}"
+                                  IsReadOnly="{Binding IsActionUnselected}"/>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top"
+                        Margin="106px, 44px, 0px, 0px">
                 <Button Content="Apply" Visibility="{Binding IsActionUnselected, Converter =
                     {StaticResource VisibilityConverter}}" Command="{Binding ApplyCommand}"/>
                 <Button Content="Cancel" Visibility="{Binding IsActionUnselected, Converter =

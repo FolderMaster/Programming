@@ -1,8 +1,10 @@
 ﻿using System.Windows;
 
-using View.ViewModel;
+using ViewModel;
 
-namespace View.Views
+using View.MessageShowable;
+
+namespace View
 {
     /// <summary>
     /// Основное окно приложения.

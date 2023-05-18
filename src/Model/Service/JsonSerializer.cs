@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Newtonsoft.Json;
 
-namespace View.Model.Services
+namespace Model.Service
 {
     /// <summary>
     /// Класс сериализации, представляющий методы Json-сериализации и десериализации данных в файл.
